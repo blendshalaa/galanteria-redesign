@@ -39,6 +39,7 @@ function App() {
     <HomePage/>
     <Aboutus/>
     <Ideas/>
+    
     <Contact/>
   </RouterProvider>
 
