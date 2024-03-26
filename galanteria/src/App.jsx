@@ -1,25 +1,49 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
+import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import HomePage from "./Pages/HomePage/HomePage";
-import NavBar from "./Components/NavBar/NavBar";
-import Footer from "./Pages/Footer/Footer";
+
+
 import Aboutus from "./Pages/Aboutus/Aboutus";
 import Ideas from "./Pages/Ideas/Ideas";
 import Contact from "./Pages/Contact/Contact";
+import NotFound from './Components/NotFound';
 
 function App() {
 
-  return (
-   <Router>
-    <NavBar/>
-    <Routes>
-      <Route path="/" element={<HomePage/>}/>
-      <Route path="/aboutus" element={<Aboutus/>}/>
-      <Route path="/ideas" element={<Ideas/>}/>
-      <Route path="/contact" element={<Contact/>}/>
+  const router=createBrowserRouter([{
+    path:'/',
+    element:<HomePage/>,
+    errorElement:<NotFound/>
 
-    </Routes>
-    <Footer/>
-   </Router>
+  },
+  {
+    path:'/Aboutus',
+    element:<Aboutus/>,
+    errorElement:<NotFound/>
+  },
+  {
+    path:'/Ideas',
+    element:<Ideas/>,
+    errorElement:<NotFound/>
+
+  },
+  {                   
+  path:'/Contact',
+  element:<Contact/>,
+  errorElement:<NotFound/>
+  }
+])
+  return (
+ <div>
+  <RouterProvider router={router}>
+    <HomePage/>
+    <Aboutus/>
+    <Ideas/>
+    
+    <Contact/>
+  </RouterProvider>
+
+ </div>
   )
 }
 
