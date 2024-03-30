@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgb(232, 229, 229);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    @media (max-width: 768px) {
+        //margin-left: -20px;
+        position: sticky;
+  
+       
+        //height: 100%;
+    }
+
+    .left {
+        display: flex;
+        gap: 20px;
+    }
+
+    h4 {
+        cursor: pointer;
+    }
+
+    .logo {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 50px;
+            height: 40px;
+
+        }
+    }
+
+    .categories {
+        position: relative;
+    }
+
+    .dropdown, .dropdown2 {
+        position: absolute;
+        top: 70%;
+        left: 0;
+        z-index: 1;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        min-width: 150px;
+    }
+    .dropdown, .dropdown2 li {
+        list-style-type: none;
+    }
+    .dropdown li a {
+        text-decoration: none;
+        color: #333;
+        padding: 1px 0;
+        transition: color 0.3s ease;
+    }
+    .dropdown2 li a {
+        text-decoration: none;
+        color: #333;
+        padding: 5px 0;
+        transition: color 0.3s ease;
+        text-align: center;
+    }
+    .dropdown li a:hover {
+        color: white;
+        background-color: #D33903;
+    }
+    .dropdown2 li a:hover {
+        color: white;
+        background-color: #D33903;
+    }
+    .nested-list {
+        margin-top: 0px;
+        padding-left: 15px;
+    }
+    .nested-list li {
+        list-style-type: none;
+        margin-bottom: 5px;
+    }
+
+    .ecatalog{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        .d{
+            margin-right: 5px;
+        }
+    }
+
+   
+
+    .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+
+
+
+        a,
+        h4 {
+            text-decoration: none;
+            font-size: 13px;
+            height: 35px;
+            display: flex;
+            padding-left: 5px;
+            padding-right: 5px;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            color: black;
+            font-weight: bold;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+
+        h4:hover {
+            background-color: #D33903;
+            border-radius: 5px;
+            color: white;
+
+
+
+        }
+
+    }
+
+    .language {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .btn-menu {
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    top: 3px;
+    cursor: pointer;
+    color: #db1e32;
+    order: 3;
+  display: none;
+  
+    svg {
+        width: 30px;
+        height: 30px;
+
+    }
+
+    @media (max-width: 768px) {
+
+        display: block;
+
+    }
+
+   
+}
+
+
+@media (max-width: 768px) {
+
+    .links{
+        opacity: 0;
+        transition: all 0.7s ease-in-out;
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        background-color: #FFF;
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: lightgrey;
+        // border: 1px solid red;
+
+      h4{
+        // background-color: blue;
+        width: 100%;
+        height: 50px;
+
+      }
+
+        li a {
+            display: flex;
+            font-size: 24px;
+            font-weight: bolder;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            width: 100%;
+            background-color: red;
+        }
+
+
+
+    }
+
+}
+@media(max-width:768px){
+    .header-menu {
+        width: 100%;
+        opacity: 1;
+        z-index: 100;
+        left: 0;
+        
+
+        a{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+     
+
+    }
+}
+
+}
+
+ .c{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .s{
+            cursor: pointer;
+        }
+    }
