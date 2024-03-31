@@ -14,14 +14,19 @@ body {
     @media (max-width: 768px) {
         //margin-left: -20px;
         position: sticky;
+  display: flex;
+  justify-content:space-between
   
        
         //height: 100%;
     }
 
+  
+
     .left {
         display: flex;
         gap: 20px;
+       
     }
 
     h4 {
@@ -37,6 +42,11 @@ body {
         img {
             width: 50px;
             height: 40px;
+@media(max-width:768px){
+    margin-left: 50px;
+}
+
+            
 
         }
     }
@@ -57,38 +67,57 @@ body {
         display: flex;
         flex-direction: column;
         min-width: 150px;
+
+        @media(max-width:768px){
+            width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       
+        }
     }
     .dropdown, .dropdown2 li {
         list-style-type: none;
+     
     }
-    .dropdown li a {
-        text-decoration: none;
-        color: #333;
-        padding: 1px 0;
-        transition: color 0.3s ease;
-    }
-    .dropdown2 li a {
-        text-decoration: none;
-        color: #333;
-        padding: 5px 0;
-        transition: color 0.3s ease;
-        text-align: center;
-    }
-    .dropdown li a:hover {
-        color: white;
-        background-color: #D33903;
-    }
-    .dropdown2 li a:hover {
-        color: white;
-        background-color: #D33903;
-    }
+   
     .nested-list {
         margin-top: 0px;
-        padding-left: 15px;
-    }
-    .nested-list li {
-        list-style-type: none;
+        padding-left: 25px;
+        list-style-type: none; // Remove default list styles
+      }
+      
+      .nested-list li {
         margin-bottom: 5px;
+        //background-color: rgb(250, 79, 79);
+        text-align: center;
+        cursor: pointer;
+        padding: px; // Add padding for better spacing
+        transition: color 0.3s ease;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 13px;
+font-weight: bold;
+   
+
+    
+      }
+      
+
+    .nested-list {
+        margin-top: 0px;
+        padding-left: 25px;
+       
+        
+ 
+    }
+
+    .albania, .germany, .uk{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-right: 5px;
     }
 
     .ecatalog{
@@ -97,12 +126,10 @@ body {
         justify-content: center;
         align-items: center;
        
-        .d{
-            margin-right: 5px;
-        }
+        
     }
 
-   
+    
 
     .links {
         display: flex;
@@ -111,8 +138,88 @@ body {
         gap: 30px;
 
 
+        li{
+            list-style-type: none;
+            :hover{
+                color:#D33903;
+                //  border-radius: 5px;
+                
+              }
+            &.active-link {
+                list-style-type: none;
+                text-decoration: none;
+                font-size: 13px;
+                height: 35px;
+                display: flex;
+                padding-left: 5px;
+                padding-right: 5px;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: bold;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color:#D33903; // Example: Change text color to orange
+
+                @media(max-width:768px){
+              font-size: 20px;
+              width: 100%;
+                }
+              }
+             
+
+        }
+         
+        li:hover {
+            color: #D33903;
 
 
+
+        }
+        .link{
+            list-style-type: none;
+            text-decoration: none;
+            font-size: 13px;
+            height: 35px;
+            display: flex;
+            padding-left: 5px;
+            padding-right: 5px;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            @media(max-width:768px){
+            font-size: 20px;
+            width: 100%;
+            }
+            &.active-link {
+                // Styles for active link...
+                font-size: 13px;
+                color:#D33903; // Example: Change text color to orange
+
+                :hover{
+                    color: #D33903;
+                    //  border-radius: 5px;
+                     
+                  }
+              }
+
+               
+     
+              :hover{
+                color: #D33903;
+                //  border-radius: 5px;
+              }
+        }
+
+
+       
         a,
         h4 {
             text-decoration: none;
@@ -131,9 +238,8 @@ body {
 
 
         h4:hover {
-            background-color: #D33903;
+            color: #D33903;
             border-radius: 5px;
-            color: white;
 
 
 
@@ -147,13 +253,13 @@ body {
         align-items: center;
 
     }
-    .btn-menu {
+    .btn-menu, .right {
     position: absolute;
     z-index: 2;
     right: 20px;
     top: 3px;
     cursor: pointer;
-    color: #db1e32;
+    color:#D33903;
     order: 3;
   display: none;
   
@@ -166,6 +272,7 @@ body {
     @media (max-width: 768px) {
 
         display: block;
+        margin-right: 30px;
 
     }
 
@@ -189,24 +296,31 @@ body {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-color: lightgrey;
-        // border: 1px solid red;
+      //  background-color: lightgrey;
+      border: 2px solid blue;
+      display: flex;
+      gap: 35px;
+      justify-content: center;
+      align-items: center;
+
+
 
       h4{
-        // background-color: blue;
         width: 100%;
         height: 50px;
+       
 
       }
 
-        li a {
+        li  {
+           // border: 1px solid red;
             display: flex;
             font-size: 24px;
             font-weight: bolder;
             margin-top: 8px;
             margin-bottom: 8px;
-            width: 100%;
-            background-color: red;
+           // background-color: red;
+           // padding: 0px 30px;
         }
 
 
@@ -220,6 +334,7 @@ body {
         opacity: 1;
         z-index: 100;
         left: 0;
+        padding: 0;
         
 
         a{
@@ -242,5 +357,6 @@ body {
 
         .s{
             cursor: pointer;
+          
         }
     }
