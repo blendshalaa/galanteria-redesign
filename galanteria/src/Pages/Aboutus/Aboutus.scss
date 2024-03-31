@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.about-us-header{
+
+
+    margin-top: 120px;
+    border-bottom: 1px solid rgb(232, 229, 229);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   margin-bottom: -50px;
+  
+
+}
+.aboutus-h1{
+    font-size: 48px;
+}
+.aboutus-p{
+    font-size: 24px;
+}
+
+.aboutimg{
+    width: 1370px;
+    height: 536px;
+  
+}
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aboutusheaderP{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-left: 270px;
+    margin-bottom: 50px;
+}
+.statsTable {
+    display: flex;
+    justify-content: center; 
+    /* Center content horizontally */
+    width: 351px; /* Example width */
+    height: 477px; /* Example height */
+    margin: 0 auto; 
+    background-color: #D33903;
+    color: white;
+    border-radius: 5%;
+  }
+  
+  .stats-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+  }
+  
+  .stats-text > div {
+    margin-bottom: 10px; /* Adjust margin between each pair */
+  }
+  .stats-h2{
+    font-size: 48px;
+
+  }
+  .stats-p{
+font-size: 24px;
+  }
+  .cnt{
+    margin-left: 120px;
+  }
+
+  .solutions-section {
+    margin-top: 10px;
+    margin-left: 270px;
+
+  }
+  .solution-box{
+position: relative;
+align-items: center;
+
+  }
+  .main-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+ ;
+    margin-top: 50px;
+    gap: 250px;
+  }
+  
+.solution-box::after {
+    content: '';
+    position: absolute;
+    align-items: center;
+    top: 0;
+    right: -30px; /* Adjust this value as needed */
+    height: 100%; /* Take the full height of the solution-box */
+    width: 2px; /* Width of the vertical line */
+    background-color: #D33903;
+     /* Color of the vertical line */
+  }
+  .solution-h3{
+font-size: 32px;
+  }
+  .solution-p{
+font-size: 20px;
+padding-top: 10px;
+
+  }
