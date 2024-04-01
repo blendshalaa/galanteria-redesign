@@ -34,47 +34,6 @@ const Aboutus = () => {
   </div>
 </div>
 
-        <div className='solutions-section'>
-        <h1 className='solutions-h1'>WE ARE BEST SOLUTIONS<br></br>
-FOR YOUR HOME</h1>
-<div className='main-box'>
-<div className='solution-box'>
-          <h3 className='solution-h3'>Our Vision</h3>
-          <p className='solution-p'>Excellence and development of<br></br> human, technical and technological<br></br> capacities,
-           for the fulfillment of the<br></br> companys mission.</p>
-        </div>
-        <div className='solution-box'>
-          <h3 className='solution-h3'>Our Vision</h3>
-          <p className='solution-p'>Excellence and development of<br></br> human, technical and technological<br></br> capacities,
-           for the fulfillment of the<br></br> companys mission.</p>
-        </div>
-        <div className='solution-box'>
-          <h3 className='solution-h3'>Our Vision</h3>
-          <p className='solution-p'>Excellence and development of<br></br> human, technical and technological<br></br> capacities,
-           for the fulfillment of the<br></br> companys mission.</p>
-        </div>
-</div>
-        
-      </div>
-
-      </div>
-
-      
-
-      <div className='periudha-section-1'>
-        <h1>Hellsbsdbdsbsdo</h1>
-        <h1>Hellsbsdbdsbsdo</h1>
-        <h1>Hellsbsdbdsbsdo</h1>
-        <h1>Hellsbsdbdsbsdo</h1>
-        <h1>Hellsbsdbdsbsdo</h1>
-        <h1>Hellsbsdbdsbsdo</h1>
-
-        <h1>Hellsbsdbdsbsdo</h1>
-        
-
-      </div>
-      <div className='periudha-section-2'>
-
 </div>
       
       </div>
