@@ -7,7 +7,7 @@ import aboutimg from '../../assets/images/aboutus.png'
 
 const Aboutus = () => {
   return (
-    <div>
+    <div className='mainAbout'>
       <NavBar/>
       <div className='about-us-header'>
         <div className='aboutusheaderP'>
@@ -35,7 +35,28 @@ const Aboutus = () => {
 </div>
 
 </div>
-      
+<div className='solutions'>
+  <h2 className='solution-h2'>WE ARE BEST SOLUTIONS<br/> FOR YOUR HOME</h2>
+
+  <div className='boxes'>
+    <div className='box'>
+      <h2 className='box-h2'>OUR VISION</h2>
+      <p className='box-p'>Excellence and development of <br/>human, technical and technological<br/> capacities, for the fulfillment of the <br/>companys mission.</p>
+    </div>
+    <div className='box'>
+      <h2 className='box-h2'>WHAT WE OFFER</h2>
+      <p className='box-p'>Office furniture, School Furniture,<br/>  University Furniture, Hotel Furniture<br/>  Working desks, shelves, cupboards,<br/> conference  tables, hangnails etc.</p>
+    </div>
+    <div className='box'>
+      <h2 className='box-h2'>WHAT WE OFFER</h2>
+      <p className='box-p'>Office furniture, School Furniture,<br/>  University Furniture, Hotel Furniture<br/>  Working desks, shelves, cupboards,<br/> conference  tables, hangnails etc.</p>
+    </div>
+  </div>
+</div>
+
+<div className='periudhat'>
+  <h1>Test</h1>
+</div>
       </div>
   )
 }
