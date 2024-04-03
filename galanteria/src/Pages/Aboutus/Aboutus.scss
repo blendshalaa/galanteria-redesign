@@ -77,11 +77,14 @@ font-size: 24px;
   .solutions{
     margin-top: 200px;
     margin-left: 120px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: -50px;
-  border-bottom: 1px solid rgb(232, 229, 229);
+   
   }
+.line{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 120px;
+    border-bottom: 1px solid rgb(232, 229, 229);
 
+}
   .boxes{
     margin-top: 50px;
     display: flex;
@@ -112,6 +115,47 @@ font-size: 24px;
   
 }
 
-.periudhat{
-  margin-top: 120px;
+.periudhat {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 120px; /* Align items evenly */
+}
+
+.periudha-1
+ {
+  display: flex;
+  align-items: start; /* Vertically center items */
+}
+.periudha-1{
+  margin-left: 120px;
+}
+
+.pimg-container {
+  margin-right: 20px; /* Adjust spacing between image and text */
+}
+.periudha-span{
+  color: #D33903;
+}
+
+.periudha-p{
+  padding-top: 30px;
+  font-size: 20px;
+}
+.h3-periudha{
+  font-size: 32px;
+}
+.text-periudha {
+  flex: 1; /* Take remaining space */
+}
+.periudha-2{
+  margin-top: 340px;
+  display: flex;
+  align-items: start;
+
+}
+
+.periudhat-2{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 120px; 
 }
