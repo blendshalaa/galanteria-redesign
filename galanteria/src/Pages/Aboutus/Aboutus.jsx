@@ -3,6 +3,9 @@ import React from 'react'
 import './Aboutus.scss'
 import NavBar from '../../Components/NavBar/NavBar'
 import aboutimg from '../../assets/images/aboutus.png'
+import periudhaimg from '../../assets/images/p3.png'
+import periudhaimg1 from '../../assets/images/periudha1.png'
+
 
 
 const Aboutus = () => {
@@ -53,10 +56,58 @@ const Aboutus = () => {
     </div>
   </div>
 </div>
+<div className='line'>
+
+</div>
 
 <div className='periudhat'>
-  <h1>Test</h1>
+  <div className='periudha-1'>
+    <div className='pimg-container'>
+      <img src={periudhaimg} alt='foto'></img>
+    </div>
+    <div className='text-periudha'>
+      <h3 className='h3-periudha'>Periudha <span className='periudha-span'>1987-1999</span></h3>
+      <p className='periudha-p'>Excellence and development of human,<br/> technical and technological capacities,<br/> for the fulfillment of the companys mission.</p>
+    </div>
+  </div>
+  <div className='periudha-2'>
+    
+    <div className='text-periudha'>
+      <h3 className='h3-periudha'>Periudha <span className='periudha-span'>1987-1999</span></h3>
+      <p className='periudha-p'>Excellence and development of human,<br/> technical and technological capacities,<br/> for the fulfillment of the companys mission.</p>
+    </div>
+    <div className='pimg-container'>
+      <img src={periudhaimg1}></img>
+    </div>
+  </div>
+
 </div>
+<div className='line'>
+</div>
+
+
+<div className='periudhat-2'>
+<div className='periudha-1'>
+    <div className='pimg-container'>
+      <img src={periudhaimg} alt='foto'></img>
+    </div>
+    <div className='text-periudha'>
+      <h3 className='h3-periudha'>Periudha <span className='periudha-span'>1987-1999</span></h3>
+      <p className='periudha-p'>Excellence and development of human,<br/> technical and technological capacities,<br/> for the fulfillment of the companys mission.</p>
+    </div>
+  </div>
+  <div className='periudha-2'>
+    
+    <div className='text-periudha'>
+      <h3 className='h3-periudha'>Periudha <span className='periudha-span'>1987-1999</span></h3>
+      <p className='periudha-p'>Excellence and development of human,<br/> technical and technological capacities,<br/> for the fulfillment of the companys mission.</p>
+    </div>
+    <div className='pimg-container'>
+      <img src={periudhaimg1}></img>
+    </div>
+  </div>
+</div>
+
       </div>
   )
 }
