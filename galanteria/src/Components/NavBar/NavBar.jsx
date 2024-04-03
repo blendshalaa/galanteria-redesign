@@ -156,8 +156,13 @@ const NavBar = () => {
               {language[lang]?.menuHeader[5].name}
 
             </li></Link>
-
+            <div className="nav"></div>
+    <div className="language">      
+          <Language className="lang" />
+        </div>
         </ul>
+        
+      
       </div>
 
       <div className='right'>
@@ -171,9 +176,7 @@ const NavBar = () => {
           {toggleBtn ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
       </div>
-      <div className="language">      
-          <Language className="lang" />
-</div>
+    
     </div>
   );
 };

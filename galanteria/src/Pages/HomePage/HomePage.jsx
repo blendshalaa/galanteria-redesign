@@ -1,17 +1,16 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React, { useRef, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import './HomePage.scss';
 import NavBar from '../../Components/NavBar/NavBar'
-
-// import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import sl1 from '../../assets/images/Frame 16.png'
+import sl2 from '../../assets/images/Frame 15.png'
+import sl3 from '../../assets/images/Frame 12.png'
+import sl4 from '../../assets/images/Frame 18.png'
+import sl5 from '../../assets/images/Frame 17.png'
 import s1 from '../../assets/images/s1.png'
 import s2 from '../../assets/images/s2.png'
 import s3 from '../../assets/images/s3.png'
@@ -21,12 +20,17 @@ import d1 from '../../assets/images/Frame 53.png'
 import d2 from '../../assets/images/Frame 56.png'
 import d3 from '../../assets/images/Frame 51.png'
 import Footer from '../Footer/Footer';
+import language from '../../lang';
+import { Context } from '../../Components/Context/Products';
+import Language from '../../Components/NavBar/Language';
 
-export default function App() {
+export default function HomePage() {
+
+  const [{ lang }] = useContext(Context);
+
   return (
-    <>
-
-
+    <div className="home-wrapper">
+      
     <NavBar/>
 
     <div className="slider1">
@@ -36,7 +40,13 @@ export default function App() {
         loop={true}
         pagination={false}
         breakpoints={{
+          400: {
+            
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
           640: {
+            
             slidesPerView: 2,
             spaceBetween: 20,
           },
@@ -47,22 +57,24 @@ export default function App() {
           1024: {
             slidesPerView: 5,
             spaceBetween: 10,
+            
           },
         }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
+        // navigation={false}
+        // modules={[Pagination, Navigation]}
         className="mySwiper1"
       >
         <div className="swipers">
            
-          <SwiperSlide  ><img className='a' src={s1} alt="" /></SwiperSlide>
-        <SwiperSlide className='s'><img className='b' src={s2} alt="" />
-        <p>FURNITURE AND ACCESSORIES <br /><b>FOR MODERN <br />INTERIER</b> </p>
-        <h6>TAKE ADVANTAGE OF OUR IDEAS TO CREATE AN INTERIOR THAT SUITS YOU</h6>
+          <SwiperSlide  ><img className='a' src={sl1} alt="" /></SwiperSlide>
+        <SwiperSlide className='s'><img className='b' src={sl2} alt="" />
+        <p> {language[lang]?.hero[0].title}
+ <br /><b>{language[lang]?.hero[0].redtitle}</b> </p>
+        <h6>{language[lang]?.hero[0].subtitle}</h6>
         </SwiperSlide>
-        <SwiperSlide ><img className='c' src={s3} alt="" /></SwiperSlide>
-        <SwiperSlide  ><img className='d' src={s4} alt="" /></SwiperSlide>
-        <SwiperSlide><img className='e' src={s5} alt="" /></SwiperSlide>
+        <SwiperSlide ><img className='c' src={sl3} alt="" /></SwiperSlide>
+        <SwiperSlide  ><img className='d' src={sl4} alt="" /></SwiperSlide>
+        <SwiperSlide><img className='e' src={sl5} alt="" /></SwiperSlide>
         {/* <SwiperSlide ><img className='e' src={s5} alt="" /></SwiperSlide> */}
 
 
@@ -72,49 +84,49 @@ export default function App() {
        
       </Swiper>
     </div>
+    <hr />
   
     <div className="slider">
-      <h1>Popular Categories</h1>
+      <h1>{language[lang]?.categories[0].title}</h1>
         <Swiper
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
         pagination={false}
         breakpoints={{
+         
           640: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
           768: {
             slidesPerView: 3,
-            spaceBetween: 40,
+            spaceBetween: 0,
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 0,
+            spaceBetween: 3,
           },
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide className='s'>
-          <img src={s1} alt="" />
-          <p>Couches</p>
-          </SwiperSlide>
-        <SwiperSlide className='s'><img src={s2} alt="" /><p>Chairs</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s3} alt="" /><p>Sofas</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s4} alt="" /><p>Living Rooms</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s1} alt="" /><p>Couches</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s2} alt="" /><p>Couches</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s3} alt="" /><p>Couches</p></SwiperSlide>
-        <SwiperSlide  className='s'><img src={s4} alt="" /><p>Couches</p></SwiperSlide>
+        <SwiperSlide className='s'><img src={s1} alt="" /><p>{language[lang]?.categories[0].product1}</p></SwiperSlide>
+        <SwiperSlide className='s'><img src={s2} alt="" /><p>{language[lang]?.categories[0].product2}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s3} alt="" /><p>{language[lang]?.categories[0].product3}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s4} alt="" /><p>{language[lang]?.categories[0].product4}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s1} alt="" /><p>{language[lang]?.categories[0].product1}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s2} alt="" /><p>{language[lang]?.categories[0].product2}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s3} alt="" /><p>{language[lang]?.categories[0].product3}</p></SwiperSlide>
+        <SwiperSlide  className='s'><img src={s4} alt="" /><p>{language[lang]?.categories[0].product4}</p></SwiperSlide>
       </Swiper>
     </div>
+    <hr />
 
     <div className="ideas">
       <div>
-        <h1>Need Ideas ?</h1>
+        <h1>{language[lang]?.ideas[0].title}</h1>
       </div>
       <div className='ideas-boxes'>
         <div >
@@ -131,17 +143,18 @@ export default function App() {
 
       </div>
       <div className='ideas-button'>
-        <button>See More</button>
+        <button>{language[lang]?.ideas[0].button}</button>
       </div>
     </div>
+    <hr />
 
     <div className="choose">
       <div className='choose-up'>
         <div className='choose-box'>
-          <h3>Why choose us?</h3>
+          <h3>{language[lang]?.choose[0].title}</h3>
         </div>
         <div className='choose-box2'>
-          <p>Our new designs, coupled with professional work and high <br /> quality production, stream the development of our industry. <br />   Galanteria Group has a wide range of products as Office <br /> furniture, School and Hotel furniture, as well as furniture for <br /> clients with special requirements.</p>
+          <p>{language[lang]?.choose[0].text}</p>
         </div>
         <div className='choose-box3'>
           <img src={s5} alt="" />
@@ -151,30 +164,35 @@ export default function App() {
         <div className='down-box'>
           <div><img src={d1} alt="" /></div>
           <div>
-            <h3>Warranty</h3>
-            <p>We stand  behind the quality of our <br />products and offer warranty on all <br /> furniture pieces.Rest easy knowing <br /> that your investment is protected</p>
+            <h3>{language[lang]?.choose[0].boxtitle1}</h3>
+            <p>{language[lang]?.choose[0].boxtext1}</p>
           </div>
 
         </div>
         <div className='down-box'>
           <div><img src={d2} alt="" /></div>
           <div>
-            <h3>Affordable Price</h3>
-            <p>We believe that quality furniture <br /> should be accesible to <br /> everyone.That’s why we offer a wide <br /> of products at affordable prices</p>
+          <h3>{language[lang]?.choose[0].boxtitle2}</h3>
+            <p>{language[lang]?.choose[0].boxtext2}</p>
           </div>
 
         </div>
         <div className='down-box'>
           <div><img src={d3} alt="" /></div>
           <div>
-            <h3>Free Shipping</h3>
-            <p>We really understand our <br /> customers,so we will free shipping <br /> cost to any location quickly and <br /> safely.Enjoy shipping on all orders</p>
+          <h3>{language[lang]?.choose[0].boxtitle3}</h3>
+            <p>{language[lang]?.choose[0].boxtext3}</p>
           </div>
 
         </div>
       </div>
+     
     </div>
+     <hr />
     <Footer/>
-    </>
+  
+    </div> 
   );
 }
+
+
