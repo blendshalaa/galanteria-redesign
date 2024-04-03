@@ -20,6 +20,7 @@ import s5 from '../../assets/images/aboutus.png'
 import d1 from '../../assets/images/Frame 53.png'
 import d2 from '../../assets/images/Frame 56.png'
 import d3 from '../../assets/images/Frame 51.png'
+import Footer from '../Footer/Footer';
 
 export default function App() {
   return (
@@ -173,7 +174,7 @@ export default function App() {
         </div>
       </div>
     </div>
-    
+    <Footer/>
     </>
   );
 }
