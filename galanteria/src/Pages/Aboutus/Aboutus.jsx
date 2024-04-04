@@ -5,6 +5,7 @@ import NavBar from '../../Components/NavBar/NavBar'
 import aboutimg from '../../assets/images/aboutus.png'
 import periudhaimg from '../../assets/images/p3.png'
 import periudhaimg1 from '../../assets/images/periudha1.png'
+import Footer from '../Footer/Footer'
 
 
 
@@ -107,6 +108,10 @@ const Aboutus = () => {
     </div>
   </div>
 </div>
+<div className='line'>
+</div>
+
+<Footer/>
 
       </div>
   )
