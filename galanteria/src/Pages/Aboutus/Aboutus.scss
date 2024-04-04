@@ -159,3 +159,97 @@ font-size: 24px;
   justify-content: space-between;
   margin-top: 120px; 
 }
+
+/* Add media query for screens smaller than 768px (e.g., smartphones) */
+@media only screen and (max-width: 768px) {
+  .aboutimg {
+      width: 100%; /* Make the image responsive */
+      height: auto;
+  }
+
+  .about-us-header {
+      margin-top: 60px; /* Decrease margin-top for smaller screens */
+  }
+
+  .aboutus-h1 {
+      font-size: 36px; /* Decrease font size for smaller screens */
+  }
+
+  .aboutus-p {
+      font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .img-container {
+      margin-bottom: 20px; /* Add margin for spacing */
+  }
+
+  .aboutusheaderP {
+      margin-left: 30px; /* Decrease margin-left for smaller screens */
+      margin-bottom: 30px; /* Keep the same margin-bottom */
+  }
+
+  .statsTable {
+      position: relative; /* Remove absolute positioning */
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 50%; /* Make the stats table full-width */
+      max-width: none;
+      margin: 20px auto; /* Add margin for spacing */
+  }
+
+  .stats-h2 {
+    padding-top: 50px;
+      font-size: 24px; /* Decrease font size for smaller screens */
+  }
+
+  .stats-p {
+      font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .solutions {
+      margin-top: 120px; /* Adjust margin-top for smaller screens */
+      margin-left: 30px; /* Decrease margin-left for smaller screens */
+  }
+
+  .boxes {
+      flex-direction: column; /* Stack boxes vertically */
+      align-items: center; /* Center boxes horizontally */
+      gap: 20px; /* Add gap between boxes */
+  }
+
+  .box {
+      width: 100%; /* Make boxes full-width */
+      padding: 20px; /* Add padding */
+  }
+
+  .box:not(:last-child)::after {
+      display: none; /* Hide vertical lines on smaller screens */
+  }
+  .periudhat,
+  .periudhat-2 {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+      margin-top: 60px; /* Adjust margin-top for smaller screens */
+  }
+
+  .periudha-1,
+  .periudha-2 {
+      display: flex; /* Display text and image in a row */
+      flex-direction: column; /* Stack text under the image */
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text horizontally */
+      margin-left: 0; /* Remove left margin */
+      margin-right: 0; /* Remove right margin */
+  }
+
+  .pimg-container {
+      /* Add margin-bottom for spacing */
+  }
+
+  .periudha-2 {
+      margin-top: 50px; /* Adjust top margin */
+  }
+}
+ 
+
