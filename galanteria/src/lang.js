@@ -10,6 +10,23 @@ const language = {
                 path: "/Aboutus"
             },
             {
+                name: "Mobilje shtëpie",
+                path: "/ok"
+            },
+            {
+                name: "Banjo",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Kuzhina",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Mobilje Zyre",
+                path: "/Aboutus"
+            },
+
+            {
                 name: "Idetë",
                 path: "/Ideas"
             },
@@ -69,15 +86,32 @@ const language = {
                 path: "/Aboutus"
             },
             {
+                name: "Home Furnitures",
+                path: "/HomeFurnitures"
+            },
+            {
+                name: "Bathrooms",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Kitchens",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Office Furnitures",
+                path: "/Aboutus"
+            },
+
+            {
                 name: "Ideas",
                 path: "/Ideas"
             },
             {
-                name: "E-Catalogue",
+                name: "E-Catalog",
                 path: "/Aboutus"
             },
             {
-                name: "Contact Us",
+                name: "Contact",
                 path: "/Contact"
             },
             {
@@ -121,7 +155,7 @@ const language = {
     de:{
         menuHeader: [
             {
-                name: "Heim",
+                name: "Home",
                 path: "/"
             },
             {
@@ -129,15 +163,32 @@ const language = {
                 path: "/Aboutus"
             },
             {
+                name: "Haus möbel",
+                path: "/HomeFurnitures"
+            },
+            {
+                name: "Badezimmer",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Küchen",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Büromöbel",
+                path: "/Aboutus"
+            },
+
+            {
                 name: "Ideen",
                 path: "/Ideas"
             },
             {
-                name: "E-Katalog",
+                name: "E-Kataloge",
                 path: "/Aboutus"
             },
             {
-                name: "Kontaktiere uns",
+                name: "Kontakt",
                 path: "/Contact"
             },
             {

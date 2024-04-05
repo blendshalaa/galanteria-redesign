@@ -107,20 +107,20 @@ const NavBar = () => {
             {showDropdown && (
               <ul className='dropdown' onClick={stopPropagation}>
                 <li className='nes'>
-                  <Link onClick={toggleHomeFurnitureList}>Home Furnitures</Link>
+                  <Link onClick={toggleHomeFurnitureList}>{language[lang]?.menuHeader[2].name}</Link>
                   {showHomeFurnitureList && (
                     <ul className="nested-list">
                       <li className='nes'>
-                        <Link to="/Contact">Bedrooms</Link>
+                        <Link to="/Bathrooms">{language[lang]?.menuHeader[3].name}</Link>
                       </li>
                       <li className='nes'>
-                        <Link to="/Aboutus">Bathrooms</Link>
+                        <Link to="/Bathrooms">{language[lang]?.menuHeader[4].name}</Link>
                       </li>
                     </ul>
                   )}
                 </li>
                 <li className='nes'>
-                  <Link to='/category2'>School Furnitures</Link>
+                  <Link to='/category2'>{language[lang]?.menuHeader[5].name}</Link>
                 </li>
               </ul>
             )}
@@ -128,7 +128,7 @@ const NavBar = () => {
 
           <Link to="/Ideas">
             <li className={activeItem === '/Ideas' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[2].name}
+              {language[lang]?.menuHeader[6].name}
 
             </li>
           </Link>
@@ -140,20 +140,20 @@ const NavBar = () => {
               </svg>
               <Link to="ecatalog">
                 <li className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                  {language[lang]?.menuHeader[3].name}
+                  {language[lang]?.menuHeader[7].name}
 
                 </li></Link>
             </a>
           </div>
           <Link to="/Contact">
             <li className={activeItem === '/Contact' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[4].name}
+              {language[lang]?.menuHeader[8].name}
 
             </li></Link>
 
           <Link to="/Aboutus">
             <li className={activeItem === '/Aboutus' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[5].name}
+              {language[lang]?.menuHeader[9].name}
 
             </li></Link>
             <div className="nav"></div>
