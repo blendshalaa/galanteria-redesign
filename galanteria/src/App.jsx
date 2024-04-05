@@ -4,6 +4,8 @@ import HomePage from './Pages/HomePage/HomePage'
 import Aboutus from './Pages/Aboutus/Aboutus'
 import Contact from './Pages/Contact/Contact'
 import Ideas from './Pages/Ideas/Ideas'
+import HomeFurnitures from './Pages/Bathrooms/Bathrooms'
+import Product1Page from "./Pages/Product1Page/Product1Page";
 
 function App() {
 
@@ -16,6 +18,10 @@ function App() {
           <Route path="/Aboutus" element={<Aboutus/>} />
           <Route path="/Contact" element={<Contact/>} />
           <Route path="/Ideas" element={<Ideas/>} />
+          <Route path="/Bathrooms" element={<HomeFurnitures/>} />
+          <Route path="/product/:slug" element={<Product1Page/>}/>
+
+
         </Routes>
       </Products>
     </Router>
