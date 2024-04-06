@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './Bathrooms.scss'
 import NavBar from '../../Components/NavBar/NavBar'
 import Footer from '../Footer/Footer'
@@ -13,9 +13,15 @@ import b8 from '../../assets/images/s4.png'
 import b9 from '../../assets/images/Frame 15.png'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import language from '../../lang'
+import LangFlag from '../../Components/NavBar/LangFlag'
+import Language from '../../Components/NavBar/Language'
+import { Context } from '../../Components/Context/Products'
 
 
 const Bathrooms = () => {
+  const [{ lang }] = useContext(Context);
+
 
   const navigate = useNavigate();
 
@@ -29,7 +35,7 @@ const Bathrooms = () => {
       <NavBar/>
 
       <div className='bathrooms-text'>
-        <h1>Direct Sofas</h1>
+        <h1> {language[lang]?.bathroom[0].title}</h1>
       </div>
       <div className='bathrooms-images'>
         <div className='images'>

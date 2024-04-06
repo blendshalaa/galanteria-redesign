@@ -38,7 +38,7 @@ export default function HomePage() {
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
-        pagination={false}
+       // pagination={true}
         breakpoints={{
           400: {
             
@@ -60,7 +60,7 @@ export default function HomePage() {
             
           },
         }}
-        // navigation={false}
+         //navigation={true}
         // modules={[Pagination, Navigation]}
         className="mySwiper1"
       >
@@ -75,7 +75,8 @@ export default function HomePage() {
         <SwiperSlide ><img className='c' src={sl3} alt="" /></SwiperSlide>
         <SwiperSlide  ><img className='d' src={sl4} alt="" /></SwiperSlide>
         <SwiperSlide><img className='e' src={sl5} alt="" /></SwiperSlide>
-        {/* <SwiperSlide ><img className='e' src={s5} alt="" /></SwiperSlide> */}
+        <SwiperSlide ><img className='e' src={s5} alt="" /></SwiperSlide>
+        <SwiperSlide ><img className='c' src={sl3} alt="" /></SwiperSlide>
 
 
  

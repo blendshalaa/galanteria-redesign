@@ -22,6 +22,18 @@ const language = {
                 path: "/Bathrooms"
             },
             {
+                name: "Paradhoma",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Dollap Tualeti",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Gardëroba",
+                path: "/Bathrooms"
+            },
+            {
                 name: "Mobilje Zyre",
                 path: "/Aboutus"
             },
@@ -73,6 +85,9 @@ const language = {
             boxtext2:"Ne besojmë se mobiljet cilësore duhet të jenë të aksesueshme për të gjithë. Kjo është arsyeja pse ne ofrojmë një shumëllojshmëri produktesh me çmime të përballueshme",
              boxtitle3:"Transport falas",
             boxtext3:"Ne me të vërtetë i kuptojmë klientët tanë, kështu që ne do të paguajmë koston e transportit në çdo vend shpejt dhe në mënyrë të sigurt. Shijoni transportin për të gjitha porositë",
+        }], 
+        bathroom:[{
+            title:"Divane"
         }]
     },
     en:{
@@ -95,6 +110,18 @@ const language = {
             },
             {
                 name: "Kitchens",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Front Rooms",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Toilet Closets",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Wardrobes",
                 path: "/Bathrooms"
             },
             {
@@ -150,6 +177,9 @@ const language = {
             boxtext2:"We believe that quality furniture should be accesible to everyone.That’s why we offer a wide of products at affordable prices",
              boxtitle3:"Free Shipping",
             boxtext3:"We really understand our costumers,so we will free shipping cost to any location quickly and safely.Enjoy shipping on all orders",
+        }],
+        bathroom:[{
+            title:"Direct Sofas"
         }]
     },
     de:{
@@ -172,6 +202,18 @@ const language = {
             },
             {
                 name: "Küchen",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Vorderzimmer",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Toilettenschränke",
+                path: "/Bathrooms"
+            },
+            {
+                name: "Kleiderschränke",
                 path: "/Bathrooms"
             },
             {
@@ -227,6 +269,9 @@ const language = {
             boxtext2:"Wir glauben, dass Qualitätsmöbel für jedermann zugänglich sein sollten. Deshalb bieten wir eine große Auswahl an Produkten zu erschwinglichen Preisen an",
              boxtitle3:"Kostenloser Versand",
             boxtext3:"Wir verstehen unsere Kunden wirklich und bieten daher schnell und sicher kostenlose Versandkosten an jeden Ort an. Genießen Sie den Versand für alle Bestellungen",
+        }],
+        bathroom:[{
+            title:"Direkte Sofas"
         }]
     }
 }

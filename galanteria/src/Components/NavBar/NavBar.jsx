@@ -36,6 +36,7 @@ const NavBar = () => {
     setToggleBtn(!toggleBtn);
     document.body.classList.toggle("scroll-y");
     window.scrollTo(0, 0);
+    console.log("here I am");
   };
 
   useEffect(() => {
@@ -74,14 +75,6 @@ const NavBar = () => {
 
   return (
     <div className='navbar-wrapper'>
-      {/* {language[lang]?.menuHeader.map((el) => (
-          <li className="li" key={el.path}>
-            <NavLink className="navli" to={el.path}>
-              {el.name}
-            </NavLink>
-          </li>
-        ))} */}
-
       <div className='left'>
         <div className='logo'>
           <Link to='/'>
@@ -116,11 +109,20 @@ const NavBar = () => {
                       <li className='nes'>
                         <Link to="/Bathrooms">{language[lang]?.menuHeader[4].name}</Link>
                       </li>
+                      <li className='nes'>
+                        <Link to="/Bathrooms">{language[lang]?.menuHeader[5].name}</Link>
+                      </li>
+                      <li className='nes'>
+                        <Link to="/Bathrooms">{language[lang]?.menuHeader[6].name}</Link>
+                      </li>
+                      <li className='nes'>
+                        <Link to="/Bathrooms">{language[lang]?.menuHeader[7].name}</Link>
+                      </li>
                     </ul>
                   )}
                 </li>
                 <li className='nes'>
-                  <Link to='/category2'>{language[lang]?.menuHeader[5].name}</Link>
+                  <Link to='/category2'>{language[lang]?.menuHeader[8].name}</Link>
                 </li>
               </ul>
             )}
@@ -128,7 +130,7 @@ const NavBar = () => {
 
           <Link to="/Ideas">
             <li className={activeItem === '/Ideas' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[6].name}
+              {language[lang]?.menuHeader[9].name}
 
             </li>
           </Link>
@@ -140,20 +142,20 @@ const NavBar = () => {
               </svg>
               <Link to="ecatalog">
                 <li className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                  {language[lang]?.menuHeader[7].name}
+                  {language[lang]?.menuHeader[10].name}
 
                 </li></Link>
             </a>
           </div>
           <Link to="/Contact">
             <li className={activeItem === '/Contact' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[8].name}
+              {language[lang]?.menuHeader[11].name}
 
             </li></Link>
 
           <Link to="/Aboutus">
             <li className={activeItem === '/Aboutus' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[9].name}
+              {language[lang]?.menuHeader[12].name}
 
             </li></Link>
             <div className="nav"></div>
