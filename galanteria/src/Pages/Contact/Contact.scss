@@ -15,4 +15,37 @@
     p{
         padding-top: 10px;
     }
+    
+ 
+ 
+}
+
+
+.boxes-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    gap: 50px;
+}
+.box-contact-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 335px;
+    height: 234px;
+   border:3px solid #9d9d9d;
+   border-radius: 5%;
+}
+
+.location-section{
+    div{
+        margin-top: 120px;
+        margin-left: 120px;
+    }
+    p{
+        padding-top: 10px;
+    }
 }
