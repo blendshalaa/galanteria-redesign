@@ -49,3 +49,47 @@
         padding-top: 10px;
     }
 }
+
+.map-responsive{
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe{
+    left: 0;
+    top: 0;
+    border: 0;
+    height: 80%;
+    width: 80%;
+    position: absolute;
+}
+
+
+/* Existing CSS */
+/* Existing CSS */
+
+@media only screen and (max-width: 767px) {
+    .contact-header div {
+      margin-top: 50px; 
+    }
+    
+    .boxes-contact {
+      flex-direction: column; 
+      margin-top: 50px; 
+      gap: 20px; 
+    }
+    
+    .box-contact-1 {
+      width: 80%; 
+      max-width: 335px;
+      height: auto; 
+    }
+  
+    .ic {
+      width: 20px; 
+      height: 20px; 
+    }
+  }
+  
