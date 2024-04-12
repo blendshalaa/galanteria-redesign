@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.ideas-header{
+    margin-left: 120px;
+    margin-top: 100px;
+}
+.nav-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  gap: 100px;
+  margin-top: 120px;
+  text-decoration: none;
+  list-style-type: none;
+}
+.nav-link{
+    font-size: 24px;
+    text-decoration: none;
+    
+}
+.nav-link a{
+   color: black;
+    text-decoration: none;
+}
+
+.living-room{
+    margin-top: 120px;
+}
+.img-container{
+  margin-top: 30px;
+    gap: 50px;
+}
+.living-h2{
+   margin-left: 120px;
+   
+   
+ 
+   font-size: 24px;
+}
