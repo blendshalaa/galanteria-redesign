@@ -82,7 +82,9 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <ul onClick={() => toggleMenu()} className={`${toggleBtn ? "header-menu" : ""} links`}>
+        <ul  onClick={() => toggleMenu()} className={`${toggleBtn ? "header-menu" : ""} links`}><div>
+  
+</div>
           <Link to="/"><li className={activeItem === '/' ? 'active-link' : 'link'}>
             {language[lang]?.menuHeader[0].name}
 
@@ -158,15 +160,19 @@ const NavBar = () => {
               {language[lang]?.menuHeader[12].name}
 
             </li></Link>
-            <div className="nav"></div>
-    <div className="language">      
+           
+    
+      
+      
+
+    
+    <div className="navlang">
+       <div className="language">      
           <Language className="lang" />
         </div>
-        </ul>
-        
-      
-      </div>
-
+    </div>
+ </ul>
+          </div>
       <div className='right'>
         <IconButton
           onClick={toggleMenu}
