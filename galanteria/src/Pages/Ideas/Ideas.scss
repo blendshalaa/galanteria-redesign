@@ -28,14 +28,35 @@
 .living-room{
     margin-top: 120px;
 }
+
 .img-container{
   margin-top: 30px;
     gap: 50px;
 }
 .living-h2{
    margin-left: 120px;
-   
-   
- 
    font-size: 24px;
 }
+
+@media only screen and (max-width: 768px) {
+    .nav-sec {
+      flex-direction: column; /* Display items in a column */
+      align-items: center; /* Align items to the start of the column */
+      gap: 20px; /* Reduce the gap between items */
+      margin-top: 20px;
+      margin-left: 50px; /* Adjust margin for smaller screens */
+    }
+    .ideas-header{
+margin-left: 50px;
+    }
+    .img-container {
+        display: flex;
+        flex-direction: column; /* Display images in a column */
+        align-items: center; /* Center images horizontally */
+        margin-top: 20px; /* Adjust margin for smaller screens */
+        gap: 20px; /* Reduce the gap between images for smaller screens */
+      }
+      .living-room{
+        margin-left: 50px;
+      }
+  }
