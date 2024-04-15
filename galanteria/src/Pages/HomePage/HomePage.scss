@@ -15,6 +15,10 @@
         background-repeat: no-repeat;
         padding-top: 30px;
         padding-bottom: 100px;
+
+        // @media(max-width:2000px){
+        //     padding-top: 150px;
+        // }
         margin-left: 0px;
         width: 100%;
 
@@ -62,6 +66,8 @@
             border-radius: 10px;
             margin-left: 60px;
 
+          
+
         }
 
 
@@ -69,7 +75,7 @@
             display: flex;
             flex-direction: column;
             padding-right: 50px;
-            gap: 13px;
+            gap: 43px;
 
             // background-color: #D33903;
 
@@ -78,9 +84,11 @@
                 //  width: 280px;
                 color: rgb(87, 85, 85);
                 font-size: 14px;
+                width: 90%;
             }
 
             p {
+                width: 90%;
 
                 b {
                     color: #D33903;
@@ -89,7 +97,7 @@
                 margin-top: 15px;
                 color:black;
                 font-weight: bold;
-                font-size: 20px;
+                font-size: 25px;
                 font-family: system-ui,
                 -apple-system,
                 BlinkMacSystemFont,
