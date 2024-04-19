@@ -85,7 +85,7 @@ export default function HomePage() {
        
       </Swiper>
     </div>
-    <hr />
+  <hr />
   
     <div className="slider">
       <h1>{language[lang]?.categories[0].title}</h1>
@@ -108,6 +108,10 @@ export default function HomePage() {
             slidesPerView: 4,
             spaceBetween: 3,
           },
+          1524: {
+            slidesPerView: 5,
+            spaceBetween: 3,
+          },
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
@@ -123,8 +127,7 @@ export default function HomePage() {
         <SwiperSlide  className='s'><img src={s4} alt="" /><p>{language[lang]?.categories[0].product4}</p></SwiperSlide>
       </Swiper>
     </div>
-    <hr />
-
+<hr />
     <div className="ideas">
       <div>
         <h1>{language[lang]?.ideas[0].title}</h1>
@@ -141,14 +144,16 @@ export default function HomePage() {
         <img src={s3} alt="" />
 
         </div>
+        <div >
+          <img src={s1} alt="" />
+        </div>
 
       </div>
       <div className='ideas-button'>
         <button>{language[lang]?.ideas[0].button}</button>
       </div>
     </div>
-    <hr />
-
+<hr />
     <div className="choose">
       <div className='choose-up'>
         <div className='choose-box'>
@@ -189,11 +194,9 @@ export default function HomePage() {
       </div>
      
     </div>
-     <hr />
+    <hr />
     <Footer/>
   
     </div> 
   );
 }
-
-
