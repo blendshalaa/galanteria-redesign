@@ -149,11 +149,7 @@ const NavBar = () => {
                 </li>
             </a>
           </div>
-          <Link to="/Contact">
-            <li className={activeItem === '/Contact' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[11].name}
-
-            </li></Link>
+         
 
           <Link to="/Aboutus">
             <li className={activeItem === '/Aboutus' ? 'active-link' : 'link'}>
@@ -161,7 +157,11 @@ const NavBar = () => {
 
             </li></Link>
            
-    
+     <Link to="/Contact">
+            <li className={activeItem === '/Contact' ? 'active-link' : 'link'}>
+              {language[lang]?.menuHeader[11].name}
+
+            </li></Link>
       
       
 
