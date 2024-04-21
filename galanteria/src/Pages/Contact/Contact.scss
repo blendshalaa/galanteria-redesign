@@ -3,13 +3,21 @@
     padding: 0;
 
 }
+
+.contact-wrapper{
+    width: 100%;
+    
+
+}
 .contact-header{
+
+    padding-top: 120px;
     div{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 120px;
+        //margin-top: 120px;
         color: white;
        
     }

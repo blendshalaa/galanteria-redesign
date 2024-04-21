@@ -34,9 +34,9 @@ body{
         .left {
             display: flex;
             gap: 90px;
-            // @media(max-width:768px){
-            //     display: block;
-            // }
+            @media(max-width:400px){
+                display: block;
+            }
 
             img {
                 width: 150px;

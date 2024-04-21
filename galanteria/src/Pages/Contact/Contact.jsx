@@ -11,7 +11,7 @@ import Footer from '../../Pages/Footer/Footer'
 
 const Contact = () => {
   return (
-    <div>
+    <div className="contact-wrapper">
       <NavBar/>
       <div className='contact-header'>
         <div>

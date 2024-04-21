@@ -24,7 +24,8 @@ import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 import Language from '../../Components/NavBar/Language';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
+import p1 from '../../assets/images/p1.avif'
+import p2 from '../../assets/images/p2.png'
 export default function HomePage() {
 
   const [{ lang }] = useContext(Context);
@@ -200,6 +201,32 @@ export default function HomePage() {
 
 
     </div>
+    <div className="mid">
+    <div class="overlay"></div>
+
+      <div className="mid-text">
+            <h1 >{language[lang]?.partners[0].title}</h1> 
+<p>{language[lang]?.partners[0].subtitle}</p>
+      </div>
+
+    </div>
+    <div className="partners">
+      <h1>{language[lang]?.partners[0].partnertitle}</h1>
+      <div className='sec'>
+         <div className='p-text'>
+        <h1>{language[lang]?.partners[0].up}</h1> 
+        <p>{language[lang]?.partners[0].down}</p>
+
+
+      </div>
+      <div className='p-img'>
+
+        <img src={p1} alt="" />
+        <img src={p2} alt="" />
+      </div>
+      </div>
+     
+    </div>
     
     <div className="choose">
       <div className='choose-up'>
@@ -241,6 +268,8 @@ export default function HomePage() {
       </div>
      
     </div>
+
+   
     
     <Footer/>
   

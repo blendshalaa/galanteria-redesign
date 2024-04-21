@@ -31,8 +31,10 @@ const Bathrooms = () => {
   }
 
   return (
+    <> 
+     <NavBar/>
     <div className='bathrooms-wrapper'>
-      <NavBar/>
+    
 
       <div className='bathrooms-text'>
         <h1> {language[lang]?.bathroom[0].title}</h1>
@@ -66,6 +68,8 @@ const Bathrooms = () => {
 
       <Footer/>
       </div>
+    </>
+    
   )
 }
 

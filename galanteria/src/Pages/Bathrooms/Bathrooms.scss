@@ -4,7 +4,7 @@
     //align-items: center;
     flex-direction: column;
     width: 100%;
-    //padding-top: 120px;
+    padding-top: 120px;
 
 
 
@@ -20,7 +20,7 @@
         margin-bottom: 80px;
         color: white;
 
-        @media(max-width:1000px) {
+        @media(max-width:2000px) {
             padding: 0;
             text-align: center;
            }
@@ -31,8 +31,9 @@
         padding-left: 150px;
         display: flex;
         gap: 63px;
+    //    width: 100%;
 
-        @media(max-width:1000px) {
+        @media(max-width:2000px) {
           // flex-direction: column;
           flex-wrap: wrap;
            align-items: center;

@@ -10,11 +10,11 @@ const language = {
                 path: "/Aboutus"
             },
             {
-                name: "Mobilje shtëpie",
+                name: "Mobilje Zyreje",
                 path: "/ok"
             },
             {
-                name: "Banjo",
+                name: "Karrige",
                 path: "/Bathrooms"
             },
             {
@@ -34,13 +34,13 @@ const language = {
                 path: "/Bathrooms"
             },
             {
-                name: "Mobilje Zyre",
+                name: "Mobilje Shkollash",
                 path: "/Aboutus"
             },
 
             {
                 name: "Projektet",
-                path: "/Ideas"
+                path: "/Projects"
             },
             {
                 name: "E-Katalogjet",
@@ -95,6 +95,13 @@ const language = {
         }], 
         bathroom:[{
             title:"Divane"
+        }],
+        partners:[{
+            title:"Ne punojmë me partnerët më të mirë!",
+            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ushtrimi i duhur për qëllime të ofrimit të dignissimos ex quidem odio consequatur magnam?",
+            partnertitle: "Partnerët tanë",
+            up: "Ne punojmë me partnerët më të mirë!",
+            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
         }]
     },
     en:{
@@ -138,7 +145,7 @@ const language = {
 
             {
                 name: "Projects",
-                path: "/Ideas"
+                path: "/Projects"
             },
             {
                 name: "E-Catalog",
@@ -194,6 +201,13 @@ const language = {
             text1:"We are so happy that they make our house so beautiful!!! We are totally relaxed and have confidence in them!!!",
             name2:"Mr Robin",
             text2:"Excellent! You are simply great!! It's a joy to see how beautifully they do it! We're excited to see how things continue! Kind regards to your team and thank you very much in advance!"
+        }],
+        partners:[{
+            title:"We work with the best partners!",
+            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rem ametsunt provident molestias dignissimos ex quidem odio consequatur magnam?",
+            partnertitle:"Our Partners",
+            up:"We work with the best partners!",
+            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit.  Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
         }]
     },
     de:{
@@ -237,7 +251,7 @@ const language = {
 
             {
                 name: "Projekte",
-                path: "/Ideas"
+                path: "/Projects"
             },
             {
                 name: "E-Kataloge",
@@ -293,6 +307,13 @@ const language = {
         }],
         bathroom:[{
             title:"Direkte Sofas"
+        }],
+        partners:[{
+            title:"Wir arbeiten mit den besten Partnern zusammen!",
+            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rem ametsunt provident molestias dignissimos ex quidem odio consequatur magnam?",
+            partnertitle:"Unsere Partner",
+            up:"Wir arbeiten mit den besten Partnern zusammen!",
+            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
         }]
     }
 }
