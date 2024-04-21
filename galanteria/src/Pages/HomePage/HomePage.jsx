@@ -33,7 +33,28 @@ export default function HomePage() {
       
     <NavBar/>
 
-    <div className="slider1">
+<div className="hero">
+  <div className='h1'>
+    <img src={sl1} alt="" />
+  </div>
+  <div className='h2'>
+    <img src={sl2} alt="" />
+    <p> {language[lang]?.hero[0].title}
+ <br /><b>{language[lang]?.hero[0].redtitle}</b> </p>
+ <h6>{language[lang]?.hero[0].subtitle}</h6>
+
+  </div>
+  <div className='h3'>
+    <img src={sl3} alt="" />
+  </div>
+  <div className='h4'>
+    <img src={sl4} alt="" />
+  </div>
+  <div className='h5'>
+    <img src={sl5} alt="" />
+  </div>
+</div>
+    {/* <div className="slider1">
         <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -84,8 +105,7 @@ export default function HomePage() {
         </div>
        
       </Swiper>
-    </div>
-    <hr />
+    </div> */}
   
     <div className="slider">
       <h1>{language[lang]?.categories[0].title}</h1>
@@ -108,6 +128,10 @@ export default function HomePage() {
             slidesPerView: 4,
             spaceBetween: 3,
           },
+          1524: {
+            slidesPerView: 5,
+            spaceBetween: 3,
+          },
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
@@ -123,8 +147,6 @@ export default function HomePage() {
         <SwiperSlide  className='s'><img src={s4} alt="" /><p>{language[lang]?.categories[0].product4}</p></SwiperSlide>
       </Swiper>
     </div>
-    <hr />
-
     <div className="ideas">
       <div>
         <h1>{language[lang]?.ideas[0].title}</h1>
@@ -141,14 +163,15 @@ export default function HomePage() {
         <img src={s3} alt="" />
 
         </div>
+        <div >
+          <img src={s1} alt="" />
+        </div>
 
       </div>
       <div className='ideas-button'>
         <button>{language[lang]?.ideas[0].button}</button>
       </div>
     </div>
-    <hr />
-
     <div className="choose">
       <div className='choose-up'>
         <div className='choose-box'>
@@ -189,11 +212,8 @@ export default function HomePage() {
       </div>
      
     </div>
-     <hr />
     <Footer/>
   
     </div> 
   );
 }
-
-
