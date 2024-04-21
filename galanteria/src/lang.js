@@ -39,7 +39,7 @@ const language = {
             },
 
             {
-                name: "Idetë",
+                name: "Projektet",
                 path: "/Ideas"
             },
             {
@@ -137,7 +137,7 @@ const language = {
             },
 
             {
-                name: "Ideas",
+                name: "Projects",
                 path: "/Ideas"
             },
             {
@@ -236,7 +236,7 @@ const language = {
             },
 
             {
-                name: "Ideen",
+                name: "Projekte",
                 path: "/Ideas"
             },
             {

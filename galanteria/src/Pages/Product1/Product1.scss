@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 120px;
     padding-bottom: 80px;
     gap: 70px;
 
@@ -23,8 +23,19 @@
         flex-direction: column;
         gap: 20px;
 color: white;
+
+h4{
+    color:#A7541E;
+    font-size: 22px;
+}
+
+h5{
+    color: lightgrey;
+    font-size: 15px;
+}
         p{
             width: 300px;
+            font-size: 12px;
         }
     }
 }
