@@ -13,7 +13,7 @@ body {
 
 
     .hero {
-        padding-top: 60px;
+        padding-top: 120px;
         padding-bottom: 120px;
         width: 100%;
         display: flex;
@@ -74,6 +74,11 @@ body {
 
             }
 
+            @media(max-width:1500px) {
+                margin-top: 40px;
+            }
+
+
             // border: 1px solid black;
 
             h6 {
@@ -82,10 +87,18 @@ body {
                 font-size: 14px;
                 width: 100%;
                 margin-top: 20px;
+
+                @media(max-width:1500px) {
+                    font-size: 10px;
+                }
             }
 
             p {
                 width: 100%;
+
+                @media(max-width:1500px) {
+                    font-size: 22px;
+                }
 
                 b {
                     color: #A7541E;
@@ -304,12 +317,13 @@ body {
         background-color: #A7541E;
 
         @media(max-width:1000px) {
-            padding: 0;
+           // padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
             align-items: center;
+            gap: 10px;
         }
 
 
@@ -320,19 +334,24 @@ body {
 
 
             @media(max-width:1000px) {
-                padding: 0;
+               // padding: 0;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-
             }
 
             p {
                 margin-top: 15px;
                 color: white;
                 font-size: 20px;
+
+
+                @media(max-width:1500px) {
+                    font-size: 15px;
+                }
+
 
             }
         }
@@ -349,6 +368,11 @@ body {
             letter-spacing: 2.5px;
             font-weight: bold;
             color: white;
+
+            @media(max-width:1500px) {
+                font-size: 15px;
+            }
+
 
         }
 
@@ -447,6 +471,12 @@ body {
             text-align: center;
             color: white;
             margin-bottom: -50px;
+
+            
+            @media(max-width:1500px) {
+font-size: 22px;
+            }
+
         }
 
         h1 {
@@ -454,6 +484,10 @@ body {
             @media(max-width:850px) {
                 text-align: center;
             }
+            // @media(max-width:1500px) {
+            //     font-size: 2px;
+            //                 }
+                
 
             b {
                 color: #A7541E;
@@ -502,6 +536,10 @@ body {
 
                 margin-top: -5px;
 
+                @media(max-width:1500px) {
+font-size: 18px;                                }
+                    
+
             }
         }
 
@@ -523,12 +561,28 @@ body {
                 font-size: 35px;
                 font-weight: 400;
                 margin-top: -5px;
+
+                @media(max-width:1500px) {
+                    font-size: 25px;
+                                }
+                    
+            }
+
+            p {
+                @media(max-width:1100px) {
+                    margin-left: 10%;
+                    margin-right: 10%;
+                    //gap: 0px;
+
+                    
+                        
+                }
             }
 
             @media(max-width:1100px) {
                 margin-left: 10%;
                 margin-right: 10%;
-                gap: 0px;
+                //gap: 0px;
             }
         }
 
@@ -668,6 +722,11 @@ body {
                     font-weight: bold;
                     color: white;
 
+                    @media(max-width:1500px) {
+                        font-size: 22px;
+                                    }
+                        
+
 
                 }
             }
@@ -680,6 +739,11 @@ body {
                     width: 350px;
                     font-size: 14px;
                     color: white;
+
+                    @media(max-width:1500px) {
+                        font-size: 12px;
+                                    }
+                        
 
                     @media(max-width: 300px) {
                         width: 80%;
@@ -702,6 +766,10 @@ body {
                     width: 100%;
                     font-size: 12px;
                     color: white;
+
+                    @media(max-width:1500px) {
+                        font-size: 12px;
+                                    }
 
                 }
 
@@ -734,6 +802,10 @@ body {
             justify-content: center;
             align-items: center;
 
+            @media(max-width:1500px) {
+                gap: 95px;
+                            }
+
             .down-box {
                 display: flex;
                 gap: 20px;
@@ -749,6 +821,10 @@ body {
                     margin-bottom: 10px;
                     color: white;
 
+                    @media(max-width:1500px) {
+                        font-size: 20px;
+                                    }
+
                 }
 
                 p {
@@ -757,8 +833,12 @@ body {
                     color: white;
 
                     @media(max-width:300px) {
-                        width: 70%;
+                        width: 70%
+                        ;
                     }
+                    @media(max-width:1500px) {
+                        font-size: 12px;
+                                    }
 
                 }
             }
