@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -240,6 +241,7 @@ export default function HomePage() {
       </div>
      
     </div>
+    
     <Footer/>
   
     </div> 

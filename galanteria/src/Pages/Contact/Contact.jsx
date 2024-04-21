@@ -16,7 +16,7 @@ const Contact = () => {
       <div className='contact-header'>
         <div>
           <h1>Contact Us</h1>
-          <p>Get in touch and let us know how we can help</p>
+          <p className='contact-h-p'>Get in touch and let us know how we can help</p>
         </div>
         </div>
         <div className='boxes-contact'>
@@ -25,7 +25,7 @@ const Contact = () => {
               <img className='ic' src={icon1} alt='icon'></img>
             </div>
            <h3>Adress</h3>
-           <p>#1 Junaid Plza,Mumbra-400612</p>
+           <p className='contact-h-p'>#1 Junaid Plza,Mumbra-400612</p>
           </div>
           
           <div className='box-contact-1'>
@@ -33,8 +33,8 @@ const Contact = () => {
               <img className='ic' src={icon2} alt='icon'></img>
             </div>
            <h3>Contact</h3>
-           <p>+38344841272</p>
-           <p>+38344841272</p>
+           <p className='contact-h-p'>+38344841272</p>
+           <p className='contact-h-p'>+38344841272</p>
           </div>
 
 
@@ -43,8 +43,8 @@ const Contact = () => {
               <img className='ic' src={icon3} alt='icon'></img>
             </div>
            <h3>Email</h3>
-           <p>galanteria@gmail.com</p>
-           <p>galanteria@gmail.com</p>
+           <p className='contact-h-p'>galanteria@gmail.com</p>
+           <p className='contact-h-p'>galanteria@gmail.com</p>
           </div>
 
         </div>
@@ -55,7 +55,7 @@ const Contact = () => {
         <div className='location-section'>
           <div className='location-text'>
           <h1>Find our Store in Prishtina</h1>
-          <p>Visit our store in the city</p>
+          <p className='contact-h-p'>Visit our store in the city</p>
           </div>
 
           <div className='map-responsive'>
