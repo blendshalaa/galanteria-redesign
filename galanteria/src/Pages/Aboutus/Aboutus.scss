@@ -19,6 +19,7 @@
 }
 .aboutus-p{
     font-size: 24px;
+    color: white;
 }
 
 .aboutimg{
@@ -39,6 +40,7 @@
     gap: 30px;
     margin-left: 120px;
     margin-bottom: 50px;
+    color: white;
 }
 .statsTable {
   position: absolute; /* Position absolutely within the container */
@@ -47,7 +49,7 @@
   transform: translate(-50%, -50%); /* Center the element */
   width: 351px; /* Example width */
   height: 477px; /* Example height */
-  background-color: #D33903;
+  background-color: #A7541E;
   color: white;
   border-radius: 5%;
   text-align: center; /* Center text horizontally */
@@ -58,6 +60,7 @@
     justify-content: center;
     gap: 50px;
     margin-top: 40px;
+
   }
   
   .stats-text > div {
@@ -77,6 +80,7 @@ font-size: 24px;
   .solutions{
     margin-top: 200px;
     margin-left: 120px;
+    color: white;
    
   }
 .line{
@@ -91,6 +95,7 @@ font-size: 24px;
     justify-content: start;
     align-items: center;
    gap: 120px;
+   color: white;
   }
 
   
@@ -108,7 +113,7 @@ font-size: 24px;
   right: -5px; 
   width: 3px;
   height: 100%;
-  background-color: #D33903; /* Color of the vertical line */
+  background-color: #A7541E; /* Color of the vertical line */
 }
 
 .mainAbout{
@@ -125,6 +130,7 @@ font-size: 24px;
  {
   display: flex;
   align-items: start; /* Vertically center items */
+ 
 }
 .periudha-1{
   margin-left: 120px;
@@ -134,15 +140,17 @@ font-size: 24px;
   margin-right: 20px; /* Adjust spacing between image and text */
 }
 .periudha-span{
-  color: #D33903;
+  color: #A7541E;
 }
 
 .periudha-p{
   padding-top: 30px;
   font-size: 20px;
+  color: #D9D9D9
 }
 .h3-periudha{
   font-size: 32px;
+  color: white;
 }
 .text-periudha {
   flex: 1; /* Take remaining space */
@@ -152,12 +160,15 @@ font-size: 24px;
   display: flex;
   align-items: start;
 
+
+
 }
 
 .periudhat-2{
   display: flex;
   justify-content: space-between;
   margin-top: 120px; 
+  background-color:#A7541E
 }
 
 /* Add media query for screens smaller than 768px (e.g., smartphones) */

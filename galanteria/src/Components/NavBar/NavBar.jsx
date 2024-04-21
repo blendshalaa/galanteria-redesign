@@ -130,8 +130,8 @@ const NavBar = () => {
             )}
           </div>
 
-          <Link to="/Ideas">
-            <li className={activeItem === '/Ideas' ? 'active-link' : 'link'}>
+          <Link to="/Projects">
+            <li className={activeItem === '/Projects' ? 'active-link' : 'link'}>
               {language[lang]?.menuHeader[9].name}
 
             </li>
