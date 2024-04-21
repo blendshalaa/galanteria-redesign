@@ -63,6 +63,13 @@ const language = {
 
             },
         ],
+        clients:[{
+            title:"Çfarë thonë klientët tanë",
+            name1:"Zonja Jockle",
+            text1:"Jemi shumë të lumtur që na e bëjnë shtëpinë kaq të bukur!!! Jemi plotësisht të relaksuar dhe kemi besim tek ata!!!",
+            name2:"Zotëri Robin",
+            text2:"Shkëlqyeshëm! Ju jeni thjesht të mrekullueshëm!! Është kënaqësi të shohësh sa bukur e bëjnë këtë! Jemi të emocionuar të shohim se si vazhdojnë gjërat! Përshëndetje për ekipin tuaj dhe faleminderit shumë paraprakisht!"
+        }],
         categories:[
             {
             title:"Kategoritë e njohura",
@@ -180,6 +187,13 @@ const language = {
         }],
         bathroom:[{
             title:"Direct Sofas"
+        }],
+        clients:[{
+            title:"What Our Clients Say",
+            name1:"Ms Jockle",
+            text1:"We are so happy that they make our house so beautiful!!! We are totally relaxed and have confidence in them!!!",
+            name2:"Mr Robin",
+            text2:"Excellent! You are simply great!! It's a joy to see how beautifully they do it! We're excited to see how things continue! Kind regards to your team and thank you very much in advance!"
         }]
     },
     de:{
@@ -247,6 +261,13 @@ const language = {
             },
         ]
         ,
+        clients:[{
+            title:"Was unsere Kunden sagen",
+            name1:"Frau Jockle",
+            text1:"Wir freuen uns riesig, dass sie unser Haus so schön machen!!! Wir sind total entspannt und haben Vertrauen in sie!!!",
+            name2:"Herr Robin!",
+            text2:"Hervorragend! Ihr seid einfach großartig!! Es ist eine Freude zu sehen, wie schön sie das machen! Wir sind gespannt, wie es weitergeht! Herzliche Grüße Euer Team und vielen Dank im Voraus!"
+        }],
         categories:[
             {
             title:"Beliebte Kategorien",

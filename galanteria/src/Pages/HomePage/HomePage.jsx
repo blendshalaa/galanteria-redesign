@@ -5,7 +5,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomePage.scss';
 import NavBar from '../../Components/NavBar/NavBar'
-import { Pagination, Navigation } from 'swiper/modules';
 import sl1 from '../../assets/images/Frame 16.png'
 import sl2 from '../../assets/images/Frame 15.png'
 import sl3 from '../../assets/images/Frame 12.png'
@@ -23,6 +22,7 @@ import Footer from '../Footer/Footer';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 import Language from '../../Components/NavBar/Language';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 
 export default function HomePage() {
 
@@ -147,31 +147,59 @@ export default function HomePage() {
         <SwiperSlide  className='s'><img src={s4} alt="" /><p>{language[lang]?.categories[0].product4}</p></SwiperSlide>
       </Swiper>
     </div>
-    <div className="ideas">
-      <div>
-        <h1>{language[lang]?.ideas[0].title}</h1>
-      </div>
-      <div className='ideas-boxes'>
-        <div >
-          <img src={s1} alt="" />
-        </div>
-        <div>
-        <img src={s2} alt="" />
 
-        </div>
-        <div>
-        <img src={s3} alt="" />
+    <div className='last-wrapper'>
+         <h1>{language[lang]?.clients[0].title} </h1>
 
-        </div>
-        <div >
-          <img src={s1} alt="" />
-        </div>
+<Swiper
+        cssMode={true}
+        navigation={true}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+            <div className="text">
+                <h1>{language[lang]?.clients[0].name1} </h1>
+            <p>{language[lang]?.clients[0].text1} </p>
+            </div>
+          
+          
 
-      </div>
-      <div className='ideas-button'>
-        <button>{language[lang]?.ideas[0].button}</button>
-      </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="text">
+        <h1>{language[lang]?.clients[0].name2} </h1>
+            <p>{language[lang]?.clients[0].text2} </p>
+            </div>
+           
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="text">
+        <h1>{language[lang]?.clients[0].name1} </h1>
+            <p>{language[lang]?.clients[0].text1} </p>
+            </div>
+            
+           
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="text">
+        <h1>{language[lang]?.clients[0].name2} </h1>
+            <p>{language[lang]?.clients[0].text2} </p>
+            </div>
+            
+
+         
+        </SwiperSlide>
+
+      </Swiper>
+
+
+
     </div>
+    
     <div className="choose">
       <div className='choose-up'>
         <div className='choose-box'>
