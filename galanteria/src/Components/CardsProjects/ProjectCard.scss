@@ -1,0 +1,30 @@
+
+
+.img-project-container{
+
+  
+    
+}
+
+.cards{
+    display: flex;
+   padding-left: 120px;
+   gap: 100px;
+   padding-top: 120px;
+}
+.cards-2{
+    display: flex;
+    padding-left: 120px;
+    gap: 100px;
+    padding-top: 120px;
+}
+.pimg{
+    width: 350px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.project-title{
+    font-size: 24px;
+    padding-top: 10px;
+}
