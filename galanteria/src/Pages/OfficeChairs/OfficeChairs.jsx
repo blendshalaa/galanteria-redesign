@@ -50,10 +50,9 @@ const OfficeChairs = () => {
             <div>
               <img onClick={() => goToProduct('light')} src={oc1} alt="" />
               <h4>Light</h4>
-
             </div>
             <div>
-              <img onClick={() => goToProduct('guilia')} src={oc2} alt="" />
+              <img onClick={() => goToProduct('giulia')} src={oc2} alt="" />
               <h4>Giulia</h4>
 
             </div>

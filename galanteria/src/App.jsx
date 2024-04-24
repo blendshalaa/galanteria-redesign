@@ -7,6 +7,8 @@ import Projects from "./Pages/Projects/Projects";
 import HomeFurnitures from './Pages/Bathrooms/Bathrooms'
 import Product1Page from "./Pages/Product1Page/Product1Page";
 import OfficeChairs from "./Pages/OfficeChairs/OfficeChairs";
+import MeetingChairs from "./Pages/MeetingChairs/MeetingChairs";
+import WaitingChairs from "./Pages/WaitingChairs/WaitingChairs";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
           <Route path="/Projects" element={<Projects/>} />
           <Route path="/Bathrooms" element={<HomeFurnitures/>} />
           <Route path="/OfficeChairs" element={<OfficeChairs/>} />
+          <Route path="/MeetingChairs" element={<MeetingChairs/>} />
+          <Route path="/WaitingChairs" element={<WaitingChairs/>} />
           <Route path="/product/:slug" element={<Product1Page/>}/>
 
 

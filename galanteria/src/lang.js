@@ -69,6 +69,15 @@ const language = {
             title:"Karrige zyreje"
            
         }],
+        meetingChairs:[{
+            title:"Karrige të takimeve"
+           
+        }],
+        waitingChairs:[{
+            title:"Divane/ Karrige Konferencash/ Pritjeje"
+           
+        }],
+       
         hero:[
             {title:"MOBILJE  DHE AKSESORË",
             redtitle:"PËR  INTERIER MODERN",
@@ -186,6 +195,14 @@ const language = {
             title:"Office Chairs"
            
         }],
+        meetingChairs:[{
+            title:"Meeting Chairs"
+           
+        }],
+        waitingChairs:[{
+            title:"Sofa/ Conference/ Waiting Chairs"
+           
+        }],
         hero:[
             {title:"FURNITURE AND \n ACCESSORIES",
             redtitle:"FOR MODERN \n INTERIER",
@@ -300,6 +317,14 @@ const language = {
         }],
         officeChairs:[{
             title:"Büro stühle"
+           
+        }],
+        meetingChairs:[{
+            title:"Besprechungs stühle"
+           
+        }],
+        waitingChairs:[{
+            title:"Sofa/ Konferenz/ Warte stühle"
            
         }],
         hero:[
