@@ -95,8 +95,8 @@ const firstphotos = [
 
 const lightphoto = l1;
 const lightphotos = [ l2, l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14]
-const guiliaphoto = g1;
-const guiliaphotos=[g2,g3,g4,g5]
+const giuliaphoto = g1;
+const giuliaphotos=[g2,g3,g4,g5]
 const jetphoto = j1;
 const jetphotos = [ j2, j3, j4, j5, j6]
 const kingphoto = k1;
@@ -135,13 +135,13 @@ const dataProducts = {
             photos: lightphotos,
             firstphoto:lightphoto,
         },
-        "guilia":{
+        "giulia":{
 
             category: "Karrige Zyreje",
-            name: "Guilia",
+            name: "Giulia",
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
-            photos: guiliaphotos,
-            firstphoto:guiliaphoto,
+            photos: giuliaphotos,
+            firstphoto:giuliaphoto,
         },
         "jet":{
 
@@ -240,19 +240,229 @@ const dataProducts = {
         },
     },
     "en": {
-        "first": {
-            category: "Beds",
-            name: "Grenen Light-beige velor Tori \n 200x140",
-            description: "Formed by centuries-old Danish traditions, the \n modern Scandinavian style is reflected in the \n Grenen bed, named after the cape at the \n northernmost point of the country. As the \n Baltic Sea meets the North here, so comfort \n and convenience are found with the quality \n and reliability of the Grenen bed.",
-            photos: firstphotos
+        "light":{
+
+            category: "Karrige Zyreje",
+            name: "Light",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: lightphotos,
+            firstphoto:lightphoto,
+        },
+        "giulia":{
+
+            category: "Karrige Zyreje",
+            name: "Giulia",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: giuliaphotos,
+            firstphoto:giuliaphoto,
+        },
+        "jet":{
+
+            category: "Karrige Zyreje",
+            name: "Jet",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: jetphotos,
+            firstphoto:jetphoto,
+        },
+        "king":{
+
+            category: "Karrige Zyreje",
+            name: "King",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: kingphotos,
+            firstphoto:kingphoto,
+        },
+        "maliqe":{
+
+            category: "Karrige Zyreje",
+            name: "Malice",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: maliqephotos,
+            firstphoto:maliqephoto,
+        },
+        "queen":{
+
+            category: "Karrige Zyreje",
+            name: "Queen",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: queenphotos,
+            firstphoto:queenphoto,
+        },
+        "klaas":{
+
+            category: "Karrige Zyreje",
+            name: "Klaas",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: klaasphotos,
+            firstphoto:klaasphoto,
+        },
+        "kona":{
+
+            category: "Karrige Zyreje",
+            name: "Kona",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: konaphotos,
+            firstphoto:konaphoto,
+        },
+        "remix":{
+
+            category: "Karrige Zyreje",
+            name: "Remix",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: remixphotos,
+            firstphoto:remixphoto,
+        },
+        "diva":{
+
+            category: "Karrige Zyreje",
+            name: "Diva",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: divaphotos,
+            firstphoto:divaphoto,
+        },
+        "viola":{
+
+            category: "Karrige Zyreje",
+            name: "Viola",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: violaphotos,
+            firstphoto:violaphoto,
+        },
+        "ancona":{
+
+            category: "Karrige Zyreje",
+            name: "Ancona",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: anconaphotos,
+            firstphoto:anconaphoto,
+        },
+        "electra":{
+
+            category: "Karrige Zyreje",
+            name: "Electra",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: electraphotos,
+            firstphoto:electraphoto,
+        },
+        "moet": {
+            category: "Karrige Zyreje",
+            name: "Moet",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: moetphotos,
+            firstphoto:moetphoto
         },
     },
     "de": {
-        "first": {
-            category: "Betten",
-            name: "Grenen Light-beige velor Tori \n 200x140",
-            description: "Geprägt durch jahrhundertealte dänische Traditionen spiegelt sich der moderne skandinavische Stil im Grenen-Bett wider, benannt nach dem Kap am nördlichsten Punkt des Landes. Da hier die Ostsee auf den Norden trifft, vereinen sich Komfort und Bequemlichkeit mit der Qualität und Zuverlässigkeit des Grenen-Bettes.",
-            photos: firstphotos
+        "light":{
+
+            category: "Karrige Zyreje",
+            name: "Light",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: lightphotos,
+            firstphoto:lightphoto,
+        },
+        "giulia":{
+
+            category: "Karrige Zyreje",
+            name: "Giulia",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: giuliaphotos,
+            firstphoto:giuliaphoto,
+        },
+        "jet":{
+
+            category: "Karrige Zyreje",
+            name: "Jet",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: jetphotos,
+            firstphoto:jetphoto,
+        },
+        "king":{
+
+            category: "Karrige Zyreje",
+            name: "King",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: kingphotos,
+            firstphoto:kingphoto,
+        },
+        "maliqe":{
+
+            category: "Karrige Zyreje",
+            name: "Malice",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: maliqephotos,
+            firstphoto:maliqephoto,
+        },
+        "queen":{
+
+            category: "Karrige Zyreje",
+            name: "Queen",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: queenphotos,
+            firstphoto:queenphoto,
+        },
+        "klaas":{
+
+            category: "Karrige Zyreje",
+            name: "Klaas",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: klaasphotos,
+            firstphoto:klaasphoto,
+        },
+        "kona":{
+
+            category: "Karrige Zyreje",
+            name: "Kona",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: konaphotos,
+            firstphoto:konaphoto,
+        },
+        "remix":{
+
+            category: "Karrige Zyreje",
+            name: "Remix",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: remixphotos,
+            firstphoto:remixphoto,
+        },
+        "diva":{
+
+            category: "Karrige Zyreje",
+            name: "Diva",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: divaphotos,
+            firstphoto:divaphoto,
+        },
+        "viola":{
+
+            category: "Karrige Zyreje",
+            name: "Viola",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: violaphotos,
+            firstphoto:violaphoto,
+        },
+        "ancona":{
+
+            category: "Karrige Zyreje",
+            name: "Ancona",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: anconaphotos,
+            firstphoto:anconaphoto,
+        },
+        "electra":{
+
+            category: "Karrige Zyreje",
+            name: "Electra",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: electraphotos,
+            firstphoto:electraphoto,
+        },
+        "moet": {
+            category: "Karrige Zyreje",
+            name: "Moet",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: moetphotos,
+            firstphoto:moetphoto
         },
     }
 }
