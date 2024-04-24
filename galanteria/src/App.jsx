@@ -6,6 +6,7 @@ import Contact from './Pages/Contact/Contact'
 import Projects from "./Pages/Projects/Projects";
 import HomeFurnitures from './Pages/Bathrooms/Bathrooms'
 import Product1Page from "./Pages/Product1Page/Product1Page";
+import OfficeChairs from "./Pages/OfficeChairs/OfficeChairs";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/Contact" element={<Contact/>} />
           <Route path="/Projects" element={<Projects/>} />
           <Route path="/Bathrooms" element={<HomeFurnitures/>} />
+          <Route path="/OfficeChairs" element={<OfficeChairs/>} />
           <Route path="/product/:slug" element={<Product1Page/>}/>
 
 

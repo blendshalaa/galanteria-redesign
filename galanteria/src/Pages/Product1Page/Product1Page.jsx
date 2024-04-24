@@ -23,7 +23,6 @@ const Product1Page = () => {
         <Product1 data={data} />
       )
     }
-    return <ErrorPage />
 }
 
 export default Product1Page

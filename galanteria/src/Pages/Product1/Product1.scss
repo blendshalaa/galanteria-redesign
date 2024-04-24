@@ -1,5 +1,19 @@
+.product1-wrapper{
+    width: 100%;
+    ;
 
-
+ .product-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 120px;
+        img{
+            width: 200px;
+            height: 250px;
+        }
+    }
 .product{
     display: flex;
     justify-content: center;
@@ -11,10 +25,14 @@
     @media(max-width:1000px){
         flex-wrap: wrap;;
     }
-    .product-images{
+    .product-image{
         img{
-            width: 350px;
-            height: 300px;
+            max-width: 700px;
+            max-height: 400px;
+
+            @media(max-width:1000px){
+               max-width: 300px;
+            }
         }
     }
 
@@ -31,11 +49,13 @@ h4{
 
 h5{
     color: lightgrey;
-    font-size: 15px;
+    font-size: 18px;
 }
         p{
-            width: 300px;
-            font-size: 12px;
+            max-width: 300px;
+            font-size: 16px;
         }
     }
+}
+
 }

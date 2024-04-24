@@ -54,8 +54,21 @@ const language = {
                 name: "Rreth Nesh",
                 path: "/Aboutus"
             },
+
+
            
         ],
+        chairs:[{
+
+            one:"Karrige zyreje",
+            onepath:"/OfficeChairs",
+            two:"Karrige të takimeve",
+            three:"Divane/ Karrige Konferencash/ Pritjeje"
+        }],
+        officeChairs:[{
+            title:"Karrige zyreje"
+           
+        }],
         hero:[
             {title:"MOBILJE  DHE AKSESORË",
             redtitle:"PËR  INTERIER MODERN",
@@ -115,11 +128,11 @@ const language = {
                 path: "/Aboutus"
             },
             {
-                name: "Home Furnitures",
+                name: "Office Furnitures",
                 path: "/HomeFurnitures"
             },
             {
-                name: "Bathrooms",
+                name:"Chairs",
                 path: "/Bathrooms"
             },
             {
@@ -139,7 +152,7 @@ const language = {
                 path: "/Bathrooms"
             },
             {
-                name: "Office Furnitures",
+                name: "Home Furnitures",
                 path: "/Aboutus"
             },
 
@@ -161,6 +174,18 @@ const language = {
             },
            
         ],
+        chairs:[{
+
+            one:"Office Chairs",
+            onepath:"/OfficeChairs",
+            two:"Meeting Chairs",
+            three:"Sofa/ Conference/ Waiting Chairs"
+        }],
+        
+        officeChairs:[{
+            title:"Office Chairs"
+           
+        }],
         hero:[
             {title:"FURNITURE AND \n ACCESSORIES",
             redtitle:"FOR MODERN \n INTERIER",
@@ -221,13 +246,12 @@ const language = {
                 path: "/Aboutus"
             },
             {
-                name: "Haus möbel",
+                name: "Büro möbel",
                 path: "/HomeFurnitures"
             },
             {
-                name: "Badezimmer",
-                path: "/Bathrooms"
-            },
+                name: "Stuhl",
+                path: "/Bathrooms"            },
             {
                 name: "Küchen",
                 path: "/Bathrooms"
@@ -245,7 +269,7 @@ const language = {
                 path: "/Bathrooms"
             },
             {
-                name: "Büromöbel",
+                name: "Haus möbel",
                 path: "/Aboutus"
             },
 
@@ -267,6 +291,17 @@ const language = {
             },
            
         ],
+        chairs:[{
+
+            one:"Büro stühle",
+            onepath:"/OfficeChairs",
+            two:"Besprechungs stühle",
+            three:"Sofa/ Konferenz/ Warte stühle"
+        }],
+        officeChairs:[{
+            title:"Büro stühle"
+           
+        }],
         hero:[
             {title:"MÖBEL UND ZUBEHÖR",
             redtitle:"FÜR MODERNE \n EINRICHTUNG",
