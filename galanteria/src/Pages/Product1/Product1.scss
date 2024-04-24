@@ -12,6 +12,14 @@
         img{
             width: 200px;
             height: 250px;
+
+            
+            @media(max-width:1500px){
+                width: 150px;
+                height: 230px;
+             }
+           
+
         }
     }
 .product{
@@ -27,7 +35,7 @@
     }
     .product-image{
         img{
-            max-width: 700px;
+            max-width: 600px;
             max-height: 400px;
 
             @media(max-width:1000px){
