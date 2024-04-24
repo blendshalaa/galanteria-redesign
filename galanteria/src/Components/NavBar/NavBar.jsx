@@ -119,10 +119,10 @@ const NavBar = () => {
                             <Link to="/OfficeChairs">{language[lang]?.chairs[0].one}</Link>
                           </li>
                           <li className="nes">
-                            <Link to="/Bathrooms">{language[lang]?.chairs[0].two}</Link>
+                            <Link to="/MeetingChairs">{language[lang]?.chairs[0].two}</Link>
                           </li>
                           <li className="nes">
-                            <Link to="/Bathrooms">{language[lang]?.chairs[0].three}</Link>
+                            <Link to="/WaitingChairs">{language[lang]?.chairs[0].three}</Link>
                           </li>
                          
                         </ul>
