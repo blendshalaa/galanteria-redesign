@@ -54,7 +54,7 @@ const Contact = () => {
 
         <div className='location-section'>
           <div className='location-text'>
-          <h1>Find our Store in Prishtina</h1>
+          <h1 className='loch'>Find our Store in Prishtina</h1>
           <p className='contact-h-p'>Visit our store in the city</p>
           </div>
 
