@@ -8,6 +8,7 @@ function ProjectCard() {
     <div>
       <div className='img-project-container'>
         <img className='pimg' src={projectimg} alt='projimg'></img>
+        <button className='hover-button'>View Details</button>
       </div>
       <div className='text-container'>
       <h1 className='project-title'>Title</h1>
