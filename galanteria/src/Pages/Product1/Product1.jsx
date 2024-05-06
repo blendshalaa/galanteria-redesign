@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Product1.scss';
 import NavBar from '../../Components/NavBar/NavBar';
 import Footer from '../Footer/Footer';
@@ -7,18 +7,28 @@ import { Context } from '../../Components/Context/Products';
 
 const Product1 = ({ data }) => {
   const [{ lang }] = useContext(Context);
+  const [expandedImage, setExpandedImage] = useState(null);
+
+  const handleImageClick = (photo) => {
+    setExpandedImage(photo);
+  };
+
+  const handleCloseExpandedImage = () => {
+    setExpandedImage(null);
+  };
 
   return (
     <div className='product1-wrapper'>
       <NavBar />
       <div className="product">
         <div className="product-image">
-
-
-          <img src={data?.firstphoto} alt="" />
-
+          {expandedImage && (
+            <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
+              <img src={expandedImage} alt="Expanded" />
+            </div>
+          )}
+          <img src={data?.firstphoto} alt="" onClick={() => handleImageClick(data?.firstphoto)} />
         </div>
-
         <div className='product-text'>
           <h4>{data?.category}</h4>
           <h5>{data?.name}</h5>
@@ -27,7 +37,7 @@ const Product1 = ({ data }) => {
       </div>
       <div className='product-images'>
         {data?.photos.map((photo, index) => (
-          <img key={index} src={photo} alt="" />
+          <img key={index} src={photo} alt="" onClick={() => handleImageClick(photo)} />
         ))}
       </div>
       <hr />
