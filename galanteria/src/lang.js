@@ -58,6 +58,11 @@ const language = {
 
            
         ],
+
+        ecatalog:[{
+            one:"Katalog zyreje",
+            two:"Katalog për shtëpi",
+        }],
         chairs:[{
 
             one:"Karrige zyreje",
@@ -183,6 +188,10 @@ const language = {
             },
            
         ],
+        ecatalog:[{
+            one:"Office Catalogue",
+            two:"Home Catalogue",
+        }],
         chairs:[{
 
             one:"Office Chairs",
@@ -308,6 +317,10 @@ const language = {
             },
            
         ],
+        ecatalog:[{
+            one:"Büro Katalog",
+            two:"Home Katalog",
+        }],
         chairs:[{
 
             one:"Büro stühle",
