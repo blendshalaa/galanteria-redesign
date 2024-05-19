@@ -83,8 +83,8 @@ const Aboutus = () => {
   </div>
 
 </div>
-<div className='line'>
-</div>
+
+
 
 
 <div className='periudhat-2'>
