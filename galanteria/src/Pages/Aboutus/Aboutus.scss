@@ -172,7 +172,7 @@ font-size: 24px;
   display: flex;
   justify-content: space-between;
   margin-top: 120px; 
-  background-color:#A7541E
+
 }
 
 /* Add media query for screens smaller than 768px (e.g., smartphones) */
@@ -266,5 +266,98 @@ font-size: 24px;
       margin-top: 50px; /* Adjust top margin */
   }
 }
- 
+@media only screen and (max-width: 1500px) {
+  .about-us-header {
+      padding-top: 160px;
+  }
 
+  .aboutus-h1 {
+
+      font-size: 2.25rem; /* 36px */
+  }
+
+  .aboutus-p {
+      font-size: 1.25rem; /* 20px */
+  }
+
+  .aboutimg {
+      max-width: 1000px;
+  }
+
+  .img-container {
+      margin-bottom: 20px;
+  }
+
+  .aboutusheaderP {
+      gap: 1.25rem; /* 20px */
+      margin: 0 5rem 2.5rem 5rem; /* margin-left and margin-right 80px, margin-bottom 40px */
+  }
+
+  .statsTable {
+    position: absolute;
+      width: 18.75rem; /* 300px */
+      height: 25rem; /* 400px */
+  }
+
+  .stats-text {
+      gap: 2.5rem; /* 40px */
+      padding-top: 1.25rem; /* 20px */
+  }
+
+  .stats-h2 {
+      font-size: 2.25rem; /* 36px */
+  }
+
+  .stats-p {
+      font-size: 1.25rem; /* 20px */
+  }
+
+  .cnt {
+      margin-left: 5rem; /* 80px */
+  }
+
+  .solutions {
+      margin: 10rem 5rem 0 5rem; /* margin-top 160px, margin-left and margin-right 80px */
+  }
+
+  .line {
+      padding-bottom: 5rem; /* 80px */
+  }
+
+  .boxes {
+      gap: 5rem; /* 80px */
+  }
+
+  .box {
+      flex: 1 1 calc(33.33% - 5rem); /* Adjust gap */
+  }
+
+  .periudhat {
+      margin: 5rem; /* 80px */
+      gap: 1rem; /* 40px */
+  }
+
+  .text-periudha{
+ 
+  }
+  .periudha-1, .periudha-2 {
+      flex: 1 1 calc(50% - 2.5rem); /* Adjust gap */
+      margin-bottom: 2rem; /* 32px */
+  }
+
+  .periudha-span {
+      font-size: 1rem; /* 16px */
+  }
+
+  .periudha-p {
+      font-size: 1rem; /* 16px */
+  }
+
+  .h3-periudha {
+      font-size: 1.75rem; /* 28px */
+  }
+
+  .periudhat-2 {
+      padding: 1.25rem; /* 20px */
+  }
+}
