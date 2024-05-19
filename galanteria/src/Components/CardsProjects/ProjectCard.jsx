@@ -5,7 +5,7 @@ import '../CardsProjects/ProjectCard.scss'
 
 function ProjectCard() {
   return (
-    <div>
+    <div className='pcardmain'>
       <div className='img-project-container'>
         <img className='pimg' src={projectimg} alt='projimg'></img>
         <button className='hover-button'>View Details</button>
