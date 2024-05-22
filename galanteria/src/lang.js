@@ -18,8 +18,20 @@ const language = {
                 path: "/Bathrooms"
             },
             {
-                name: "Kuzhina",
-                path: "/Bathrooms"
+                name: "Tavolina",
+                path: "/Desks"
+            },
+            {
+                name:"Tavolina Pune",
+                path: "/WorkingTable"
+            },
+            {
+                name:"Ambiente Pune",
+                path: "/Workstation"
+            },
+            {
+                name:"Tavolina Takimesh",
+                path: "/MeetingTable"
             },
             {
                 name: "Paradhoma",
@@ -70,6 +82,7 @@ const language = {
             two:"Karrige të takimeve",
             three:"Divane/ Karrige Konferencash/ Pritjeje"
         }],
+        
         officeChairs:[{
             title:"Karrige zyreje"
            
@@ -80,6 +93,10 @@ const language = {
         }],
         waitingChairs:[{
             title:"Divane/ Karrige Konferencash/ Pritjeje"
+           
+        }],
+        workingTable:[{
+            title:"Tavolina Pune"
            
         }],
        
@@ -150,9 +167,24 @@ const language = {
                 path: "/Bathrooms"
             },
             {
-                name: "Kitchens",
-                path: "/Bathrooms"
+                name:"Desks",
+                path: "/Desks"
             },
+            {
+                name:"Working Tables",
+                path: "/WorkingTable"
+            },
+            {
+                name:"Workstations",
+                path: "/Workstation"
+            },
+            {
+                name:"Meeting Tables",
+                path: "/MeetingTable"
+            },
+           
+           
+           
             {
                 name: "Front Rooms",
                 path: "/Bathrooms"
@@ -210,6 +242,10 @@ const language = {
         }],
         waitingChairs:[{
             title:"Sofa/ Conference/ Waiting Chairs"
+           
+        }],
+        workingTable:[{
+            title:"Working Tables"
            
         }],
         hero:[
@@ -278,10 +314,24 @@ const language = {
             {
                 name: "Stuhl",
                 path: "/Bathrooms"            },
-            {
-                name: "Küchen",
-                path: "/Bathrooms"
-            },
+                {
+                    name:"Tische",
+                    path: "/Desks"
+                },
+                {
+                    name: "Arbeits tische",
+                    path: "/WorkingTable"
+                },
+                {
+                    name:"Arbeits plätze",
+                    path: "/Workstation"
+                },
+                {
+                    name: "Besprechungs tische",
+                    path: "/MeetingTable"
+                },
+
+
             {
                 name: "Vorderzimmer",
                 path: "/Bathrooms"
@@ -339,6 +389,9 @@ const language = {
         waitingChairs:[{
             title:"Sofa/ Konferenz/ Warte stühle"
            
+        }],
+        workingTable:[{
+            title:"Arbeits tische"
         }],
         hero:[
             {title:"MÖBEL UND ZUBEHÖR",

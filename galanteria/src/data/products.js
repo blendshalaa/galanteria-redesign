@@ -160,13 +160,67 @@ import waiting1 from '../assets/images/wch1.jpg'
 import waiting2 from '../assets/images/wch2.png'
 import waiting3 from '../assets/images/wch3.png'
 import waiting4 from '../assets/images/wch4.png'
-
-
-
-
-
-
-
+import rea from '../assets/images/r004.jpg'
+import rea1 from '../assets/images/r002.png'
+import rea2 from '../assets/images/r003.jpg'
+import rea3 from '../assets/images/r006.png'
+import nice from '../assets/images/n001.jpg'
+import nice1 from '../assets/images/n002.jpg'
+import nice2 from '../assets/images/n003.png'
+import nice3 from '../assets/images/n004.jpg'
+import hera from '../assets/images/h001.png'
+import hera1 from '../assets/images/h002.png'
+import hera2 from '../assets/images/h003.png'
+import hera3 from '../assets/images/h004.png'
+import hermes from '../assets/images/h002.jpg'
+import hermes1 from '../assets/images/h003.png'
+import hermes2 from '../assets/images/h004.jpg'
+import hermes3 from '../assets/images/h005.jpg'
+import noble from '../assets/images/n002.jpg'
+import noble1 from '../assets/images/n003.png'
+import noble2 from '../assets/images/w003.jpg'
+import mild from '../assets/images/m002.jpg'
+import mild1 from '../assets/images/m001.jpg'
+import mild2 from '../assets/images/m003.jpg'
+import mild3 from '../assets/images/m004.png'
+import lito from '../assets/images/l002.jpg'
+import lito1 from '../assets/images/l001.jpg'
+import lito2 from '../assets/images/l003.jpg'
+import lito3 from '../assets/images/l004.jpg'
+import lito4 from '../assets/images/l005.jpg'
+import genius from '../assets/images/g001.jpg'
+import genius1 from '../assets/images/g002.jpg'
+import genius2 from '../assets/images/g003.jpg'
+import genius3 from '../assets/images/g004.jpg'
+import easy from '../assets/images/e001.jpg'
+import easy1 from '../assets/images/e003.jpg'
+import fors from '../assets/images/f001.jpg'
+import fors1 from '../assets/images/f002.jpg'
+import fors2 from '../assets/images/f003.jpg'
+import truva from '../assets/images/t004.jpg'
+import truva1 from '../assets/images/t001.jpg'
+import truva2 from '../assets/images/t002.jpg'
+import truva3 from '../assets/images/t003.jpg'
+import window from '../assets/images/w001.jpg'
+import window2 from '../assets/images/w002.jpg'
+import artemis from '../assets/images/a003.jpg'
+import artemis1 from '../assets/images/a001.png'
+import artemis2 from '../assets/images/a002.jpg'
+import prisma from '../assets/images/p002.jpg'
+import prisma1 from '../assets/images/p001.jpg'
+import optima from '../assets/images/o001.jpg'
+import optima1 from '../assets/images/o002.jpg'
+import optima2 from '../assets/images/o003.jpg'
+import optima3 from '../assets/images/o004.jpg'
+import kronos from '../assets/images/k002.jpg'
+import kronos1 from '../assets/images/k001.jpg'
+import uranus from '../assets/images/u002.jpg'
+import uranus1 from '../assets/images/u001.jpg'
+import others from '../assets/images/TP001.jpg'
+import others1 from '../assets/images/TP002.jpg'
+import others2 from '../assets/images/TP003.jpg'
+import others3 from '../assets/images/TP004.jpg'
+import others4 from '../assets/images/TPL001.jpg'
 
 
 const lightphoto = l1;
@@ -237,6 +291,43 @@ const theaterphoto = theater;
 const theaterphotos = [theater1, theater2, theater3]
 const waitingphoto = waiting;
 const waitingphotos = [waiting1, waiting2,waiting3,waiting4]
+const reaphoto = rea;
+const reaphotos = [rea1, rea2, rea3]
+const nicephoto = nice;
+const nicephotos =[nice1, nice2, nice3]
+const heraphoto = hera;
+const heraphotos = [hera1, hera2, hera3]
+const hermesphoto = hermes;
+const hermesphotos = [hermes1, hermes2, hermes3]
+const noblephoto = noble;
+const noblephotos = [noble1, noble2]
+const mildphoto = mild;
+const mildphotos = [mild1, mild2,mild3]
+const litophoto = lito;
+const litophotos = [lito1, lito2, lito3, lito4]
+const geniusphoto = genius;
+const geniusphotos = [genius1, genius2, genius3]
+const easyphoto = easy; 
+const easyphotos = [easy1, easy]
+const forsphoto = fors;
+const forsphotos= [fors1,fors2]
+const truvaphoto = truva;
+const truvaphotos = [truva1, truva2,truva3]
+const windowphoto =window;
+const windowphotos = [window2, window]
+const artemisphoto = artemis;
+const artemisphotos = [artemis1, artemis2]
+const prismaphoto = prisma;
+const prismaphotos = [prisma1,prisma]
+const optimaphoto = optima;
+const optimaphotos = [optima1, optima2,optima3]
+const kronosphoto = kronos;
+const kronosphotos = [kronos1, kronos]
+const uranusphoto = uranus;
+const uranusphotos = [uranus1, uranus]
+const otherphoto = others; 
+const othersphotos = [others1, others2, others3 ,others4]
+
 
 
 const dataProducts = {
@@ -492,6 +583,132 @@ const dataProducts = {
             photos: waitingphotos,
             firstphoto:waitingphoto
         },
+        "rea":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: reaphotos,
+            firstphoto:reaphoto
+        },
+        "nice":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: nicephotos,
+            firstphoto:nicephoto
+        },
+        "hera":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: heraphotos,
+            firstphoto:heraphoto
+        },
+        "hermes":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: hermesphotos,
+            firstphoto:hermesphoto
+        },
+        "noble":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: noblephotos,
+            firstphoto:noblephoto
+        },
+        "mild":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: mildphotos,
+            firstphoto:mildphoto
+        },
+        "lito":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: litophotos,
+            firstphoto:litophoto
+        },
+        "genius":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: geniusphotos,
+            firstphoto:geniusphoto
+        },
+        "easy":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: easyphotos,
+            firstphoto:easyphoto
+        },
+        "fors":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: forsphotos,
+            firstphoto:forsphoto
+        },
+        "truva":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: truvaphotos,
+            firstphoto:truvaphoto
+        },
+        "window":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: windowphotos,
+            firstphoto:windowphoto
+        },
+        "artemis":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: artemisphotos,
+            firstphoto:artemisphoto
+        },
+        "prisma":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: prismaphotos,
+            firstphoto:prismaphoto
+        },
+        "optima":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: optimaphotos,
+            firstphoto:optimaphoto
+        },
+        "kronos":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: kronosphotos,
+            firstphoto:kronosphoto
+        },
+        "uranus":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: uranusphotos,
+            firstphoto:uranusphoto
+        },
+        "others":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: othersphotos,
+            firstphoto:otherphoto
+        },
 
     },
     "en": {
@@ -746,6 +963,132 @@ const dataProducts = {
             photos: waitingphotos,
             firstphoto:waitingphoto
         }, 
+        "rea":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: reaphotos,
+            firstphoto:reaphoto
+        },
+        "nice":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: nicephotos,
+            firstphoto:nicephoto
+        },
+        "hera":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: heraphotos,
+            firstphoto:heraphoto
+        },
+        "hermes":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: hermesphotos,
+            firstphoto:hermesphoto
+        },
+        "noble":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: noblephotos,
+            firstphoto:noblephoto
+        },
+        "mild":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: mildphotos,
+            firstphoto:mildphoto
+        },
+        "lito":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: litophotos,
+            firstphoto:litophoto
+        },
+        "genius":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: geniusphotos,
+            firstphoto:geniusphoto
+        },
+        "easy":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: easyphotos,
+            firstphoto:easyphoto
+        },
+        "fors":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: forsphotos,
+            firstphoto:forsphoto
+        },
+        "truva":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: truvaphotos,
+            firstphoto:truvaphoto
+        },
+        "window":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: windowphotos,
+            firstphoto:windowphoto
+        },
+        "artemis":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: artemisphotos,
+            firstphoto:artemisphoto
+        },
+        "prisma":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: prismaphotos,
+            firstphoto:prismaphoto
+        },
+        "optima":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: optimaphotos,
+            firstphoto:optimaphoto
+        },
+        "kronos":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: kronosphotos,
+            firstphoto:kronosphoto
+        },
+        "uranus":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: uranusphotos,
+            firstphoto:uranusphoto
+        },
+        "others":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: othersphotos,
+            firstphoto:otherphoto
+        },
 
     },
     "de": {
@@ -999,6 +1342,132 @@ const dataProducts = {
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
             photos: waitingphotos,
             firstphoto:waitingphoto
+        },
+        "rea":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: reaphotos,
+            firstphoto:reaphoto
+        },
+        "nice":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: nicephotos,
+            firstphoto:nicephoto
+        },
+        "hera":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: heraphotos,
+            firstphoto:heraphoto
+        },
+        "hermes":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: hermesphotos,
+            firstphoto:hermesphoto
+        },
+        "noble":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: noblephotos,
+            firstphoto:noblephoto
+        },
+        "mild":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: mildphotos,
+            firstphoto:mildphoto
+        },
+        "lito":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: litophotos,
+            firstphoto:litophoto
+        },
+        "genius":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: geniusphotos,
+            firstphoto:geniusphoto
+        },
+        "easy":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: easyphotos,
+            firstphoto:easyphoto
+        },
+        "fors":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: forsphotos,
+            firstphoto:forsphoto
+        },
+        "truva":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: truvaphotos,
+            firstphoto:truvaphoto
+        },
+        "window":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: windowphotos,
+            firstphoto:windowphoto
+        },
+        "artemis":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: artemisphotos,
+            firstphoto:artemisphoto
+        },
+        "prisma":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: prismaphotos,
+            firstphoto:prismaphoto
+        },
+        "optima":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: optimaphotos,
+            firstphoto:optimaphoto
+        },
+        "kronos":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: kronosphotos,
+            firstphoto:kronosphoto
+        },
+        "uranus":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: uranusphotos,
+            firstphoto:uranusphoto
+        },
+        "others":{
+            category: "Tavolinë Pune",
+            name: "Working Tables",
+            description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
+            photos: othersphotos,
+            firstphoto:otherphoto
         },
 
     }
