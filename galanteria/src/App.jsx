@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Products from "./Components/Context/Products";
 import HomePage from './Pages/HomePage/HomePage'
@@ -9,6 +10,9 @@ import Product1Page from "./Pages/Product1Page/Product1Page";
 import OfficeChairs from "./Pages/OfficeChairs/OfficeChairs";
 import MeetingChairs from "./Pages/MeetingChairs/MeetingChairs";
 import WaitingChairs from "./Pages/WaitingChairs/WaitingChairs";
+import WorkingTable from "./Pages/WorkingTable/WorkingTable";
+import Workstation from "./Pages/Wokstations/Workstation";
+import MeetingTable from "./Pages/MeetingTable/MeetingTable";
 
 function App() {
 
@@ -25,6 +29,9 @@ function App() {
           <Route path="/OfficeChairs" element={<OfficeChairs/>} />
           <Route path="/MeetingChairs" element={<MeetingChairs/>} />
           <Route path="/WaitingChairs" element={<WaitingChairs/>} />
+          <Route path="/WorkingTable" element={<WorkingTable/>} />
+          <Route path="/Workstation" element={<Workstation/>} />
+          <Route path="/MeetingTable" element={<MeetingTable/>} />
           <Route path="/product/:slug" element={<Product1Page/>}/>
 
 
