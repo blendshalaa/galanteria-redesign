@@ -60,7 +60,7 @@ body {
         align-items: center;
 
         img {
-            width: 50px;
+            width: 55px;
             height: 40px;
             margin-left: 120px;
 @media(max-width:768px){
@@ -199,7 +199,9 @@ font-weight: bold;
         li{
             list-style-type: none;
             :hover{
-                color:#A7541E;
+                // color:#A7541E;
+                color: rgba(240,124,1,255);
+
                 //  border-radius: 5px;
                 
               }
@@ -218,6 +220,8 @@ font-weight: bold;
                 border-radius: 5px;
                 font-weight: bold;
                 color:#A7541E; // Example: Change text color to orange
+                color: rgba(240,124,1,255);
+
 
                 @media(max-width:1500px){
               font-size: 12px;
@@ -230,6 +234,8 @@ font-weight: bold;
          
         li:hover {
             color:#A7541E;
+            color: rgba(240,124,1,255);
+
 
 
 
@@ -334,6 +340,8 @@ font-weight: bold;
     top: 3px;
     cursor: pointer;
     color:#A7541E;
+    color: rgba(240,124,1,255);
+
     order: 3;
   display: none;
   
@@ -484,6 +492,8 @@ font-weight: bold;
 
         :hover{
             color: #A7541E;
+            color: rgba(240,124,1,255);
+
         }
        }
 

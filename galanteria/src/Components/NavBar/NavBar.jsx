@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import './NavBar.scss';
-import logo from '../../assets/images/galanteria_logo.png';
+import logo from '../../assets/images/LOGO_G.png';
 import { Link, useLocation } from 'react-router-dom';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
