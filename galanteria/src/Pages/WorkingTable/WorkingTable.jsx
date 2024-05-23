@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './WorkingTable.scss'
 import NavBar from '../../Components/NavBar/NavBar'
 import Footer from '../Footer/Footer'
@@ -13,7 +13,7 @@ import genius from '../../assets/images/g003.jpg'
 import easy from '../../assets/images/e003.jpg'
 import fors from '../../assets/images/f001.jpg'
 import truva from '../../assets/images/t002.jpg'
-import window from '../../assets/images/w002.jpg'
+import windowimg from '../../assets/images/w002.jpg'
 import artemis from '../../assets/images/a003.jpg'
 import prisma from '../../assets/images/p001.jpg'
 import optima from '../../assets/images/o001.jpg'
@@ -27,7 +27,19 @@ import { Context } from '../../Components/Context/Products'
 
 
 const WorkingTable = () => {
+
   const [{ lang }] = useContext(Context);
+
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
+  
 
 
   const navigate = useNavigate();
@@ -107,7 +119,7 @@ const WorkingTable = () => {
 
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('window')} src={window} alt="" />
+              <img onClick={() => goToProduct('window')} src={windowimg} alt="" />
               <h4>Truva Window</h4>
 
             </div>

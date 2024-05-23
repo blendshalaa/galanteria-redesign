@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './OfficeChairs.scss'
 import NavBar from '../../Components/NavBar/NavBar'
 import Footer from '../Footer/Footer'
@@ -26,6 +26,14 @@ import { Context } from '../../Components/Context/Products'
 
 
 const OfficeChairs = () => {
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   const [{ lang }] = useContext(Context);
 
 
