@@ -34,16 +34,16 @@ const language = {
                 path: "/MeetingTable"
             },
             {
-                name: "Paradhoma",
-                path: "/Bathrooms"
+                name: "Kabinete",
+                path: "/Cabinets"
             },
             {
-                name: "Dollap Tualeti",
-                path: "/Bathrooms"
+                name: "Sirtare",
+                path: "/Drawers"
             },
             {
-                name: "Gardëroba",
-                path: "/Bathrooms"
+                name: "Të tjera",
+                path: "/Others"
             },
             {
                 name: "Mobilje Shkollash",
@@ -99,7 +99,26 @@ const language = {
             title:"Tavolina Pune"
            
         }],
-       
+        workingstation:[{
+            title:"Ambiente Pune"
+           
+        }],
+        meetingTable:[{
+            title:"Tavolina Takimesh"
+           
+        }],
+        cabinets:[{
+            title:"Kabinete"
+           
+        }],
+        drawers:[{
+            title:"Sirtare"
+           
+        }],
+        others:[{
+            title:"Të tjera"
+           
+        }],
         hero:[
             {title:"MOBILJE  DHE AKSESORË",
             redtitle:"PËR  INTERIER MODERN",
@@ -184,18 +203,17 @@ const language = {
             },
            
            
-           
             {
-                name: "Front Rooms",
-                path: "/Bathrooms"
+                name: "Cabinets",
+                path: "/Cabinets"
             },
             {
-                name: "Toilet Closets",
-                path: "/Bathrooms"
+                name: "Drawers",
+                path: "/Drawers"
             },
             {
-                name: "Wardrobes",
-                path: "/Bathrooms"
+                name: "Others",
+                path: "/Others"
             },
             {
                 name: "Home Furnitures",
@@ -220,6 +238,18 @@ const language = {
             },
            
         ],
+        cabinets:[{
+            title:"Cabinets"
+           
+        }],
+        drawers:[{
+            title:"Drawers"
+           
+        }],
+        others:[{
+            title:"Others"
+           
+        }],
         ecatalog:[{
             one:"Office Catalogue",
             two:"Home Catalogue",
@@ -246,6 +276,14 @@ const language = {
         }],
         workingTable:[{
             title:"Working Tables"
+           
+        }],
+        workingstation:[{
+            title:"Workstations"
+           
+        }],
+        meetingTable:[{
+            title:"Meeting Tables"
            
         }],
         hero:[
@@ -312,7 +350,7 @@ const language = {
                 path: "/HomeFurnitures"
             },
             {
-                name: "Stuhl",
+                name: "Stühle",
                 path: "/Bathrooms"            },
                 {
                     name:"Tische",
@@ -332,18 +370,18 @@ const language = {
                 },
 
 
-            {
-                name: "Vorderzimmer",
-                path: "/Bathrooms"
-            },
-            {
-                name: "Toilettenschränke",
-                path: "/Bathrooms"
-            },
-            {
-                name: "Kleiderschränke",
-                path: "/Bathrooms"
-            },
+                {
+                    name: "Schränke",
+                    path:"/Cabinets"
+                },
+                {
+                    name: "Schublade",
+                    path: "/Drawers"
+                },
+                {
+                    name: "Andere",
+                    path: "/Others"
+                },
             {
                 name: "Haus möbel",
                 path: "/Aboutus"
@@ -393,6 +431,27 @@ const language = {
         workingTable:[{
             title:"Arbeits tische"
         }],
+        workingstation:[{
+            title:"Arbeits Plätze"
+           
+        }],
+        meetingTable:[{
+            title:"Besprechungs tische"
+           
+         }],
+        cabinets:[{
+            title:"Schränke"
+           
+        }],
+        drawers:[{
+            title:"Schublade"
+           
+        }],
+        others:[{
+            title:"Andere"
+           
+        }],
+        
         hero:[
             {title:"MÖBEL UND ZUBEHÖR",
             redtitle:"FÜR MODERNE \n EINRICHTUNG",
