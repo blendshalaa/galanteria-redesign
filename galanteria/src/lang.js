@@ -133,13 +133,21 @@ const language = {
             name2:"Zotëri Robin",
             text2:"Shkëlqyeshëm! Ju jeni thjesht të mrekullueshëm!! Është kënaqësi të shohësh sa bukur e bëjnë këtë! Jemi të emocionuar të shohim se si vazhdojnë gjërat! Përshëndetje për ekipin tuaj dhe faleminderit shumë paraprakisht!"
         }],
-        categories:[
+     
+    categories:[
             {
-            title:"Kategoritë e njohura",
-            product1:"Divane",  
-            product2:"Karrige",
-            product3:"Divanet",
-            product4:"Dhomat e ndenjes",
+            titulli:"Kategoritë e njohura",
+            product1: "Divane",  
+            product2: "Karrige Zyreje",
+            product3: "Tavolina Pune",
+            product4: "Karrige Takimesh",
+            product5: "Ambiente Pune",
+            product6: "Kabinete",
+            product7: "Karrige Pritjeje",
+            product8: "Tavolina Takimesh",
+            product9: "Sirtare",
+            product10: "Të tjera"
+
             }
         ],
         ideas:[{
@@ -297,10 +305,17 @@ const language = {
         categories:[
             {
             title:"Popular Categories",
-            product1:"Couches",  
-            product2:"Chairs",
-            product3:"Sofas",
-            product4:"Living Rooms",
+            product1:"Sofas",  
+            product2:"Office Chairs",
+            product3:"Working Tables",
+            product4:"Meeting Chairs",
+            product5:"Workstations",
+            product6:"Cabinets",
+            product7:"Waiting Chairs",
+            product8:"Meeting Tables",
+            product9:"Drawers",
+            product10:"Others"
+
             }
         ],
         ideas:[{
@@ -474,6 +489,22 @@ const language = {
             product2:"Stühle",
             product3:"Sofas",
             product4:"Wohnzimmer",
+            }
+        ],
+        categories:[
+            {
+            titulli:"Beliebte Kategorien",
+            product1: "Liegen",  
+            product2: "Büro Stühle",
+            product3: "Arbeits Tische",
+            product4: "Besprechungs Stühle",
+            product5: "Arbeits Plätze",
+            product6: "Schränke",
+            product7: "Warte Stühle",
+            product8: "Besprechungs Tische",
+            product9: "Schubladen",
+            product10: "Andere"
+
             }
         ],
         ideas:[{

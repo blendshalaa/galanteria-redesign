@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, {useEffect} from 'react'
 import NavBar from '../../Components/NavBar/NavBar'
 import '../Projects/Projects.scss'
 import projectimg from '../../assets/images/livingroom.png'
@@ -8,6 +8,14 @@ import Footer from '../Footer/Footer'
 
 
 function Projects() {
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   return (
     <div>
         <NavBar/>

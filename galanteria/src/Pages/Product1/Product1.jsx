@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Product1.scss';
 import NavBar from '../../Components/NavBar/NavBar';
 import Footer from '../Footer/Footer';
@@ -6,6 +6,14 @@ import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 
 const Product1 = ({ data }) => {
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   const [{ lang }] = useContext(Context);
   const [expandedImage, setExpandedImage] = useState(null);
 
