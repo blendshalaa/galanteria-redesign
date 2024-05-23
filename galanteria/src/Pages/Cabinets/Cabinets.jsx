@@ -1,29 +1,28 @@
 import React, { useContext, useState } from 'react';
-import './MeetingTable.scss';
+import './Cabinets.scss';
 import NavBar from '../../Components/NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import m1 from '../../assets/images/MT001.jpg';
-import m2 from '../../assets/images/MT002.jpg';
-import m3 from '../../assets/images/MT003.jpg';
-import m4 from '../../assets/images/MT004.jpg';
-import m5 from '../../assets/images/MT005.jpg';
-import m6 from '../../assets/images/MT006.jpg';
-import m7 from '../../assets/images/MT007.jpg';
-import m8 from '../../assets/images/MT008.png';
-import m9 from '../../assets/images/MT009.png';
-import m10 from '../../assets/images/MT0010.jpg';
-import m11 from '../../assets/images/MT0011.jpg';
-import m12 from '../../assets/images/R1.png';
-import m13 from '../../assets/images/R2.jpg';
-import m14 from '../../assets/images/R3.jpg';
-import m15 from '../../assets/images/R4.jpg'
+import c1 from '../../assets/images/CB001.jpg'
+import c2 from '../../assets/images/CB002.jpg'
+import c3 from '../../assets/images/CB003.jpg'
+import c4 from '../../assets/images/CB004.jpg'
+import c5 from '../../assets/images/CB005.jpg'
+import c6 from '../../assets/images/CB006.jpg'
+import c7 from '../../assets/images/CB007.jpg'
+import c8 from '../../assets/images/CB008.jpg'
+import c9 from '../../assets/images/CB009.jpg'
+import c10 from '../../assets/images/CB0010.jpg'
+import c11 from '../../assets/images/CB0011.jpg'
+import c12 from '../../assets/images/CB0012.jpg'
+import c13 from '../../assets/images/CB0013.jpg'
+import c14 from '../../assets/images/CB0014.jpg'
 
 
 import { useNavigate } from 'react-router-dom';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 
-const MeetingTable = () => {
+const Cabinets = () => {
   const [{ lang }] = useContext(Context);
   const [expandedImage, setExpandedImage] = useState(null);
 
@@ -43,12 +42,10 @@ const MeetingTable = () => {
   };
 
   const images = [
-    { src: m1, alt: "MT001" }, { src: m2, alt: "MT002" }, { src: m3, alt: "MT003" }, { src: m4, alt: "MT004" },
-    { src: m5, alt: "MT005" }, { src: m6, alt: "MT006" }, { src: m7, alt: "WS007" }, { src: m8, alt: "MT008" },
-    { src: m9, alt: "MT009" }, { src: m10, alt: "MT0010" }, { src: m11, alt: "MT0011" }, { src: m12, alt: "R1" },
-    { src: m13, alt: "R2" }, { src: m14, alt: "R3" },  { src: m15, alt: "R4" }, 
-    //{ src: m17, alt: "WS0017" }, { src: m18, alt: "WS0018" }, { src: m19, alt: "WS0019" }, { src: m20, alt: "WS0020" },
-    //{ src: m21, alt: "WS0021" }, { src: m22, alt: "WS0022" }, { src: m23, alt: "WS0023" }, { src: m24, alt: "WS0024" },
+    { src: c1, alt: "CB001" }, { src: c2, alt: "CB002" }, { src: c3, alt: "CB003" }, { src: c4, alt: "CB004" },
+    { src: c5, alt: "CB005" }, { src: c6, alt: "CB006" }, { src: c7, alt: "CB007" }, { src: c8, alt: "CB008" },
+    { src: c9, alt: "CB009" }, { src: c10, alt: "CB0010" }, { src: c11, alt: "CB0011" }, { src: c12, alt: "CB0012" },
+    { src: c13, alt: "CB0013" }, { src: c14, alt: "CB0014" },
     // { src: w25, alt: "WS0025" }, { src: w26, alt: "WS0026" }, { src: w27, alt: "WS0027" }, { src: w28, alt: "WS0028" }
   ];
 
@@ -62,7 +59,7 @@ const MeetingTable = () => {
           </div>
         )}
         <div className='workstation-text'>
-          <h1>{language[lang]?.meetingTable[0].title}</h1>
+          <h1>{language[lang]?.cabinets[0].title}</h1>
         </div>
         <div className='workstation-images'>
           {images.map((image, index) => (
@@ -79,4 +76,4 @@ const MeetingTable = () => {
   );
 }
 
-export default MeetingTable;
+export default Cabinets;

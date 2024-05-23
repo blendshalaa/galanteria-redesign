@@ -56,8 +56,8 @@ import ko5 from '../assets/images/ko3.png'
 import ko6 from '../assets/images/ko4.png'
 import r1 from '../assets/images/REMIX.jpg'
 import r2 from '../assets/images/r1.jpg'
-import r3 from '../assets/images/r2.jpg'
-import r4 from '../assets/images/r3.jpg'
+//import r3 from '../assets/images/r2.jpg'
+//import r4 from '../assets/images/r3.jpg'
 import d1 from '../assets/images/DIVA.jpg'
 import d2 from '../assets/images/di1.jpg'
 import d3 from '../assets/images/di2.jpg'
@@ -240,7 +240,7 @@ const klaasphotos = [kl2,  kl4,kl5,kl6,kl7,kl8,kl9,kl10,kl11,kl12,kl13,kl14,kl15
 const konaphoto = ko1;
 const konaphotos = [ko2, ko3, ko4, ko5, ko6]
 const remixphoto = r1;
-const remixphotos = [r2, r3, r4]
+const remixphotos = [ r2, r1]
 const divaphoto = d1; 
 const divaphotos = [d2,d3,d4]
 const violaphoto= v1;

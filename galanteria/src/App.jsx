@@ -13,6 +13,9 @@ import WaitingChairs from "./Pages/WaitingChairs/WaitingChairs";
 import WorkingTable from "./Pages/WorkingTable/WorkingTable";
 import Workstation from "./Pages/Wokstations/Workstation";
 import MeetingTable from "./Pages/MeetingTable/MeetingTable";
+import Drawers from "./Pages/Drawers/Drawers";
+import Others from "./Pages/Others/Others";
+import Cabinets from "./Pages/Cabinets/Cabinets"
 
 function App() {
 
@@ -32,6 +35,10 @@ function App() {
           <Route path="/WorkingTable" element={<WorkingTable/>} />
           <Route path="/Workstation" element={<Workstation/>} />
           <Route path="/MeetingTable" element={<MeetingTable/>} />
+          <Route path="/Cabinets" element={<Cabinets/>} />
+          <Route path="/Drawers" element={<Drawers/>} />
+          <Route path="/Others" element={<Others/>} />
+
           <Route path="/product/:slug" element={<Product1Page/>}/>
 
 

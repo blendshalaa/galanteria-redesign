@@ -180,13 +180,13 @@ const NavBar = () => {
                       </li>
                     
                       <li className='nes'>
-                        <Link to="/Bathrooms">{language[lang]?.menuHeader[8].name}</Link>
+                        <Link to="/Cabinets">{language[lang]?.menuHeader[8].name}</Link>
                       </li>
                       <li className='nes'>
-                        <Link to="/Bathrooms">{language[lang]?.menuHeader[9].name}</Link>
+                        <Link to="/Drawers">{language[lang]?.menuHeader[9].name}</Link>
                       </li>
                       <li className='nes'>
-                        <Link to="/Bathrooms">{language[lang]?.menuHeader[10].name}</Link>
+                        <Link to="/Others">{language[lang]?.menuHeader[10].name}</Link>
                       </li>
                     </ul>
                   )}
