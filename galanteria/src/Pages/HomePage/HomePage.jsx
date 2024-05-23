@@ -6,11 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomePage.scss';
 import NavBar from '../../Components/NavBar/NavBar'
-import sl1 from '../../assets/images/Frame 16.png'
-import sl2 from '../../assets/images/Frame 15.png'
-import sl3 from '../../assets/images/Frame 12.png'
-import sl4 from '../../assets/images/Frame 18.png'
-import sl5 from '../../assets/images/Frame 17.png'
+import sl1 from '../../assets/images/di3.jpg'
+import sl2 from '../../assets/images/miss4.jpg'
+import sl3 from '../../assets/images/lightttc.jpg'
+import sl4 from '../../assets/images/resim_82738.jpg'
+import sl5 from '../../assets/images/Light grey front three quarters.jpg'
 import s1 from '../../assets/images/s1.png'
 import s2 from '../../assets/images/s2.png'
 import s3 from '../../assets/images/s3.png'
@@ -37,7 +37,7 @@ export default function HomePage() {
 
 <div className="hero">
   <div className='h1'>
-    <img src={sl1} alt="" />
+    <img   src={sl1} alt="" />
   </div>
   <div className='h2'>
     <img src={sl2} alt="" />
@@ -47,13 +47,13 @@ export default function HomePage() {
 
   </div>
   <div className='h3'>
-    <img src={sl3} alt="" />
+    <img style={{width:'320px', height:'423px', borderRadius:'10px', objectFit:'cover'}} src={sl3} alt="" />
   </div>
   <div className='h4'>
-    <img src={sl4} alt="" />
+    <img  src={sl4} alt="" />
   </div>
   <div className='h5'>
-    <img src={sl5} alt="" />
+    <img  src={sl5} alt="" />
   </div>
 </div>
     {/* <div className="slider1">
