@@ -1,9 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext , useState,useEffect} from 'react';
 import { Context } from '../Context/Products';
 import LangFlag from './LangFlag';
+import './NavBar.scss'
 
 const Language = () => {
     const [{ lang }, dispatch] = useContext(Context);
+    const [activeItem, setActiveItem] = useState('');
+
+    useEffect(() => {
+      const { pathname } = location;
+  
+      setActiveItem(pathname);
+    }, [location]);
   
     const changeLang = (newLang) => {
       dispatch({
@@ -15,7 +23,7 @@ const Language = () => {
 
   return (
     <div className="language">
-      <a className="lang" onClick={() => changeLang("sq")}>
+      <a className={activeItem ? 'lang' : 'link'} onClick={() => changeLang("sq")}>
         <LangFlag lang="sq" />
       </a>
       <a className="lang" onClick={() => changeLang("en")}>

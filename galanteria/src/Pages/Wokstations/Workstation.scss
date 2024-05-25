@@ -167,6 +167,8 @@
           height: 330px;
           cursor: pointer;
           background-size: contain;
+          border-radius: 10px;
+
   
           @media(max-width: 1500px) {
             width: 240px;
@@ -191,6 +193,9 @@
       img {
         max-width: 90%;
         max-height: 90%;
+        border-radius: 10px;
+
+
       }
     }
   }

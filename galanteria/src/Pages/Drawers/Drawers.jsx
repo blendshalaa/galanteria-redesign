@@ -44,8 +44,8 @@ const Drawers = () => {
   };
 
   const images = [
-    { src: s1, alt: "ST" }, { src: s2, alt: "ST001" }, { src: s3, alt: "ST002" }, { src: s4, alt: "ST003" },
-    { src: s5, alt: "ST004" }, { src: s6, alt: "ST005" },
+    { src: s1, alt: "ST" }, { src: s2, alt: "ST001" }, { src: s3, alt: "ST002" }, 
+   { src: s4, alt: "ST003" }, { src: s5, alt: "ST004" }, { src: s6, alt: "ST005" },
   ];
 
   return (

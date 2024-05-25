@@ -1,10 +1,17 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, {useContext} from 'react'
 import './Footer.scss'
 import logo from '../../assets/images/LOGO_G.png'
 import { Link } from 'react-router-dom'
+import {Context} from "../../Components/Context/Products"
+import language from '../../lang'
+
+
 const Footer = () => {
+
+  const [{ lang }] = useContext(Context);
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,15 +29,24 @@ const Footer = () => {
           </div>
           <div>
             <h1>Galanteria</h1>
-            <p>We stand  behind the quality of our <br /> products and offer warranty on all <br /> furniture pieces.Rest easy knowing <br /> that your investment is protected</p>
+            <p>{language[lang]?.footer[0].text}</p>
           </div>
         </div>
         <div className='middle'>
           <div>
+            <h4>{language[lang]?.footer[0].pages}</h4>
+            <Link to="/"><p> {language[lang]?.menuHeader[0].name}</p></Link>
+            <Link to="/Projects"><p> {language[lang]?.menuHeader[12].name}</p></Link>
+            <Link to="/Aboutus"><p>{language[lang]?.menuHeader[15].name}</p></Link>
+            <Link to="/Contact"><p>{language[lang]?.menuHeader[14].name}</p></Link>
+
+
+          </div>
+          {/* <div>
             <h4>Product</h4>
-            <Link to="/Contact"><p>Contact</p></Link>
+            <Link><p>Contact</p></Link>
             <Link><p>Company</p></Link>
-            <Link to="/Aboutus"><p>About Us</p></Link>
+            <Link><p>About Us</p></Link>
 
           </div>
           <div>
@@ -39,14 +55,7 @@ const Footer = () => {
             <Link><p>Company</p></Link>
             <Link><p>About Us</p></Link>
 
-          </div>
-          <div>
-            <h4>Product</h4>
-            <Link><p>Contact</p></Link>
-            <Link><p>Company</p></Link>
-            <Link><p>About Us</p></Link>
-
-          </div>
+          </div> */}
         </div>
         <div className='right'>
           <svg onClick={scrollToTop} fill="#f17c05" height="67px" width="67px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -96,13 +105,13 @@ const Footer = () => {
         <div className='right'>
             <div className='right-box'>
             <svg width="30px" height="30px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#f17c05" d="M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416zM512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544z"/><path fill="#f17c05" d="M512 512a96 96 0 1 0 0-192 96 96 0 0 0 0 192zm0 64a160 160 0 1 1 0-320 160 160 0 0 1 0 320z"/></svg>
-            <p>Kosova</p>
+            <p>{language[lang]?.footer[0].location}</p>
             </div>
             <div className='right-box'>
             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#f17c05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-<p>23132412</p>
+<p>+383 44 259 469</p>
             </div>
         </div>
       </div>
