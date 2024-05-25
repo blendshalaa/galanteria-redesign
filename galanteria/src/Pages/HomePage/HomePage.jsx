@@ -6,11 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomePage.scss';
 import NavBar from '../../Components/NavBar/NavBar';
-import sl1 from '../../assets/images/di3.jpg';
-import sl2 from '../../assets/images/miss4.jpg';
+import sl1 from '../../assets/images/MT004.jpg';
+import sl2 from '../../assets/images/o001.jpg';
 import sl3 from '../../assets/images/lightttc.jpg';
-import sl4 from '../../assets/images/resim_82738.jpg';
-import sl5 from '../../assets/images/Light grey front three quarters.jpg';
+import sl4 from '../../assets/images/w001.jpg';
+import sl5 from '../../assets/images/gili.png';
 import s1 from '../../assets/images/milano1.jpg';
 import s2 from '../../assets/images/resim_20459.jpg';
 import s3 from '../../assets/images/a003.jpg';
@@ -187,33 +187,45 @@ export default function HomePage() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="text">
-              <h1>{language[lang]?.clients[0].name1} </h1>
-              <p>{language[lang]?.clients[0].text1} </p>
+              <h1>{language[lang]?.clients[0].name3} </h1>
+              <p>{language[lang]?.clients[0].text3} </p>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="text">
-              <h1>{language[lang]?.clients[0].name2} </h1>
-              <p>{language[lang]?.clients[0].text2} </p>
+              <h1>{language[lang]?.clients[0].name4} </h1>
+              <p>{language[lang]?.clients[0].text4} </p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="text">
+              <h1>{language[lang]?.clients[0].name5} </h1>
+              <p>{language[lang]?.clients[0].text5} </p>
+            </div>
+          </SwiperSlide> <SwiperSlide>
+            <div className="text">
+              <h1>{language[lang]?.clients[0].name6} </h1>
+              <p>{language[lang]?.clients[0].text6} </p>
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
 
-      <div className="mid">
-        <div className="overlay"></div>
-        <div className="mid-text">
-          <h1>{language[lang]?.partners[0].title}</h1>
-          <p>{language[lang]?.partners[0].subtitle}</p>
-        </div>
-      </div>
+     
       <div className="partners">
         <h1>{language[lang]?.partners[0].partnertitle}</h1>
         <div className='sec'>
-          <div className='p-text'>
+          <div className="text">
+              <div className='p-text'>
             <h1>{language[lang]?.partners[0].up}</h1>
             <p>{language[lang]?.partners[0].down}</p>
           </div>
+          <div className='p-text'>
+            <h1>{language[lang]?.partners[0].up2}</h1>
+            <p>{language[lang]?.partners[0].down2}</p>
+          </div>
+          </div>
+        
           <div className='p-img'>
             <img src={p1} alt="" />
             <img src={p2} alt="" />
@@ -221,42 +233,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="choose">
-        <div className='choose-up'>
-          <div className='choose-box'>
-            <h3>{language[lang]?.choose[0].title}</h3>
-          </div>
-          <div className='choose-box2'>
-            <p>{language[lang]?.choose[0].text}</p>
-          </div>
-          <div className='choose-box3'>
-            <img src={s11} alt="" />
-          </div>
-        </div>
-        <div className='choose-down'>
-          <div className='down-box'>
-            <div><img src={d1} alt="" /></div>
-            <div>
-              <h3>{language[lang]?.choose[0].boxtitle1}</h3>
-              <p>{language[lang]?.choose[0].boxtext1}</p>
-            </div>
-          </div>
-          <div className='down-box'>
-            <div><img src={d2} alt="" /></div>
-            <div>
-              <h3>{language[lang]?.choose[0].boxtitle2}</h3>
-              <p>{language[lang]?.choose[0].boxtext2}</p>
-            </div>
-          </div>
-          <div className='down-box'>
-            <div><img src={d3} alt="" /></div>
-            <div>
-              <h3>{language[lang]?.choose[0].boxtitle3}</h3>
-              <p>{language[lang]?.choose[0].boxtext3}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
       <Footer />
     </div>

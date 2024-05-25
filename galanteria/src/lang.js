@@ -127,16 +127,26 @@ const language = {
             },
         ],
         clients:[{
-            title:"Çfarë thonë klientët tanë",
-            name1:"Zonja Jockle",
-            text1:"Jemi shumë të lumtur që na e bëjnë shtëpinë kaq të bukur!!! Jemi plotësisht të relaksuar dhe kemi besim tek ata!!!",
-            name2:"Zotëri Robin",
-            text2:"Shkëlqyeshëm! Ju jeni thjesht të mrekullueshëm!! Është kënaqësi të shohësh sa bukur e bëjnë këtë! Jemi të emocionuar të shohim se si vazhdojnë gjërat! Përshëndetje për ekipin tuaj dhe faleminderit shumë paraprakisht!"
+            title:"Referencat e klientëve ",
+            name1:"LUX Development - Kosovë",
+            text1:"“ Vëmendja e tyre e përpiktë ndaj detajeve, respektimi i rreptë i afateve kohore dhe përkushtimi i palëkundur për të ofruar produkte superiore kanë qenë të lavdërueshme gjatë gjithë bashkëpunimeve tona. Si rezultat, Galanteria Sh.p.k. mbetet një shitës i vlerësuar në listën tonë dhe ne i angazhojmë ata me besim për çdo kërkesë në fushën e tyre të ekspertizës.”",
+            name2:"KEC – Kosovo Education Center  ",
+            text2:"“Galanteria sh.p.k ” ka treguar gatishmëri të lartë për të përmbushur obligimet sipas kontratës, të bëjë furnizimin me kohë dhe cilësinë e duhur, duke na u përgjigjur në çdo kohë. Shërbimet janë kryer nga personeli i licencuar, profesional dhe gjithmonë i janë përmbajtur kushteve dhe afateve të parashikuara në kontratë.”",
+            name3: "TIKA - Kosovë ",
+            text3:"“Kjo referencë pune i dedikohet kompanisë GALANTERIA Sh.p.k. Projekti poshtëshënuar është realizuar nga Agjencia Turke për Bashkëpunim dhe Koordinim (TIKA) përmes firmës kontraktore GALANTERIA Sh.p.k, dhe firma kontraktore e ka përfunduar punën sipas cilësisë së kërkuar.”",
+            name4:"Ministria e Punëve të Brendshme – Republika e Kosovës",
+            text4:"“Përmes këtij dokumenti ju dëshmojmë se MPB-ja është e kënaqur me kontraktuesin Galanteria Sh.p.k, Podujevë, i cili e ka realizuar këtë kontratë me sukses, në pajtueshmëri me kushtet e kontratës.”",
+            name5:"Thereca Interieurbouw BV - Holandë",
+            text5:"“Kompania Thereca Interieurbouw BV, është e kënaqur të vërejë sa vijon: komunikim shumë profesional dhe miqësor, me produktet e dorëzuara, duke specifikuar veçanërisht cilësinë në lidhje me materialet e përdorura në përputhje me standardet ISO EN, përmbushjen në mënyrë të përsosur të pjesës ndërtuese, në lidhje me kërkesat tona për dimensionet e produkteve, bazuar në skicat e dhëna, eleganca e përpunimit përfundimtar dhe sipërfaqësor, vendosja e aksesorëve në një mënyrë shumë profesionale, respektimi i afateve të dorëzimit, në përputhje me marrëveshjen e bashkëpunimit, respektivisht marrëveshjen për projektin në fjalë.”",
+            name6:"Agjensia Qendrore e Prokurimit – Republika e Kosovës ",
+            text6:"“Kjo referencë lëshohet për pjesëmarrje në tenderë në kryerjen e furnizimeve të natyrës së ngjashme në bazë të kontratës. Bashkëpunimi me këtë operator ekonomik ishte shumë i suksesshëm, prandaj shpresojmë se një bashkëpunim i tillë do të vazhdojë edhe në të ardhmen.”"
+
+
         }],
      
     categories:[
             {
-            titulli:"Kategoritë e njohura",
+            title:"Kategoritë e njohura",
             product1: "Divane",  
             product2: "Karrige Zyreje",
             product3: "Tavolina Pune",
@@ -171,9 +181,17 @@ const language = {
             title:"Ne punojmë me partnerët më të mirë!",
             subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ushtrimi i duhur për qëllime të ofrimit të dignissimos ex quidem odio consequatur magnam?",
             partnertitle: "Partnerët tanë",
-            up: "Ne punojmë me partnerët më të mirë!",
-            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
+            up: "Compotek SRL – Udine, ITALY ",
+            down:"Kompania Compotek, me seli në Manzano – Udine, Italy, është partner i yni për furnizimin me komponente të karrigave  të zyrave që nga viti 2004. Galanteria është distributor gjeneral për tregun e Kosovës bazuar në kontratën gjenerale për bashkëpunim. ",
+            up2: "RIVAL METAL- Adana, TURKEY ",
+            down2:"Galanteria është distributor gjeneral i brendit të lartëcekur për tregun e Kosovës që nga viti 2017, për konstuksionet e tavolinave të zyrave nga metali, bazuar në kontratën gjenerale për bashkëpunim."
+        }],
+        footer: [{
+            text: "Galanteria është themeluar në vitin 1987, në fillimet e saj me programin e dekoreve nga druri masiv.",
+            location: "Rr. Ismail Qemali, Podujevë - Kosovë",
+            pages: "Faqet Kryesore"
         }]
+        
     },
     en:{
         menuHeader: [
@@ -335,20 +353,38 @@ const language = {
         bathroom:[{
             title:"Direct Sofas"
         }],
-        clients:[{
-            title:"What Our Clients Say",
-            name1:"Ms Jockle",
-            text1:"We are so happy that they make our house so beautiful!!! We are totally relaxed and have confidence in them!!!",
-            name2:"Mr Robin",
-            text2:"Excellent! You are simply great!! It's a joy to see how beautifully they do it! We're excited to see how things continue! Kind regards to your team and thank you very much in advance!"
-        }],
-        partners:[{
-            title:"We work with the best partners!",
-            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rem ametsunt provident molestias dignissimos ex quidem odio consequatur magnam?",
-            partnertitle:"Our Partners",
-            up:"We work with the best partners!",
-            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit.  Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
-        }]
+        clients: [{
+            title: "Client References",
+            name1: "LUX Development - Kosovo",
+            text1: "“Their meticulous attention to detail, strict adherence to deadlines, and unwavering commitment to delivering superior products have been commendable throughout our collaborations. As a result, Galanteria Sh.p.k. remains a valued vendor on our list, and we engage them with confidence for any requests within their field of expertise.”",
+            name2: "KEC – Kosovo Education Center",
+            text2: "“Galanteria Sh.p.k.” has shown a high readiness to fulfill obligations according to the contract, make timely and quality deliveries, and respond to us at any time. Services are carried out by licensed, professional personnel who have always adhered to the conditions and deadlines set out in the contract.”",
+            name3: "TIKA - Kosovo",
+            text3: "“This work reference is dedicated to the company GALANTERIA Sh.p.k. The project mentioned below was realized by the Turkish Cooperation and Coordination Agency (TIKA) through the contracting firm GALANTERIA Sh.p.k, and the contracting firm completed the work according to the required quality.”",
+            name4: "Ministry of Internal Affairs – Republic of Kosovo",
+            text4: "“Through this document, we testify that the Ministry of Internal Affairs is satisfied with the contractor Galanteria Sh.p.k, Podujevë, who successfully realized this contract, in compliance with the contract conditions.”",
+            name5: "Thereca Interieurbouw BV - Netherlands",
+            text5: "“The company Thereca Interieurbouw BV is pleased to note the following: very professional and friendly communication, with the delivered products, specifying in particular the quality in terms of materials used in accordance with ISO EN standards, perfect fulfillment of the constructive part, in relation to our requirements for the dimensions of the products, based on the given sketches, elegance of final and surface processing, placement of accessories in a very professional way, respecting the delivery deadlines, in accordance with the cooperation agreement, respectively the agreement for the project in question.”",
+            name6: "Central Procurement Agency – Republic of Kosovo",
+            text6: "“This reference is issued for participation in tenders for the execution of similar nature supplies based on the contract. The cooperation with this economic operator was very successful, therefore we hope that such cooperation will continue in the future.”"
+}],
+
+partners: [{
+    title: "We work with the best partners!",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercising properly for the purposes of providing dignissimos ex quidem odio consequatur magnam?",
+    partnertitle: "Our Partners",
+    up: "Compotek SRL – Udine, ITALY",
+    down: "The company Compotek, based in Manzano – Udine, Italy, has been our partner for the supply of office chair components since 2004. Galanteria is the general distributor for the Kosovo market based on the general cooperation agreement.",
+    up2: "RIVAL METAL – Adana, TURKEY",
+    down2: "Galanteria has been the general distributor of the aforementioned brand for the Kosovo market since 2017, for office table constructions made of metal, based on the general cooperation agreement."
+}],
+footer: [{
+    text: "Galanteria was established in 1987, initially with a program of solid wood decorations.",
+    location: "Rr. Ismail Qemali, Podujevë - Kosovo",
+    pages: "Pages"
+}]
+
+
     },
     de:{
         menuHeader: [
@@ -475,13 +511,22 @@ const language = {
             },
         ]
         ,
-        clients:[{
-            title:"Was unsere Kunden sagen",
-            name1:"Frau Jockle",
-            text1:"Wir freuen uns riesig, dass sie unser Haus so schön machen!!! Wir sind total entspannt und haben Vertrauen in sie!!!",
-            name2:"Herr Robin!",
-            text2:"Hervorragend! Ihr seid einfach großartig!! Es ist eine Freude zu sehen, wie schön sie das machen! Wir sind gespannt, wie es weitergeht! Herzliche Grüße Euer Team und vielen Dank im Voraus!"
-        }],
+        clients: [{
+            title: "Kundenreferenzen",
+            name1: "LUX Development - Kosovo",
+            text1: "“Ihre akribische Liebe zum Detail, strikte Einhaltung von Fristen und unerschütterliches Engagement für die Lieferung hochwertiger Produkte waren während unserer Zusammenarbeit lobenswert. Infolgedessen bleibt Galanteria Sh.p.k. ein geschätzter Anbieter auf unserer Liste, und wir beauftragen sie mit Vertrauen für alle Anfragen in ihrem Fachgebiet.”",
+            name2: "KEC – Kosovo Education Center",
+            text2: "“Galanteria Sh.p.k.” hat eine hohe Bereitschaft gezeigt, die Verpflichtungen gemäß dem Vertrag zu erfüllen, rechtzeitige und qualitativ hochwertige Lieferungen durchzuführen und uns jederzeit zu antworten. Die Dienstleistungen werden von lizenziertem, professionellem Personal durchgeführt, das immer die im Vertrag festgelegten Bedingungen und Fristen eingehalten hat.”",
+            name3: "TIKA - Kosovo",
+            text3: "“Diese Arbeitsreferenz ist dem Unternehmen GALANTERIA Sh.p.k. gewidmet. Das unten genannte Projekt wurde von der Türkischen Agentur für Zusammenarbeit und Koordination (TIKA) durch das Vertragsunternehmen GALANTERIA Sh.p.k realisiert, und das Vertragsunternehmen hat die Arbeit gemäß der geforderten Qualität abgeschlossen.”",
+            name4: "Ministerium für Inneres – Republik Kosovo",
+            text4: "“Durch dieses Dokument bezeugen wir, dass das Innenministerium mit dem Auftragnehmer Galanteria Sh.p.k, Podujevë, zufrieden ist, der diesen Vertrag erfolgreich und in Übereinstimmung mit den Vertragsbedingungen realisiert hat.”",
+            name5: "Thereca Interieurbouw BV - Niederlande",
+            text5: "“Das Unternehmen Thereca Interieurbouw BV freut sich, Folgendes festzustellen: sehr professionelle und freundliche Kommunikation, mit den gelieferten Produkten, insbesondere die Qualität in Bezug auf die verwendeten Materialien gemäß ISO EN-Standards, perfekte Erfüllung des konstruktiven Teils, in Bezug auf unsere Anforderungen an die Abmessungen der Produkte, basierend auf den vorgegebenen Skizzen, Eleganz der End- und Oberflächenbearbeitung, Platzierung der Zubehörteile auf sehr professionelle Weise, Einhaltung der Lieferfristen, gemäß der Kooperationsvereinbarung bzw. der Vereinbarung für das betreffende Projekt.”",
+            name6: "Zentrale Beschaffungsagentur – Republik Kosovo",
+            text6: "“Diese Referenz wird für die Teilnahme an Ausschreibungen zur Ausführung von Lieferungen ähnlicher Art auf Basis des Vertrags ausgestellt. Die Zusammenarbeit mit diesem Wirtschaftsbeteiligten war sehr erfolgreich, daher hoffen wir, dass eine solche Zusammenarbeit auch in Zukunft fortgesetzt wird.”"
+}],
+
         categories:[
             {
             title:"Beliebte Kategorien",
@@ -493,7 +538,7 @@ const language = {
         ],
         categories:[
             {
-            titulli:"Beliebte Kategorien",
+            title:"Beliebte Kategorien",
             product1: "Liegen",  
             product2: "Büro Stühle",
             product3: "Arbeits Tische",
@@ -524,13 +569,22 @@ const language = {
         bathroom:[{
             title:"Direkte Sofas"
         }],
-        partners:[{
-            title:"Wir arbeiten mit den besten Partnern zusammen!",
-            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem rem ametsunt provident molestias dignissimos ex quidem odio consequatur magnam?",
-            partnertitle:"Unsere Partner",
-            up:"Wir arbeiten mit den besten Partnern zusammen!",
-            down:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur reiciendis quod voluptas id nihil quisquam reprehenderit doloribus modi. Fugit?"
-        }]
+        partners: [{
+            title: "Wir arbeiten mit den besten Partnern!",
+            subtitle: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Richtiges Üben für die Zwecke der Bereitstellung von dignissimos ex quidem odio consequatur magnam?",
+            partnertitle: "Unsere Partner",
+            up: "Compotek SRL – Udine, ITALIEN",
+            down: "Das Unternehmen Compotek, mit Sitz in Manzano – Udine, Italien, ist seit 2004 unser Partner für die Lieferung von Komponenten für Bürostühle. Galanteria ist der Generalvertriebspartner für den Markt im Kosovo auf der Grundlage des allgemeinen Kooperationsvertrags.",
+            up2: "RIVAL METAL – Adana, TÜRKEI",
+            down2: "Galanteria ist seit 2017 der Generalvertriebspartner der oben genannten Marke für den Markt im Kosovo, für Büro-Tischkonstruktionen aus Metall, basierend auf dem allgemeinen Kooperationsvertrag."
+}],
+footer: [{
+    text: "Galanteria wurde 1987 gegründet, anfangs mit einem Programm für Massivholzdekorationen.",
+    location: "Rr. Ismail Qemali, Podujevë - Kosovo",
+    pages: "Seiten"
+}]
+
+
     }
 }
 export default language;

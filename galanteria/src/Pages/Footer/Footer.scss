@@ -54,6 +54,7 @@ color: white;
 
             p{
                 color: white;
+                max-width: 200px;
 
                 @media(max-width:1500px) {
                     font-size: 12px;
@@ -115,7 +116,7 @@ color: white;
         }
         margin-top: 100px;
         display: flex;
-       gap: 280px;
+       gap: 200px;
 
        .left{
         h4{

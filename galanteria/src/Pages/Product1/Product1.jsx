@@ -40,7 +40,6 @@ const Product1 = ({ data }) => {
         <div className='product-text'>
           <h4>{data?.category}</h4>
           <h5>{data?.name}</h5>
-          <p>{data?.description}</p>
         </div>
       </div>
       <div className='product-images'>
