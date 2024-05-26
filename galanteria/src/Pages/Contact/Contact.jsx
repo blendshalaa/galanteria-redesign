@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import './Contact.scss'
 import NavBar from '../../Components/NavBar/NavBar'
 import icon1 from '../../assets/images/locationicon.png'
@@ -12,6 +12,15 @@ import { Context } from '../../Components/Context/Products'
 
 
 const Contact = () => {
+
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   const [{ lang }] = useContext(Context);
 
