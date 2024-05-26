@@ -190,6 +190,32 @@ const language = {
             text: "Galanteria është themeluar në vitin 1987, në fillimet e saj me programin e dekoreve nga druri masiv.",
             location: "Rr. Ismail Qemali, Podujevë - Kosovë",
             pages: "Faqet Kryesore"
+        }],
+        about:[{
+            left1:"Projekte",
+            left2:"Asortimente unike",
+            left3:"Në të gjithë vendin",
+            right1:"Kush jemi ne",
+            right2: "Galanteria është e themeluar në vitin 1987, në fillet e saj me programin e dekoreve nga druri masiv. Njëherit shquhemi edhe si pionier i instalimit të teknologjisë bashkëkohore, në vend dhe regjion, që nga viti 2001 e tutje. Sot jemi lider në prodhimin dhe tregtimin e produkteve të mobileve të zyreve, hoteleve, shkollave dhe elementeve të interierit, në tregun vendor, regjional dhe EU. Galanteria është e çertifikuar me standardin për menaxhimin e cilësis ISO 9001:2015, si dhe atestet e produkteve me EN  standarde. Gjithashtu kompania shquhet me staf professional të trajnuar  dhe me kompetence në këte fushë.  ",
+            bottom1:"MISIONI",
+            bottom12:"Përmbushja e kërkesave të konsumatorve në vazhdimësi , në përputhje me standardet universale të cilësisë. ",
+            bottom2:"VIZIONI",
+            bottom21:"Përsosmëria dhe zhvillimi i kapaciteteve humane, teknike dhe teknologjike, për përmbushjen e misionit të kompanisë. "
+        }],
+
+        contact:[{
+            title:"Na Kontaktoni",
+            subtitle:"Kontaktoni dhe na tregoni se si mund t'ju ndihmojmë",
+            left1:"Adresa",
+            left12:"Fabrika dhe Zyra Qendrore",
+            left13:"Rr.Ismail Qemali n.n. 11000 Podujevë - Kosovë",
+            left2:"Kontakti",
+           left3:"Email-i",
+           bottom1:"Zyra në Prishtinë",
+           bottom12:"Rr. Rrafshi i Kosovës",
+           bottom13:"Veternik - Prishtinë"
+        
+
         }]
         
     },
@@ -382,7 +408,40 @@ footer: [{
     text: "Galanteria was established in 1987, initially with a program of solid wood decorations.",
     location: "Rr. Ismail Qemali, Podujevë - Kosovo",
     pages: "Pages"
-}]
+}],
+
+    about: [
+      {
+        left1: "Projects",
+        left2: "Unique assortments",
+        left3: "Across the country",
+    right1: "Who we are",
+        right2: "Galanteria was founded in 1987, initially focusing on solid wood decor programs. We are also recognized as pioneers in installing contemporary technology, both domestically and regionally, since 2001 onwards. Today, we are leaders in the production and trade of office furniture, hotel furnishings, school furniture, and interior elements in the local, regional, and EU markets. Galanteria is certified with the ISO 9001:2015 quality management standard and product certificates with EN standards. Additionally, the company is distinguished by a professionally trained and competent staff in this field.",
+        bottom1: "MISSION",
+        bottom12: "Continuously meeting customer requirements in accordance with universal quality standards.",
+        bottom2: "VISION",
+        bottom21: "Excellence and development of human, technical, and technological capacities to fulfill the company's mission."
+      }
+    ],
+    
+        contact: [
+          {
+            title: "Contact Us",
+        subtitle: "Get in touch and let us know how we can help you",
+            left1: "Address",
+            left12: "Factory and Head Office",
+            left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
+            left2: "Contact",
+            left3: "Email",
+            bottom: "Office in Prishtina",
+            bottom12: "Rr. Rrafshi i Kosovës",
+            bottom13: "Veternik - Prishtina"
+          }
+        ]
+      
+      
+  
+  
 
 
     },
@@ -582,7 +641,40 @@ footer: [{
     text: "Galanteria wurde 1987 gegründet, anfangs mit einem Programm für Massivholzdekorationen.",
     location: "Rr. Ismail Qemali, Podujevë - Kosovo",
     pages: "Seiten"
-}]
+}],
+
+    about: [
+      {
+        left1: "Projekte",
+        left2: "Einzigartige Sortimente",
+        left3: "Landesweit",
+        right1: "Wer wir sind",
+        right2: "Galanteria wurde 1987 gegründet und konzentrierte sich anfangs auf Programme für Massivholzdekore. Wir sind auch als Pioniere in der Installation zeitgenössischer Technologie, sowohl im Inland als auch in der Region, seit 2001 bekannt. Heute sind wir führend in der Produktion und dem Handel von Büromöbeln, Hoteleinrichtungen, Schulmöbeln und Innenelementen auf den lokalen, regionalen und EU-Märkten. Galanteria ist mit dem Qualitätsmanagementstandard ISO 9001:2015 und Produktzertifikaten nach EN-Standards zertifiziert. Darüber hinaus zeichnet sich das Unternehmen durch ein professionell geschultes und kompetentes Personal in diesem Bereich aus.",
+        bottom1: "MISSION",
+        bottom12: "Kontinuierliche Erfüllung der Kundenanforderungen gemäß den universellen Qualitätsstandards.",
+        bottom2: "VISION",
+    bottom21: "Exzellenz und Entwicklung der menschlichen, technischen und technologischen Kapazitäten zur Erfüllung der Unternehmensmission."
+      }
+    ],
+    
+        contact: [
+          {
+            title: "Kontaktieren Sie uns",
+            subtitle: "Kontaktieren Sie uns und lassen Sie uns wissen, wie wir Ihnen helfen können",
+            left1: "Adresse",
+            left12: "Fabrik und Hauptbüro",
+            left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
+            left2: "Kontakt",
+            left3: "E-Mail",
+            bottom1: "Büro in Prishtina",
+            bottom12: "Rr. Rrafshi i Kosovës",
+            bottom13: "Veternik - Prishtina"
+          }
+        ]
+      
+      
+  
+  
 
 
     }
