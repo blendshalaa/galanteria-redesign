@@ -78,7 +78,7 @@ export default function HomePage() {
           <h6>{language[lang]?.hero[0].subtitle}</h6>
         </div>
         <div className='h3'>
-          <img style={{ width: '320px', height: '423px', borderRadius: '10px', objectFit: 'cover' }} src={sl3} alt="" />
+          <img  src={sl3} alt="" />
         </div>
         <div className='h4'>
           <img src={sl4} alt="" />

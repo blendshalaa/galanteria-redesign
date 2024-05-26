@@ -216,6 +216,11 @@ const language = {
            bottom13:"Veternik - Prishtinë"
         
 
+        }],
+        projects:[{
+            title:"Shikoni projektet",
+            title2:"tona"
+
         }]
         
     },
@@ -437,7 +442,12 @@ footer: [{
             bottom12: "Rr. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }
-        ]
+        ],
+        projects:[{
+            title:"Check out our",
+            title2:"Projects"
+
+        }]
       
       
   
@@ -670,7 +680,12 @@ footer: [{
             bottom12: "Rr. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }
-        ]
+        ],
+
+       projects:[{
+        title:"Schauen Sie sich unsere ",
+        title2:"Projekte an"
+       }]
       
       
   

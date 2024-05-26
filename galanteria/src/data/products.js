@@ -219,7 +219,59 @@ import others1 from '../assets/images/TP002.jpg'
 import others2 from '../assets/images/TP003.jpg'
 import others3 from '../assets/images/TP004.jpg'
 import others4 from '../assets/images/TPL001.jpg'
+import bottom from '../assets/images/bottom.jpg'
+import bottom1 from '../assets/images/bottom1.jpg'
+import bottom2 from '../assets/images/bottom2.jpg'
+import bottom3 from '../assets/images/bottom3.jpg'
+import bottom4 from '../assets/images/bottom4.jpg'
+import bottom5 from '../assets/images/bottom5.jpg'
+import bottom6 from '../assets/images/bottom6.jpeg'
+import milenium from '../assets/images/milenium.jpg'
+import milenium1 from '../assets/images/milenium1.jpg'
+import milenium2 from '../assets/images/milenium2.jpg'
+import milenium3 from '../assets/images/milenium3.jpg'
+import milenium4 from '../assets/images/milenium4.jpg'
+import milenium5 from '../assets/images/milenium5.jpg'
+import milenium6 from '../assets/images/milenium6.jpg'
+import tika from '../assets/images/tika.jpg'
+import tika2 from '../assets/images/tika2.jpg'
+import tika3 from '../assets/images/tika3.jpg'
+import tika4 from '../assets/images/tika4.jpg'
+import tika5 from '../assets/images/tika5.jpg'
+import tika6 from '../assets/images/tika6.jpg'
+import tika1 from '../assets/images/tika1.jpg'
+import usmile from '../assets/images/usmile.jpg'
+import usmile1 from '../assets/images/usmile1.jpg'
+import usmile2 from '../assets/images/usmile2.jpg'
+import usmile3 from '../assets/images/usmile3.jpg'
+import usmile4 from '../assets/images/usmile4.jpg'
 
+import integrime from '../assets/images/integrime.jpg'
+import integrime1 from '../assets/images/integrime1.jpg'
+import integrime2 from '../assets/images/integrime2.jpg'
+import integrime3 from '../assets/images/integrime3.jpg'
+import integrime4 from '../assets/images/integrime4.jpg'
+
+import kultur from '../assets/images/kultur.jpg'
+import kultur1 from '../assets/images/kultur1.jpg'
+import kultur2 from '../assets/images/kultur2.jpg'
+import kultur3 from '../assets/images/kultur3.jpg'
+import kultur4 from '../assets/images/kultur4.jpg'
+import kultur5 from '../assets/images/kultur5.jpg'
+import kultur6 from '../assets/images/kultur6.jpg'
+
+const kulturphoto = kultur;
+const kulturphotos = [kultur1, kultur2, kultur3, kultur4, kultur5, kultur6]
+const integrimephoto = integrime;
+const integrimephotos = [integrime1, integrime2, integrime3, integrime4]
+const usmilephoto = usmile;
+const usmilephotos = [usmile1, usmile2, usmile3, usmile4]
+const tikaphoto = tika;
+const tikaphotos = [tika1, tika2, tika3, tika4, tika5, tika6]
+const mileniumphoto = milenium;
+const mileniumphotos = [milenium1, milenium2, milenium3, milenium4, milenium5, milenium6]
+const bottomphoto = bottom;
+const bottomphotos = [bottom1, bottom2, bottom3, bottom4, bottom5, bottom6]
 
 const lightphoto = l1;
 const lightphotos = [ l2, l3,l13,l14]
@@ -706,6 +758,34 @@ const dataProducts = {
             photos: othersphotos,
             firstphoto:otherphoto
         },
+        "bottomline prishtina and geneva":{
+            photos:bottomphotos,
+            firstphoto:bottomphoto
+
+        },
+        "millennium challenge account kosovo":{
+            photos:mileniumphotos,
+            firstphoto: mileniumphoto
+
+        },
+        "tika - qendra për rehabilitimin dhe edukimin special":{
+
+            photos:tikaphotos,
+            firstphoto:tikaphoto
+        },
+        "u-smile office - liège":{
+            photos:usmilephotos,
+            firstphoto:usmilephoto
+
+        },
+        "ministria e integrimeve - republika e kosovës":{
+            photos:integrimephotos,
+            firstphoto:integrimephoto
+        },
+        "ministria e kulturës - republika e kosovës":{
+            photos:kulturphotos,
+            firstphoto:kulturphoto
+        }
 
     },
     "en": {
@@ -1085,6 +1165,33 @@ const dataProducts = {
             photos: othersphotos,
             firstphoto:otherphoto
         },
+        "bottomline prishtina and geneva":{
+            photos:bottomphotos,
+            firstphoto:bottomphoto
+        },
+        "millennium challenge account kosovo":{
+            photos:mileniumphotos,
+            firstphoto: mileniumphoto
+
+        },
+        "tika - qendra për rehabilitimin dhe edukimin special":{
+
+            photos:tikaphotos,
+            firstphoto:tikaphoto
+        },
+        "u-smile office - liège":{
+            photos:usmilephotos,
+            firstphoto:usmilephoto
+
+        },
+        "ministria e integrimeve - republika e kosovës":{
+            photos:integrimephotos,
+            firstphoto:integrimephoto
+        },
+        "ministria e kulturës - republika e kosovës":{
+            photos:kulturphotos,
+            firstphoto:kulturphoto
+        }
 
     },
     "de": {
@@ -1464,6 +1571,33 @@ const dataProducts = {
             photos: othersphotos,
             firstphoto:otherphoto
         },
+        "bottomline prishtina and geneva":{
+            photos:bottomphotos,
+            firstphoto:bottomphoto
+        },
+        "millennium challenge account kosovo":{
+            photos:mileniumphotos,
+            firstphoto: mileniumphoto
+
+        },
+        "tika - qendra për rehabilitimin dhe edukimin special":{
+
+            photos:tikaphotos,
+            firstphoto:tikaphoto
+        },
+        "u-smile office - liège":{
+            photos:usmilephotos,
+            firstphoto:usmilephoto
+
+        },
+        "ministria e integrimeve - republika e kosovës":{
+            photos:integrimephotos,
+            firstphoto:integrimephoto
+        },
+        "ministria e kulturës - republika e kosovës":{
+            photos:kulturphotos,
+            firstphoto:kulturphoto
+        }
 
     }
 }
