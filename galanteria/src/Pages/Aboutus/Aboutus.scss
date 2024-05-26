@@ -24,11 +24,14 @@
 .aboutus-p{
     font-size: 24px;
     color: white;
+    max-width: 70%;
 }
 
 .aboutimg{
     width: 1370px;
     height: 536px;
+    border-radius: 10px;
+    object-fit: cover;
   
 }
 .img-container{
@@ -42,7 +45,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
-    margin-left: 120px;
+    margin-left: 110px;
     margin-bottom: 50px;
     color: white;
 }
@@ -82,9 +85,10 @@ font-size: 24px;
   }
 
   .solutions{
-    margin-top: 200px;
+    margin-top: 120px;
     margin-left: 120px;
     color: white;
+  
    
   }
 .line{
@@ -96,10 +100,12 @@ font-size: 24px;
   .boxes{
     margin-top: 50px;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-   gap: 120px;
+
+   gap: 100px;
    color: white;
+   //margin-left: 120px;
   }
 
   
@@ -108,6 +114,14 @@ font-size: 24px;
   /* Example padding */
  
   position: relative; 
+}
+
+.box-p{
+  max-width: 90%;
+}
+.box-h2{
+  max-width: 200px;
+  margin-bottom: 20px;
 }
 
 .box:not(:last-child)::after {
@@ -177,6 +191,8 @@ font-size: 24px;
 
 /* Add media query for screens smaller than 768px (e.g., smartphones) */
 @media only screen and (max-width: 768px) {
+
+  
   .aboutimg {
       width: 100%; /* Make the image responsive */
       height: auto;
@@ -192,6 +208,7 @@ font-size: 24px;
 
   .aboutus-p {
       font-size: 20px; /* Decrease font size for smaller screens */
+      max-width: 100%;
   }
 
   .img-container {
@@ -206,15 +223,19 @@ font-size: 24px;
   .statsTable {
       position: relative; /* Remove absolute positioning */
       top: auto;
-      left: auto;
+    left: calc(768px - 80%);
       transform: none;
       width: 50%; /* Make the stats table full-width */
       max-width: none;
       margin: 20px auto; /* Add margin for spacing */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
   }
 
   .stats-h2 {
-    padding-top: 50px;
+   // padding-top: 50px;
       font-size: 24px; /* Decrease font size for smaller screens */
   }
 
@@ -225,6 +246,8 @@ font-size: 24px;
   .solutions {
       margin-top: 120px; /* Adjust margin-top for smaller screens */
       margin-left: 30px; /* Decrease margin-left for smaller screens */
+      margin: 35rem 10rem 10rem 10rem; /* margin-top 160px, margin-left and margin-right 80px */
+
   }
 
   .boxes {
@@ -241,6 +264,7 @@ font-size: 24px;
   .box:not(:last-child)::after {
       display: none; /* Hide vertical lines on smaller screens */
   }
+
   .periudhat,
   .periudhat-2 {
       flex-direction: column; /* Stack items vertically */
@@ -290,7 +314,7 @@ font-size: 24px;
 
   .aboutusheaderP {
       gap: 1.25rem; /* 20px */
-      margin: 0 5rem 2.5rem 5rem; /* margin-left and margin-right 80px, margin-bottom 40px */
+      //margin: 0 5rem 2.5rem 5rem; /* margin-left and margin-right 80px, margin-bottom 40px */
   }
 
   .statsTable {
@@ -317,7 +341,7 @@ font-size: 24px;
   }
 
   .solutions {
-      margin: 10rem 5rem 0 5rem; /* margin-top 160px, margin-left and margin-right 80px */
+     // margin: 40rem 10rem 10rem 10rem; /* margin-top 160px, margin-left and margin-right 80px */
   }
 
   .line {
@@ -325,11 +349,11 @@ font-size: 24px;
   }
 
   .boxes {
-      gap: 5rem; /* 80px */
+      gap: 4rem; /* 80px */
   }
 
   .box {
-      flex: 1 1 calc(33.33% - 5rem); /* Adjust gap */
+     // flex: 1 1 calc(33.33% - 5rem); /* Adjust gap */
   }
 
   .periudhat {

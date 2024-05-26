@@ -38,6 +38,10 @@
     margin-top: 120px;
     gap: 50px;
     color: white;
+
+    @media(max-width:1500px){
+        flex-wrap: wrap;
+    }
 }
 .box-contact-1{
     display: flex;
@@ -53,7 +57,7 @@
 
 .location-section{
     div{
-        margin-top: 120px;
+        margin-top: 60px;
         margin-left: 120px;
     }
     p{
@@ -67,6 +71,13 @@
     padding-bottom: 56.25%;
     position: relative;
     height: 0;
+   
+}
+
+.if{
+    height: 100%;
+    width: 80%;
+    border-radius: 10px;
 }
 .loch{
     color: white;
@@ -75,13 +86,14 @@
     left: 0;
     top: 0;
     border: 0;
-    height: 80%;
+    height: 60%;
     width: 80%;
-    position: absolute;
+    position: absolute; border-radius: 10px;
 }
 
 .contact-h-p{
     color: #9d9d9d;
+    text-align: center;
 }
 
 
@@ -90,17 +102,17 @@
       margin-top: 50px; 
     }
     
-    .boxes-contact {
-      flex-direction: column; 
-      margin-top: 50px; 
-      gap: 20px; 
-    }
+    // .boxes-contact {
+    //   flex-direction: column; 
+    //   margin-top: 50px; 
+    //   gap: 20px; 
+    // }
     
-    .box-contact-1 {
-      width: 80%; 
-      max-width: 335px;
-      height: auto; 
-    }
+    // .box-contact-1 {
+    //   width: 80%; 
+    //   max-width: 335px;
+    //   height: auto; 
+    // }
   
     .ic {
       width: 20px; 
