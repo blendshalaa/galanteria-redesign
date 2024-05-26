@@ -14,8 +14,8 @@ import m9 from '../../assets/images/MT009.png';
 import m10 from '../../assets/images/MT0010.jpg';
 import m11 from '../../assets/images/MT0011.jpg';
 import m12 from '../../assets/images/R1.png';
-import m13 from '../../assets/images/R2.jpg';
-import m14 from '../../assets/images/R3.jpg';
+import m13 from '../../assets/images/RR2.jpg';
+import m14 from '../../assets/images/RR3.jpg';
 import m15 from '../../assets/images/R4.jpg'
 
 
