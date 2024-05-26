@@ -9,7 +9,7 @@
 
 
     //margin-top: 120px;
-    padding-top: 120px;
+    padding-top: 140px;
     
 
   
@@ -22,14 +22,16 @@
     font-size: 48px;
 }
 .aboutus-p{
-    font-size: 24px;
+    font-size: 16px;
     color: white;
     max-width: 70%;
+    color: #D9D9D9;
+
 }
 
 .aboutimg{
-    width: 1370px;
-    height: 536px;
+    width: 1300px;
+    height: 436px;
     border-radius: 10px;
     object-fit: cover;
   
@@ -91,14 +93,10 @@ font-size: 24px;
   
    
   }
-.line{
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding-bottom: 120px;
-    border-bottom: 1px solid rgb(232, 229, 229);
 
-}
   .boxes{
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-bottom: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,25 +112,46 @@ font-size: 24px;
   /* Example padding */
  
   position: relative; 
+  border: 1px solid #A7541E;
+  border-radius: 5px;
+  padding: 20px;
+  height: 150px;
+  box-shadow:2px 2px 2px 2px #A7541E;
 }
 
 .box-p{
   max-width: 90%;
+  font-size: 18px;
+  color: #D9D9D9;
+
+}
+hr{
+  color:white;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: -70px;
+background-color: #31302C;
+  @media(max-width:1000px){
+      width: 100%;
+  }
+
+
 }
 .box-h2{
   max-width: 200px;
   margin-bottom: 20px;
+  font-size: 32px;
 }
 
-.box:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -5px; 
-  width: 3px;
-  height: 100%;
-  background-color: #A7541E; /* Color of the vertical line */
-}
+// .box:not(:last-child)::after {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   right: -5px; 
+//   width: 3px;
+//   height: 100%;
+//   background-color: #A7541E; /* Color of the vertical line */
+// }
 
 // .mainAbout{
   
@@ -203,11 +222,11 @@ font-size: 24px;
   }
 
   .aboutus-h1 {
-      font-size: 36px; /* Decrease font size for smaller screens */
+      font-size: 32px; /* Decrease font size for smaller screens */
   }
 
   .aboutus-p {
-      font-size: 20px; /* Decrease font size for smaller screens */
+      font-size: 16px; /* Decrease font size for smaller screens */
       max-width: 100%;
   }
 
@@ -297,15 +316,15 @@ font-size: 24px;
 
   .aboutus-h1 {
 
-      font-size: 2.25rem; /* 36px */
+      font-size: 32px; /* 36px */
   }
 
   .aboutus-p {
-      font-size: 1.25rem; /* 20px */
+      font-size: 16px; /* 20px */
   }
 
   .aboutimg {
-      max-width: 1000px;
+      width: 1000px;
   }
 
   .img-container {
@@ -344,9 +363,7 @@ font-size: 24px;
      // margin: 40rem 10rem 10rem 10rem; /* margin-top 160px, margin-left and margin-right 80px */
   }
 
-  .line {
-      padding-bottom: 5rem; /* 80px */
-  }
+ 
 
   .boxes {
       gap: 4rem; /* 80px */
