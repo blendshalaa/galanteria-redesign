@@ -6,6 +6,9 @@ import logo from '../../assets/images/LOGO_G.png'
 import { Link } from 'react-router-dom'
 import { Context } from "../../Components/Context/Products"
 import language from '../../lang'
+import AppWhatsApp from '../../Components/WhatsappViber/AppWhatsApp'
+import Viber from '../../Components/WhatsappViber/Viber'
+
 
 
 const Footer = () => {
@@ -70,6 +73,11 @@ const Footer = () => {
               </g>
             </g>
           </svg>
+          <div className='apps'>
+          <AppWhatsApp phoneNumber={+38344841272} />
+          <Viber phoneNumber={+38344841272}/>
+          </div>
+         
         </div>
       </div>
 
