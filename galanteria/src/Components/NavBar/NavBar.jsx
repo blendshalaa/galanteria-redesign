@@ -143,23 +143,7 @@ const NavBar = () => {
                   <Link onClick={toggleHomeFurnitureList}>{language[lang]?.menuHeader[2].name}</Link>
                   {showHomeFurnitureList && (
                     <ul className="nested-list">
-                      <li className='nes'>
-                        <Link onClick={toggleChairsList} >{language[lang]?.menuHeader[3].name}</Link>
-                        {ChairsList && (
-                          <ul className="nested-list">
-                            <li className="nes">
-                              <Link to="/OfficeChairs">{language[lang]?.chairs[0].one}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/MeetingChairs">{language[lang]?.chairs[0].two}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/WaitingChairs">{language[lang]?.chairs[0].three}</Link>
-                            </li>
-
-                          </ul>
-                        )}
-                      </li>
+                    
                      
                       <li className='nes'>
                         <Link onClick={toggleDesksList}>{language[lang]?.menuHeader[4].name}</Link>
@@ -184,6 +168,22 @@ const NavBar = () => {
                       </li>
                       <li className='nes'>
                         <Link to="/Drawers">{language[lang]?.menuHeader[9].name}</Link>
+                      </li>  <li className='nes'>
+                        <Link onClick={toggleChairsList} >{language[lang]?.menuHeader[3].name}</Link>
+                        {ChairsList && (
+                          <ul className="nested-list">
+                            <li className="nes">
+                              <Link to="/OfficeChairs">{language[lang]?.chairs[0].one}</Link>
+                            </li>
+                            <li className="nes">
+                              <Link to="/MeetingChairs">{language[lang]?.chairs[0].two}</Link>
+                            </li>
+                            <li className="nes">
+                              <Link to="/WaitingChairs">{language[lang]?.chairs[0].three}</Link>
+                            </li>
+
+                          </ul>
+                        )}
                       </li>
                       <li className='nes'>
                         <Link to="/Others">{language[lang]?.menuHeader[10].name}</Link>
@@ -191,9 +191,9 @@ const NavBar = () => {
                     </ul>
                   )}
                 </li>
-                <li className='nes'>
+                {/* <li className='nes'>
                   <Link to='/category2'>{language[lang]?.menuHeader[11].name}</Link>
-                </li>
+                </li> */}
               </ul>
             )}
           </div>

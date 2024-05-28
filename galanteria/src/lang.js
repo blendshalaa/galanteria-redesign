@@ -211,7 +211,7 @@ const language = {
             left13:"Rr.Ismail Qemali n.n. 11000 Podujevë - Kosovë",
             left2:"Kontakti",
            left3:"Email-i",
-           bottom1:"Zyra në Prishtinë",
+           bottomfirst:"Zyra në Prishtinë",
            bottom12:"Rr. Rrafshi i Kosovës",
            bottom13:"Veternik - Prishtinë"
         
@@ -438,7 +438,7 @@ footer: [{
             left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
             left2: "Contact",
             left3: "Email",
-            bottom: "Office in Prishtina",
+            bottomfirst: "Office in Prishtina",
             bottom12: "Rr. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }
@@ -676,7 +676,7 @@ footer: [{
             left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
             left2: "Kontakt",
             left3: "E-Mail",
-            bottom1: "Büro in Prishtina",
+            bottomfirst: "Büro in Prishtina",
             bottom12: "Rr. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }

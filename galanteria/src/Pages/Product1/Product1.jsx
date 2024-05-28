@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 
-const Product1 = ({ data }) => {
+const Product1 = ({ data = {} }) => {
   useEffect(() => {
     // Scroll to the top of the page with smooth behavior when the component mounts
     window.scrollTo({
@@ -14,6 +14,7 @@ const Product1 = ({ data }) => {
       behavior: 'smooth'
     });
   }, []);
+  
   const [{ lang }] = useContext(Context);
   const [expandedImage, setExpandedImage] = useState(null);
 
@@ -25,6 +26,9 @@ const Product1 = ({ data }) => {
     setExpandedImage(null);
   };
 
+  const photos = data.photos || [];
+  const codes = data.codep || [];
+
   return (
     <div className='product1-wrapper'>
       <NavBar />
@@ -35,17 +39,20 @@ const Product1 = ({ data }) => {
               <img src={expandedImage} alt="Expanded" />
             </div>
           )}
-          <img src={data?.firstphoto} alt="" onClick={() => handleImageClick(data?.firstphoto)} />
+          <img src={data.firstphoto} alt="" onClick={() => handleImageClick(data.firstphoto)} />
         </div>
         <div className='product-text'>
-          <h4>{data?.category}</h4>
-          <h5>{data?.name}</h5>
+          <h4>{data.category}</h4>
+          <h5>{data.name}</h5>
         </div>
       </div>
       <div className='product-images'>
-        {data?.photos.map((photo, index) => (
-          <img key={index} src={photo} alt="" onClick={() => handleImageClick(photo)} />
-        ))}
+        {photos.map((photo, index) => (
+          <div key={index} className="product-image-container">
+            <img src={photo} alt="" onClick={() => handleImageClick(photo)} />
+            <p className="image-caption">{codes[index]}</p>
+          </div>
+        ))}    
       </div>
       <hr />
       <Footer />

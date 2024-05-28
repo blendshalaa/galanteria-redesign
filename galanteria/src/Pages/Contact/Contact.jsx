@@ -69,7 +69,7 @@ const Contact = () => {
 
         <div className='location-section'>
           <div className='location-text'>
-          <h1 className='loch'>{language[lang]?.contact[0].bottom1}</h1>
+          <h1 className='loch'>{language[lang]?.contact[0].bottomfirst}</h1>
           <p className='contact-h-p2'>{language[lang]?.contact[0].bottom12}</p>
           <p className='contact-h-p2'>{language[lang]?.contact[0].bottom13}</p>
           </div>

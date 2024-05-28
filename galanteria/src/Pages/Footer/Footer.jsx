@@ -74,8 +74,8 @@ const Footer = () => {
             </g>
           </svg>
           <div className='apps'>
-          <AppWhatsApp phoneNumber={+38344841272} />
-          <Viber phoneNumber={+38344841272}/>
+          <AppWhatsApp phoneNumber={+37744259469} />
+          <Viber phoneNumber={+38344259469}/>
           </div>
          
         </div>

@@ -226,31 +226,96 @@ import bottom3 from '../assets/images/bottom3.jpg'
 import bottom4 from '../assets/images/bottom4.jpg'
 import bottom5 from '../assets/images/bottom5.jpg'
 import bottom6 from '../assets/images/bottom6.jpeg'
-import milenium from '../assets/images/milenium.jpg'
-import milenium1 from '../assets/images/milenium1.jpg'
-import milenium2 from '../assets/images/milenium2.jpg'
-import milenium3 from '../assets/images/milenium3.jpg'
-import milenium4 from '../assets/images/milenium4.jpg'
-import milenium5 from '../assets/images/milenium5.jpg'
-import milenium6 from '../assets/images/milenium6.jpg'
+import bottom7 from '../assets/images/bottom7.jpg'
+import bottom8 from '../assets/images/bottom8.jpg'
+import bottom9 from '../assets/images/bottom9.jpg'
+import bottom10 from '../assets/images/bottom10.jpg'
+import bottom11 from '../assets/images/bottom11.jpg'
+import bottom12 from '../assets/images/bottom12.jpg'
+import bottom13 from '../assets/images/bottom13.jpeg'
+import bottom14 from '../assets/images/bottom14.jpeg'
+import bottom15 from '../assets/images/bottom15.jpeg'
+import bottom16 from '../assets/images/bottom16.jpeg'
+import bottom17 from '../assets/images/bottom17.jpeg'
+import bottom18 from '../assets/images/bottom18.jpeg'
+import bottom19 from '../assets/images/bottom19.jpeg'
+import bottom20 from '../assets/images/bottom20.jpeg'
+import bottom21 from '../assets/images/bottom21.jpeg'
+
 import tika from '../assets/images/tika.jpg'
 import tika2 from '../assets/images/tika2.jpg'
 import tika3 from '../assets/images/tika3.jpg'
 import tika4 from '../assets/images/tika4.jpg'
 import tika5 from '../assets/images/tika5.jpg'
 import tika6 from '../assets/images/tika6.jpg'
-import tika1 from '../assets/images/tika1.jpg'
-import usmile from '../assets/images/usmile.jpg'
+import tika7 from '../assets/images/tika7.jpg'
+import tika8 from '../assets/images/tika8.jpg'
+import tika9 from '../assets/images/tika9.jpg'
+import tika10 from '../assets/images/tika10.jpg'
+import tika11 from '../assets/images/tika11.jpg'
+import tika12 from '../assets/images/tika12.jpg'
+
+
+
+import usmile from '../assets/images/usmile1.jpg'
 import usmile1 from '../assets/images/usmile1.jpg'
 import usmile2 from '../assets/images/usmile2.jpg'
 import usmile3 from '../assets/images/usmile3.jpg'
 import usmile4 from '../assets/images/usmile4.jpg'
+import usmile5 from '../assets/images/usmile5.jpg'
+import usmile6 from '../assets/images/usmile6.jpg'
+import usmile7 from '../assets/images/usmile7.jpg'
+import usmile8 from '../assets/images/usmile8.jpg'
+import usmile9 from '../assets/images/usmile9.jpg'
+import usmile10 from '../assets/images/usmile10.jpg'
+import usmile11 from '../assets/images/usmile11.jpg'
+import usmile12 from '../assets/images/usmile12.jpg'
+import usmile13 from '../assets/images/usmile13.jpg'
+import usmile14 from '../assets/images/usmile14.jpg'
+import usmile15 from '../assets/images/usmile15.jpg'
+
+
+
 
 import integrime from '../assets/images/integrime.jpg'
 import integrime1 from '../assets/images/integrime1.jpg'
 import integrime2 from '../assets/images/integrime2.jpg'
 import integrime3 from '../assets/images/integrime3.jpg'
 import integrime4 from '../assets/images/integrime4.jpg'
+import integrime5 from '../assets/images/integrime5.jpg'
+import integrime6 from '../assets/images/integrime6.jpg'
+import integrime7 from '../assets/images/integrime7.jpg'
+import integrime8 from '../assets/images/integrime8.jpg'
+import mile from '../assets/images/mile1.jpg'
+import mile1 from '../assets/images/mile2.jpg'
+import mile2 from '../assets/images/mile3.jpg'
+import mile3 from '../assets/images/mile4.jpg'
+import mile4 from '../assets/images/mile5.jpg'
+import mile5 from '../assets/images/mile6.jpg'
+import mile6 from '../assets/images/mile7.jpg'
+import mile7 from '../assets/images/mile8.jpg'
+import mile8 from '../assets/images/mile9.jpg'
+import mile9 from '../assets/images/mile10.jpg'
+import mile10 from '../assets/images/mile11.jpg'
+import mile11 from '../assets/images/mile12.jpg'
+import mile12 from '../assets/images/mile13.jpg'
+import mile13 from '../assets/images/mile14.jpg'
+import mile14 from '../assets/images/mile15.jpg'
+import mile15 from '../assets/images/mile16.jpg'
+import mile16 from '../assets/images/mile17.jpg'
+import mile17 from '../assets/images/mile18.jpg'
+import mile18 from '../assets/images/mile19.jpg'
+import mile19 from '../assets/images/mile20.jpg'
+import mile20 from '../assets/images/mile21.jpg'
+import mile21 from '../assets/images/mile22.jpg'
+import mile22 from '../assets/images/mile23.jpg'
+import mile23 from '../assets/images/mile24.jpg'
+import mile24 from '../assets/images/mile25.jpg'
+import mile25 from '../assets/images/mile26.jpg'
+import mile26 from '../assets/images/mile27.jpg'
+import mile27 from '../assets/images/mile28.jpg'
+
+
 
 import kultur from '../assets/images/kultur.jpg'
 import kultur1 from '../assets/images/kultur1.jpg'
@@ -259,19 +324,34 @@ import kultur3 from '../assets/images/kultur3.jpg'
 import kultur4 from '../assets/images/kultur4.jpg'
 import kultur5 from '../assets/images/kultur5.jpg'
 import kultur6 from '../assets/images/kultur6.jpg'
+import kultur7 from '../assets/images/kultur7.jpg'
+import kultur8 from '../assets/images/kultur8.jpg'
+import kultur9 from '../assets/images/kultur9.jpg'
+import kultur10 from '../assets/images/kultur10.jpg'
+import kultur11 from '../assets/images/kultur11.jpg'
+import kultur12 from '../assets/images/kultur12.jpg'
+import kultur13 from '../assets/images/kultur13.jpg'
+import kultur14 from '../assets/images/kultur14.jpg'
+import kultur15 from '../assets/images/kultur15.jpg'
+import kultur16 from '../assets/images/kultur16.jpg'
+import kultur17 from '../assets/images/kultur17.jpg'
+import kultur18 from '../assets/images/kultur18.jpg'
+
 
 const kulturphoto = kultur;
-const kulturphotos = [kultur1, kultur2, kultur3, kultur4, kultur5, kultur6]
+const kulturphotos = [kultur1, kultur2, kultur3, kultur4, kultur5, kultur6, kultur7, kultur8, kultur9, kultur10, kultur11, kultur12,kultur13, kultur14, kultur15, kultur16, kultur17]
 const integrimephoto = integrime;
-const integrimephotos = [integrime1, integrime2, integrime3, integrime4]
+const integrimephotos = [integrime1, integrime2, integrime3, integrime4, integrime5, integrime6, integrime7, integrime8]
 const usmilephoto = usmile;
-const usmilephotos = [usmile1, usmile2, usmile3, usmile4]
+const usmilephotos = [usmile1, usmile2, usmile3, usmile4, usmile5, usmile6, usmile7, usmile8, usmile9, usmile10, usmile11 , usmile12, usmile13, usmile14, usmile15,]
 const tikaphoto = tika;
-const tikaphotos = [tika1, tika2, tika3, tika4, tika5, tika6]
-const mileniumphoto = milenium;
-const mileniumphotos = [milenium1, milenium2, milenium3, milenium4, milenium5, milenium6]
+const tikaphotos = [ tika2, tika3, tika4, tika5, tika6, tika7, tika8, tika9, tika10, tika11, tika12]
+const mileniumphoto = mile;
+const mileniumphotos = [mile1, mile2, mile3, mile4, mile5, mile6, mile7, mile8, mile9, mile10, mile11, mile12, mile13, mile14, mile15, mile16, mile17, mile18, mile19, mile20, mile21, mile22, mile23, mile24, mile15, mile26, mile27
+
+]
 const bottomphoto = bottom;
-const bottomphotos = [bottom1, bottom2, bottom3, bottom4, bottom5, bottom6]
+const bottomphotos = [bottom1, bottom2, bottom3, bottom4, bottom5, bottom6, bottom7, bottom8, bottom9, bottom10, bottom11, bottom12, bottom13, bottom14, bottom15, bottom16, bottom17, bottom18, bottom19, bottom20, bottom21]
 
 const lightphoto = l1;
 const lightphotos = [ l2, l3,l13,l14]
@@ -377,6 +457,7 @@ const uranusphoto = uranus;
 const uranusphotos = [uranus1, uranus]
 const otherphoto = others; 
 const othersphotos = [others1, others2, others3 ,others4]
+const photocode=["CH001", "CH002", "CH003", "CH004"]
 
 
 
@@ -389,6 +470,7 @@ const dataProducts = {
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
             photos: lightphotos,
             firstphoto:lightphoto,
+            codes:photocode
         },
         "giulia":{
 

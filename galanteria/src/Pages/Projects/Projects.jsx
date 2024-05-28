@@ -3,12 +3,12 @@ import React, { useEffect, useContext } from 'react';
 import './Projects.scss';
 import NavBar from '../../Components/NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import project1 from '../../assets/images/bottom.jpg';
-import project2 from '../../assets/images/milenium.jpg';
+import project1 from '../../assets/images/bottom2.jpg';
+import project2 from '../../assets/images/mile11.jpg';
 import project3 from '../../assets/images/tika.jpg';
-import project4 from '../../assets/images/usmile.jpg';
-import project5 from '../../assets/images/integrime.jpg';
-import project6 from '../../assets/images/kultur.jpg';
+import project4 from '../../assets/images/usmile1.jpg';
+import project5 from '../../assets/images/integrime1.jpg';
+import project6 from '../../assets/images/kultur2.jpg';
 import { useNavigate } from 'react-router-dom';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
@@ -33,10 +33,10 @@ const Projects = () => {
   };
 
   const images = [
-    { src: project1, alt: "BottomLine Prishtina and Geneva" }, 
+    { src: project1, alt: "BottomLine Prishtina and Geneva" },     { src: project2, alt: "Millennium Challenge Account Kosovo" },
+
     { src: project5, alt: "Ministria e Integrimeve - Republika e Kosovës" },
     { src: project6, alt: "Ministria e Kulturës - Republika e Kosovës" },
-    { src: project2, alt: "Millennium Challenge Account Kosovo" },
     { src: project3, alt: "Tika - Qendra për Rehabilitimin dhe Edukimin Special" },
     { src: project4, alt: "U-smile office - Liège" },
    
