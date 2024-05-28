@@ -15,7 +15,7 @@ function AppWhatsApp({phoneNumber}) {
     }
   return (
     <div onClick={handleClick} style={{cursor:"pointer"}}>
-         <FontAwesomeIcon icon={faWhatsapp} size="2x" color="#25D366" />
+         <FontAwesomeIcon icon={faWhatsapp} size="3x" color="#25D366" />
     </div>
   )
 }
