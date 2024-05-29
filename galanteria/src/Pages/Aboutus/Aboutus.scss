@@ -67,31 +67,7 @@
 
 
 }
-// .statsTable {
-//   position: absolute; /* Position absolutely within the container */
-//   top: 60%; /* Adjust to position vertically */
-//   left: 85%; /* Adjust to position horizontally */
-//   transform: translate(-50%, -50%); /* Center the element */
-//   //width: 351px; /* Example width */
-//  // height: 477px; /* Example height */
-//   background-color: #A7541E;
-//   color: white;
-//   border-radius: 5%;
-//   text-align: center; /* Center text horizontally */
 
-//   @media(max-width:768px){
-// // left: 50%;
-//  top: 100%;
-// transform: none;
-// //top: 0;
-// left: 0;
-// display: flex;
-// justify-content: center;
-// align-items: center;
-// margin-left: 40px;
-
-//   }
-//}
   .stats-text {
     display: flex;
     flex-direction: column;
@@ -206,9 +182,7 @@ background-color: #31302C;
       height: 250px;
   }
 
-  .about-us-header {
-   //   margin-top: 60px; /* Decrease margin-top for smaller screens */
-  }
+
 
   .aboutus-h1 {
       font-size: 32px; /* Decrease font size for smaller screens */
@@ -229,28 +203,6 @@ background-color: #31302C;
       margin-right: 10px;
   }
 
-  // .statsTable {
-  //     position: relative; /* Remove absolute positioning */
-  //     top: auto;
-  //   left: calc(768px - 80%);
-  //     transform: none;
-  //     width: 50%; /* Make the stats table full-width */
-  //     max-width: none;
-  //     margin: 20px auto; /* Add margin for spacing */
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-
-  // }
-
-  // .stats-h2 {
-  //  // padding-top: 50px;
-  //     font-size: 24px; /* Decrease font size for smaller screens */
-  // }
-
-  // .stats-p {
-  //     font-size: 20px; /* Decrease font size for smaller screens */
-  // }
 
   .solutions {
       margin-top: 120px; /* Adjust margin-top for smaller screens */
@@ -258,21 +210,6 @@ background-color: #31302C;
       margin: 35rem 10rem 10rem 10rem; /* margin-top 160px, margin-left and margin-right 80px */
 
   }
-
-  // .boxes {
-  //     flex-direction: column; /* Stack boxes vertically */
-  //     align-items: center; /* Center boxes horizontally */
-  //     gap: 20px; /* Add gap between boxes */
-  // }
-
-  // .box {
-  //     width: 100%; /* Make boxes full-width */
-  //     padding: 20px; /* Add padding */
-  // }
-
-  // .box:not(:last-child)::after {
-  //     display: none; /* Hide vertical lines on smaller screens */
-  // }
 
   .periudhat,
   .periudhat-2 {
@@ -291,18 +228,13 @@ background-color: #31302C;
       margin-right: 0; /* Remove right margin */
   }
 
-  // .pimg-container {
-  //     /* Add margin-bottom for spacing */
-  // }
+  
 
   .periudha-2 {
       margin-top: 50px; /* Adjust top margin */
   }
 }
 @media only screen and (max-width: 1500px) {
-  .about-us-header {
-     // padding-top: 160px;
-  }
 
   .aboutus-h1 {
 
@@ -367,18 +299,13 @@ background-color: #31302C;
       gap: 4rem; /* 80px */
   }
 
-  .box {
-     // flex: 1 1 calc(33.33% - 5rem); /* Adjust gap */
-  }
 
   .periudhat {
       margin: 5rem; /* 80px */
       gap: 1rem; /* 40px */
   }
 
-  .text-periudha{
- 
-  }
+  
   .periudha-1, .periudha-2 {
       flex: 1 1 calc(50% - 2.5rem); /* Adjust gap */
       margin-bottom: 2rem; /* 32px */
