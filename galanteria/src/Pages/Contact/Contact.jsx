@@ -74,13 +74,13 @@ const Contact = () => {
           <p className='contact-h-p2'>{language[lang]?.contact[0].bottom13}</p>
           </div>
 
-          <div >
+          
           <iframe className='ifr' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.754710513295!2d21.190889575659696!3d42.92021389952976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354afa471710343%3A0xfeff29f135d13fa3!2sGalanteria%20sh.p.k!5e0!3m2!1sen!2s!4v1712843581952!5m2!1sen!2s"
            width="600" height="350"
            allowfullscreen
            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
            title='Responsive Google Map'></iframe>
-          </div>
+         
           
           
         </div>

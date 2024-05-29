@@ -32,6 +32,12 @@
         font-size: 20px;
 
         h1{
+           text-align: center;
+
+             
+        @media(max-width:768px){
+
+           }
             b{
                 color:#A7541E;
             }
@@ -42,12 +48,13 @@
           font-size: 15px;
           margin-top: 20px;
           margin-bottom: 60px;
+       
          }
 
         @media(max-width:2000px) {
             padding: 0;
            // text-align: center;
-                  padding-left: 70px;
+                 // padding-left: 70px;
 
            }
 
@@ -88,6 +95,11 @@
                 font-size: 15px;
                // text-align: center;
                // text-transform:uppercase;
+               @media(max-width:1500px){
+               max-width:350px;
+               text-align: center;
+             }
+         
             }
 
             img{
@@ -118,7 +130,7 @@
                 background-size:auto;
 
                 @media(max-width:1500px){
-                    width: 170px;
+                    width: 350px;
                     height: 250px;
                  }
              

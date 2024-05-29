@@ -304,6 +304,11 @@ body {
 
 
         }
+        .swiper-slide-active{
+            @media(max-width:768px){
+                width: 400px;
+            }
+        }
 
 
         .swiper-slide img {

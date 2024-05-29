@@ -33,22 +33,25 @@ const Aboutus = () => {
         <div className='img-container'>
           <img className='aboutimg' src={aboutimg}></img>
         </div>
-        <div className='statsTable'>
-          <div className='stats-text'>
-            <div>
-              <h2 className='stats-h2'>1000+</h2>
-              <p className='stats-p'>{language[lang]?.about[0].left1}</p>
-            </div>
-            <div>
-              <h2 className='stats-h2'>200+</h2>
-              <p className='stats-p'>{language[lang]?.about[0].left2}</p>
-            </div>
-            <div>
-              <h2 className='stats-h2'>15+</h2>
-              <p className='stats-p'>{language[lang]?.about[0].left3}</p>
-            </div>
-          </div>
-        </div>
+        <div className='stats-container'>
+  <div className='statsTable'>
+    <div className='stats-text'>
+      <div>
+        <h2 className='stats-h2'>1000+</h2>
+        <p className='stats-p'>{language[lang]?.about[0].left1}</p>
+      </div>
+      <div>
+        <h2 className='stats-h2'>200+</h2>
+        <p className='stats-p'>{language[lang]?.about[0].left2}</p>
+      </div>
+      <div>
+        <h2 className='stats-h2'>15+</h2>
+        <p className='stats-p'>{language[lang]?.about[0].left3}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       </div>
       <div className='solutions'>
