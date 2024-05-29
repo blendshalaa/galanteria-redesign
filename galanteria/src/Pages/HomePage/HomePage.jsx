@@ -5,6 +5,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomePage.scss';
+
+import { Carousel } from 'react-responsive-carousel';
 import NavBar from '../../Components/NavBar/NavBar';
 import sl1 from '../../assets/images/MT004.jpg';
 import sl2 from '../../assets/images/o001.jpg';
@@ -12,9 +14,9 @@ import sl3 from '../../assets/images/lightttc.jpg';
 import sl4 from '../../assets/images/w001.jpg';
 import sl5 from '../../assets/images/gili.png';
 import s1 from '../../assets/images/milano1.jpg';
-import s2 from '../../assets/images/resim_20459.jpg';
+import s2 from '../../assets/images/li15.jpg';
 import s3 from '../../assets/images/a003.jpg';
-import s4 from '../../assets/images/FOULARD.jpg';
+import s4 from '../../assets/images/c3.png';
 import s5 from '../../assets/images/WS005.jpg';
 import s6 from '../../assets/images/CB006.jpg';
 import s7 from '../../assets/images/b1.jpg';
@@ -29,15 +31,35 @@ import Footer from '../Footer/Footer';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 import Language from '../../Components/NavBar/Language';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
+import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import p1 from '../../assets/images/p1.avif';
 import p2 from '../../assets/images/p2.png';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import img1 from '../../assets/images/bottom10.jpg'
+import img2 from '../../assets/images/bottom6.jpeg'
+import img3 from '../../assets/images/bottom5.jpg'
+import img4 from '../../assets/images/h1.jpg'
+import img5 from '../../assets/images/h2.jpg'
+import img6 from '../../assets/images/h3.jpg'
+
+
+
 
 export default function HomePage() {
   
   const [{ lang }] = useContext(Context);
   const navigate = useNavigate(); // Create a navigate function
+
+
+  const {
+    carouselImages,
+    uberUns,
+    whatWeDo,
+    architecture,
+    hvacEngineering,
+    wwtp,
+    partners,
+} = language[lang];
 
   const handleClick = () => {
     navigate('/WaitingChairs'); // Use navigate to go to /WaitingChairs
@@ -67,7 +89,7 @@ export default function HomePage() {
     <div className="home-wrapper">
       <NavBar />
 
-      <div className="hero">
+      {/* <div className="hero">
         <div className='h1'>
           <img src={sl1} alt="" />
         </div>
@@ -86,7 +108,67 @@ export default function HomePage() {
         <div className='h5'>
           <img src={sl5} alt="" />
         </div>
-      </div>
+      </div> */}
+
+<div className="hero">
+     {/* <Swiper
+        cssMode={true}
+        navigation={false}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        autoplay={{
+          delay: 60000, // 60 seconds
+          disableOnInteraction: false,
+        }}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
+        className="mySwiper"
+      >
+        <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img2}/></SwiperSlide>
+        <SwiperSlide><img src={img3}/></SwiperSlide>
+        <SwiperSlide><img src={img2}/></SwiperSlide>
+        <SwiperSlide><img src={img3}/></SwiperSlide>
+        <SwiperSlide><img src={img1}/></SwiperSlide>
+        <SwiperSlide><img src={img2}/></SwiperSlide>
+        <SwiperSlide><img src={img3}/></SwiperSlide>
+        <SwiperSlide><img src={img1}/></SwiperSlide>
+      </Swiper> */}
+
+<h1 className="centered-text"><i> {language[lang]?.hero[0].title}</i> </h1>
+
+
+<Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        //navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide><img className="black-background" src={img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img5} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img6} alt="" /></SwiperSlide>
+        {/* <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={img3} alt="" /></SwiperSlide> */}
+      </Swiper>
+</div>
+
+
+
+   
+    
+  
+
 
       <div className="slider">
         <h1>{language[lang]?.categories[0].title}</h1>
@@ -121,30 +203,10 @@ export default function HomePage() {
             <img onClick={handleClick} src={s1} alt="" />
             <p>{language[lang]?.categories[0].product1}</p>
           </SwiperSlide> */}
-          <SwiperSlide className='s'>
-            <img onClick={handleClick2} src={s2} alt="" />
-            <p>{language[lang]?.categories[0].product2}</p>
-          </SwiperSlide>
+         
           <SwiperSlide className='s'>
             <img onClick={handleClick3} src={s3} alt="" />
             <p>{language[lang]?.categories[0].product3}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <img onClick={handleClick4} src={s4} alt="" />
-            <p>{language[lang]?.categories[0].product4}</p>
-          </SwiperSlide> 
-          <SwiperSlide className='s'>
-            <img onClick={handleClick6} src={s6} alt="" />
-            <p>{language[lang]?.categories[0].product6}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <img onClick={handleClick5} src={s5} alt="" />
-            <p>{language[lang]?.categories[0].product5}</p>
-          </SwiperSlide>
-         
-          <SwiperSlide className='s'>
-            <img onClick={handleClick7} src={s7} alt="" />
-            <p>{language[lang]?.categories[0].product7}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
             <img onClick={handleClick8} src={s8} alt="" />
@@ -154,10 +216,32 @@ export default function HomePage() {
             <img onClick={handleClick9} src={s9} alt="" />
             <p>{language[lang]?.categories[0].product9}</p>
           </SwiperSlide>
+         <SwiperSlide className='s'>
+            <img onClick={handleClick2} src={s2} alt="" />
+            <p>{language[lang]?.categories[0].product2}</p>
+          </SwiperSlide>
+         
           <SwiperSlide className='s'>
+            <img onClick={handleClick4} src={s4} alt="" />
+            <p>{language[lang]?.categories[0].product4}</p>
+          </SwiperSlide> 
+            <SwiperSlide className='s'>
+            <img onClick={handleClick7} src={s7} alt="" />
+            <p>{language[lang]?.categories[0].product7}</p>
+          </SwiperSlide>
+          <SwiperSlide className='s'>
+            <img onClick={handleClick6} src={s6} alt="" />
+            <p>{language[lang]?.categories[0].product6}</p>
+          </SwiperSlide> 
+          <SwiperSlide className='s'>
+            <img onClick={handleClick5} src={s5} alt="" />
+            <p>{language[lang]?.categories[0].product5}</p>
+          </SwiperSlide>
+           <SwiperSlide className='s'>
             <img onClick={handleClick10} src={s10} alt="" />
             <p>{language[lang]?.categories[0].product10}</p>
           </SwiperSlide>
+        
         </Swiper>
       </div>
 

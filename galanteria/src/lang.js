@@ -1,3 +1,13 @@
+import img1 from '../../galanteria/src/assets/images/lighttt.jpg'
+import img2 from '../../galanteria/src/assets/images/FOULARD.jpg'
+import img3 from '../../galanteria/src/assets/images/MONZA.jpg'
+import img4 from '../../galanteria/src/assets/images/mile1.jpg'
+import img5 from '../../galanteria/src/assets/images/mile2.jpg'
+import img6 from '../../galanteria/src/assets/images/mile3.jpg'
+import img7 from '../../galanteria/src/assets/images/mile4.jpg'
+import img8 from '../../galanteria/src/assets/images/mile5.jpg'
+
+
 const language = {
     sq:{
         menuHeader: [
@@ -63,14 +73,14 @@ const language = {
                 path: "/Contact"
             },
             {
-                name: "Rreth Nesh",
+                name: "Rreth nesh",
                 path: "/Aboutus"
             },
 
 
            
         ],
-
+hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi”"}],
         ecatalog:[{
             one:"Katalog zyreje",
             two:"Katalog për shtëpi",
@@ -119,13 +129,7 @@ const language = {
             title:"Të tjera"
            
         }],
-        hero:[
-            {title:"MOBILJE  DHE AKSESORË",
-            redtitle:"PËR  INTERIER MODERN",
-            subtitle:"SHFRYTËZONI  IDETË TONA  PËR TË KRIJUAR  NJË INTERIOR QË TË PËRSHTATET TY"
-
-            },
-        ],
+    
         clients:[{
             title:"Referencat e klientëve ",
             name1:"LUX Development - Kosovë",
@@ -155,7 +159,7 @@ const language = {
             product6: "Kabinete",
             product7: "Karrige Pritjeje",
             product8: "Tavolina Takimesh",
-            product9: "Sirtare",
+            product9: "Sirtarët",
             product10: "Të tjera"
 
             }
@@ -204,8 +208,8 @@ const language = {
         }],
 
         contact:[{
-            title:"Na Kontaktoni",
-            subtitle:"Kontaktoni dhe na tregoni se si mund t'ju ndihmojmë",
+            title:"Na kontaktoni",
+            subtitle:"Na tregoni se si mund t'ju ndihmojmë",
             left1:"Adresa",
             left12:"Fabrika dhe Zyra Qendrore",
             left13:"Rr.Ismail Qemali n.n. 11000 Podujevë - Kosovë",
@@ -221,7 +225,17 @@ const language = {
             title:"Shikoni projektet",
             title2:"tona"
 
-        }]
+        }],
+        carouselImages: [
+            img1, // Replace with the German image URLs
+            img2,
+            img3,
+            img4, 
+            img5,
+            img6,
+            img7,
+            img8
+          ],
         
     },
     en:{
@@ -290,11 +304,13 @@ const language = {
                 path: "/Contact"
             },
             {
-                name: "About Us",
+                name: "About us",
                 path: "/Aboutus"
             },
            
         ],
+        hero:[{title:"“We offer you solutions with competence in design and quality”"}],
+
         cabinets:[{
             title:"Cabinets"
            
@@ -343,14 +359,8 @@ const language = {
             title:"Meeting Tables"
            
         }],
-        hero:[
-            {title:"FURNITURE AND \n ACCESSORIES",
-            redtitle:"FOR MODERN \n INTERIER",
-            subtitle:"TAKE ADVANTAGE OF OUR IDEAS TO CREATE AN INTERIOR THAT SUITS YOU"
-
-            },
-        ]
-        ,
+      
+        
         categories:[
             {
             title:"Popular Categories",
@@ -450,7 +460,18 @@ footer: [{
         }]
       
       
-  
+  ,
+  carouselImages: [
+    img1, // Replace with the German image URLs
+    img2,
+    img3,
+    img4, 
+    img5,
+    img6,
+    img7,
+    img8
+    // Add more images as needed
+  ],
   
 
 
@@ -525,6 +546,8 @@ footer: [{
             },
            
         ],
+        hero:[{title:"“Wir bieten Ihnen Lösungen mit Kompetenz in Design und Qualität”"}],
+
         ecatalog:[{
             one:"Büro Katalog",
             two:"Home Katalog",
@@ -572,14 +595,8 @@ footer: [{
            
         }],
         
-        hero:[
-            {title:"MÖBEL UND ZUBEHÖR",
-            redtitle:"FÜR MODERNE \n EINRICHTUNG",
-            subtitle:"NUTZEN SIE UNSERE IDEEN, UM EINEN INNENBEREICH  ZU SCHAFFEN, DER ZU IHNEN PASST"
-
-            },
-        ]
-        ,
+      
+        
         clients: [{
             title: "Kundenreferenzen",
             name1: "LUX Development - Kosovo",
@@ -685,7 +702,18 @@ footer: [{
        projects:[{
         title:"Schauen Sie sich unsere ",
         title2:"Projekte an"
-       }]
+       }],
+       carouselImages: [
+        img1, // Replace with the German image URLs
+        img2,
+        img3,
+        img4, 
+        img5,
+        img6,
+        img7,
+        img8
+        // Add more images as needed
+      ],
       
       
   

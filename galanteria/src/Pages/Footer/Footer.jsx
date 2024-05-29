@@ -31,13 +31,12 @@ const Footer = () => {
             <img src={logo} alt="" />
           </div>
           <div>
-            <h1>Galanteria</h1>
-            <p>{language[lang]?.footer[0].text}</p>
+            <h1 style={{textAlign:"center",marginTop:"50px", fontSize:"30px"
+            }}>Galanteria</h1>
           </div>
         </div>
         <div className='middle'>
           <div>
-            <h4>{language[lang]?.footer[0].pages}</h4>
             <Link to="/"><p> {language[lang]?.menuHeader[0].name}</p></Link>
             <Link to="/Projects"><p> {language[lang]?.menuHeader[12].name}</p></Link>
             <Link to="/Aboutus"><p>{language[lang]?.menuHeader[15].name}</p></Link>

@@ -50,7 +50,7 @@ const Product1 = ({ data = {} }) => {
         {photos.map((photo, index) => (
           <div key={index} className="product-image-container">
             <img src={photo} alt="" onClick={() => handleImageClick(photo)} />
-            <p className="image-caption">{codes[index]}</p>
+            <p className="image-caption">{data.name2[index]}</p>
           </div>
         ))}    
       </div>

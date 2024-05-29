@@ -57,7 +57,7 @@ const Contact = () => {
             <div className='icon-container'>
               <img className='ic' src={icon3} alt='icon'></img>
             </div>
-           <h3>{language[lang]?.contact[0].left3}</h3>
+           <h3>Email</h3>
            <p className='contact-h-p'>info@galanteriagroup.com</p>
            <p className='contact-h-p'>galanteriashpk@gmail.com</p>
           </div>
