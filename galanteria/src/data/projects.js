@@ -498,7 +498,7 @@ const codeothers=["TP001","TP002", "TP003", "TP004", "TP005", "TPL001", "TPL002"
 
 
 
-const dataProducts = {
+const dataProjects = {
     "sq": {
         "light":{
 
@@ -1974,5 +1974,5 @@ name:"Tika - Qendra për Rehabilitimin dhe Edukimin Special",
 }
 
 export {
-    dataProducts
+    dataProjects
 };

@@ -44,8 +44,8 @@ const WorkingTable = () => {
 
   const navigate = useNavigate();
 
-  const goToProduct = (e) => {
-    navigate(`/product/${e}`);
+  const goToProject = (e) => {
+    navigate(`/project/${e}`);
     console.log("here", e);
   }
 
@@ -61,55 +61,55 @@ const WorkingTable = () => {
         <div className='workingtables-images'>
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('rea')} src={rea} alt="" />
+              <img onClick={() => goToProject('rea')} src={rea} alt="" />
               <h4>Rea</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('nice')} src={nice} alt="" />
+              <img onClick={() => goToProject('nice')} src={nice} alt="" />
               <h4>Nice</h4>
 
             </div>
             <div>
-              <img onClick={() => goToProduct('hera')} src={hera} alt="" />
+              <img onClick={() => goToProject('hera')} src={hera} alt="" />
               <h4>Hera</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('hermes')} src={hermes} alt="" />
+              <img onClick={() => goToProject('hermes')} src={hermes} alt="" />
               <h4>Hermes</h4>
             </div>
 
           </div>
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('noble')} src={noble} alt="" />
+              <img onClick={() => goToProject('noble')} src={noble} alt="" />
               <h4>Noble</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('mild')} src={mild} alt="" />
+              <img onClick={() => goToProject('mild')} src={mild} alt="" />
               <h4>Mild</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('lito')} src={lito} alt="" />
+              <img onClick={() => goToProject('lito')} src={lito} alt="" />
               <h4>Lito</h4>
             </div>
 
           </div>
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('genius')} src={genius} alt="" />
+              <img onClick={() => goToProject('genius')} src={genius} alt="" />
               <h4>Genius</h4>
 
             </div>
             <div>
-              <img onClick={() => goToProduct('easy')} src={easy} alt="" />
+              <img onClick={() => goToProject('easy')} src={easy} alt="" />
               <h4>Easy</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('fors')} src={fors} alt="" />
+              <img onClick={() => goToProject('fors')} src={fors} alt="" />
               <h4>Fors</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('truva')} src={truva} alt="" />
+              <img onClick={() => goToProject('truva')} src={truva} alt="" />
               <h4>Truva</h4>
 
             </div>
@@ -119,18 +119,18 @@ const WorkingTable = () => {
 
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('window')} src={windowimg} alt="" />
+              <img onClick={() => goToProject('window')} src={windowimg} alt="" />
               <h4>Truva Window</h4>
 
             </div>
 
 
             <div>
-              <img onClick={() => goToProduct('artemis')} src={artemis} alt="" />
+              <img onClick={() => goToProject('artemis')} src={artemis} alt="" />
               <h4>Artemis</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('prisma')} src={prisma} alt="" />
+              <img onClick={() => goToProject('prisma')} src={prisma} alt="" />
               <h4>Prisma</h4>
             </div>
 
@@ -138,20 +138,20 @@ const WorkingTable = () => {
 
           <div className='images'>
             <div>
-              <img onClick={() => goToProduct('optima')} src={optima} alt="" />
+              <img onClick={() => goToProject('optima')} src={optima} alt="" />
               <h4>Optima</h4>
 
             </div>
             <div>
-              <img onClick={() => goToProduct('kronos')} src={kronos} alt="" />
+              <img onClick={() => goToProject('kronos')} src={kronos} alt="" />
               <h4>Kronos</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('uranus')} src={uranus} alt="" />
+              <img onClick={() => goToProject('uranus')} src={uranus} alt="" />
               <h4>Uranus</h4>
             </div>
             <div>
-              <img onClick={() => goToProduct('others')} src={others} alt="" />
+              <img onClick={() => goToProject('others')} src={others} alt="" />
               <h4>Others</h4>
 
             </div>

@@ -49,8 +49,8 @@ const Workstation = () => {
 
   const navigate = useNavigate();
 
-  const goToProduct = (e) => {
-    navigate(`/product/${e}`);
+  const goToProject = (e) => {
+    navigate(`/project/${e}`);
     console.log("here", e);
   }
 

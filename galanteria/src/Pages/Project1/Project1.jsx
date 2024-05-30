@@ -1,0 +1,63 @@
+import React, { useContext, useState, useEffect } from 'react';
+import './Project1.scss';
+import NavBar from '../../Components/NavBar/NavBar';
+import Footer from '../Footer/Footer';
+import language from '../../lang';
+import { Context } from '../../Components/Context/Products';
+
+const Project1 = ({ data = {} }) => {
+  useEffect(() => {
+    // Scroll to the top of the page with smooth behavior when the component mounts
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+  
+  const [{ lang }] = useContext(Context);
+  const [expandedImage, setExpandedImage] = useState(null);
+
+  const handleImageClick = (photo) => {
+    setExpandedImage(photo);
+  };
+
+  const handleCloseExpandedImage = () => {
+    setExpandedImage(null);
+  };
+
+  const photos = data.photos || [];
+  const codes = data.codep || [];
+
+  return (
+    <div className='project1-wrapper'>
+      <NavBar />
+      <div className="project">
+        <div className="project-image">
+          {expandedImage && (
+            <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
+              <img src={expandedImage} alt="Expanded" />
+            </div>
+          )}
+          <img src={data.firstphoto} alt="" onClick={() => handleImageClick(data.firstphoto)} />
+        </div>
+        <div className='project-text'>
+          <h4>{data.category}</h4>
+          <h5>{data.name}</h5>
+        </div>
+      </div>
+      <div className='project-images'>
+        {photos.map((photo, index) => (
+          <div key={index} className="project-image-container">
+            <img src={photo} alt="" onClick={() => handleImageClick(photo)} />
+            <p className="image-caption">{data.name2[index]}</p>
+          </div>
+        ))}    
+      </div>
+      <hr />
+      <Footer />
+    </div>
+  );
+}
+
+export default Project1;
