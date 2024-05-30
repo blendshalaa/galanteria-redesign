@@ -16,6 +16,7 @@ import MeetingTable from "./Pages/MeetingTable/MeetingTable";
 import Drawers from "./Pages/Drawers/Drawers";
 import Others from "./Pages/Others/Others";
 import Cabinets from "./Pages/Cabinets/Cabinets"
+import Project1Page from "./Pages/Project1Page/Project1Page";
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
           <Route path="/Others" element={<Others/>} />
 
           <Route path="/product/:slug" element={<Product1Page/>}/>
+          <Route path="/project/:slug" element={<Project1Page/>}/>
+
 
 
         </Routes>

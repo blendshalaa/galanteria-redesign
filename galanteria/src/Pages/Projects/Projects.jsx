@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 
+
 const Projects = () => {
   useEffect(() => {
     // Scroll to the top of the page with smooth behavior when the component mounts
@@ -27,8 +28,8 @@ const Projects = () => {
 
   const navigate = useNavigate();
 
-  const goToProduct = (e) => {
-    navigate(`/product/${e}`);
+  const goToProject = (e) => {
+    navigate(`/project/${e}`);
     console.log("here", e);
   };
 
@@ -53,7 +54,7 @@ const Projects = () => {
           <div className='images'>
             {images.slice(0, 3).map((image, index) => (
               <div key={index}>
-                <img onClick={() => goToProduct(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
+                <img onClick={() => goToProject(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
                 <h4>{image.alt}</h4>
               </div>
             ))}
@@ -61,7 +62,7 @@ const Projects = () => {
           <div className='images'>
             {images.slice(3).map((image, index) => (
               <div key={index}>
-                <img onClick={() => goToProduct(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
+                <img onClick={() => goToProject(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
                 <h4>{image.alt}</h4>
               </div>
             ))}

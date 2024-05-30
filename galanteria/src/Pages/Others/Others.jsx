@@ -47,16 +47,16 @@ const Others = () => {
   return (
     <div>
       <NavBar />
-      <div className='workstation-wrapper'>
+      <div className='others-wrapper'>
         {expandedImage && (
           <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
             <img src={expandedImage} alt="Expanded" />
           </div>
         )}
-        <div className='workstation-text'>
+        <div className='others-text'>
           <h1>{language[lang]?.others[0].title}</h1>
         </div>
-        <div className='workstation-images'>
+        <div className='others-images'>
           {images.map((image, index) => (
             <div key={index} className='image-container'>
               <img src={image.src} alt={image.alt} onClick={() => handleImageClick(image.src)} />

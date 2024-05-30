@@ -63,16 +63,16 @@ const MeetingTable = () => {
   return (
     <div>
       <NavBar />
-      <div className='workstation-wrapper'>
+      <div className='meet-wrapper'>
         {expandedImage && (
           <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
             <img src={expandedImage} alt="Expanded" />
           </div>
         )}
-        <div className='workstation-text'>
+        <div className='meet-text'>
           <h1>{language[lang]?.meetingTable[0].title}</h1>
         </div>
-        <div className='workstation-images'>
+        <div className='meet-images'>
           {images.map((image, index) => (
             <div key={index} className='image-container'>
               <img src={image.src} alt={image.alt} onClick={() => handleImageClick(image.src)} />

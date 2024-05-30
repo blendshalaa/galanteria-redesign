@@ -44,11 +44,11 @@ const language = {
                 path: "/MeetingTable"
             },
             {
-                name: "Kabinete",
+                name: "Kabinetet",
                 path: "/Cabinets"
             },
             {
-                name: "Sirtare",
+                name: "Sirtarët",
                 path: "/Drawers"
             },
             {
@@ -122,7 +122,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
            
         }],
         drawers:[{
-            title:"Sirtare"
+            title:"Sirtarët"
            
         }],
         others:[{
@@ -223,7 +223,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
         }],
         projects:[{
             title:"Shikoni projektet",
-            title2:"tona"
+            title2:" tona"
 
         }],
         carouselImages: [
