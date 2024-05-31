@@ -586,7 +586,7 @@ const dataProjects = {
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
             photos: remixphotos,
             firstphoto:remixphoto,
-            name2:coderea
+            name2:codemora
 
         },
         "diva":{
@@ -965,7 +965,7 @@ const dataProjects = {
             name2:codeothers
         },
         "bottomline prishtina and geneva":{
-            name:"BottomLine Prishtina and Geneva",
+            name:"BottomLine Prishtinë dhe Gjenevë",
             photos:bottomphotos,
             firstphoto:bottomphoto,
             name2:""
@@ -993,11 +993,13 @@ const dataProjects = {
 
         },
         "ministria e integrimeve - republika e kosovës":{
+            name:"Ministria e Integrimeve - Republika e Kosovës",
             photos:integrimephotos,
             firstphoto:integrimephoto,
             name2:""
         },
         "ministria e kulturës - republika e kosovës":{
+            name:"Ministria e Kulturës - Republika e Kosovës",
             photos:kulturphotos,
             firstphoto:kulturphoto,
             name2:""
@@ -1092,7 +1094,7 @@ const dataProjects = {
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
             photos: remixphotos,
             firstphoto:remixphoto,
-            name2:coderea
+            name2:codemora
 
         },
         "diva":{
@@ -1574,7 +1576,7 @@ const dataProjects = {
             description: "I formuar nga traditat shekullore daneze, stili modern skandinav pasqyrohet në shtratin Grenen, i quajtur sipas pelerinës në pikën më veriore të vendit. Ndërsa Deti Baltik takohet me Veriun këtu, kështu komoditeti dhe komoditeti gjenden me cilësinë dhe besueshmërinë e shtratit Grenen.",
             photos: remixphotos,
             firstphoto:remixphoto,
-            name2:coderea
+            name2:codemora
         },
         "diva":{
 

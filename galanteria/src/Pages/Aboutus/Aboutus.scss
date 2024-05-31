@@ -124,7 +124,7 @@ font-size: 24px;
 
   
 .box {
-  width: calc(33.33% - 10px); 
+  width: calc(28% - 5px); 
   /* Example padding */
  
   position: relative; 
@@ -135,8 +135,8 @@ font-size: 24px;
   box-shadow:2px 2px 2px 2px #A7541E;
 
   @media(max-width:1000px){
-    width: 350px;
-    padding: 0px;
+    width: 400px;
+    padding: 10px;
 }
 
 

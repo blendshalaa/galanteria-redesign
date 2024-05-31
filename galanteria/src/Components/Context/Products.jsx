@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
-    lang: localStorage.getItem("lang") || "sq"
+    lang: localStorage.getItem("lang") || "en"
 };
 
 const Products = ({ children }) => {
