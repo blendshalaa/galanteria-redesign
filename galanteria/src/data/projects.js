@@ -485,7 +485,7 @@ const codediva=["CH001", "CH002", "CH001"]
 const codecrew=["CH001", "CH001", "CH001", "CH002"]
 const codemora=["CH001", "CH002", "CH003", "CH004"]
 const codelotus=["CH001","CH002", "CH002"]
-const coderea=["001","002", "003", "004", "005", "006"]
+const coderea=["WT001","WT002", "WT003", "WT004", "WT005", "WT006"]
 const codeothers=["TP001","TP002", "TP003", "TP004", "TP005", "TPL001", "TPL002"]
 
 

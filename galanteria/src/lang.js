@@ -722,11 +722,11 @@ footer: [{
             subtitle: "Kontaktieren Sie uns und lassen Sie uns wissen, wie wir Ihnen helfen können",
             left1: "Adresse",
             left12: "Fabrik und Hauptbüro",
-            left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
+            left13: "Str. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
             left2: "Kontakt",
             left3: "E-Mail",
             bottomfirst: "Büro in Prishtina",
-            bottom12: "Rr. Rrafshi i Kosovës",
+            bottom12: "Str. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }
         ],

@@ -60,14 +60,15 @@ const Contact = () => {
             <div className='icon-container'>
               <img className='ic' src={icon3} alt='icon'></img>
             </div>
-           <h3>Email</h3>
-           <a href={gmailLink1} className='contact-h-p' target="_blank" rel="noopener noreferrer">
+           <h3>Email</h3>  
+           <a  href="mailto:info@galanteriagroup.com" className='contact-h-p'>
+        info@galanteriagroup.com
+      </a>     <br />
+           <a style={{marginTop:"-25px"}}href={gmailLink1} className='contact-h-p' target="_blank" rel="noopener noreferrer">
         galanteriashpk@gmail.com
       </a>
-      <br />
-      <a style={{marginTop:"-25px"}} href="mailto:info@galanteriagroup.com" className='contact-h-p'>
-        info@galanteriagroup.com
-      </a>
+ 
+    
           </div>
 
         </div>
