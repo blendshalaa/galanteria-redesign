@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 
-
 const Projects = () => {
   useEffect(() => {
     // Scroll to the top of the page with smooth behavior when the component mounts
@@ -34,13 +33,55 @@ const Projects = () => {
   };
 
   const images = [
-    { src: project1, alt: "BottomLine Prishtina and Geneva" },     { src: project2, alt: "Millennium Challenge Account Kosovo" },
+    { 
+      src: project1, 
+      alt: {
+        sq:"BottomLine Prishtinë dhe Gjenevë",
+        en: "BottomLine Prishtina and Geneva",
+        de: "BottomLine Prishtina und Genf"
+      }
+    },
+    { 
+      src: project2, 
+      alt: {
+        sq:"Millennium Challenge Account Kosovo",
+        en: "Millennium Challenge Account Kosovo",
+        de: "Millennium Challenge Account Kosovo"
+      }
+    },
+    { 
+      src: project5, 
+      alt: {
+        sq:"Ministria e Integrimeve - Republika e Kosovës",
+        en: "Ministry of Integration - Republic of Kosovo",
+        de: "Ministerium für Integration - Republik Kosovo"
+      }
+    },
+    { 
+      src: project6, 
+      alt: {
+        sq:"Ministria e Kulturës - Republika e Kosovës",
+        en: "Ministry of Culture - Republic of Kosovo",
+        de: "Ministerium für Kultur - Republik Kosovo"
+      }
+    },
+    { 
+      src: project3, 
+      alt: {
+        sq:"Tika - Qendra Për Rehabilitimin dhe Edukimin Special",
+        en: "Tika - Center for Rehabilitation and Special Education",
+        de: "Tika - Zentrum für Rehabilitation und Sonderpädagogik"
+      }
+    },
+    { 
+      src: project4, 
+      alt: {
+        sq: "U-smile office - Liège",
 
-    { src: project5, alt: "Ministria e Integrimeve - Republika e Kosovës" },
-    { src: project6, alt: "Ministria e Kulturës - Republika e Kosovës" },
-    { src: project3, alt: "Tika - Qendra për Rehabilitimin dhe Edukimin Special" },
-    { src: project4, alt: "U-smile office - Liège" },
-   
+        en: "U-smile office - Liège",
+        de: "U-smile Büro - Liège"
+      }
+    },
   ];
 
   return (
@@ -54,16 +95,16 @@ const Projects = () => {
           <div className='images'>
             {images.slice(0, 3).map((image, index) => (
               <div key={index}>
-                <img onClick={() => goToProject(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
-                <h4>{image.alt}</h4>
+                <img onClick={() => goToProject(image.alt[lang].toLowerCase())} src={image.src} alt={image.alt[lang]} />
+                <h4>{image.alt[lang]}</h4>
               </div>
             ))}
           </div>
           <div className='images'>
             {images.slice(3).map((image, index) => (
               <div key={index}>
-                <img onClick={() => goToProject(image.alt.toLowerCase())} src={image.src} alt={image.alt} />
-                <h4>{image.alt}</h4>
+                <img onClick={() => goToProject(image.alt[lang].toLowerCase())} src={image.src} alt={image.alt[lang]} />
+                <h4>{image.alt[lang]}</h4>
               </div>
             ))}
           </div>

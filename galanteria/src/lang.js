@@ -200,7 +200,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
             left2:"Asortimente unike",
             left3:"Në të gjithë vendin",
             right1:"Kush jemi ne",
-            right2: "Galanteria është e themeluar në vitin 1987, në fillet e saj me programin e dekoreve nga druri masiv. Njëherit shquhemi edhe si pionier i instalimit të teknologjisë bashkëkohore, në vend dhe regjion, që nga viti 2001 e tutje. Sot jemi lider në prodhimin dhe tregtimin e produkteve të mobileve të zyreve, hoteleve, shkollave dhe elementeve të interierit, në tregun vendor, regjional dhe EU. Galanteria është e çertifikuar me standardin për menaxhimin e cilësisë ISO 9001:2015, si dhe atestet e produkteve me EN  standarde. Gjithashtu kompania shquhet me staf profesional të trajnuar  dhe me kompetencë në këtë fushë.  ",
+            right2: "Galanteria është e themeluar në vitin 1987, në fillet e saj me programin e dekoreve nga druri masiv, duke u zgjeruar edhe në programet tjera, si: mobilie të zyrave, shkollave, hoteleve dhe elemente të ndryshme për interier. Galanteria njihet si pionier në vend dhe regjion, në instalimin e teknologjisë bashkëkohore CNC në repartet e prodhimit që nga viti 2001, në vazhdimësi dhe së fundi me 2023. Gjithashtu kompania është e çertifikuar me standardin për menaxhimin e cilësisë 9001:2001 në vitin 2009 dhe e riçertifikuar me ISO 9001:2015 në vitin 2023, si dhe me atestet e produkteve me EN. Galanteria shquhet me staf profesional dhe kompetencë në dizajn dhe cilësi. ",
             bottom1:"MISIONI",
             bottom12:"Përmbushja e kërkesave të konsumatorve në vazhdimësi , në përputhje me standardet universale të cilësisë. ",
             bottom2:"VIZIONI",
@@ -215,7 +215,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
             left13:"Rr.Ismail Qemali n.n. 11000 Podujevë - Kosovë",
             left2:"Kontakti",
            left3:"Email-i",
-           bottomfirst:"Zyreja në Prishtinë",
+           bottomfirst:"Zyra në Prishtinë",
            bottom12:"Rr. Rrafshi i Kosovës",
            bottom13:"Veternik - Prishtinë"
         
@@ -223,9 +223,22 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
         }],
         projects:[{
             title:"Shikoni projektet",
-            title2:" tona"
+            title2:" tona",
+            
+            
 
         }],
+       
+
+            imageAlts: [{
+              project1: "BottomLine Prishtina and Geneva",
+              project2: "Millennium Challenge Account Kosovo",
+              project3: "Tika - Center for Rehabilitation and Special Education",
+              project4: "U-smile office - Liège",
+              project5: "Ministry of Integration - Republic of Kosovo",
+              project6: "Ministry of Culture - Republic of Kosovo",
+            }],
+          
         carouselImages: [
             img1, // Replace with the German image URLs
             img2,
@@ -391,6 +404,15 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
              boxtitle3:"Free Shipping",
             boxtext3:"We really understand our costumers,so we will free shipping cost to any location quickly and safely.Enjoy shipping on all orders",
         }],
+        imageAlts: [{
+            project1: "BottomLine Prishtina and Geneva",
+            project2: "Millennium Challenge Account Kosovo",
+            project3: "Tika - Center for Rehabilitation and Special Education",
+            project4: "U-smile office - Liège",
+            project5: "Ministry of Integration - Republic of Kosovo",
+            project6: "Ministry of Culture - Republic of Kosovo",
+          }],
+        
         bathroom:[{
             title:"Direct Sofas"
         }],
@@ -431,7 +453,7 @@ footer: [{
         left2: "Unique assortments",
         left3: "Across the country",
     right1: "Who we are",
-        right2: "Galanteria was founded in 1987, initially focusing on solid wood decor programs. We are also recognized as pioneers in installing contemporary technology, both domestically and regionally, since 2001 onwards. Today, we are leaders in the production and trade of office furniture, hotel furnishings, school furniture, and interior elements in the local, regional, and EU markets. Galanteria is certified with the ISO 9001:2015 quality management standard and product certificates with EN standards. Additionally, the company is distinguished by a professionally trained and competent staff in this field.",
+        right2: "Galanteria was founded in 1987, in its beginnings with the program of solid wood decorations, expanding to other programs, such as: furniture for offices, schools, hotels and various interior elements. Galanteria is recognized as a pioneer in the country and region, in the installation of modern CNC technology in the production departments since 2001, continuously and finally with 2023. The company is also certified with the standard for quality management 9001:2001 in 2009 and recertified with ISO 9001:2015 in 2023, as well as with EN product certificates. The haberdashery stands out with professional staff and competence in design and quality.",
         bottom1: "MISSION",
         bottom12: "Continuously meeting customer requirements in accordance with universal quality standards.",
         bottom2: "VISION",
@@ -445,17 +467,18 @@ footer: [{
         subtitle: "Get in touch and let us know how we can help you",
             left1: "Address",
             left12: "Factory and Head Office",
-            left13: "Rr. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
+            left13: "St. Ismail Qemali n.n. 11000 Podujevë - Kosovo",
             left2: "Contact",
             left3: "Email",
             bottomfirst: "Office in Prishtina",
-            bottom12: "Rr. Rrafshi i Kosovës",
+            bottom12: "St. Rrafshi i Kosovës",
             bottom13: "Veternik - Prishtina"
           }
         ],
         projects:[{
             title:"Check out our",
-            title2:"Projects"
+            title2:"Projects",
+            one:""
 
         }]
       
@@ -586,6 +609,15 @@ footer: [{
             title:"Schränke"
            
         }],
+        imageAlts: [{
+            project1: "BottomLine Prishtina and Geneva",
+            project2: "Millennium Challenge Account Kosovo",
+            project3: "Tika - Center for Rehabilitation and Special Education",
+            project4: "U-smile office - Liège",
+            project5: "Ministry of Integration - Republic of Kosovo",
+            project6: "Ministry of Culture - Republic of Kosovo",
+          }],
+        
         drawers:[{
             title:"Schublade"
            
@@ -676,7 +708,7 @@ footer: [{
         left2: "Einzigartige Sortimente",
         left3: "Landesweit",
         right1: "Wer wir sind",
-        right2: "Galanteria wurde 1987 gegründet und konzentrierte sich anfangs auf Programme für Massivholzdekore. Wir sind auch als Pioniere in der Installation zeitgenössischer Technologie, sowohl im Inland als auch in der Region, seit 2001 bekannt. Heute sind wir führend in der Produktion und dem Handel von Büromöbeln, Hoteleinrichtungen, Schulmöbeln und Innenelementen auf den lokalen, regionalen und EU-Märkten. Galanteria ist mit dem Qualitätsmanagementstandard ISO 9001:2015 und Produktzertifikaten nach EN-Standards zertifiziert. Darüber hinaus zeichnet sich das Unternehmen durch ein professionell geschultes und kompetentes Personal in diesem Bereich aus.",
+        right2: "Galanteria wurde 1987 mit dem Programm für Massivholzdekorationen gegründet und hat sich dann auf andere Programme ausgeweitet, wie z. B. Möbel für Büros, Schulen, Hotels und verschiedene Innenelemente. Galanteria gilt im Land und in der Region als Pionier bei der Installation moderner CNC-Technologie in den Produktionsabteilungen seit 2001, kontinuierlich und endgültig im Jahr 2023. Das Unternehmen wurde außerdem im Jahr 2009 mit der Norm für Qualitätsmanagement 9001:2001 zertifiziert und rezertifiziert mit ISO 9001:2015 im Jahr 2023, sowie mit EN-Produktzertifikaten. Die Kurzwarenhandlung zeichnet sich durch professionelles Personal und Kompetenz in Design und Qualität aus.",
         bottom1: "MISSION",
         bottom12: "Kontinuierliche Erfüllung der Kundenanforderungen gemäß den universellen Qualitätsstandards.",
         bottom2: "VISION",

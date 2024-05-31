@@ -295,6 +295,7 @@ export default function HomePage() {
         </Swiper>
       </div>
 
+      {lang === 'sq' && (
      
       <div className="partners">
         <h1>{language[lang]?.partners[0].partnertitle}</h1>
@@ -316,6 +317,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      )}
     
 
       <Footer />
