@@ -200,7 +200,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
             left2:"Asortimente unike",
             left3:"Në të gjithë vendin",
             right1:"Kush jemi ne",
-            right2: "Galanteria është e themeluar në vitin 1987, në fillet e saj me programin e dekoreve nga druri masiv. Njëherit shquhemi edhe si pionier i instalimit të teknologjisë bashkëkohore, në vend dhe regjion, që nga viti 2001 e tutje. Sot jemi lider në prodhimin dhe tregtimin e produkteve të mobileve të zyreve, hoteleve, shkollave dhe elementeve të interierit, në tregun vendor, regjional dhe EU. Galanteria është e çertifikuar me standardin për menaxhimin e cilësis ISO 9001:2015, si dhe atestet e produkteve me EN  standarde. Gjithashtu kompania shquhet me staf professional të trajnuar  dhe me kompetence në këte fushë.  ",
+            right2: "Galanteria është e themeluar në vitin 1987, në fillet e saj me programin e dekoreve nga druri masiv. Njëherit shquhemi edhe si pionier i instalimit të teknologjisë bashkëkohore, në vend dhe regjion, që nga viti 2001 e tutje. Sot jemi lider në prodhimin dhe tregtimin e produkteve të mobileve të zyreve, hoteleve, shkollave dhe elementeve të interierit, në tregun vendor, regjional dhe EU. Galanteria është e çertifikuar me standardin për menaxhimin e cilësisë ISO 9001:2015, si dhe atestet e produkteve me EN  standarde. Gjithashtu kompania shquhet me staf profesional të trajnuar  dhe me kompetencë në këtë fushë.  ",
             bottom1:"MISIONI",
             bottom12:"Përmbushja e kërkesave të konsumatorve në vazhdimësi , në përputhje me standardet universale të cilësisë. ",
             bottom2:"VIZIONI",
@@ -209,13 +209,13 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
 
         contact:[{
             title:"Na kontaktoni",
-            subtitle:"Na tregoni se si mund t'ju ndihmojmë",
+            subtitle:"Na tregoni se si mund t'iu ndihmojmë",
             left1:"Adresa",
             left12:"Fabrika dhe Zyra Qendrore",
             left13:"Rr.Ismail Qemali n.n. 11000 Podujevë - Kosovë",
             left2:"Kontakti",
            left3:"Email-i",
-           bottomfirst:"Zyra në Prishtinë",
+           bottomfirst:"Zyreja në Prishtinë",
            bottom12:"Rr. Rrafshi i Kosovës",
            bottom13:"Veternik - Prishtinë"
         
