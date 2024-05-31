@@ -13,8 +13,11 @@ import { Context } from '../../Components/Context/Products'
 
 const Contact = () => {
 
+  const gmailLink1="https://mail.google.com/mail/?view=cm&fs=1&to=galanteriashpk@gmail.com";
+
+
   useEffect(() => {
-    // Scroll to the top of the page with smooth behavior when the component mounts
+   
     window.scrollTo({
       top: 0,
       left: 0,
@@ -58,8 +61,13 @@ const Contact = () => {
               <img className='ic' src={icon3} alt='icon'></img>
             </div>
            <h3>Email</h3>
-           <p className='contact-h-p'>info@galanteriagroup.com</p>
-           <p className='contact-h-p'>galanteriashpk@gmail.com</p>
+           <a href={gmailLink1} className='contact-h-p' target="_blank" rel="noopener noreferrer">
+        galanteriashpk@gmail.com
+      </a>
+      <br />
+      <a href="mailto:info@galanteriagroup.com" className='contact-h-p'>
+        info@galanteriagroup.com
+      </a>
           </div>
 
         </div>
