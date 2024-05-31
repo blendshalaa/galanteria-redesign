@@ -65,7 +65,7 @@ const Contact = () => {
         galanteriashpk@gmail.com
       </a>
       <br />
-      <a href="mailto:info@galanteriagroup.com" className='contact-h-p'>
+      <a style={{marginTop:"-25px"}} href="mailto:info@galanteriagroup.com" className='contact-h-p'>
         info@galanteriagroup.com
       </a>
           </div>
