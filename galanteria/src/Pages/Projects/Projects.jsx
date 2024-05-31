@@ -77,7 +77,6 @@ const Projects = () => {
       src: project4, 
       alt: {
         sq: "U-smile office - Liège",
-
         en: "U-smile office - Liège",
         de: "U-smile Büro - Liège"
       }

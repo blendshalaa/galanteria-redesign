@@ -1455,7 +1455,7 @@ const dataProjects = {
             name2:codeothers
         },
         "bottomline prishtina and geneva":{
-            name:"BottomLine Prishtina And Geneva",
+            name:"BottomLine Prishtina and Geneva",
             photos:bottomphotos,
             firstphoto:bottomphoto,
             name2:""
@@ -1467,8 +1467,8 @@ const dataProjects = {
             name2:""
 
         },
-        "tika - qendra për rehabilitimin dhe edukimin special":{
-            name:"Tika - Qendra Për Rehabilitimin dhe Edukimin Special",
+        "tika - center for rehabilitation and special education":{
+            name:"Tika - Center for Rehabilitation and Special Education",
 
             photos:tikaphotos,
             firstphoto:tikaphoto,
@@ -1481,14 +1481,14 @@ const dataProjects = {
             name2:""
 
         },
-        "ministria e integrimeve - republika e kosovës":{
-            name:"Ministria e Integrimeve - Republika e Kosovës",
+        "ministry of integration - republic of kosovo":{
+            name:"Ministry of Integration - Republic of Kosovo",
             photos:integrimephotos,
             firstphoto:integrimephoto,
             name2:""
         },
-        "ministria e kulturës - republika e kosovës":{
-            name:"Ministria e Kulturës - Republika e Kosovës",
+        "ministry of culture - republic of kosovo":{
+            name:"Ministry of Culture - Republic of Kosovo",
             photos:kulturphotos,
             firstphoto:kulturphoto,
             name2:""
@@ -1933,8 +1933,8 @@ const dataProjects = {
             firstphoto:otherphoto,
             name2:codeothers
         },
-        "bottomline prishtina and geneva":{
-            name:"BottomLine Prishtina and Geneva",
+        "bottomline prishtina und genf":{
+            name:"BottomLine Prishtina und Genf",
             photos:bottomphotos,
             firstphoto:bottomphoto,
             name2:""
@@ -1946,8 +1946,8 @@ const dataProjects = {
             name2:""
 
         },
-        "tika - qendra për rehabilitimin dhe edukimin special":{
-name:"Tika - Qendra për Rehabilitimin dhe Edukimin Special",
+        "tika - zentrum für rehabilitation und sonderpädagogik":{
+name:"Tika - Zentrum für Rehabilitation und Sonderpädagogik",
             photos:tikaphotos,
             firstphoto:tikaphoto,
             name2:""
@@ -1959,14 +1959,14 @@ name:"Tika - Qendra për Rehabilitimin dhe Edukimin Special",
             name2:""
 
         },
-        "ministria e integrimeve - republika e kosovës":{
-            name:"Ministria e Integrimeve - Republika e Kosovës",
+        "ministerium für integration - republik kosovo":{
+            name:"Ministerium für Integration - Republik Kosovo",
             photos:integrimephotos,
             firstphoto:integrimephoto,
             name2:""
         },
-        "ministria e kulturës - republika e kosovës":{
-            name:"Ministria e Kulturës - Republika e Kosovës",
+        "ministerium für kultur - republik kosovo":{
+            name:"Ministerium für Kultur - Republik Kosovo",
             photos:kulturphotos,
             firstphoto:kulturphoto,
             name2:""
