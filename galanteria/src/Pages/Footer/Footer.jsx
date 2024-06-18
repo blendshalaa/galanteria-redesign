@@ -97,7 +97,7 @@ const Footer = () => {
           </a>
 
 
-          <a href="https://www.linkedin.com/in/galanteria-shpk-94282530b/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/galanteria-l-l-c-94282530b/" target="_blank" rel="noopener noreferrer">
             <svg width="25px" height="25px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
 
               <g fill="none">

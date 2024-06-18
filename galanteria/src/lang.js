@@ -83,7 +83,9 @@ const language = {
 hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi”"}],
         ecatalog:[{
             one:"Katalog zyreje",
-            two:"Katalog për shtëpi",
+            two:"Katalog për shkolla",
+            three:"Katalog për kuzhina",
+
         }],
         chairs:[{
 
@@ -143,7 +145,9 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
             name5:"Thereca Interieurbouw BV - Holandë",
             text5:"“Kompania Thereca Interieurbouw BV, është e kënaqur të vërejë sa vijon: komunikim shumë profesional dhe miqësor, me produktet e dorëzuara, duke specifikuar veçanërisht cilësinë në lidhje me materialet e përdorura në përputhje me standardet ISO EN, përmbushjen në mënyrë të përsosur të pjesës ndërtuese, në lidhje me kërkesat tona për dimensionet e produkteve, bazuar në skicat e dhëna, eleganca e përpunimit përfundimtar dhe sipërfaqësor, vendosja e aksesorëve në një mënyrë shumë profesionale, respektimi i afateve të dorëzimit, në përputhje me marrëveshjen e bashkëpunimit, respektivisht marrëveshjen për projektin në fjalë.”",
             name6:"Agjensia Qendrore e Prokurimit – Republika e Kosovës ",
-            text6:"“Kjo referencë lëshohet për pjesëmarrje në tenderë në kryerjen e furnizimeve të natyrës së ngjashme në bazë të kontratës. Bashkëpunimi me këtë operator ekonomik ishte shumë i suksesshëm, prandaj shpresojmë se një bashkëpunim i tillë do të vazhdojë edhe në të ardhmen.”"
+            text6:"“Kjo referencë lëshohet për pjesëmarrje në tenderë në kryerjen e furnizimeve të natyrës së ngjashme në bazë të kontratës. Bashkëpunimi me këtë operator ekonomik ishte shumë i suksesshëm, prandaj shpresojmë se një bashkëpunim i tillë do të vazhdojë edhe në të ardhmen.”",
+            name7:"Millenium Challenge Account Kosovë",
+            text7:"Galanteria SH.P.K ka kryer dorëzimin në përputhje me kontratën dhe me performancë dhe standarde të kënaqshme. Ne jemi në dispozicion në çdo kohë për të diskutuar më tej për performancën e Galanteria SH.P. K  me çdo palë të interesuar të ardhshme."
 
 
         }],
@@ -337,8 +341,9 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
            
         }],
         ecatalog:[{
-            one:"Office Catalogue",
-            two:"Home Catalogue",
+            one:"Office  Catalogue",
+            two:"School Catalogue",
+            three:"Kitchen Catalogue"
         }],
         chairs:[{
 
@@ -429,7 +434,10 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
             name5: "Thereca Interieurbouw BV - Netherlands",
             text5: "“The company Thereca Interieurbouw BV is pleased to note the following: very professional and friendly communication, with the delivered products, specifying in particular the quality in terms of materials used in accordance with ISO EN standards, perfect fulfillment of the constructive part, in relation to our requirements for the dimensions of the products, based on the given sketches, elegance of final and surface processing, placement of accessories in a very professional way, respecting the delivery deadlines, in accordance with the cooperation agreement, respectively the agreement for the project in question.”",
             name6: "Central Procurement Agency – Republic of Kosovo",
-            text6: "“This reference is issued for participation in tenders for the execution of similar nature supplies based on the contract. The cooperation with this economic operator was very successful, therefore we hope that such cooperation will continue in the future.”"
+            text6: "“This reference is issued for participation in tenders for the execution of similar nature supplies based on the contract. The cooperation with this economic operator was very successful, therefore we hope that such cooperation will continue in the future.”",
+            name7:"Millenium Challenge Account Kosovo ",
+            text7:"Galanteria SH.P. K has completed the delivery in accordance with the contract and with satisfactory performance and standards. We are available at any time to further discuss Galanteria SH.P. K performance with any future interested party. "
+
 }],
 
 partners: [{
@@ -573,7 +581,8 @@ footer: [{
 
         ecatalog:[{
             one:"Büro Katalog",
-            two:"Home Katalog",
+            two:"Schul Katalog",
+            three:"Küchen Katalog"
         }],
         chairs:[{
 
@@ -642,7 +651,9 @@ footer: [{
             name5: "Thereca Interieurbouw BV - Niederlande",
             text5: "“Das Unternehmen Thereca Interieurbouw BV freut sich, Folgendes festzustellen: sehr professionelle und freundliche Kommunikation, mit den gelieferten Produkten, insbesondere die Qualität in Bezug auf die verwendeten Materialien gemäß ISO EN-Standards, perfekte Erfüllung des konstruktiven Teils, in Bezug auf unsere Anforderungen an die Abmessungen der Produkte, basierend auf den vorgegebenen Skizzen, Eleganz der End- und Oberflächenbearbeitung, Platzierung der Zubehörteile auf sehr professionelle Weise, Einhaltung der Lieferfristen, gemäß der Kooperationsvereinbarung bzw. der Vereinbarung für das betreffende Projekt.”",
             name6: "Zentrale Beschaffungsagentur – Republik Kosovo",
-            text6: "“Diese Referenz wird für die Teilnahme an Ausschreibungen zur Ausführung von Lieferungen ähnlicher Art auf Basis des Vertrags ausgestellt. Die Zusammenarbeit mit diesem Wirtschaftsbeteiligten war sehr erfolgreich, daher hoffen wir, dass eine solche Zusammenarbeit auch in Zukunft fortgesetzt wird.”"
+            text6: "“Diese Referenz wird für die Teilnahme an Ausschreibungen zur Ausführung von Lieferungen ähnlicher Art auf Basis des Vertrags ausgestellt. Die Zusammenarbeit mit diesem Wirtschaftsbeteiligten war sehr erfolgreich, daher hoffen wir, dass eine solche Zusammenarbeit auch in Zukunft fortgesetzt wird.”",
+            name7:"Millenium Challenge Account Kosovo ",
+            text7:"Galanteria SH.P. K hat die Lieferung vertragsgemäß und mit zufriedenstellender Leistung und Standards ausgeführt. Wir stehen jederzeit zur Verfügung, um die Leistung von Galanteria SH.P. K mit zukünftigen Interessenten weiter zu besprechen."
 }],
 
         categories:[

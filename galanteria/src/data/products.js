@@ -114,6 +114,9 @@ import donna from '../assets/images/DONNA.png'
 import donna1 from '../assets/images/donna1.png'
 import donna2 from '../assets/images/donna2.png'
 import donna3 from '../assets/images/donna3.jpg'
+import donna4 from '../assets/images/donna.jpg'
+
+
 import foulard from '../assets/images/FOULARD.jpg'
 import foulard2 from '../assets/images/foulard1.png'
 import foulard3 from '../assets/images/foulardd.png'
@@ -181,6 +184,11 @@ import hermes2 from '../assets/images/he003.png'
 import hermes3 from '../assets/images/he004.jpg'
 import hermes4 from '../assets/images/he005.jpg'
 import hermes5 from '../assets/images/he006.jpg'
+import hermes6 from '../assets/images/hermes.jpg'
+import hermes7 from '../assets/images/hermes1.jpg'
+import hermes8 from '../assets/images/hermes2.jpg'
+import hermes9 from '../assets/images/hermes 3.jpg'
+
 
 import noble from '../assets/images/no001.jpg'
 import noble1 from '../assets/images/no002.jpg'
@@ -413,7 +421,7 @@ const missphoto = miss;
 const missphotos = [miss1, miss2, miss3,  miss5]
 const moraphoto = mora;
 const moraphotos = [mora1, mora3, mora6,  mora11]
-const donnaphoto = donna;
+const donnaphoto = donna4;
 const donnaphotos = [donna1, donna2, donna3]
 const foulardphoto = foulard;
 const foulardphotos = [foulard2, foulard3]
@@ -447,8 +455,8 @@ const nicephoto = nice;
 const nicephotos =[nice,nice1,nice2, nice3,]
 const heraphoto = hera;
 const heraphotos = [hera,hera1, hera2, hera3]
-const hermesphoto = hermes;
-const hermesphotos = [hermes,hermes1, hermes2, hermes3, hermes4, hermes5]
+const hermesphoto = hermes6;
+const hermesphotos = [hermes,hermes1, hermes2, hermes3, hermes4, hermes5, hermes6, hermes7, hermes8, hermes9]
 const noblephoto = noble;
 const noblephotos = [noble,noble1, noble2]
 const mildphoto = mild;

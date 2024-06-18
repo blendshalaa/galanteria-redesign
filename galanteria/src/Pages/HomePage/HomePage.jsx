@@ -257,6 +257,12 @@ export default function HomePage() {
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className="mySwiper"
         >
+            <SwiperSlide>
+            <div className="text">
+              <h1>{language[lang]?.clients[0].name7} </h1>
+              <p>{language[lang]?.clients[0].text7} </p>
+            </div>
+          </SwiperSlide>
           <SwiperSlide>
             <div className="text">
               <h1>{language[lang]?.clients[0].name1} </h1>

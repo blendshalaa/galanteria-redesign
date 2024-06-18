@@ -5,6 +5,7 @@
     flex-direction: column;
     width: 100%;
     padding-top: 120px;
+    overflow: hidden;
 
 
 
@@ -67,6 +68,7 @@
                  align-items: center;
                  justify-content: center;
                  padding: 0;
+                
                 }
 
             h4{
@@ -101,8 +103,8 @@
                 background-size:auto;
 
                 @media(max-width:1500px){
-                    width: 480px;
-                    height: 300px;
+                    max-width: 480px;
+                    max-height: 300px;
                  }
              
               

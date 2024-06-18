@@ -181,6 +181,10 @@ import hermes2 from '../assets/images/he003.png'
 import hermes3 from '../assets/images/he004.jpg'
 import hermes4 from '../assets/images/he005.jpg'
 import hermes5 from '../assets/images/he006.jpg'
+import hermes6 from '../assets/images/hermes.jpg'
+import hermes7 from '../assets/images/hermes1.jpg'
+import hermes8 from '../assets/images/hermes2.jpg'
+import hermes9 from '../assets/images/hermes 3.jpg'
 
 import noble from '../assets/images/no001.jpg'
 import noble1 from '../assets/images/no002.jpg'
@@ -211,16 +215,35 @@ import truva2 from '../assets/images/t002.jpg'
 import truva3 from '../assets/images/t003.jpg'
 import truva4 from '../assets/images/tr005.jpg'
 import truva5 from '../assets/images/tr006.png'
+import truva6 from '../assets/images/truva (2).jpg'
+import truva7 from '../assets/images/truva.jpg'
+
 
 import window from '../assets/images/w001.jpg'
 import window2 from '../assets/images/w002.jpg'
 import window3 from '../assets/images/wi003.jpg'
+import window4 from '../assets/images/truva windov.jpg'
+import window5 from '../assets/images/truva window.jpg'
+import window6 from '../assets/images/truva windovs.jpg'
+import window7 from '../assets/images/truva wndow.jpg'
+
+
+
 
 import artemis from '../assets/images/a003.jpg'
 import artemis1 from '../assets/images/a001.png'
 import artemis2 from '../assets/images/a002.jpg'
 import prisma from '../assets/images/p002.jpg'
 import prisma1 from '../assets/images/p001.jpg'
+import prisma2 from '../assets/images/Prizma Desk.jpg'
+import prisma3 from '../assets/images/prizma.jpg'
+import prisma4 from '../assets/images/prizma1.jpg'
+import prisma5 from '../assets/images/prizma3.jpg'
+import prisma6 from '../assets/images/prizma9.jpg'
+
+
+
+
 import optima from '../assets/images/o001.jpg'
 import optima1 from '../assets/images/o002.jpg'
 import optima2 from '../assets/images/o003.jpg'
@@ -447,8 +470,8 @@ const nicephoto = nice;
 const nicephotos =[nice,nice1,nice2, nice3,]
 const heraphoto = hera;
 const heraphotos = [hera,hera1, hera2, hera3]
-const hermesphoto = hermes;
-const hermesphotos = [hermes,hermes1, hermes2, hermes3, hermes4, hermes5]
+const hermesphoto = hermes6;
+const hermesphotos = [hermes, hermes7,  hermes9,hermes1, hermes2, hermes3, hermes4, hermes5]
 const noblephoto = noble;
 const noblephotos = [noble,noble1, noble2]
 const mildphoto = mild;
@@ -461,14 +484,14 @@ const easyphoto = easy;
 const easyphotos = [easy,easy1, easy2]
 const forsphoto = fors;
 const forsphotos= [fors,fors1,fors2]
-const truvaphoto = truva;
-const truvaphotos = [truva1, truva2,truva3, truva, truva4, truva5]
-const windowphoto =window;
-const windowphotos = [window, window2, window3]
+const truvaphoto = truva6;
+const truvaphotos = [truva1,truva7, truva3,truva2,truva, truva4, truva5]
+const windowphoto =window5;
+const windowphotos = [window,window4, window5, window6, window7, window3]
 const artemisphoto = artemis;
 const artemisphotos = [artemis1, artemis2,artemis]
-const prismaphoto = prisma;
-const prismaphotos = [prisma1,prisma]
+const prismaphoto = prisma6;
+const prismaphotos = [prisma1,prisma2, prisma3,  prisma5]
 const optimaphoto = optima;
 const optimaphotos = [optima,optima1, optima2,optima3]
 const kronosphoto = kronos;
@@ -485,7 +508,7 @@ const codediva=["CH001", "CH002", "CH001"]
 const codecrew=["CH001", "CH001", "CH001", "CH002"]
 const codemora=["CH001", "CH002", "CH003", "CH004"]
 const codelotus=["CH001","CH002", "CH002"]
-const coderea=["WT001","WT002", "WT003", "WT004", "WT005", "WT006"]
+const coderea=["WT001","WT002", "WT003", "WT004", "WT005", "WT006", "WT007", "WT008"]
 const codeothers=["TP001","TP002", "TP003", "TP004", "TP005", "TPL001", "TPL002"]
 
 
