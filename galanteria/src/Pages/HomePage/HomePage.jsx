@@ -46,20 +46,20 @@ import img6 from '../../assets/images/h3.jpg'
 
 
 export default function HomePage() {
-  
+
   const [{ lang }] = useContext(Context);
   const navigate = useNavigate(); // Create a navigate function
 
 
-  const {
-    carouselImages,
-    uberUns,
-    whatWeDo,
-    architecture,
-    hvacEngineering,
-    wwtp,
-    partners,
-} = language[lang];
+  // const {
+  //   carouselImages,
+  //   uberUns,
+  //   whatWeDo,
+  //   architecture,
+  //   hvacEngineering,
+  //   wwtp,
+  //   partners,
+  // } = language[lang];
 
   const handleClick = () => {
     navigate('/WaitingChairs'); // Use navigate to go to /WaitingChairs
@@ -89,85 +89,44 @@ export default function HomePage() {
     <div className="home-wrapper">
       <NavBar />
 
-      {/* <div className="hero">
-        <div className='h1'>
-          <img src={sl1} alt="" />
-        </div>
-        <div className='h2'>
-          <img src={sl2} alt="" />
-          <p>{language[lang]?.hero[0].title}
-            <br /><b>{language[lang]?.hero[0].redtitle}</b> </p>
-          <h6>{language[lang]?.hero[0].subtitle}</h6>
-        </div>
-        <div className='h3'>
-          <img  src={sl3} alt="" />
-        </div>
-        <div className='h4'>
-          <img src={sl4} alt="" />
-        </div>
-        <div className='h5'>
-          <img src={sl5} alt="" />
-        </div>
-      </div> */}
-
-<div className="hero">
-     {/* <Swiper
-        cssMode={true}
-        navigation={false}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        autoplay={{
-          delay: 60000, // 60 seconds
-          disableOnInteraction: false,
-        }}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
-        className="mySwiper"
-      >
-        <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img2}/></SwiperSlide>
-        <SwiperSlide><img src={img3}/></SwiperSlide>
-        <SwiperSlide><img src={img2}/></SwiperSlide>
-        <SwiperSlide><img src={img3}/></SwiperSlide>
-        <SwiperSlide><img src={img1}/></SwiperSlide>
-        <SwiperSlide><img src={img2}/></SwiperSlide>
-        <SwiperSlide><img src={img3}/></SwiperSlide>
-        <SwiperSlide><img src={img1}/></SwiperSlide>
-      </Swiper> */}
-
-<h1 className="centered-text"><i> {language[lang]?.hero[0].title}</i> </h1>
 
 
-<Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        //navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide><img className="black-background" src={img1} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img5} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img6} alt="" /></SwiperSlide>
-        {/* <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img3} alt="" /></SwiperSlide> */}
-      </Swiper>
-</div>
+      <div className="hero-homepage">
+
+
+        <h1 className="centered-text-homepage"><i> {language[lang]?.hero[0].title}</i> </h1>
+
+
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+        
+          //navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide><img className="black-background-homepage" src={img1} alt="" /></SwiperSlide>
+          <SwiperSlide><img className="black-background-homepage" src={img2} alt="" /></SwiperSlide>
+          <SwiperSlide><img className="black-background-homepage" src={img3} alt="" /></SwiperSlide>
+          <SwiperSlide><img className="black-background-homepage" src={img4} alt="" /></SwiperSlide>
+          <SwiperSlide><img className="black-background-homepage" src={img5} alt="" /></SwiperSlide>
+          <SwiperSlide><img className="black-background-homepage" src={img6} alt="" /></SwiperSlide>
+
+        </Swiper>
+      </div>
 
 
 
-   
-    
-  
+
+
+
 
 
       <div className="slider">
@@ -199,11 +158,8 @@ export default function HomePage() {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {/* <SwiperSlide className='s'>
-            <img onClick={handleClick} src={s1} alt="" />
-            <p>{language[lang]?.categories[0].product1}</p>
-          </SwiperSlide> */}
-         
+        
+
           <SwiperSlide className='s'>
             <img onClick={handleClick3} src={s3} alt="" />
             <p>{language[lang]?.categories[0].product3}</p>
@@ -216,32 +172,32 @@ export default function HomePage() {
             <img onClick={handleClick9} src={s9} alt="" />
             <p>{language[lang]?.categories[0].product9}</p>
           </SwiperSlide>
-         <SwiperSlide className='s'>
+          <SwiperSlide className='s'>
             <img onClick={handleClick2} src={s2} alt="" />
             <p>{language[lang]?.categories[0].product2}</p>
           </SwiperSlide>
-         
+
           <SwiperSlide className='s'>
             <img onClick={handleClick4} src={s4} alt="" />
             <p>{language[lang]?.categories[0].product4}</p>
-          </SwiperSlide> 
-            <SwiperSlide className='s'>
+          </SwiperSlide>
+          <SwiperSlide className='s'>
             <img onClick={handleClick7} src={s7} alt="" />
             <p>{language[lang]?.categories[0].product7}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
             <img onClick={handleClick6} src={s6} alt="" />
             <p>{language[lang]?.categories[0].product6}</p>
-          </SwiperSlide> 
+          </SwiperSlide>
           <SwiperSlide className='s'>
             <img onClick={handleClick5} src={s5} alt="" />
             <p>{language[lang]?.categories[0].product5}</p>
           </SwiperSlide>
-           <SwiperSlide className='s'>
+          <SwiperSlide className='s'>
             <img onClick={handleClick10} src={s10} alt="" />
             <p>{language[lang]?.categories[0].product10}</p>
           </SwiperSlide>
-        
+
         </Swiper>
       </div>
 
@@ -257,7 +213,7 @@ export default function HomePage() {
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className="mySwiper"
         >
-            <SwiperSlide>
+          <SwiperSlide>
             <div className="text">
               <h1>{language[lang]?.clients[0].name7} </h1>
               <p>{language[lang]?.clients[0].text7} </p>
@@ -302,29 +258,29 @@ export default function HomePage() {
       </div>
 
       {lang === 'sq' && (
-     
-      <div className="partners">
-        <h1>{language[lang]?.partners[0].partnertitle}</h1>
-        <div className='sec'>
-          <div className="text">
+
+        <div className="partners">
+          <h1>{language[lang]?.partners[0].partnertitle}</h1>
+          <div className='sec'>
+            <div className="text">
               <div className='p-text'>
-            <h1>{language[lang]?.partners[0].up}</h1>
-            <p>{language[lang]?.partners[0].down}</p>
-          </div>
-          <div className='p-text'>
-            <h1>{language[lang]?.partners[0].up2}</h1>
-            <p>{language[lang]?.partners[0].down2}</p>
-          </div>
-          </div>
-        
-          <div className='p-img'>
-            <img src={p1} alt="" />
-            <img src={p2} alt="" />
+                <h1>{language[lang]?.partners[0].up}</h1>
+                <p>{language[lang]?.partners[0].down}</p>
+              </div>
+              <div className='p-text'>
+                <h1>{language[lang]?.partners[0].up2}</h1>
+                <p>{language[lang]?.partners[0].down2}</p>
+              </div>
+            </div>
+
+            <div className='p-img'>
+              <img src={p1} alt="" />
+              <img src={p2} alt="" />
+            </div>
           </div>
         </div>
-      </div>
       )}
-    
+
 
       <Footer />
     </div>
