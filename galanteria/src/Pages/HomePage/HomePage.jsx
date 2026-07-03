@@ -161,40 +161,39 @@ export default function HomePage() {
         
 
           <SwiperSlide className='s'>
-            <img onClick={handleClick3} src={s3} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick3}><img src={s3} alt="" /></div>
             <p>{language[lang]?.categories[0].product3}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick8} src={s8} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick8}><img src={s8} alt="" /></div>
             <p>{language[lang]?.categories[0].product8}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick9} src={s9} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick9}><img src={s9} alt="" /></div>
             <p>{language[lang]?.categories[0].product9}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick2} src={s2} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick2}><img src={s2} alt="" /></div>
             <p>{language[lang]?.categories[0].product2}</p>
           </SwiperSlide>
-
           <SwiperSlide className='s'>
-            <img onClick={handleClick4} src={s4} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick4}><img src={s4} alt="" /></div>
             <p>{language[lang]?.categories[0].product4}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick7} src={s7} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick7}><img src={s7} alt="" /></div>
             <p>{language[lang]?.categories[0].product7}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick6} src={s6} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick6}><img src={s6} alt="" /></div>
             <p>{language[lang]?.categories[0].product6}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick5} src={s5} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick5}><img src={s5} alt="" /></div>
             <p>{language[lang]?.categories[0].product5}</p>
           </SwiperSlide>
           <SwiperSlide className='s'>
-            <img onClick={handleClick10} src={s10} alt="" />
+            <div className="category-img-wrapper" onClick={handleClick10}><img src={s10} alt="" /></div>
             <p>{language[lang]?.categories[0].product10}</p>
           </SwiperSlide>
 

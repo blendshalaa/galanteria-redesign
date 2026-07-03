@@ -274,13 +274,20 @@ const NavBar = () => {
 
 
 
-          <div className="navlang">
+          <div className="navlang mobile-only">
             <div className="language">
               <Language className="lang" />
             </div>
           </div>
         </ul>
       </div>
+
+      <div className="navlang desktop-only">
+        <div className="language">
+          <Language className="lang" />
+        </div>
+      </div>
+
       <div className='right'>
         <IconButton
           onClick={toggleMenu}

@@ -1,109 +1,173 @@
-.officechairs-wrapper {
-    display: flex;
-    justify-content: center;
-    //align-items: center;
-    flex-direction: column;
-    width: 100%;
-    padding-top: 120px;
-
-
-
-    .office {
-        margin-top: 80px;
-
-    }
-
-
-    .officechairs-text {
-        padding-left: 150px;
-        margin-top: 120px;
-        margin-bottom: 120px;
-        color: white;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 20px;
-
-        
-        @media(max-width:1500px){
-          font-size: 15px;
-          margin-top: 20px;
-          margin-bottom: 60px;
-         }
-
-        @media(max-width:2000px) {
-            padding: 0;
-            text-align: center;
-           }
-
-    }
-
-    .officechairs-images {
-        padding-left: 150px;
-        display: flex;
-        gap: 63px;
-    //    width: 100%;
-
-        @media(max-width:2000px) {
-          // flex-direction: column;
-          flex-wrap: wrap;
-           align-items: center;
-           justify-content: center;
-           padding: 0;
-          }
-
-        .images {
-
-           
-            display: flex;
-         //   flex-direction: column;
-            gap: 63px;
-
-            @media(max-width:2000px) {
-                // flex-direction: column;
-                flex-wrap: wrap;
-                 align-items: center;
-                 justify-content: center;
-                 padding: 0;
-                }
-
-            h4{
-                color: white;
-                margin-top: 20px;
-                font-size: 20px;
-                text-align: center;
-                text-transform:uppercase;
-            }
-
-            img{
-                background-size: contain;
-                border-radius: 10px;
-
-             
-              
-            }
-
-
-           
-         
-         
-        }
-
-
-
-        img {
-            width: 250px;
-            height: 330px;
-            cursor: pointer;
-            
-                background-size:auto;
-
-                @media(max-width:1500px){
-                    width: 170px;
-                    height: 250px;
-                 }
-             
-              
-        }
-    }
+/* ============================================
+   PRODUCT LISTING PAGES (Chairs, Tables, etc.)
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
+/* Shared class used across product list pages */
+.officechairs-wrapper,
+.waitingchairs-wrapper,
+.workingtables-wrapper,
+.workstation-wrapper,
+.meet-wrapper,
+.cab-wrapper,
+.draw-wrapper,
+.others-wrapper,
+.bathrooms-wrapper {
+  min-height: 100vh;
+  background: #0E0D0B;
+  color: #F0EDE8;
+  font-family: 'Inter', sans-serif;
+  padding-top: 72px;
+}
+
+/* Page title */
+.officechairs-text,
+.waitingchairs-text,
+.workingtables-text,
+.workstation-text,
+.meet-text,
+.cab-text,
+.draw-text,
+.others-text,
+.bathrooms-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 24px 48px;
+  font-size: inherit;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: #C8722A;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #F0EDE8;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+}
+
+/* Product grid */
+.officechairs-images,
+.waitingchairs-images,
+.workingtables-images,
+.workstation-images,
+.meet-images,
+.cab-images,
+.draw-images,
+.others-images,
+.bathrooms-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  padding: 0 48px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 0 20px 60px;
+    gap: 20px;
+  }
+
+  .images {
+    display: contents; /* Allows children to flow naturally into the flex parent */
+  }
+
+  /* Individual product card */
+  & > .images > div,
+  & > div,
+  & > .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    position: relative;
+    width: 230px;
+
+    @media (max-width: 1200px) { width: 200px; }
+    @media (max-width: 768px)  { width: 160px; }
+  }
+
+  .product-card-img {
+    position: relative;
+    width: 230px;
+    height: 290px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #1A1815;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    @media (max-width: 1200px) { width: 200px; height: 250px; }
+    @media (max-width: 768px)  { width: 160px; height: 200px; }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+
+    @media (max-width: 1200px) {
+      width: 200px;
+      height: 250px;
+    }
+
+    @media (max-width: 768px) {
+      width: 160px;
+      height: 200px;
+    }
+  }
+
+  h4 {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 232, 0.55);
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+
+  & > .images > div:hover img,
+  & > div:hover img,
+  & > .image-container:hover img {
+    transform: scale(1.05);
+  }
+
+  & > .images > div:hover h4,
+  & > div:hover h4,
+  & > .image-container:hover h4 {
+    color: #C8722A;
+  }
+}
+
+hr.office {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
