@@ -58,8 +58,7 @@ const Cabinets = () => {
   ];
 
   return (
-    <div>
-      <NavBar />
+    <>
       <div className='cab-wrapper'>
         {expandedImage && (
           <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
@@ -77,10 +76,9 @@ const Cabinets = () => {
             </div>
           ))}
         </div>
-        <hr className='office' />
-        <Footer />
+        <hr className='office'></hr>
       </div>
-    </div>
+    </>
   );
 }
 

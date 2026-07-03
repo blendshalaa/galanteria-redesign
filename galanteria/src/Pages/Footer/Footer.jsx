@@ -1,133 +1,100 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable no-unused-vars */
-import React, { useContext } from 'react'
-import './Footer.scss'
-import logo from '../../assets/images/LOGO_G.png'
-import { Link } from 'react-router-dom'
-import { Context } from "../../Components/Context/Products"
-import language from '../../lang'
-import AppWhatsApp from '../../Components/WhatsappViber/AppWhatsApp'
-import Viber from '../../Components/WhatsappViber/Viber'
-
-
+import React, { useContext } from 'react';
+import './Footer.scss';
+import logo from '../../assets/images/LOGO_G.png';
+import { Link } from 'react-router-dom';
+import { Context } from '../../Components/Context/Products';
+import language from '../../lang';
+import AppWhatsApp from '../../Components/WhatsappViber/AppWhatsApp';
 
 const Footer = () => {
-
   const [{ lang }] = useContext(Context);
 
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // optional: smooth scroll animation
-    });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className='footer-wrapper'>
-      <div className="footer-up">
-        <div className='left'>
-          <div>
-            <img src={logo} alt="" />
-          </div>
-          <div>
-            <h1 style={{textAlign:"center",marginTop:"50px", fontSize:"30px"
-            }}>Galanteria</h1>
+    <footer className='footer-editorial'>
+      
+      {/* ===== 1. Massive Footer CTA ===== */}
+      <div className='footer-cta'>
+        <div className='cta-content'>
+          <h2>
+            {lang === 'sq' ? 'Gati për të' : lang === 'de' ? 'Bereit zu' : 'Ready to'} <br/>
+            <em>{lang === 'sq' ? 'transformuar hapësirën?' : lang === 'de' ? 'transformieren?' : 'elevate your space?'}</em>
+          </h2>
+          <Link to="/Contact" className='cta-link'>
+            {lang === 'sq' ? 'Na Kontaktoni' : lang === 'de' ? 'Kontaktiere uns' : 'Get in Touch'}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* ===== 2. Main Footer Grid ===== */}
+      <div className='footer-main-grid'>
+        
+        <div className='footer-brand'>
+          <img src={logo} alt="Galanteria logo" />
+          <p>
+            {lang === 'sq'
+              ? 'Mobilim premium për hapësira pune moderne, duke sjellë inovacione dhe kualitet.'
+              : lang === 'de'
+              ? 'Premium-Möbel für moderne Arbeitsbereiche, mit Innovation und Qualität.'
+              : 'Premium furniture for modern workspaces, delivering innovation and uncompromising quality.'}
+          </p>
+        </div>
+
+        <div className='footer-nav'>
+          <span className='footer-col-label'>
+             {lang === 'sq' ? 'Navigimi' : lang === 'de' ? 'Navigation' : 'Navigation'}
+             <span className='footer-line'></span>
+          </span>
+          <Link to="/"><span>{language[lang]?.menuHeader[0].name}</span></Link>
+          <Link to="/Projects"><span>{language[lang]?.menuHeader[12].name}</span></Link>
+          <Link to="/Aboutus"><span>{language[lang]?.menuHeader[15].name}</span></Link>
+          <Link to="/Contact"><span>{language[lang]?.menuHeader[14].name}</span></Link>
+        </div>
+
+        <div className='footer-contact'>
+          <span className='footer-col-label'>
+            {lang === 'sq' ? 'Kontakti' : lang === 'de' ? 'Kontakt' : 'Contact'}
+            <span className='footer-line'></span>
+          </span>
+          <a href="tel:+38348522240">+383 48 522 240</a>
+          <a href="mailto:info@galanteriagroup.com">info@galanteriagroup.com</a>
+          <div className='footer-whatsapp'>
+            <AppWhatsApp phoneNumber={+38348522240} />
           </div>
         </div>
-        <div className='middle'>
-          <div>
-            <Link to="/"><p> {language[lang]?.menuHeader[0].name}</p></Link>
-            <Link to="/Projects"><p> {language[lang]?.menuHeader[12].name}</p></Link>
-            <Link to="/Aboutus"><p>{language[lang]?.menuHeader[15].name}</p></Link>
-            <Link to="/Contact"><p>{language[lang]?.menuHeader[14].name}</p></Link>
 
-
-          </div>
-          {/* <div>
-            <h4>Product</h4>
-            <Link><p>Contact</p></Link>
-            <Link><p>Company</p></Link>
-            <Link><p>About Us</p></Link>
-
-          </div>
-          <div>
-            <h4>Product</h4>
-            <Link><p>Contact</p></Link>
-            <Link><p>Company</p></Link>
-            <Link><p>About Us</p></Link>
-
-          </div> */}
+        <div className='footer-socials-col'>
+          <span className='footer-col-label'>
+            Socials
+            <span className='footer-line'></span>
+          </span>
+          <a href="https://www.instagram.com/galanteriashpk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/p/Galanteria-SHPK-100063493750911/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.linkedin.com/in/galanteria-l-l-c-94282530b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
-        <div className='right'>
-          <svg onClick={scrollToTop} fill="#f17c05" height="67px" width="67px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 493.472 493.472" xml:space="preserve">
-            <g>
-              <g>
-                <path d="M246.738,0C110.69,0,0.01,110.692,0.01,246.732c0,136.064,110.68,246.74,246.728,246.74s246.724-110.676,246.724-246.74
-			C493.462,110.692,382.786,0,246.738,0z M361.094,296.68l-8.964,8.972c-2.02,2.012-5.564,2.012-7.576,0l-94.932-94.924
-			c-0.752-0.756-1.736-1.132-2.72-1.132s-1.976,0.376-2.732,1.132l-94.784,94.768c-2.004,1.996-5.548,1.996-7.56,0l-8.972-8.972
-			c-2.08-2.076-2.08-5.48,0-7.552l110.16-110.156c0.996-0.984,2.332-1.532,3.996-1.532c1.436,0,2.78,0.548,3.764,1.532
-			L361.09,289.128C363.174,291.212,363.174,294.604,361.094,296.68z"/>
-              </g>
-            </g>
+      </div>
+
+      {/* ===== 3. Grand Typography Anchor ===== */}
+      <div className='footer-grand-anchor'>
+        <div className='grand-text'>GALANTERIA</div>
+      </div>
+
+      {/* ===== 4. Bottom Legal ===== */}
+      <div className='footer-legal'>
+        <span className='footer-copy'>© {new Date().getFullYear()} Galanteria Group. All rights reserved.</span>
+        
+        <button className='footer-top-btn' onClick={scrollToTop}>
+          Top 
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          {/* <div className='apps'>
-
-          <AppWhatsApp phoneNumber={+38348259469} />
-       
-          </div> */}
-         
-        </div>
+        </button>
       </div>
 
+    </footer>
+  );
+};
 
-      <hr />
-      <div className="footer-down">
-        <div className='left'>
-          <h4>Copyright@TeNaAgency</h4>
-        </div>
-        <div className='middle'>
-          <a href="https://www.instagram.com/galanteriashpk/p/B8Bb4P7H0qU/?img_index=1" target="_blank" rel="noopener noreferrer">
-            <svg width="25px" height="25px" viewBox="0 0 2500 2500" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="0" cx="332.14" cy="2511.81" r="3263.54" gradientUnits="userSpaceOnUse"><stop offset=".09" stop-color="#fa8f21" /><stop offset=".78" stop-color="#d82d7e" /></radialGradient><radialGradient id="1" cx="1516.14" cy="2623.81" r="2572.12" gradientUnits="userSpaceOnUse"><stop offset=".64" stop-color="#8c3aaa" stop-opacity="0" /><stop offset="1" stop-color="#8c3aaa" /></radialGradient></defs><path d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57" fill="url(#0)" /><path d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57" fill="url(#1)" /></svg>
-          </a>
-
-          <a href="https://www.facebook.com/p/Galanteria-SHPK-100063493750911/" target="_blank" rel="noopener noreferrer">
-            <svg width="25px" height="25px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#1877F2" d="M15 8a7 7 0 00-7-7 7 7 0 00-1.094 13.915v-4.892H5.13V8h1.777V6.458c0-1.754 1.045-2.724 2.644-2.724.766 0 1.567.137 1.567.137v1.723h-.883c-.87 0-1.14.54-1.14 1.093V8h1.941l-.31 2.023H9.094v4.892A7.001 7.001 0 0015 8z" /><path fill="#ffffff" d="M10.725 10.023L11.035 8H9.094V6.687c0-.553.27-1.093 1.14-1.093h.883V3.87s-.801-.137-1.567-.137c-1.6 0-2.644.97-2.644 2.724V8H5.13v2.023h1.777v4.892a7.037 7.037 0 002.188 0v-4.892h1.63z" /></svg>
-          </a>
-
-
-          <a href="https://www.linkedin.com/in/galanteria-l-l-c-94282530b/" target="_blank" rel="noopener noreferrer">
-            <svg width="25px" height="25px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-
-              <g fill="none">
-
-                <path d="M0 18.338C0 8.216 8.474 0 18.92 0h218.16C247.53 0 256 8.216 256 18.338v219.327C256 247.79 247.53 256 237.08 256H18.92C8.475 256 0 247.791 0 237.668V18.335z" fill="#069" />
-
-                <path d="M77.796 214.238V98.986H39.488v115.252H77.8zM58.65 83.253c13.356 0 21.671-8.85 21.671-19.91-.25-11.312-8.315-19.915-21.417-19.915-13.111 0-21.674 8.603-21.674 19.914 0 11.06 8.312 19.91 21.169 19.91h.248zM99 214.238h38.305v-64.355c0-3.44.25-6.889 1.262-9.346 2.768-6.885 9.071-14.012 19.656-14.012 13.858 0 19.405 10.568 19.405 26.063v61.65h38.304v-66.082c0-35.399-18.896-51.872-44.099-51.872-20.663 0-29.738 11.549-34.78 19.415h.255V98.99H99.002c.5 10.812-.003 115.252-.003 115.252z" fill="#ffffff" />
-
-              </g>
-
-            </svg>
-          </a>
-        </div>
-        <div className='right'>
-          {/* <div className='right-box'>
-            <svg width="30px" height="30px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#f17c05" d="M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416zM512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544z"/><path fill="#f17c05" d="M512 512a96 96 0 1 0 0-192 96 96 0 0 0 0 192zm0 64a160 160 0 1 1 0-320 160 160 0 0 1 0 320z"/></svg>
-            <p>{language[lang]?.footer[0].location}</p>
-            </div> */}
-          <div className='right-box'>
-            {/* <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#f17c05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg> */}
-                      <AppWhatsApp phoneNumber={+38348522240} />
-
-            <p>+383 48 522 240</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default Footer
+export default Footer;

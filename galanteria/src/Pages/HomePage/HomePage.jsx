@@ -1,19 +1,26 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomePage.scss';
 
-import { Carousel } from 'react-responsive-carousel';
-import NavBar from '../../Components/NavBar/NavBar';
-import sl1 from '../../assets/images/MT004.jpg';
-import sl2 from '../../assets/images/o001.jpg';
-import sl3 from '../../assets/images/lightttc.jpg';
-import sl4 from '../../assets/images/w001.jpg';
-import sl5 from '../../assets/images/gili.png';
-import s1 from '../../assets/images/milano1.jpg';
+import language from '../../lang';
+import { Context } from '../../Components/Context/Products';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
+import useSEO from '../../Hooks/useSEO';
+
+// Hero images
+import img1 from '../../assets/images/bottom10.jpg';
+import img2 from '../../assets/images/bottom6.jpeg';
+import img3 from '../../assets/images/bottom5.jpg';
+import img4 from '../../assets/images/h1.jpg';
+import img5 from '../../assets/images/h2.jpg';
+import img6 from '../../assets/images/h3.jpg';
+
+// Category images
 import s2 from '../../assets/images/li15.jpg';
 import s3 from '../../assets/images/a003.jpg';
 import s4 from '../../assets/images/c3.png';
@@ -23,265 +30,197 @@ import s7 from '../../assets/images/b1.jpg';
 import s8 from '../../assets/images/MT003.jpg';
 import s9 from '../../assets/images/ST001.png';
 import s10 from '../../assets/images/RD003.jpg';
-import s11 from '../../assets/images/aboutus.png';
-import d1 from '../../assets/images/Frame 53.png';
-import d2 from '../../assets/images/Frame 56.png';
-import d3 from '../../assets/images/Frame 51.png';
-import Footer from '../Footer/Footer';
-import language from '../../lang';
-import { Context } from '../../Components/Context/Products';
-import Language from '../../Components/NavBar/Language';
-import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
+
+// Partners
 import p1 from '../../assets/images/p1.avif';
 import p2 from '../../assets/images/p2.png';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import img1 from '../../assets/images/bottom10.jpg'
-import img2 from '../../assets/images/bottom6.jpeg'
-import img3 from '../../assets/images/bottom5.jpg'
-import img4 from '../../assets/images/h1.jpg'
-import img5 from '../../assets/images/h2.jpg'
-import img6 from '../../assets/images/h3.jpg'
 
-
-
-
-export default function HomePage() {
+const HomePage = () => {
+  useSEO({
+    title: 'Galanteria Group - Premium Furniture',
+    description: 'Welcome to Galanteria Group. Discover our exclusive collection of premium office and home furniture designed for modern, elegant spaces.'
+  });
 
   const [{ lang }] = useContext(Context);
-  const navigate = useNavigate(); // Create a navigate function
+  const navigate = useNavigate();
 
+  const categories = [
+    { img: s3, label: language[lang]?.categories[0].product3, path: '/WorkingTable' },
+    { img: s8, label: language[lang]?.categories[0].product8, path: '/MeetingTable' },
+    { img: s9, label: language[lang]?.categories[0].product9, path: '/Drawers' },
+    { img: s2, label: language[lang]?.categories[0].product2, path: '/OfficeChairs' },
+    { img: s4, label: language[lang]?.categories[0].product4, path: '/MeetingChairs' },
+    { img: s7, label: language[lang]?.categories[0].product7, path: '/WaitingChairs' },
+    { img: s6, label: language[lang]?.categories[0].product6, path: '/Cabinets' },
+    { img: s5, label: language[lang]?.categories[0].product5, path: '/Workstation' },
+    { img: s10, label: language[lang]?.categories[0].product10, path: '/Others' },
+  ];
 
-  // const {
-  //   carouselImages,
-  //   uberUns,
-  //   whatWeDo,
-  //   architecture,
-  //   hvacEngineering,
-  //   wwtp,
-  //   partners,
-  // } = language[lang];
-
-  const handleClick = () => {
-    navigate('/WaitingChairs'); // Use navigate to go to /WaitingChairs
-  };
-  const handleClick2 = () => {
-    navigate('/OfficeChairs'); // Use navigate to go to /WaitingChairs
-  };
-  const handleClick3 = () => {
-    navigate('/WorkingTable'); // Use navigate to go to /WaitingChairs
-  }; const handleClick4 = () => {
-    navigate('/MeetingChairs'); // Use navigate to go to /WaitingChairs
-  }; const handleClick5 = () => {
-    navigate('/Workstation'); // Use navigate to go to /WaitingChairs
-  }; const handleClick6 = () => {
-    navigate('Cabinets'); // Use navigate to go to /WaitingChairs
-  }; const handleClick7 = () => {
-    navigate('/WaitingChairs'); // Use navigate to go to /WaitingChairs
-  }; const handleClick8 = () => {
-    navigate('/MeetingTable'); // Use navigate to go to /WaitingChairs
-  }; const handleClick9 = () => {
-    navigate('/Drawers'); // Use navigate to go to /WaitingChairs
-  }; const handleClick10 = () => {
-    navigate('/Others'); // Use navigate to go to /WaitingChairs
-  };
+  const testimonials = [
+    { name: language[lang]?.clients[0].name1, text: language[lang]?.clients[0].text1 },
+    { name: language[lang]?.clients[0].name2, text: language[lang]?.clients[0].text2 },
+    { name: language[lang]?.clients[0].name3, text: language[lang]?.clients[0].text3 },
+    { name: language[lang]?.clients[0].name4, text: language[lang]?.clients[0].text4 },
+    { name: language[lang]?.clients[0].name5, text: language[lang]?.clients[0].text5 },
+    { name: language[lang]?.clients[0].name6, text: language[lang]?.clients[0].text6 },
+    { name: language[lang]?.clients[0].name7, text: language[lang]?.clients[0].text7 },
+  ];
 
   return (
     <div className="home-wrapper">
-      <NavBar />
 
-
-
-      <div className="hero-homepage">
-
-
-        <h1 className="centered-text-homepage"><i> {language[lang]?.hero[0].title}</i> </h1>
-
-
+      {/* ===== SECTION 1: Full-screen hero slideshow ===== */}
+      <section className="hero-section">
         <Swiper
-          spaceBetween={30}
+          spaceBetween={0}
           centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-        
-          //navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          modules={[Autoplay, Pagination]}
+          className="hero-swiper"
         >
-          <SwiperSlide><img className="black-background-homepage" src={img1} alt="" /></SwiperSlide>
-          <SwiperSlide><img className="black-background-homepage" src={img2} alt="" /></SwiperSlide>
-          <SwiperSlide><img className="black-background-homepage" src={img3} alt="" /></SwiperSlide>
-          <SwiperSlide><img className="black-background-homepage" src={img4} alt="" /></SwiperSlide>
-          <SwiperSlide><img className="black-background-homepage" src={img5} alt="" /></SwiperSlide>
-          <SwiperSlide><img className="black-background-homepage" src={img6} alt="" /></SwiperSlide>
-
+          {[img1, img2, img3, img4, img5, img6].map((img, i) => (
+            <SwiperSlide key={i}>
+              <div className="hero-slide">
+                <img src={img} alt="" />
+                <div className="hero-slide-overlay" />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
-      </div>
 
+        <div className="hero-text-block">
+          <p className="hero-eyebrow">Galanteria Group</p>
+          <h1 className="hero-title">
+            <i>{language[lang]?.hero[0].title}</i>
+          </h1>
+        </div>
 
+        <div className="hero-scroll-hint">
+          <span />
+        </div>
+      </section>
 
+      {/* ===== SECTION 2: Editorial category grid ===== */}
+      <section className="categories-section">
+        <div className="categories-header">
+          <div className="categories-header-left">
+            <span className="eyebrow-label">{language[lang]?.categories[0].title}</span>
+            <h2>{language[lang]?.categories[0].title}</h2>
+          </div>
+          <button className="see-all-btn" onClick={() => navigate('/Projects')}>
+            {lang === 'sq' ? 'Shiko të gjitha' : lang === 'de' ? 'Alle anzeigen' : 'See all'}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
 
-
-
-
-
-      <div className="slider">
-        <h1>{language[lang]?.categories[0].title}</h1>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={true}
-          pagination={false}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 0,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 3,
-            },
-            1524: {
-              slidesPerView: 5,
-              spaceBetween: 3,
-            },
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-        
-
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick3}><img src={s3} alt="" /></div>
-            <p>{language[lang]?.categories[0].product3}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick8}><img src={s8} alt="" /></div>
-            <p>{language[lang]?.categories[0].product8}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick9}><img src={s9} alt="" /></div>
-            <p>{language[lang]?.categories[0].product9}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick2}><img src={s2} alt="" /></div>
-            <p>{language[lang]?.categories[0].product2}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick4}><img src={s4} alt="" /></div>
-            <p>{language[lang]?.categories[0].product4}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick7}><img src={s7} alt="" /></div>
-            <p>{language[lang]?.categories[0].product7}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick6}><img src={s6} alt="" /></div>
-            <p>{language[lang]?.categories[0].product6}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick5}><img src={s5} alt="" /></div>
-            <p>{language[lang]?.categories[0].product5}</p>
-          </SwiperSlide>
-          <SwiperSlide className='s'>
-            <div className="category-img-wrapper" onClick={handleClick10}><img src={s10} alt="" /></div>
-            <p>{language[lang]?.categories[0].product10}</p>
-          </SwiperSlide>
-
-        </Swiper>
-      </div>
-
-      <div className='last-wrapper'>
-        <h1>{language[lang]?.clients[0].title} </h1>
-
-        <Swiper
-          cssMode={true}
-          navigation={true}
-          pagination={true}
-          mousewheel={true}
-          keyboard={true}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name7} </h1>
-              <p>{language[lang]?.clients[0].text7} </p>
+        {/* Big editorial grid — first 2 items are large, rest are small */}
+        <div className="categories-grid">
+          {/* Feature: large left card */}
+          <div
+            className="cat-card cat-card--large"
+            onClick={() => navigate(categories[0].path)}
+          >
+            <img src={categories[0].img} alt={categories[0].label} />
+            <div className="cat-card-overlay">
+              <span>{categories[0].label}</span>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name1} </h1>
-              <p>{language[lang]?.clients[0].text1} </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name2} </h1>
-              <p>{language[lang]?.clients[0].text2} </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name3} </h1>
-              <p>{language[lang]?.clients[0].text3} </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name4} </h1>
-              <p>{language[lang]?.clients[0].text4} </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name5} </h1>
-              <p>{language[lang]?.clients[0].text5} </p>
-            </div>
-          </SwiperSlide> <SwiperSlide>
-            <div className="text">
-              <h1>{language[lang]?.clients[0].name6} </h1>
-              <p>{language[lang]?.clients[0].text6} </p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+          </div>
 
+          {/* Right column: stacked */}
+          <div className="cat-grid-right">
+            <div
+              className="cat-card cat-card--medium"
+              onClick={() => navigate(categories[1].path)}
+            >
+              <img src={categories[1].img} alt={categories[1].label} />
+              <div className="cat-card-overlay"><span>{categories[1].label}</span></div>
+            </div>
+            <div
+              className="cat-card cat-card--medium"
+              onClick={() => navigate(categories[2].path)}
+            >
+              <img src={categories[2].img} alt={categories[2].label} />
+              <div className="cat-card-overlay"><span>{categories[2].label}</span></div>
+            </div>
+          </div>
+
+          {/* Bottom row: equal-width cards */}
+          {categories.slice(3).map((cat, i) => (
+            <div
+              key={i}
+              className="cat-card cat-card--small"
+              onClick={() => navigate(cat.path)}
+            >
+              <img src={cat.img} alt={cat.label} />
+              <div className="cat-card-overlay"><span>{cat.label}</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== SECTION 3: Stats strip ===== */}
+      <section className="stats-section">
+        <div className="stat-block">
+          <h3>1000+</h3>
+          <p>{lang === 'sq' ? 'Projekte të realizuara' : lang === 'de' ? 'Abgeschlossene Projekte' : 'Completed Projects'}</p>
+        </div>
+        <div className="stat-divider" />
+        <div className="stat-block">
+          <h3>200+</h3>
+          <p>{lang === 'sq' ? 'Klientë të kënaqur' : lang === 'de' ? 'Zufriedene Kunden' : 'Satisfied Clients'}</p>
+        </div>
+        <div className="stat-divider" />
+        <div className="stat-block">
+          <h3>15+</h3>
+          <p>{lang === 'sq' ? 'Vite eksperiencë' : lang === 'de' ? 'Jahre Erfahrung' : 'Years of Experience'}</p>
+        </div>
+      </section>
+
+      {/* ===== SECTION 4: Testimonials grid (not a swiper!) ===== */}
+      <section className="testimonials-section">
+        <div className="testimonials-header">
+          <span className="eyebrow-label">{language[lang]?.clients[0].title}</span>
+          <h2>{language[lang]?.clients[0].title}</h2>
+        </div>
+        <div className="testimonials-grid">
+          {testimonials.filter(t => t.name).map((t, i) => (
+            <div key={i} className="testimonial-card">
+              <p className="testimonial-text">"{t.text}"</p>
+              <span className="testimonial-name">— {t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== SECTION 5: Partners (Albanian only) ===== */}
       {lang === 'sq' && (
-
-        <div className="partners">
-          <h1>{language[lang]?.partners[0].partnertitle}</h1>
-          <div className='sec'>
-            <div className="text">
-              <div className='p-text'>
-                <h1>{language[lang]?.partners[0].up}</h1>
+        <section className="partners-section">
+          <div className="partners-header">
+            <span className="eyebrow-label">{language[lang]?.partners[0].partnertitle}</span>
+            <h2>{language[lang]?.partners[0].partnertitle}</h2>
+          </div>
+          <div className="partners-layout">
+            <div className="partners-text">
+              <div className="partner-item">
+                <h4>{language[lang]?.partners[0].up}</h4>
                 <p>{language[lang]?.partners[0].down}</p>
               </div>
-              <div className='p-text'>
-                <h1>{language[lang]?.partners[0].up2}</h1>
+              <div className="partner-item">
+                <h4>{language[lang]?.partners[0].up2}</h4>
                 <p>{language[lang]?.partners[0].down2}</p>
               </div>
             </div>
-
-            <div className='p-img'>
-              <img src={p1} alt="" />
-              <img src={p2} alt="" />
+            <div className="partners-images">
+              <img src={p1} alt="Partner" />
+              <img src={p2} alt="Partner" />
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-
-      <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;

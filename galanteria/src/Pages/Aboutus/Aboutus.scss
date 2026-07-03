@@ -1,213 +1,295 @@
 /* ============================================
-   ABOUT US - Premium Page
+   ABOUT US — v7 Editorial Bento (Creative Typography)
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-.mainAbout {
-  overflow-x: hidden;
+.about-page-bento {
   background: #0E0D0B;
   color: #F0EDE8;
+  min-height: 100vh;
   font-family: 'Inter', sans-serif;
+  padding: 140px 64px 100px;
+
+  @media (max-width: 768px) {
+    padding: 100px 24px 80px;
+  }
 }
 
-/* ---- HERO HEADER ---- */
-.about-us-header {
-  padding-top: 72px; /* navbar height */
-  position: relative;
+.bento-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
-.aboutusheaderP {
+/* ===== Creative Header Typography ===== */
+.bento-header {
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 900px;
-  margin: 80px auto 60px;
-  padding: 0 64px;
-  text-align: center;
 
-  @media (max-width: 900px) {
-    padding: 0 24px;
-    margin: 60px auto 40px;
-  }
-}
-
-.aboutus-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  color: #F0EDE8;
-  letter-spacing: -0.01em;
-}
-
-.aboutus-p {
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
-  line-height: 1.75;
-  color: rgba(240, 237, 232, 0.55);
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-/* ---- HERO IMAGE ---- */
-.img-container {
-  width: 100%;
-  padding: 0 48px;
-  display: flex;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    padding: 0 16px;
-  }
-}
-
-.aboutimg {
-  width: 100%;
-  max-width: 1300px;
-  height: clamp(280px, 35vw, 480px);
-  object-fit: cover;
-  object-position: center;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* ---- STATS TABLE ---- */
-.stats-container {
-  display: flex;
-  justify-content: center;
-  padding: 80px 64px;
-
-  @media (max-width: 768px) {
-    padding: 60px 24px;
-  }
-}
-
-.statsTable {
-  position: static !important;
-  transform: none !important;
-  top: auto !important;
-  left: auto !important;
-  width: auto !important;
-  height: auto !important;
-  background: transparent !important;
-  border-radius: 0 !important;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 900px;
-}
-
-.stats-text {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: wrap;
-  width: 100%;
-
-  & > div {
-    flex: 1;
-    min-width: 200px;
+  .header-top {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 40px 24px;
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    gap: 16px;
+  }
 
-    &:last-child {
-      border-right: none;
-    }
+  .bento-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C8722A;
+  }
 
-    @media (max-width: 600px) {
-      border-right: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 32px 16px;
+  .header-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200, 114, 42, 0.4), transparent);
+    max-width: 200px;
+  }
+
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #F0EDE8;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+
+    em {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(240, 237, 232, 0.5);
+      text-transform: none;
+      font-size: 1.1em;
+      margin-right: 12px;
     }
+  }
+
+  .editorial-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    line-height: 1.6;
+    color: rgba(240, 237, 232, 0.7);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 700px;
+    margin-top: 12px;
+    border-left: 2px solid #C8722A;
+    padding-left: 24px;
   }
 }
 
-.stats-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 400;
-  color: #C8722A;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stats-p {
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(240, 237, 232, 0.45);
-}
-
-/* ---- SOLUTIONS SECTION ---- */
-.solutions {
-  padding: 40px 64px 120px;
-
-  @media (max-width: 768px) {
-    padding: 40px 24px 80px;
-  }
-}
-
-.boxes {
+/* ===== The Bento Grid ===== */
+.bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  max-width: 900px;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 16px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
 }
 
-.box {
-  width: 100%;
-  height: auto;
-  min-height: 180px;
-  padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  background: #1A1815;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  position: static;
-  box-shadow: none;
+/* Base Bento Box */
+.bento-box {
+  background: #151412;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    border-color: rgba(200, 114, 42, 0.35);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(200, 114, 42, 0.1);
-    transform: translateY(-4px);
+    border-color: rgba(200, 114, 42, 0.2);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px;
+    min-height: 200px;
   }
 }
 
-.box-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #F0EDE8;
-  max-width: 100%;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-
-.box-p {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: rgba(240, 237, 232, 0.5);
-}
-
-hr.line, .line {
+/* Image */
+.bento-image {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 0;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+  }
+
+  @media (max-width: 1024px) { grid-column: span 2; }
+  @media (max-width: 600px) { grid-column: span 1; grid-row: span 1; min-height: 300px; }
 }
 
-/* Reset hr from other files */
-hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin: 0;
+/* Stats */
+.bento-stat {
+  align-items: center;
+  text-align: center;
+  background: #11100D;
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: #C8722A;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 232, 0.4);
+  }
+
+  @media (max-width: 600px) { grid-column: span 1; }
+}
+
+.bento-stat-wide {
+  grid-column: span 2;
+  @media (max-width: 1024px) { grid-column: span 2; }
+  @media (max-width: 600px) { grid-column: span 1; }
+}
+
+/* ===== Creative Typography Blocks (Mission/Vision) ===== */
+.bento-mission {
+  grid-column: span 2;
+  grid-row: span 2;
+  position: relative;
+  padding: 48px;
+  background: #11100D;
+  overflow: hidden;
+
+  /* Massive background letter */
+  .mission-watermark {
+    position: absolute;
+    top: -40px;
+    right: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.15); /* Increased visibility to match */
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .mission-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  /* Top Label */
+  .mission-top {
+    display: flex;
+    justify-content: flex-start;
+
+    .mission-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240, 237, 232, 0.5);
+      border: 1px solid rgba(240, 237, 232, 0.15);
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+  }
+
+  /* Massive Offset Title */
+  .mission-mid {
+    margin: auto 0;
+    
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4.2rem);
+      font-weight: 300;
+      color: #F0EDE8;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      max-width: 80%;
+    }
+  }
+
+  /* Shifted Paragraph */
+  .mission-bottom {
+    align-self: flex-end;
+    text-align: right;
+    max-width: 75%;
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+    padding-right: 24px;
+    margin-top: 24px;
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+      font-style: italic;
+    }
+  }
+
+  @media (max-width: 1024px) { grid-column: span 2; }
+  @media (max-width: 600px) {
+    grid-column: span 1;
+    grid-row: auto;
+    padding: 32px;
+    
+    .mission-watermark { font-size: 16rem; right: -10px; top: -10px; }
+    .mission-bottom { max-width: 100%; border-right: none; padding-right: 0; text-align: left; border-left: 2px solid rgba(255, 255, 255, 0.1); padding-left: 16px; }
+  }
+}
+
+/* Copper Accent Version (Mission) */
+.bento-mission-accent {
+  background: #C8722A;
+  border-color: #C8722A;
+
+  .mission-label {
+    color: #F0EDE8;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  h3 { color: #F0EDE8; font-weight: 500; }
+
+  &:hover { border-color: #C8722A; }
+}
+
+/* Dark Accent Version (Vision) */
+.bento-vision {
+  .mission-bottom {
+    border-right-color: rgba(200, 114, 42, 0.4);
+  }
 }

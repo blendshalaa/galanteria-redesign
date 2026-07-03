@@ -46,7 +46,6 @@ const OfficeChairs = () => {
 
   return (
     <>
-      <NavBar />
       <div className='officechairs-wrapper'>
 
 
@@ -136,9 +135,7 @@ const OfficeChairs = () => {
         </div>
 
 
-        <hr className='office' />
-
-        <Footer />
+        <hr className='office'></hr>
       </div>
     </>
 

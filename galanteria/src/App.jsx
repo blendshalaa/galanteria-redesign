@@ -17,34 +17,35 @@ import Drawers from "./Pages/Drawers/Drawers";
 import Others from "./Pages/Others/Others";
 import Cabinets from "./Pages/Cabinets/Cabinets"
 import Project1Page from "./Pages/Project1Page/Project1Page";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import Layout from "./Components/Layout/Layout";
 
 function App() {
 
-
   return (
     <Router>
+      <ScrollToTop />
       <Products>
         <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path="/Aboutus" element={<Aboutus/>} />
-          <Route path="/Contact" element={<Contact/>} />
-          <Route path="/Projects" element={<Projects/>} />
-          <Route path="/Bathrooms" element={<HomeFurnitures/>} />
-          <Route path="/OfficeChairs" element={<OfficeChairs/>} />
-          <Route path="/MeetingChairs" element={<MeetingChairs/>} />
-          <Route path="/WaitingChairs" element={<WaitingChairs/>} />
-          <Route path="/WorkingTable" element={<WorkingTable/>} />
-          <Route path="/Workstation" element={<Workstation/>} />
-          <Route path="/MeetingTable" element={<MeetingTable/>} />
-          <Route path="/Cabinets" element={<Cabinets/>} />
-          <Route path="/Drawers" element={<Drawers/>} />
-          <Route path="/Others" element={<Others/>} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/Aboutus" element={<Aboutus/>} />
+            <Route path="/Contact" element={<Contact/>} />
+            <Route path="/Projects" element={<Projects/>} />
+            <Route path="/Bathrooms" element={<HomeFurnitures/>} />
+            <Route path="/OfficeChairs" element={<OfficeChairs/>} />
+            <Route path="/MeetingChairs" element={<MeetingChairs/>} />
+            <Route path="/WaitingChairs" element={<WaitingChairs/>} />
+            <Route path="/WorkingTable" element={<WorkingTable/>} />
+            <Route path="/Workstation" element={<Workstation/>} />
+            <Route path="/MeetingTable" element={<MeetingTable/>} />
+            <Route path="/Cabinets" element={<Cabinets/>} />
+            <Route path="/Drawers" element={<Drawers/>} />
+            <Route path="/Others" element={<Others/>} />
 
-          <Route path="/product/:slug" element={<Product1Page/>}/>
-          <Route path="/project/:slug" element={<Project1Page/>}/>
-
-
-
+            <Route path="/product/:slug" element={<Product1Page/>}/>
+            <Route path="/project/:slug" element={<Project1Page/>}/>
+          </Route>
         </Routes>
       </Products>
     </Router>

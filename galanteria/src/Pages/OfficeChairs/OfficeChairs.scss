@@ -1,11 +1,12 @@
 /* ============================================
-   PRODUCT LISTING PAGES (Chairs, Tables, etc.)
+   PRODUCT CATEGORY PAGES — v3 Editorial Grid
+   Shared across: OfficeChairs, WaitingChairs, MeetingChairs,
+   WorkingTable, Workstation, MeetingTable, Cabinets, Drawers,
+   Others, Bathrooms
    ============================================ */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Shared class used across product list pages */
+/* ---- Page wrapper ---- */
 .officechairs-wrapper,
 .waitingchairs-wrapper,
 .workingtables-wrapper,
@@ -14,15 +15,15 @@
 .cab-wrapper,
 .draw-wrapper,
 .others-wrapper,
-.bathrooms-wrapper {
+.bathrooms-wrapper,
+.meetingchairs-wrapper {
   min-height: 100vh;
   background: #0E0D0B;
   color: #F0EDE8;
   font-family: 'Inter', sans-serif;
-  padding-top: 72px;
 }
 
-/* Page title */
+/* ---- Page header — matches homepage section headers ---- */
 .officechairs-text,
 .waitingchairs-text,
 .workingtables-text,
@@ -31,35 +32,51 @@
 .cab-text,
 .draw-text,
 .others-text,
-.bathrooms-text {
+.bathrooms-text,
+.meetingchairs-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 56px 24px 48px;
-  font-size: inherit;
+  padding: 140px 64px 60px;
+  gap: 20px;
 
+  @media (max-width: 768px) {
+    padding: 120px 24px 48px;
+  }
+
+  /* Simulates the 'header-top' lockup (Galanteria Group + Copper Line) */
   &::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 2px;
-    background: #C8722A;
-    margin-bottom: 16px;
+    content: 'Galanteria Group';
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C8722A;
+    padding-right: 140px;
+    background: linear-gradient(to right, rgba(200, 114, 42, 0.4), transparent) no-repeat right center;
+    background-size: 120px 1px;
+    align-self: flex-start;
+
+    @media (max-width: 768px) {
+      padding-right: 80px;
+      background-size: 60px 1px;
+    }
   }
 
   h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
     color: #F0EDE8;
-    letter-spacing: 0.04em;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
-    font-style: italic;
   }
 }
 
-/* Product grid */
+/* ---- Full-bleed image grid ---- */
 .officechairs-images,
 .waitingchairs-images,
 .workingtables-images,
@@ -68,106 +85,109 @@
 .cab-images,
 .draw-images,
 .others-images,
-.bathrooms-images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px;
-  padding: 0 48px 80px;
-  max-width: 1400px;
-  margin: 0 auto;
+.bathrooms-images,
+.meetingchairs-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 4px;
+  padding: 0 64px 100px;
 
   @media (max-width: 768px) {
-    padding: 0 20px 60px;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 0 80px;
+    gap: 3px;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
   }
 
   .images {
-    display: contents; /* Allows children to flow naturally into the flex parent */
+    display: contents; /* Children flow into parent grid */
   }
 
   /* Individual product card */
   & > .images > div,
-  & > div,
-  & > .image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    cursor: pointer;
+  & > div {
     position: relative;
-    width: 230px;
-
-    @media (max-width: 1200px) { width: 200px; }
-    @media (max-width: 768px)  { width: 160px; }
-  }
-
-  .product-card-img {
-    position: relative;
-    width: 230px;
-    height: 290px;
-    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: #1A1815;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: #111009;
+    aspect-ratio: 3 / 4;
 
-    @media (max-width: 1200px) { width: 200px; height: 250px; }
-    @media (max-width: 768px)  { width: 160px; height: 200px; }
+    /* Hover top accent line */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #C8722A;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s ease;
+      z-index: 2;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    h4 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 48px 20px 20px;
+      background: linear-gradient(to top, rgba(14, 13, 11, 0.9), transparent);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #F0EDE8;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 1;
+    }
+
+    &:hover {
+      &::before { transform: scaleX(1); }
+      img { transform: scale(1.07); }
+      h4 { opacity: 1; transform: translateY(0); }
+    }
   }
+}
+
+/* Lightbox overlay */
+.expanded-image-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 7, 6, 0.96);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  cursor: zoom-out;
 
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 12px;
-
-    @media (max-width: 1200px) {
-      width: 200px;
-      height: 250px;
-    }
-
-    @media (max-width: 768px) {
-      width: 160px;
-      height: 200px;
-    }
-  }
-
-  h4 {
-    margin-top: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(240, 237, 232, 0.55);
-    text-align: center;
-    transition: color 0.2s ease;
-  }
-
-  & > .images > div:hover img,
-  & > div:hover img,
-  & > .image-container:hover img {
-    transform: scale(1.05);
-  }
-
-  & > .images > div:hover h4,
-  & > div:hover h4,
-  & > .image-container:hover h4 {
-    color: #C8722A;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
   }
 }
 
 hr.office {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
