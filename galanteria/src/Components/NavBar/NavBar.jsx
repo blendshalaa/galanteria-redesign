@@ -43,8 +43,6 @@ const NavBar = () => {
   const toggleMenu = () => {
     setToggleBtn(!toggleBtn);
     document.body.classList.toggle("scroll-y");
-    window.scrollTo(0, 0);
-    console.log("here I am");
   };
 
   useEffect(() => {
