@@ -22,7 +22,7 @@
   --color-text-accent: #C8722A;
 
   /* Typography */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Inter', sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
   /* Spacing */
