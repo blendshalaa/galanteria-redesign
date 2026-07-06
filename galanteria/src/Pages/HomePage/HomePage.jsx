@@ -115,47 +115,40 @@ const HomePage = () => {
         </div>
 
         {/* Big editorial grid — first 2 items are large, rest are small */}
-        <div className="categories-grid">
-          {/* Feature: large left card */}
-          <div
-            className="cat-card cat-card--large"
-            onClick={() => navigate(categories[0].path)}
-          >
-            <img src={categories[0].img} alt={categories[0].label} />
-            <div className="cat-card-overlay">
-              <span>{categories[0].label}</span>
-            </div>
+        {/* Creative Hover Expand Accordion Grid */}
+        <div className="creative-categories-layout">
+          <div className="accordion-row">
+            {categories.slice(0, 4).map((cat, i) => (
+              <div key={i} className="accordion-item" onClick={() => navigate(cat.path)}>
+                <img src={cat.img} alt={cat.label} />
+                <div className="collapsed-label">
+                  <span>{cat.label}</span>
+                </div>
+                <div className="accordion-content">
+                  <h3>{cat.label}</h3>
+                  <div className="view-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Right column: stacked */}
-          <div className="cat-grid-right">
-            <div
-              className="cat-card cat-card--medium"
-              onClick={() => navigate(categories[1].path)}
-            >
-              <img src={categories[1].img} alt={categories[1].label} />
-              <div className="cat-card-overlay"><span>{categories[1].label}</span></div>
-            </div>
-            <div
-              className="cat-card cat-card--medium"
-              onClick={() => navigate(categories[2].path)}
-            >
-              <img src={categories[2].img} alt={categories[2].label} />
-              <div className="cat-card-overlay"><span>{categories[2].label}</span></div>
-            </div>
+          <div className="accordion-row accordion-row-alt">
+            {categories.slice(4, 9).map((cat, i) => (
+              <div key={i} className="accordion-item" onClick={() => navigate(cat.path)}>
+                <img src={cat.img} alt={cat.label} />
+                <div className="collapsed-label">
+                  <span>{cat.label}</span>
+                </div>
+                <div className="accordion-content">
+                  <h3>{cat.label}</h3>
+                  <div className="view-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Bottom row: equal-width cards */}
-          {categories.slice(3).map((cat, i) => (
-            <div
-              key={i}
-              className="cat-card cat-card--small"
-              onClick={() => navigate(cat.path)}
-            >
-              <img src={cat.img} alt={cat.label} />
-              <div className="cat-card-overlay"><span>{cat.label}</span></div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -177,19 +170,38 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 4: Testimonials grid (not a swiper!) ===== */}
+      {/* ===== SECTION 4: Testimonials Swiper ===== */}
       <section className="testimonials-section">
         <div className="testimonials-header">
           <span className="eyebrow-label">{language[lang]?.clients[0].title}</span>
           <h2>{language[lang]?.clients[0].title}</h2>
         </div>
-        <div className="testimonials-grid">
-          {testimonials.filter(t => t.name).map((t, i) => (
-            <div key={i} className="testimonial-card">
-              <p className="testimonial-text">"{t.text}"</p>
-              <span className="testimonial-name">— {t.name}</span>
-            </div>
-          ))}
+        <div className="testimonials-carousel">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            loop={true}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            className="testi-swiper"
+          >
+            {testimonials.filter(t => t.name).map((t, i) => (
+              <SwiperSlide key={i}>
+                <div className="testimonial-modern-card">
+                  <p className="testimonial-text">"{t.text}"</p>
+                  <div className="testimonial-author">
+                    <span className="testimonial-name">{t.name}</span>
+                    <span className="testimonial-role">Client</span>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </section>
 
