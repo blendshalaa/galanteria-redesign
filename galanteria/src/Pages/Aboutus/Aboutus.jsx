@@ -18,82 +18,51 @@ const Aboutus = () => {
   const [{ lang }] = useContext(Context);
 
   return (
-    <div className='about-page-bento'>
-      <div className='bento-container'>
+    <div className='about-page-premium'>
+      <div className='premium-container'>
         
-        {/* Page Header - Editorial Typography */}
-        <div className='bento-header'>
-          <div className='header-top'>
-            <span className='bento-eyebrow'>Galanteria Group</span>
-            <div className='header-line'></div>
+        {/* Left Side: Sticky Text Content */}
+        <div className='premium-left'>
+          <div className='sticky-content'>
+            <span className='eyebrow'>Galanteria Group</span>
+            <h1>{language[lang]?.about[0].right1}</h1>
+            <p className='intro-paragraph'>{language[lang]?.about[0].right2}</p>
+            
+            <div className='philosophy'>
+              <div className='phil-block'>
+                <h3>{lang === 'sq' ? 'Misioni' : lang === 'de' ? 'Unsere Mission' : 'Our Mission'}</h3>
+                <p>{language[lang]?.about[0].bottom1}</p>
+                <p className='phil-sub'>{language[lang]?.about[0].bottom12}</p>
+              </div>
+              <div className='phil-block'>
+                <h3>{lang === 'sq' ? 'Vizioni' : lang === 'de' ? 'Unsere Vision' : 'Our Vision'}</h3>
+                <p>{language[lang]?.about[0].bottom2}</p>
+                <p className='phil-sub'>{language[lang]?.about[0].bottom21}</p>
+              </div>
+            </div>
           </div>
-          <h1>
-            {language[lang]?.about[0].right1}
-          </h1>
-          <p className='editorial-intro'>{language[lang]?.about[0].right2}</p>
         </div>
 
-        {/* The Bento Grid */}
-        <div className='bento-grid'>
-          
-          {/* Row 1 & 2 Left: Main Image (2x2) */}
-          <div className='bento-box bento-image'>
+        {/* Right Side: Scrolling Visuals */}
+        <div className='premium-right'>
+          <div className='hero-image'>
             <img src={aboutimg} alt="Galanteria showroom" />
           </div>
 
-          {/* Row 1 Right: Stat 1 & 2 (1x1 each) */}
-          <div className='bento-box bento-stat'>
-            <h2>1000+</h2>
-            <p>{language[lang]?.about[0].left1}</p>
-          </div>
-
-          <div className='bento-box bento-stat'>
-            <h2>200+</h2>
-            <p>{language[lang]?.about[0].left2}</p>
-          </div>
-
-          {/* Row 2 Right: Stat 3 (2x1 wide) */}
-          <div className='bento-box bento-stat bento-stat-wide'>
-            <h2>15+</h2>
-            <p>{language[lang]?.about[0].left3}</p>
-          </div>
-
-          {/* Row 3 & 4 Left: Mission (2x2) */}
-          <div className='bento-box bento-mission bento-mission-accent'>
-            <div className='mission-watermark'>M</div>
-            <div className='mission-inner'>
-              <div className='mission-top'>
-                <span className='mission-label'>
-                  {lang === 'sq' ? 'Misioni' : lang === 'de' ? 'Unsere Mission' : 'Our Mission'}
-                </span>
-              </div>
-              <div className='mission-mid'>
-                <h3>{language[lang]?.about[0].bottom1}</h3>
-              </div>
-              <div className='mission-bottom'>
-                <p>{language[lang]?.about[0].bottom12}</p>
-              </div>
+          <div className='stats-grid'>
+            <div className='stat-card'>
+              <h2>1000+</h2>
+              <p>{language[lang]?.about[0].left1}</p>
+            </div>
+            <div className='stat-card'>
+              <h2>200+</h2>
+              <p>{language[lang]?.about[0].left2}</p>
+            </div>
+            <div className='stat-card stat-wide'>
+              <h2>15+</h2>
+              <p>{language[lang]?.about[0].left3}</p>
             </div>
           </div>
-
-          {/* Row 3 & 4 Right: Vision (2x2) */}
-          <div className='bento-box bento-mission bento-vision'>
-            <div className='mission-watermark'>V</div>
-            <div className='mission-inner'>
-              <div className='mission-top'>
-                <span className='mission-label'>
-                  {lang === 'sq' ? 'Vizioni' : lang === 'de' ? 'Unsere Vision' : 'Our Vision'}
-                </span>
-              </div>
-              <div className='mission-mid'>
-                <h3>{language[lang]?.about[0].bottom2}</h3>
-              </div>
-              <div className='mission-bottom'>
-                <p>{language[lang]?.about[0].bottom21}</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
