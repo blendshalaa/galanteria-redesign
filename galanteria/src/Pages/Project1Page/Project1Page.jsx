@@ -1,28 +1,52 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Project1 from '../../Pages/Project1/Project1'
-import ErrorPage from '../../Pages/Error/ErrorPage';
-import { Context } from '../../Components/Context/Products';
 import { useParams } from 'react-router-dom';
-import { dataProjects } from '../../data/projects';
+import { supabase } from '../../lib/supabase';
 
 const Project1Page = () => {
   const [data, setData] = useState();
-  const [{ lang }] = useContext(Context)
+  const [loading, setLoading] = useState(true);
   const { slug } = useParams();
-  console.log("HERE", slug);
 
   useEffect(() => {
-    const selectedData = dataProjects[lang][slug];
-    setData(selectedData);
-  }, [slug, lang])
+    const fetchProject = async () => {
+      setLoading(true);
+      const { data: projectData, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('slug', slug)
+        .single();
+      
+      if (projectData) {
+        // Map Supabase fields to the old format expected by Project1 component
+        setData({
+          name: projectData.title,
+          description: projectData.description,
+          photos: projectData.images,
+          firstphoto: projectData.images?.[0]
+        });
+      }
+      setLoading(false);
+    };
 
+    fetchProject();
+  }, [slug]);
 
-  if (data){
+  if (loading) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0908' }}>
+      <span className="spinner" style={{ width: 30, height: 30, border: '2px solid rgba(255,255,255,0.1)', borderTopColor: '#C8722A', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+    </div>;
+  }
 
-    return (
-        <Project1 data={data} />
-      )
-    }
+  if (data) {
+    return <Project1 data={data} />;
+  }
+
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0908', color: '#fff', fontSize: '1.2rem' }}>
+      Projekti nuk u gjet!
+    </div>
+  );
 }
 
-export default Project1Page
+export default Project1Page;

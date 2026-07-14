@@ -1,17 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Projects.scss';
 import language from '../../lang';
 import { Context } from '../../Components/Context/Products';
 import useSEO from '../../Hooks/useSEO';
-
-import project1 from '../../assets/images/bottom2.jpg';
-import project2 from '../../assets/images/mile11.jpg';
-import project3 from '../../assets/images/tika.jpg';
-import project4 from '../../assets/images/usmile1.jpg';
-import project5 from '../../assets/images/integrime1.jpg';
-import project6 from '../../assets/images/kultur2.jpg';
+import { supabase } from '../../lib/supabase';
 
 const Projects = () => {
   useSEO({
@@ -21,17 +15,27 @@ const Projects = () => {
 
   const [{ lang }] = useContext(Context);
   const navigate = useNavigate();
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (!error && data) {
+        setProjects(data);
+      }
+      setLoading(false);
+    };
+
+    fetchProjects();
+  }, []);
 
   const goToProject = (slug) => navigate(`/project/${slug}`);
-
-  const images = [
-    { src: project1, alt: { sq: 'BottomLine Prishtinë dhe Gjenevë', en: 'BottomLine Prishtina and Geneva', de: 'BottomLine Prishtina und Genf' } },
-    { src: project2, alt: { sq: 'Millennium Challenge Account Kosovo', en: 'Millennium Challenge Account Kosovo', de: 'Millennium Challenge Account Kosovo' } },
-    { src: project5, alt: { sq: 'Ministria e Integrimeve - Republika e Kosovës', en: 'Ministry of Integration - Republic of Kosovo', de: 'Ministerium für Integration - Republik Kosovo' } },
-    { src: project6, alt: { sq: 'Ministria e Kulturës - Republika e Kosovës', en: 'Ministry of Culture - Republic of Kosovo', de: 'Ministerium für Kultur - Republik Kosovo' } },
-    { src: project3, alt: { sq: 'Tika - Qendra Për Rehabilitimin dhe Edukimin Special', en: 'Tika - Center for Rehabilitation and Special Education', de: 'Tika - Zentrum für Rehabilitation und Sonderpädagogik' } },
-    { src: project4, alt: { sq: 'U-smile office - Liège', en: 'U-smile office - Liège', de: 'U-smile Büro - Liège' } },
-  ];
 
   return (
     <div className='projects-wrapper'>
@@ -45,44 +49,58 @@ const Projects = () => {
         <h1>{language[lang]?.projects[0].title} <em>{language[lang]?.projects[0].title2}</em></h1>
       </div>
 
-      {/* Full-bleed editorial grid — no two-column split containers */}
-      <div className='projects-grid'>
-        {/* First image: large feature */}
-        <div
-          className='project-card project-card--large'
-          onClick={() => goToProject(images[0].alt['en'].toLowerCase())}
-        >
-          <img src={images[0].src} alt={images[0].alt[lang]} />
-          <div className='project-card-info'>
-            <span>{images[0].alt[lang]}</span>
-          </div>
+      {loading ? (
+        <div style={{ padding: '100px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>
+          <span className="spinner" style={{ display: 'inline-block', width: 24, height: 24, border: '2px solid rgba(255,255,255,0.1)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
         </div>
-
-        {/* Second image: tall right */}
-        <div
-          className='project-card project-card--tall'
-          onClick={() => goToProject(images[1].alt['en'].toLowerCase())}
-        >
-          <img src={images[1].src} alt={images[1].alt[lang]} />
-          <div className='project-card-info'>
-            <span>{images[1].alt[lang]}</span>
-          </div>
+      ) : projects.length === 0 ? (
+        <div style={{ padding: '100px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>
+          Nuk ka projekte për momentin.
         </div>
-
-        {/* Remaining: uniform grid */}
-        {images.slice(2).map((img, i) => (
-          <div
-            key={i}
-            className='project-card'
-            onClick={() => goToProject(img.alt['en'].toLowerCase())}
-          >
-            <img src={img.src} alt={img.alt[lang]} />
-            <div className='project-card-info'>
-              <span>{img.alt[lang]}</span>
+      ) : (
+        /* Full-bleed editorial grid */
+        <div className='projects-grid'>
+          {/* First image: large feature */}
+          {projects[0] && (
+            <div
+              className='project-card project-card--large'
+              onClick={() => goToProject(projects[0].slug)}
+            >
+              <img src={projects[0].images?.[0] || 'https://placehold.co/600x400/111/555?text=No+Image'} alt={projects[0].title} />
+              <div className='project-card-info'>
+                <span>{projects[0].title}</span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          )}
+
+          {/* Second image: tall right */}
+          {projects[1] && (
+            <div
+              className='project-card project-card--tall'
+              onClick={() => goToProject(projects[1].slug)}
+            >
+              <img src={projects[1].images?.[0] || 'https://placehold.co/400x600/111/555?text=No+Image'} alt={projects[1].title} />
+              <div className='project-card-info'>
+                <span>{projects[1].title}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Remaining: uniform grid */}
+          {projects.slice(2).map((proj) => (
+            <div
+              key={proj.id}
+              className='project-card'
+              onClick={() => goToProject(proj.slug)}
+            >
+              <img src={proj.images?.[0] || 'https://placehold.co/400x400/111/555?text=No+Image'} alt={proj.title} />
+              <div className='project-card-info'>
+                <span>{proj.title}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
     </div>
   );
