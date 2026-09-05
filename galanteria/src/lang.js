@@ -1,11 +1,19 @@
-import img1 from '../../galanteria/src/assets/images/lighttt.jpg'
-import img2 from '../../galanteria/src/assets/images/FOULARD.jpg'
-import img3 from '../../galanteria/src/assets/images/MONZA.jpg'
-import img4 from '../../galanteria/src/assets/images/mile1.jpg'
-import img5 from '../../galanteria/src/assets/images/mile2.jpg'
-import img6 from '../../galanteria/src/assets/images/mile3.jpg'
-import img7 from '../../galanteria/src/assets/images/mile4.jpg'
-import img8 from '../../galanteria/src/assets/images/mile5.jpg'
+/*
+ * Marketing copy for the three site languages (sq / en / de).
+ *
+ * This file used to open with eight `import` statements pulling in some of the
+ * largest JPEGs in the repository (mile1-5.jpg, ~8 MB each) to build a
+ * `carouselImages` array that no component ever read — so roughly 40 MB of
+ * source imagery was dragged into the always-loaded language module. Those
+ * imports also used the path '../../galanteria/src/assets/...', climbing out
+ * of the project directory and back into it.
+ *
+ * Interface strings — loading, empty, error, button labels — live in
+ * src/i18n/ui.js instead. Those are the ones that need to exist in all three
+ * languages for every component, and keeping them separate is what stopped
+ * Albanian text leaking onto the English and German versions of the site.
+ */
+
 
 
 const language = {
@@ -187,7 +195,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
         }],
         partners:[{
             title:"Ne punojmë me partnerët më të mirë!",
-            subtitle:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ushtrimi i duhur për qëllime të ofrimit të dignissimos ex quidem odio consequatur magnam?",
+            subtitle:"Bashkëpunojmë me prodhues të njohur evropianë për të sjellë cilësi të provuar në çdo projekt.",
             partnertitle: "Partnerët tanë",
             up: "Compotek SRL – Udine, ITALY ",
             down:"Kompania Compotek, me seli në Manzano – Udine, Italy, është partner i yni për furnizimin me komponente të karrigave  të zyrave që nga viti 2004. Galanteria është distributor gjeneral për tregun e Kosovës bazuar në kontratën gjenerale për bashkëpunim. ",
@@ -242,17 +250,6 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
               project5: "Ministry of Integration - Republic of Kosovo",
               project6: "Ministry of Culture - Republic of Kosovo",
             }],
-          
-        carouselImages: [
-            img1, // Replace with the German image URLs
-            img2,
-            img3,
-            img4, 
-            img5,
-            img6,
-            img7,
-            img8
-          ],
         
     },
     en:{
@@ -442,7 +439,7 @@ hero:[{title:"“Ne ju ofrojmë zgjidhje me kompetencë në dizajn dhe cilësi�
 
 partners: [{
     title: "We work with the best partners!",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercising properly for the purposes of providing dignissimos ex quidem odio consequatur magnam?",
+    subtitle: "We partner with established European manufacturers to bring proven quality to every project we deliver.",
     partnertitle: "Our Partners",
     up: "Compotek SRL – Udine, ITALY",
     down: "The company Compotek, based in Manzano – Udine, Italy, has been our partner for the supply of office chair components since 2004. Galanteria is the general distributor for the Kosovo market based on the general cooperation agreement.",
@@ -492,17 +489,6 @@ footer: [{
       
       
   ,
-  carouselImages: [
-    img1, // Replace with the German image URLs
-    img2,
-    img3,
-    img4, 
-    img5,
-    img6,
-    img7,
-    img8
-    // Add more images as needed
-  ],
   
 
 
@@ -655,16 +641,6 @@ footer: [{
             name7:"Millenium Challenge Account Kosovo ",
             text7:"Galanteria SH.P. K hat die Lieferung vertragsgemäß und mit zufriedenstellender Leistung und Standards ausgeführt. Wir stehen jederzeit zur Verfügung, um die Leistung von Galanteria SH.P. K mit zukünftigen Interessenten weiter zu besprechen."
 }],
-
-        categories:[
-            {
-            title:"Beliebte Kategorien",
-            product1:"Liegen",  
-            product2:"Stühle",
-            product3:"Sofas",
-            product4:"Wohnzimmer",
-            }
-        ],
         categories:[
             {
             title:"Beliebte Kategorien",
@@ -700,7 +676,7 @@ footer: [{
         }],
         partners: [{
             title: "Wir arbeiten mit den besten Partnern!",
-            subtitle: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Richtiges Üben für die Zwecke der Bereitstellung von dignissimos ex quidem odio consequatur magnam?",
+            subtitle: "Wir arbeiten mit etablierten europäischen Herstellern zusammen, um in jedem Projekt bewährte Qualität zu liefern.",
             partnertitle: "Unsere Partner",
             up: "Compotek SRL – Udine, ITALIEN",
             down: "Das Unternehmen Compotek, mit Sitz in Manzano – Udine, Italien, ist seit 2004 unser Partner für die Lieferung von Komponenten für Bürostühle. Galanteria ist der Generalvertriebspartner für den Markt im Kosovo auf der Grundlage des allgemeinen Kooperationsvertrags.",
@@ -746,17 +722,6 @@ footer: [{
         title:"Schauen Sie sich unsere ",
         title2:"Projekte an"
        }],
-       carouselImages: [
-        img1, // Replace with the German image URLs
-        img2,
-        img3,
-        img4, 
-        img5,
-        img6,
-        img7,
-        img8
-        // Add more images as needed
-      ],
       
       
   

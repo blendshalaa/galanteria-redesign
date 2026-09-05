@@ -1,98 +1,121 @@
-import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 import logo from '../../assets/images/LOGO_G.png';
-import { Link } from 'react-router-dom';
-import { Context } from '../../Components/Context/Products';
 import language from '../../lang';
+import useLang from '../../Hooks/useLang';
+import useCategories from '../../Hooks/useCategories';
 import AppWhatsApp from '../../Components/WhatsappViber/AppWhatsApp';
+import { localized } from '../../i18n/ui';
+import { EMAILS, PHONES, SOCIALS, WHATSAPP_NUMBER } from '../../config/contact';
 
 const Footer = () => {
-  const [{ lang }] = useContext(Context);
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const { lang, t } = useLang();
+  const { categories } = useCategories();
 
   return (
-    <footer className='footer-editorial'>
-      
-      {/* ===== 1. Massive Footer CTA ===== */}
-      <div className='footer-cta'>
-        <div className='cta-content'>
+    <footer className="footer-editorial">
+      <div className="footer-cta">
+        <div className="cta-content">
           <h2>
-            {lang === 'sq' ? 'Gati për të' : lang === 'de' ? 'Bereit zu' : 'Ready to'} <br/>
-            <em>{lang === 'sq' ? 'transformuar hapësirën?' : lang === 'de' ? 'transformieren?' : 'elevate your space?'}</em>
+            {t('footerCtaLead')} <br />
+            <em>{t('footerCtaEmph')}</em>
           </h2>
-          <Link to="/Contact" className='cta-link'>
-            {lang === 'sq' ? 'Na Kontaktoni' : lang === 'de' ? 'Kontaktiere uns' : 'Get in Touch'}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <Link to="/Contact" className="btn btn-primary cta-link">
+            {t('contactUs')}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
         </div>
       </div>
 
-      {/* ===== 2. Main Footer Grid ===== */}
-      <div className='footer-main-grid'>
-        
-        <div className='footer-brand'>
-          <img src={logo} alt="Galanteria logo" />
-          <p>
-            {lang === 'sq'
-              ? 'Mobilim premium për hapësira pune moderne, duke sjellë inovacione dhe kualitet.'
-              : lang === 'de'
-              ? 'Premium-Möbel für moderne Arbeitsbereiche, mit Innovation und Qualität.'
-              : 'Premium furniture for modern workspaces, delivering innovation and uncompromising quality.'}
-          </p>
+      <div className="footer-main-grid">
+        <div className="footer-brand">
+          {/* 120×90 is a 1.33 ratio; the file is 336×246, i.e. 1.37. */}
+          <img src={logo} alt="Galanteria Group" width="120" height="88" loading="lazy" />
+          <p>{t('footerTagline')}</p>
         </div>
 
-        <div className='footer-nav'>
-          <span className='footer-col-label'>
-             {lang === 'sq' ? 'Navigimi' : lang === 'de' ? 'Navigation' : 'Navigation'}
-             <span className='footer-line'></span>
+        <nav className="footer-nav" aria-label="Footer">
+          <span className="footer-col-label">
+            {t('navigation')}
+            <span className="footer-line" />
           </span>
-          <Link to="/"><span>{language[lang]?.menuHeader[0].name}</span></Link>
-          <Link to="/Projects"><span>{language[lang]?.menuHeader[12].name}</span></Link>
-          <Link to="/Aboutus"><span>{language[lang]?.menuHeader[15].name}</span></Link>
-          <Link to="/Contact"><span>{language[lang]?.menuHeader[14].name}</span></Link>
-        </div>
+          <Link to="/">{language[lang]?.menuHeader?.[0]?.name}</Link>
+          <Link to="/Projects">{language[lang]?.menuHeader?.[12]?.name}</Link>
+          <Link to="/Aboutus">{language[lang]?.menuHeader?.[15]?.name}</Link>
+          <Link to="/Contact">{language[lang]?.menuHeader?.[14]?.name}</Link>
+        </nav>
 
-        <div className='footer-contact'>
-          <span className='footer-col-label'>
-            {lang === 'sq' ? 'Kontakti' : lang === 'de' ? 'Kontakt' : 'Contact'}
-            <span className='footer-line'></span>
+        {/* Category links in the footer are good for crawlers, and give a
+            visitor at the bottom of a page somewhere to go. */}
+        {categories.length > 0 && (
+          <nav className="footer-nav" aria-label="Categories">
+            <span className="footer-col-label">
+              {t('allCategories')}
+              <span className="footer-line" />
+            </span>
+            {categories.slice(0, 6).map((category) => (
+              <Link key={category.slug} to={`/category/${category.slug}`}>
+                {localized(category, 'name', lang)}
+              </Link>
+            ))}
+          </nav>
+        )}
+
+        <div className="footer-contact">
+          <span className="footer-col-label">
+            {t('contactLabel')}
+            <span className="footer-line" />
           </span>
-          <a href="tel:+38348522240">+383 48 522 240</a>
-          <a href="mailto:info@galanteriagroup.com">info@galanteriagroup.com</a>
-          <div className='footer-whatsapp'>
-            <AppWhatsApp phoneNumber={+38348522240} />
+          {/* These used to be hardcoded here and separately on the Contact
+              page, and the two had drifted: the footer advertised
+              +383 48 522 240 while the contact page advertised two entirely
+              different numbers. One source now. */}
+          {PHONES.map((phone) => (
+            <a key={phone.href} href={phone.href}>{phone.label}</a>
+          ))}
+          <a href={EMAILS[0].href}>{EMAILS[0].label}</a>
+          <div className="footer-whatsapp">
+            {/* Was `phoneNumber={+38348522240}` — a unary-plus numeric literal
+                rather than a string, which happened to work but would silently
+                mangle any number with a leading zero. */}
+            <AppWhatsApp phoneNumber={WHATSAPP_NUMBER} />
           </div>
         </div>
 
-        <div className='footer-socials-col'>
-          <span className='footer-col-label'>
-            Socials
-            <span className='footer-line'></span>
+        <div className="footer-socials-col">
+          <span className="footer-col-label">
+            {/* Was the hardcoded English "Socials" in all three languages. */}
+            {t('socials')}
+            <span className="footer-line" />
           </span>
-          <a href="https://www.instagram.com/galanteriashpk/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.facebook.com/p/Galanteria-SHPK-100063493750911/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.linkedin.com/in/galanteria-l-l-c-94282530b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href={SOCIALS.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
-      {/* ===== 3. Grand Typography Anchor ===== */}
-      <div className='footer-grand-anchor'>
-        <div className='grand-text'>GALANTERIA</div>
+      <div className="footer-grand-anchor" aria-hidden="true">
+        <div className="grand-text">GALANTERIA</div>
       </div>
 
-      {/* ===== 4. Bottom Legal ===== */}
-      <div className='footer-legal'>
-        <span className='footer-copy'>© {new Date().getFullYear()} Galanteria Group. All rights reserved.</span>
-        
-        <button className='footer-top-btn' onClick={scrollToTop}>
-          Top 
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <div className="footer-legal">
+        <span className="footer-copy">
+          © {new Date().getFullYear()} Galanteria Group. {t('rightsReserved')}
+        </span>
+
+        <button
+          type="button"
+          className="footer-top-btn"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          {t('backToTop')}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
-
     </footer>
   );
 };

@@ -1,52 +1,86 @@
-import React, { useState, useEffect } from 'react'
-import Project1 from '../../Pages/Project1/Project1'
-import { useParams } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Project1 from '../../Pages/Project1/Project1';
 import { supabase } from '../../lib/supabase';
+import useLang from '../../Hooks/useLang';
+import { ErrorState, LoadingState } from '../../Components/ui';
 
 const Project1Page = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
   const { slug } = useParams();
+  const { t } = useLang();
 
-  useEffect(() => {
-    const fetchProject = async () => {
-      setLoading(true);
-      const { data: projectData, error } = await supabase
-        .from('projects')
-        .select('*')
-        .eq('slug', slug)
-        .single();
-      
-      if (projectData) {
-        // Map Supabase fields to the old format expected by Project1 component
-        setData({
-          name: projectData.title,
-          description: projectData.description,
-          photos: projectData.images,
-          firstphoto: projectData.images?.[0]
-        });
-      }
-      setLoading(false);
-    };
+  const [project, setProject] = useState(null);
+  const [status, setStatus] = useState('loading'); // loading | ready | missing | error
 
-    fetchProject();
+  const load = useCallback(async () => {
+    setStatus('loading');
+
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('slug', slug)
+      .limit(1)
+      .maybeSingle();
+
+    if (error) {
+      console.error('[Galanteria] Failed to load project', slug, error);
+      setStatus('error');
+      return;
+    }
+
+    if (!data) {
+      setStatus('missing');
+      return;
+    }
+
+    setProject(data);
+    setStatus('ready');
   }, [slug]);
 
-  if (loading) {
-    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0908' }}>
-      <span className="spinner" style={{ width: 30, height: 30, border: '2px solid rgba(255,255,255,0.1)', borderTopColor: '#C8722A', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-    </div>;
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  if (status === 'loading') return <LoadingState label={t('loading')} />;
+
+  if (status === 'error') {
+    return (
+      <div className="product-page-state">
+        <ErrorState
+          title={t('errorTitle')}
+          description={t('errorBody')}
+          onRetry={load}
+          retryLabel={t('retry')}
+        />
+      </div>
+    );
   }
 
-  if (data) {
-    return <Project1 data={data} />;
+  if (status === 'missing') {
+    return (
+      <div className="product-page-state">
+        <ErrorState title={t('projectNotFound')} description={t('notFoundBody')} />
+        <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 80 }}>
+          <Link to="/Projects" className="ui-retry-btn">{t('back')}</Link>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0908', color: '#fff', fontSize: '1.2rem' }}>
-      Projekti nuk u gjet!
-    </div>
+    <Project1
+      data={{
+        name: project.title,
+        slug: project.slug,
+        description: project.description,
+        location: project.location,
+        year: project.year,
+        photos: project.images || [],
+        thumbnails: project.thumbnails || project.images || [],
+        firstphoto: project.images?.[0],
+      }}
+    />
   );
-}
+};
 
 export default Project1Page;

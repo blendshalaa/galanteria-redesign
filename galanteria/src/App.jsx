@@ -1,58 +1,94 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import Products from "./Components/Context/Products";
-import HomePage from './Pages/HomePage/HomePage'
-import Aboutus from './Pages/Aboutus/Aboutus'
-import Contact from './Pages/Contact/Contact'
-import Projects from "./Pages/Projects/Projects";
-import Product1Page from "./Pages/Product1Page/Product1Page";
-import Project1Page from "./Pages/Project1Page/Project1Page";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Layout from "./Components/Layout/Layout";
-import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import ProtectedRoute from "./Components/AdminAuth/ProtectedRoute";
 import { AdminAuthProvider } from "./Components/AdminAuth/AdminAuth";
-import CategoryPage from "./Pages/CategoryPage/CategoryPage";
+import RouteFallback from "./Components/RouteFallback/RouteFallback";
+
+/**
+ * Every route is code-split. Previously all 17 routes plus ~445 statically
+ * imported images were pulled into a single bundle, so a visitor landing on the
+ * contact page downloaded the entire admin panel and every product photo import
+ * in the project.
+ */
+const HomePage     = lazy(() => import("./Pages/HomePage/HomePage"));
+const Aboutus      = lazy(() => import("./Pages/Aboutus/Aboutus"));
+const Contact      = lazy(() => import("./Pages/Contact/Contact"));
+const Projects     = lazy(() => import("./Pages/Projects/Projects"));
+const CategoryPage = lazy(() => import("./Pages/CategoryPage/CategoryPage"));
+const Product1Page = lazy(() => import("./Pages/Product1Page/Product1Page"));
+const Project1Page = lazy(() => import("./Pages/Project1Page/Project1Page"));
+const NotFound     = lazy(() => import("./Pages/NotFound/NotFound"));
+const AdminDashboard = lazy(() => import("./Pages/Admin/AdminDashboard"));
+
+/**
+ * The ten category paths that used to be hardcoded routes, each passing an
+ * Albanian display name as both the query key and the page heading. They are
+ * now redirects onto `/category/:slug`, so existing links, bookmarks and any
+ * indexed URLs keep working.
+ */
+const LEGACY_CATEGORY_PATHS = {
+  "/OfficeChairs":  "office-chairs",
+  "/MeetingChairs": "meeting-chairs",
+  "/WaitingChairs": "waiting-chairs",
+  "/WorkingTable":  "working-tables",
+  "/Workstation":   "workstations",
+  "/MeetingTable":  "meeting-tables",
+  "/Cabinets":      "cabinets",
+  "/Drawers":       "drawers",
+  "/Bathrooms":     "bathrooms",
+  "/Others":        "others",
+};
 
 function App() {
-
   return (
     <AdminAuthProvider>
       <Router>
         <ScrollToTop />
         <Products>
-          <Routes>
-            {/* Admin Route — no Layout wrapper */}
-            <Route path="/admin" element={<AdminDashboard />} />
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              {/* Admin — outside <Layout>, behind a real auth check. */}
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Public Routes */}
-            <Route element={<Layout />}>
-              <Route path="/" element={<HomePage/>} />
-              <Route path="/Aboutus" element={<Aboutus/>} />
-              <Route path="/Contact" element={<Contact/>} />
-              <Route path="/Projects" element={<Projects/>} />
-              
-              {/* Dynamic Category Pages connected to Supabase */}
-              <Route path="/Bathrooms" element={<CategoryPage category="Banjë" title="Banjë" />} />
-              <Route path="/OfficeChairs" element={<CategoryPage category="Karrigë Zyreje" title="Karrige Zyreje" />} />
-              <Route path="/MeetingChairs" element={<CategoryPage category="Karrigë takimesh" title="Karrige Takimesh" />} />
-              <Route path="/WaitingChairs" element={<CategoryPage category="Karrigë Pritjeje" title="Karrige Pritjeje" />} />
-              <Route path="/WorkingTable" element={<CategoryPage category="Tavolina Pune" title="Tavolina Pune" />} />
-              <Route path="/Workstation" element={<CategoryPage category="Workstation" title="Workstation" />} />
-              <Route path="/MeetingTable" element={<CategoryPage category="Tavolina Takimi" title="Tavolina Takimi" />} />
-              <Route path="/Cabinets" element={<CategoryPage category="Dollapë" title="Dollapë" />} />
-              <Route path="/Drawers" element={<CategoryPage category="Sirtar" title="Sirtar" />} />
-              <Route path="/Others" element={<CategoryPage category="Tjera" title="Tjera" />} />
+              <Route element={<Layout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/Aboutus" element={<Aboutus />} />
+                <Route path="/Contact" element={<Contact />} />
+                <Route path="/Projects" element={<Projects />} />
 
-              <Route path="/product/:slug" element={<Product1Page/>}/>
-              <Route path="/project/:slug" element={<Project1Page/>}/>
-            </Route>
-          </Routes>
+                <Route path="/category/:slug" element={<CategoryPage />} />
+
+                {Object.entries(LEGACY_CATEGORY_PATHS).map(([path, slug]) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={<Navigate to={`/category/${slug}`} replace />}
+                  />
+                ))}
+
+                <Route path="/product/:slug" element={<Product1Page />} />
+                <Route path="/project/:slug" element={<Project1Page />} />
+
+                {/* Previously absent: an unknown URL rendered a blank page
+                    between the navbar and the footer. */}
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </Suspense>
         </Products>
       </Router>
     </AdminAuthProvider>
-  )
+  );
 }
 
-export default App
-
-
+export default App;

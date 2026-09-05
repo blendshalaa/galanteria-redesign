@@ -1,22 +1,17 @@
-import React from "react";
 
-const LangFlag = ({ lang }) => {  
-  if (lang === "en") {
-    return (
-    <h5  className="l">EN</h5>
-    )
-  }
-  if (lang === "sq") {
-    return (
-     <h5  className="l">AL </h5> 
-    )
-  }
+const LABELS = {
+  en: 'EN',
+  sq: 'AL',
+  de: 'DE',
+};
 
-  if (lang === "de") {
-    return (
-      <h5 className="l">DE</h5>
-    )
-  }
-   
-}
+/**
+ * The two-letter language label.
+ *
+ * The previous version had three `if` branches and no final return, so any
+ * value outside en/sq/de made the component return `undefined` — which React
+ * treats as a render error, not as "render nothing".
+ */
+const LangFlag = ({ lang }) => <span className="l">{LABELS[lang] ?? String(lang).toUpperCase()}</span>;
+
 export default LangFlag;

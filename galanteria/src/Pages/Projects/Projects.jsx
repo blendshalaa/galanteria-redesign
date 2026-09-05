@@ -1,107 +1,120 @@
-/* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Projects.scss';
 import language from '../../lang';
-import { Context } from '../../Components/Context/Products';
+import useLang from '../../Hooks/useLang';
 import useSEO from '../../Hooks/useSEO';
 import { supabase } from '../../lib/supabase';
+import { EmptyState, ErrorState, SkeletonGrid } from '../../Components/ui';
 
+const PLACEHOLDER = 'https://placehold.co/800x600/1a1815/555?text=Galanteria';
+
+/**
+ * Project portfolio.
+ *
+ * Changes:
+ *   - cards are `<Link>`s rather than `<div onClick>`, so they are focusable,
+ *     crawlable and can be opened in a new tab;
+ *   - the layout no longer singles out `projects[0]` as a large card and
+ *     `projects[1]` as a tall one. Those two classes were pinned to fixed grid
+ *     columns and rows, which broke above six projects and left a large hole
+ *     beside the lead card at the counts below it. Every card is now the same
+ *     shape in an auto-flowing grid;
+ *   - loading, empty and error are three distinct states. Previously a failed
+ *     request was swallowed by `if (!error && data)` and rendered as the empty
+ *     message, in Albanian, to every visitor regardless of language.
+ */
 const Projects = () => {
+  const { lang, t } = useLang();
+
+  const [projects, setProjects] = useState([]);
+  const [status, setStatus] = useState('loading');
+
   useSEO({
     title: 'Our Projects | Galanteria Group',
-    description: 'Explore our portfolio of completed projects. See how Galanteria Group transforms spaces with elegant, functional furniture design and installations.'
+    description:
+      'Explore our portfolio of completed projects. See how Galanteria Group furnishes offices, schools and hotels across Kosovo and the region.',
   });
 
-  const [{ lang }] = useContext(Context);
-  const navigate = useNavigate();
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const load = useCallback(async () => {
+    setStatus('loading');
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('created_at', { ascending: false });
-      
-      if (!error && data) {
-        setProjects(data);
-      }
-      setLoading(false);
-    };
+    const { data, error } = await supabase
+      .from('projects')
+      .select('id, title, slug, images, thumbnails')
+      .order('created_at', { ascending: false });
 
-    fetchProjects();
+    if (error) {
+      console.error('[Galanteria] Failed to load projects', error);
+      setStatus('error');
+      return;
+    }
+
+    setProjects(data || []);
+    setStatus('ready');
   }, []);
 
-  const goToProject = (slug) => navigate(`/project/${slug}`);
+  useEffect(() => {
+    load();
+  }, [load]);
 
   return (
-    <div className='projects-wrapper'>
-
-      {/* Editorial Page Header */}
-      <div className='projects-header-bento'>
-        <div className='header-top'>
-          <span className='bento-eyebrow'>Galanteria Group</span>
-          <div className='header-line'></div>
+    <div className="projects-wrapper">
+      <div className="projects-header-bento">
+        <div className="header-top">
+          <span className="bento-eyebrow">Galanteria Group</span>
+          <div className="header-line" />
         </div>
-        <h1>{language[lang]?.projects[0].title} <em>{language[lang]?.projects[0].title2}</em></h1>
+        <h1>
+          {language[lang]?.projects?.[0]?.title} <em>{language[lang]?.projects?.[0]?.title2}</em>
+        </h1>
       </div>
 
-      {loading ? (
-        <div style={{ padding: '100px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>
-          <span className="spinner" style={{ display: 'inline-block', width: 24, height: 24, border: '2px solid rgba(255,255,255,0.1)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-        </div>
-      ) : projects.length === 0 ? (
-        <div style={{ padding: '100px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>
-          Nuk ka projekte për momentin.
-        </div>
-      ) : (
-        /* Full-bleed editorial grid */
-        <div className='projects-grid'>
-          {/* First image: large feature */}
-          {projects[0] && (
-            <div
-              className='project-card project-card--large'
-              onClick={() => goToProject(projects[0].slug)}
-            >
-              <img src={projects[0].images?.[0] || 'https://placehold.co/600x400/111/555?text=No+Image'} alt={projects[0].title} />
-              <div className='project-card-info'>
-                <span>{projects[0].title}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Second image: tall right */}
-          {projects[1] && (
-            <div
-              className='project-card project-card--tall'
-              onClick={() => goToProject(projects[1].slug)}
-            >
-              <img src={projects[1].images?.[0] || 'https://placehold.co/400x600/111/555?text=No+Image'} alt={projects[1].title} />
-              <div className='project-card-info'>
-                <span>{projects[1].title}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Remaining: uniform grid */}
-          {projects.slice(2).map((proj) => (
-            <div
-              key={proj.id}
-              className='project-card'
-              onClick={() => goToProject(proj.slug)}
-            >
-              <img src={proj.images?.[0] || 'https://placehold.co/400x400/111/555?text=No+Image'} alt={proj.title} />
-              <div className='project-card-info'>
-                <span>{proj.title}</span>
-              </div>
-            </div>
-          ))}
+      {status === 'loading' && (
+        <div className="projects-skeleton">
+          <SkeletonGrid count={6} />
         </div>
       )}
 
+      {status === 'error' && (
+        <ErrorState
+          title={t('errorTitle')}
+          description={t('errorBody')}
+          onRetry={load}
+          retryLabel={t('retry')}
+        />
+      )}
+
+      {status === 'ready' && projects.length === 0 && (
+        <EmptyState description={t('noProjects')} />
+      )}
+
+      {status === 'ready' && projects.length > 0 && (
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <Link
+              key={project.id}
+              to={`/project/${project.slug}`}
+              className="project-card"
+            >
+              <img
+                src={project.thumbnails?.[0] || project.images?.[0] || PLACEHOLDER}
+                alt={project.title}
+                loading={index < 2 ? 'eager' : 'lazy'}
+                decoding="async"
+                onError={(event) => {
+                  if (event.currentTarget.src !== PLACEHOLDER) {
+                    event.currentTarget.src = PLACEHOLDER;
+                  }
+                }}
+              />
+              <div className="project-card-info">
+                <span>{project.title}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

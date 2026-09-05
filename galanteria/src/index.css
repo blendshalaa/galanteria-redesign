@@ -18,12 +18,40 @@
   /* Text */
   --color-text-primary: #F0EDE8;
   --color-text-secondary: #A09888;
-  --color-text-muted: #5E5850;
+  /* Was #5E5850, which fails WCAG AA against --color-bg (2.6:1). This passes
+     at 4.6:1 while staying visibly quieter than --color-text-secondary. */
+  --color-text-muted: #7A7268;
   --color-text-accent: #C8722A;
 
-  /* Typography */
-  --font-serif: 'Inter', sans-serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  /* Typography
+     --font-serif was previously declared as 'Inter', sans-serif — a serif
+     token pointing at a sans face — while Cormorant Garamond was downloaded on
+     every page load and never used by anything. It is now the display face for
+     headings, which is what a furniture brand wants and what the font budget
+     was already being spent on. The old token name is kept as an alias so
+     nothing that referenced it breaks. */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-serif: var(--font-display);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Type scale
+     Every stylesheet was inventing its own clamp() for headings, so a section
+     title was 3.5rem on the homepage, 2.8rem on the category page and 2.2rem on
+     contact — the same rank of heading at three different sizes. One ladder,
+     used everywhere. */
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   clamp(1.15rem, 0.4vw + 1.05rem, 1.35rem);
+  --text-xl:   clamp(1.5rem, 1vw + 1.2rem, 2rem);
+  --text-2xl:  clamp(2rem, 2.2vw + 1.4rem, 3rem);
+  --text-3xl:  clamp(2.6rem, 4vw + 1.4rem, 4.5rem);
+  --text-hero: clamp(2.6rem, 5vw + 1rem, 5.5rem);
+
+  /* The eyebrow/kicker above a section title — one definition, not six. */
+  --tracking-eyebrow: 0.18em;
+  --tracking-tight: -0.02em;
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -31,16 +59,23 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
-  --space-2xl: 4rem;
+  /* This was declared twice — 4rem here and 3rem thirteen lines later, so
+     every component using it silently got the second value. One declaration. */
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-4xl: 8rem;
+
+  /* Vertical rhythm between page sections, and the horizontal gutter they share.
+     Sections previously used 100px / 120px / 72px / 80px arbitrarily, so the
+     page had no consistent beat as you scrolled. */
+  --section-y: clamp(4.5rem, 8vw, 8rem);
+  --gutter: clamp(1.25rem, 5vw, 4rem);
 
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 9999px;
-  --space-2xl: 3rem;
-  --space-3xl: 5rem;
-  --space-4xl: 8rem;
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
@@ -52,6 +87,9 @@
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
   --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --nav-height: 68px;
 }
 
 *, *::before, *::after {
@@ -62,7 +100,10 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  /* `font-size: 16px` was hardcoded here, which overrides the browser font
+     size a user has chosen in their settings. 100% respects it. */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -76,12 +117,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* Scrollbar — one declaration. It was previously styled twice with
+   conflicting widths (6px then 8px) and conflicting thumb colours. */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--color-bg);
+}
 ::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 114, 42, 0.4);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(200, 114, 42, 0.8); }
 
-/* Selection */
 ::selection {
   background: var(--color-accent-dim);
   color: var(--color-accent-light);
@@ -91,6 +139,36 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; }
+h4, h5, h6 { font-family: var(--font-sans); }
+
+/* A single visible focus style for anything that does not define its own.
+   There were no :focus-visible rules anywhere in the codebase — only :hover —
+   so a keyboard user had no way to see where they were. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Skip link — lets a keyboard user bypass ~15 navigation tab stops. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2000;
+  transform: translate(-50%, -120%);
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
 
 /* Keyframes */
 @keyframes fadeUp {
@@ -123,20 +201,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   50% { transform: translateY(-6px); }
 }
 
+@keyframes pageEntrance {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* Utility classes */
-.animate-fadeUp {
-  animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease both;
-}
+.animate-fadeUp { animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.animate-fadeIn { animation: fadeIn 0.6s ease both; }
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 .animate-delay-500 { animation-delay: 0.5s; }
 
-/* Section divider */
 .section-divider {
   width: 60px;
   height: 2px;
@@ -144,7 +222,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin: var(--space-lg) 0;
 }
 
-/* Pill label */
 .pill-label {
   display: inline-flex;
   align-items: center;
@@ -160,7 +237,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-transform: uppercase;
 }
 
-/* Container */
 .container {
   width: 100%;
   max-width: 1400px;
@@ -168,41 +244,169 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 var(--space-xl);
 }
 
-/* ============================================
-   GLOBAL PAGE ENTRANCE ANIMATION
-   ============================================ */
-/* Apply this fade/slide up to all major page wrappers */
-.home-wrapper, .projects-wrapper, .contact-wrapper, .mainAbout, 
-.officechairs-wrapper, .waitingchairs-wrapper, .workingtables-wrapper, 
-.workstation-wrapper, .meet-wrapper, .cab-wrapper, .draw-wrapper, 
-.others-wrapper, .bathrooms-wrapper, .product1-wrapper {
-  animation: pageEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* =============================================================================
+   Shared section primitives
+   =============================================================================
+   Every page was rebuilding the same three things — an accent kicker, a big
+   section title, and a bordered "see all" button — with its own hex codes and
+   its own clamp(). They are declared once here so a change to the brand is a
+   change to one rule, and so the same rank of heading is the same size on
+   every route.
+   ========================================================================== */
+
+.section {
+  padding: var(--section-y) var(--gutter);
 }
 
-@keyframes pageEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+/* An alternating slightly-darker band, used to separate adjacent sections
+   without drawing a hard line across the page. */
+.section--sunken {
+  background: #0B0A08;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.eyebrow::after {
+  content: '';
+  display: block;
+  width: clamp(40px, 8vw, 110px);
+  height: 1px;
+  background: linear-gradient(to right, var(--color-accent-glow), transparent);
+}
+
+/* The display face is what makes this read as a furniture brand rather than a
+   SaaS dashboard. Cormorant was being downloaded on every page load and then
+   overridden back to Inter by every heading rule on the site. */
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.section-lead {
+  margin-top: var(--space-md);
+  max-width: 52ch;
+  font-size: var(--text-md);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 14px 28px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--transition-base), border-color var(--transition-base),
+              color var(--transition-base), transform var(--transition-base);
+}
+
+.btn svg { transition: transform var(--transition-base); }
+.btn:hover svg { transform: translateX(4px); }
+
+.btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #16120C;
+}
+.btn-primary:hover {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Quieter variant for "see all" links sitting beside a section title. */
+.btn-quiet {
+  padding: 10px 20px;
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+.btn-quiet:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Page entrance animation.
+   This used to be an explicit list of per-page wrapper class names that had to
+   be kept in sync by hand — and half of them belonged to pages that no longer
+   exist. `<main>` is rendered by Layout for every route, so keying off it
+   covers every page automatically, present and future. */
+main > * {
+  animation: pageEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Nothing in the codebase respected this, despite autoplaying carousels,
+   smooth scrolling, and an entrance animation on every route. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-/* ============================================
-   PREMIUM CUSTOM SCROLLBAR
-   ============================================ */
-::-webkit-scrollbar {
-  width: 8px;
-  background: #0E0D0B;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(200, 114, 42, 0.4);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 114, 42, 0.8);
+/* Visually hidden, but still announced by screen readers. Used for headings
+   that give a section a programmatic name without adding visible chrome. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

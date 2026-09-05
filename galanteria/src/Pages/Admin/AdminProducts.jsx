@@ -1,189 +1,325 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { supabase } from '../../lib/supabase';
+import useCategories from '../../Hooks/useCategories';
+import { Spinner, Toast } from '../../Components/ui';
+import ImageUploader from './components/ImageUploader';
+import { slugify, isValidSlug } from '../../utils/slugify';
+import { uploadImages, removeByUrls, allImageUrls } from '../../utils/storage';
+import { formatBytes } from '../../utils/imageProcessing';
 import './AdminDashboard.scss';
 
-const CATEGORIES = [
-  'Karrigë Zyreje',
-  'Karrigë takimesh',
-  'Karrigë Pritjeje',
-  'Tavolina Pune',
-  'Tavolina Takimi',
-  'Workstation',
-  'Dollapë',
-  'Sirtar',
-  'Banjë',
-  'Tjera',
-];
+const PAGE_SIZE = 25;
 
-const Toast = ({ message, type, onClose }) => {
-  useEffect(() => {
-    const t = setTimeout(onClose, 3500);
-    return () => clearTimeout(t);
-  }, [onClose]);
-  return (
-    <div className={`admin-toast ${type}`}>
-      {type === 'success' ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      ) : (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-        </svg>
-      )}
-      {message}
-    </div>
-  );
-};
+/**
+ * Product CRUD.
+ *
+ * Fixed here:
+ *   - the category dropdown was a hardcoded 10-item array, so adding a
+ *     category needed a code change and a redeploy. It reads the `categories`
+ *     table now;
+ *   - images uploaded on file-select, before save, orphaning files in storage
+ *     on cancel. They upload on save;
+ *   - every upload error was swallowed by `if (!error)` with no else;
+ *   - `handleSave` returned silently on an empty name, so the button appeared
+ *     to do nothing. There is inline validation;
+ *   - slug generation deleted Albanian diacritics ("Karrigë" -> "karrig") and
+ *     nothing checked uniqueness, which breaks the product page;
+ *   - `select('*')` with no limit on every visit.
+ */
 
-const ProductModal = ({ product, onClose, onSaved }) => {
+const ProductModal = ({ product, categories, onClose, onSaved }) => {
   const [form, setForm] = useState({
     name: product?.name || '',
     slug: product?.slug || '',
-    category: product?.category || CATEGORIES[0],
+    category_slug: product?.category_slug || categories[0]?.slug || '',
     description: product?.description || '',
     description_sq: product?.description_sq || '',
     description_de: product?.description_de || '',
   });
-  const [images, setImages] = useState(product?.images || []);
-  const [uploading, setUploading] = useState(false);
+
+  // Existing images are stored as two parallel arrays in the database; pair
+  // them up so a photo and its thumbnail move and delete together.
+  const [images, setImages] = useState(() =>
+    (product?.images || []).map((url, i) => ({
+      url,
+      thumbUrl: product?.thumbnails?.[i] || url,
+    }))
+  );
+  const [staged, setStaged] = useState([]);
+  const [removed, setRemoved] = useState([]);
+
+  const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
-  const fileRef = useRef();
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(null);
+  const [slugTaken, setSlugTaken] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm(f => ({ ...f, [name]: value }));
-    if (name === 'name' && !product) {
-      setForm(f => ({ ...f, slug: value.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') }));
+  const dirtyRef = useRef(false);
+
+  const markDirty = () => { dirtyRef.current = true; };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    markDirty();
+
+    setForm((f) => {
+      const next = { ...f, [name]: value };
+      // Only auto-derive the slug for new products, and only while the user
+      // has not hand-edited it.
+      if (name === 'name' && !product?.id) next.slug = slugify(value);
+      return next;
+    });
+
+    setErrors((e) => (e[name] ? { ...e, [name]: undefined } : e));
+  };
+
+  /* Live uniqueness check. Two products sharing a slug made the public product
+     page fail, because it looked the row up with `.single()`. */
+  useEffect(() => {
+    const candidate = form.slug.trim();
+    if (!candidate || !isValidSlug(candidate)) {
+      setSlugTaken(false);
+      return undefined;
     }
-  };
 
-  const handleFiles = async (files) => {
-    if (!files || files.length === 0) return;
-    setUploading(true);
-    const newUrls = [];
-    for (const file of files) {
-      const ext = file.name.split('.').pop();
-      const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-      const { data, error } = await supabase.storage
-        .from('galanteria-images')
-        .upload(`products/${fileName}`, file, { cacheControl: '3600', upsert: false });
-      if (!error) {
-        const { data: urlData } = supabase.storage.from('galanteria-images').getPublicUrl(`products/${fileName}`);
-        newUrls.push(urlData.publicUrl);
-      }
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      let query = supabase.from('products').select('id').eq('slug', candidate).limit(1);
+      if (product?.id) query = query.neq('id', product.id);
+
+      const { data } = await query;
+      if (!cancelled) setSlugTaken(Boolean(data?.length));
+    }, 350);
+
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [form.slug, product?.id]);
+
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = 'Emri është i detyrueshëm.';
+    if (!form.slug.trim()) next.slug = 'Adresa në faqe është e detyrueshme.';
+    else if (!isValidSlug(form.slug.trim())) {
+      next.slug = 'Lejohen vetëm shkronja të vogla, numra dhe vizë (-).';
+    } else if (slugTaken) {
+      next.slug = 'Ky slug është i zënë nga një produkt tjetër.';
     }
-    setImages(prev => [...prev, ...newUrls]);
-    setUploading(false);
+    if (!form.category_slug) next.category_slug = 'Zgjidhni një kategori.';
+
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
-  const removeImage = async (url, index) => {
-    const path = url.split('/galanteria-images/')[1];
-    if (path) await supabase.storage.from('galanteria-images').remove([path]);
-    setImages(prev => prev.filter((_, i) => i !== index));
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    handleFiles(Array.from(e.dataTransfer.files));
+  const handleClose = async () => {
+    if (dirtyRef.current || staged.length) {
+      const confirmed = window.confirm(
+        'Keni ndryshime të paruajtura. Jeni i sigurt që doni t’i mbyllni?'
+      );
+      if (!confirmed) return;
+    }
+    // Anything the user removed in this session but did not save should stay
+    // in storage — the record still points at it.
+    onClose();
   };
 
   const handleSave = async () => {
-    if (!form.name.trim()) return;
+    if (!validate() || saving) return;
+
     setSaving(true);
-    const payload = { ...form, images, updated_at: new Date().toISOString() };
-    let error;
-    if (product?.id) {
-      ({ error } = await supabase.from('products').update(payload).eq('id', product.id));
-    } else {
-      ({ error } = await supabase.from('products').insert([{ ...payload, created_at: new Date().toISOString() }]));
+
+    let finalImages = images;
+
+    // Upload the staged files now, not when they were picked.
+    if (staged.length) {
+      setUploading(true);
+      const { uploaded, failed, savedBytes } = await uploadImages(
+        staged,
+        'products',
+        setProgress
+      );
+      setUploading(false);
+      setProgress(null);
+
+      if (failed.length) {
+        setSaving(false);
+        onSaved('error', `${failed.length} foto nuk u ngarkuan: ${failed[0].message}`);
+        return;
+      }
+
+      finalImages = [...images, ...uploaded];
+      if (savedBytes > 0) {
+        console.info(`[Galanteria] Image compression saved ${formatBytes(savedBytes)}`);
+      }
     }
+
+    const payload = {
+      ...form,
+      name: form.name.trim(),
+      slug: form.slug.trim(),
+      images: finalImages.map((image) => image.url),
+      thumbnails: finalImages.map((image) => image.thumbUrl || image.url),
+      updated_at: new Date().toISOString(),
+    };
+
+    const { error } = product?.id
+      ? await supabase.from('products').update(payload).eq('id', product.id)
+      : await supabase
+          .from('products')
+          .insert([{ ...payload, created_at: new Date().toISOString() }]);
+
     setSaving(false);
-    if (!error) onSaved('success');
-    else onSaved('error', error.message);
+
+    if (error) {
+      onSaved('error', error.message);
+      return;
+    }
+
+    // Only now is it safe to delete the files the user removed.
+    if (removed.length) await removeByUrls(removed);
+
+    onSaved('success');
   };
 
+  const handleRemoveExisting = (next) => {
+    markDirty();
+    const stillPresent = new Set(next.map((image) => image.url));
+    const dropped = images
+      .filter((image) => !stillPresent.has(image.url))
+      .flatMap((image) => [image.url, image.thumbUrl].filter(Boolean));
+
+    setRemoved((prev) => [...prev, ...dropped]);
+    setImages(next);
+  };
+
+  const busy = saving || uploading;
+
   return (
-    <div className="admin-modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="admin-modal modal-lg">
+    <div
+      className="admin-modal-overlay"
+      onClick={(event) => event.target === event.currentTarget && handleClose()}
+    >
+      <div className="admin-modal modal-lg" role="dialog" aria-modal="true" aria-label="Produkti">
         <div className="modal-header">
           <h3>{product?.id ? 'Edito Produktin' : 'Shto Produkt të Ri'}</h3>
-          <button className="modal-close" onClick={onClose}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          <button className="modal-close" onClick={handleClose} aria-label="Mbyll">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
+
         <div className="modal-body">
           <div className="field-row">
             <div className="field-group">
-              <label>Emri i Produktit</label>
-              <input name="name" value={form.name} onChange={handleChange} placeholder="p.sh. Light, Giulia..." />
+              <label htmlFor="p-name">Emri i Produktit *</label>
+              <input
+                id="p-name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="p.sh. Light, Giulia..."
+                aria-invalid={Boolean(errors.name)}
+              />
+              {errors.name && <span className="field-error">{errors.name}</span>}
             </div>
+
             <div className="field-group">
-              <label>Slug (URL)</label>
-              <input name="slug" value={form.slug} onChange={handleChange} placeholder="light" />
-            </div>
-          </div>
-          <div className="field-group">
-            <label>Kategoria</label>
-            <select name="category" value={form.category} onChange={handleChange}>
-              {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </div>
-          <div className="field-group">
-            <label>Përshkrimi (Shqip)</label>
-            <textarea name="description_sq" value={form.description_sq} onChange={handleChange} placeholder="Shkruani përshkrimin shqip..." rows={3} />
-          </div>
-          <div className="field-row">
-            <div className="field-group">
-              <label>Përshkrimi (English)</label>
-              <textarea name="description" value={form.description} onChange={handleChange} placeholder="English description..." rows={3} />
-            </div>
-            <div className="field-group">
-              <label>Përshkrimi (Deutsch)</label>
-              <textarea name="description_de" value={form.description_de} onChange={handleChange} placeholder="Deutsche Beschreibung..." rows={3} />
+              <label htmlFor="p-slug">Adresa në faqe *</label>
+              <input
+                id="p-slug"
+                name="slug"
+                value={form.slug}
+                onChange={handleChange}
+                placeholder="light"
+                aria-invalid={Boolean(errors.slug) || slugTaken}
+              />
+              {errors.slug ? (
+                <span className="field-error">{errors.slug}</span>
+              ) : slugTaken ? (
+                <span className="field-error">Kjo adresë përdoret nga një produkt tjetër.</span>
+              ) : (
+                form.slug && <span className="field-hint">/product/{form.slug}</span>
+              )}
             </div>
           </div>
 
-          {/* Image Upload */}
           <div className="field-group">
-            <label>Fotot ({images.length} të ngarkuara)</label>
-            <div
-              className={`upload-zone ${uploading ? 'drag-over' : ''}`}
-              onDrop={handleDrop}
-              onDragOver={(e) => e.preventDefault()}
-              onClick={() => fileRef.current?.click()}
+            <label htmlFor="p-category">Kategoria *</label>
+            <select
+              id="p-category"
+              name="category_slug"
+              value={form.category_slug}
+              onChange={handleChange}
+              aria-invalid={Boolean(errors.category_slug)}
             >
-              <input ref={fileRef} type="file" multiple accept="image/*" onChange={(e) => handleFiles(Array.from(e.target.files))} />
-              {uploading ? (
-                <><span className="spinner" style={{ width: 24, height: 24, borderWidth: 2, borderColor: 'rgba(200,114,42,0.2)', borderTopColor: '#C8722A', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite', marginBottom: 12 }} /><p>Duke ngarkuar...</p></>
-              ) : (
-                <>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
-                  </svg>
-                  <p><span>Kliko për të ngarkuar</span> ose tërhiq foton këtu<br /><small style={{ color: 'rgba(240,237,232,0.3)', fontSize: '0.78rem' }}>PNG, JPG, WEBP — max 10MB secila</small></p>
-                </>
-              )}
-            </div>
-            {images.length > 0 && (
-              <div className="upload-previews">
-                {images.map((url, i) => (
-                  <div key={i} className="upload-preview-item">
-                    <img src={url} alt="" />
-                    <button className="remove-btn" onClick={(e) => { e.stopPropagation(); removeImage(url, i); }}>✕</button>
-                  </div>
-                ))}
-              </div>
+              <option value="">— Zgjidh —</option>
+              {categories.map((category) => (
+                <option key={category.slug} value={category.slug}>
+                  {category.name_sq}
+                </option>
+              ))}
+            </select>
+            {errors.category_slug && <span className="field-error">{errors.category_slug}</span>}
+            {categories.length === 0 && (
+              <span className="field-hint">
+                Asnjë kategori. Shtoni një te skeda “Kategoritë”.
+              </span>
             )}
           </div>
+
+          <div className="field-group">
+            <label htmlFor="p-desc-sq">Përshkrimi (Shqip)</label>
+            <textarea
+              id="p-desc-sq"
+              name="description_sq"
+              value={form.description_sq}
+              onChange={handleChange}
+              rows={3}
+              placeholder="Shkruani përshkrimin shqip..."
+            />
+          </div>
+
+          <div className="field-row">
+            <div className="field-group">
+              <label htmlFor="p-desc-en">Përshkrimi (English)</label>
+              <textarea
+                id="p-desc-en"
+                name="description"
+                value={form.description}
+                onChange={handleChange}
+                rows={3}
+                placeholder="English description..."
+              />
+            </div>
+            <div className="field-group">
+              <label htmlFor="p-desc-de">Përshkrimi (Deutsch)</label>
+              <textarea
+                id="p-desc-de"
+                name="description_de"
+                value={form.description_de}
+                onChange={handleChange}
+                rows={3}
+                placeholder="Deutsche Beschreibung..."
+              />
+            </div>
+          </div>
+
+          <ImageUploader
+            existing={images}
+            staged={staged}
+            onChangeExisting={handleRemoveExisting}
+            onChangeStaged={(next) => { markDirty(); setStaged(next); }}
+            uploading={uploading}
+            progress={progress}
+          />
         </div>
+
         <div className="modal-footer">
-          <button className="admin-btn secondary" onClick={onClose}>Anulo</button>
-          <button className="admin-btn primary" onClick={handleSave} disabled={saving}>
-            {saving ? <span className="spinner" /> : null}
-            {saving ? 'Duke ruajtur...' : 'Ruaj'}
+          <button className="admin-btn secondary" onClick={handleClose} disabled={busy}>
+            Anulo
+          </button>
+          <button className="admin-btn primary" onClick={handleSave} disabled={busy}>
+            {busy ? <Spinner size={14} /> : null}
+            {uploading ? 'Duke ngarkuar fotot...' : saving ? 'Duke ruajtur...' : 'Ruaj'}
           </button>
         </div>
       </div>
@@ -192,44 +328,84 @@ const ProductModal = ({ product, onClose, onSaved }) => {
 };
 
 const AdminProducts = () => {
+  const { categories, loading: categoriesLoading } = useCategories({ activeOnly: false });
+
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('all');
-  const [modal, setModal] = useState(null); // null | 'new' | product object
+  const [page, setPage] = useState(0);
+  const [modal, setModal] = useState(null);
   const [toast, setToast] = useState(null);
   const [deleting, setDeleting] = useState(null);
 
   const showToast = (message, type = 'success') => setToast({ message, type });
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
-    if (!error) setProducts(data || []);
-    setLoading(false);
-  };
+  const categoryNames = useMemo(() => {
+    const map = {};
+    categories.forEach((c) => { map[c.slug] = c.name_sq; });
+    return map;
+  }, [categories]);
 
-  useEffect(() => { fetchProducts(); }, []);
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
+
+    let query = supabase
+      .from('products')
+      .select('*', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE - 1);
+
+    if (search.trim()) {
+      const escaped = search.trim().replace(/[%_\\]/g, (ch) => `\\${ch}`);
+      query = query.ilike('name', `%${escaped}%`);
+    }
+    if (filter !== 'all') query = query.eq('category_slug', filter);
+
+    const { data, error, count } = await query;
+
+    if (error) {
+      console.error('[Galanteria] Failed to load products', error);
+      showToast('Nuk u ngarkuan produktet.', 'error');
+      setLoading(false);
+      return;
+    }
+
+    setProducts(data || []);
+    setTotal(count ?? 0);
+    setLoading(false);
+  }, [page, search, filter]);
+
+  useEffect(() => {
+    // Debounced so typing in the search box does not fire a query per keypress.
+    const timer = setTimeout(fetchProducts, 250);
+    return () => clearTimeout(timer);
+  }, [fetchProducts]);
+
+  useEffect(() => { setPage(0); }, [search, filter]);
 
   const handleDelete = async (product) => {
     if (!window.confirm(`Jeni i sigurt që doni të fshini "${product.name}"?`)) return;
+
     setDeleting(product.id);
-    // Delete images from storage
-    if (product.images?.length) {
-      const paths = product.images.map(url => url.split('/galanteria-images/')[1]).filter(Boolean);
-      if (paths.length) await supabase.storage.from('galanteria-images').remove(paths);
-    }
+
     const { error } = await supabase.from('products').delete().eq('id', product.id);
-    setDeleting(null);
-    if (!error) {
-      setProducts(prev => prev.filter(p => p.id !== product.id));
-      showToast('Produkti u fshi me sukses!');
-    } else {
-      showToast('Gabim gjatë fshirjes.', 'error');
+
+    if (error) {
+      setDeleting(null);
+      showToast(`Gabim gjatë fshirjes: ${error.message}`, 'error');
+      return;
     }
+
+    // Delete the row first, then its files — the other order can leave a
+    // product pointing at images that no longer exist.
+    await removeByUrls(allImageUrls(product));
+
+    setDeleting(null);
+    setProducts((prev) => prev.filter((p) => p.id !== product.id));
+    setTotal((prev) => Math.max(0, prev - 1));
+    showToast('Produkti u fshi me sukses!');
   };
 
   const handleSaved = (type, message) => {
@@ -242,23 +418,21 @@ const AdminProducts = () => {
     }
   };
 
-  const filtered = products.filter(p => {
-    const matchSearch = p.name?.toLowerCase().includes(search.toLowerCase()) ||
-      p.category?.toLowerCase().includes(search.toLowerCase());
-    const matchFilter = filter === 'all' || p.category === filter;
-    return matchSearch && matchFilter;
-  });
+  const totalPages = Math.ceil(total / PAGE_SIZE);
 
   return (
     <div>
       <div className="admin-page-header">
         <div className="page-title">
-          <h2>Produktet</h2>
-          <p>{products.length} produkte gjithsej</p>
+          <p>{total} produkte gjithsej</p>
         </div>
-        <button className="admin-btn primary" onClick={() => setModal('new')}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        <button
+          className="admin-btn primary"
+          onClick={() => setModal('new')}
+          disabled={categoriesLoading}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
           </svg>
           Shto Produkt
         </button>
@@ -266,35 +440,45 @@ const AdminProducts = () => {
 
       <div className="admin-filters">
         <div className="admin-search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
           <input
             placeholder="Kërko produkt..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(event) => setSearch(event.target.value)}
+            aria-label="Kërko produkt"
           />
         </div>
         <select
-          style={{ padding: '9px 12px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 10, color: '#F0EDE8', fontFamily: 'Inter', fontSize: '0.85rem', outline: 'none', cursor: 'pointer' }}
+          className="admin-select"
           value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={(event) => setFilter(event.target.value)}
+          aria-label="Filtro sipas kategorisë"
         >
-          <option value="all">Të gjitha</option>
-          {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+          <option value="all">Të gjitha kategoritë</option>
+          {categories.map((category) => (
+            <option key={category.slug} value={category.slug}>
+              {category.name_sq}
+            </option>
+          ))}
         </select>
       </div>
 
       <div className="admin-card">
         {loading ? (
-          <div className="admin-loading"><span className="spinner" />Duke ngarkuar...</div>
-        ) : filtered.length === 0 ? (
+          <div className="admin-loading"><Spinner />Duke ngarkuar...</div>
+        ) : products.length === 0 ? (
           <div className="admin-empty">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
             </svg>
-            <h3>Asnjë produkt</h3>
-            <p>Shto produktin e parë duke klikuar "Shto Produkt"</p>
+            <h3>{search || filter !== 'all' ? 'Asnjë rezultat' : 'Asnjë produkt'}</h3>
+            <p>
+              {search || filter !== 'all'
+                ? 'Provoni një kërkim tjetër.'
+                : 'Shto produktin e parë duke klikuar "Shto Produkt"'}
+            </p>
           </div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
@@ -304,38 +488,55 @@ const AdminProducts = () => {
                   <th>Foto</th>
                   <th>Emri</th>
                   <th>Kategoria</th>
-                  <th>Foto</th>
+                  <th>Fotot</th>
                   <th>Veprimet</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map(p => (
-                  <tr key={p.id}>
+                {products.map((product) => (
+                  <tr key={product.id}>
                     <td>
                       <img
                         className="table-thumb"
-                        src={p.images?.[0] || 'https://placehold.co/52x52/1a1815/555?text=?'}
-                        alt={p.name}
+                        src={
+                          product.thumbnails?.[0] ||
+                          product.images?.[0] ||
+                          'https://placehold.co/52x52/1a1815/555?text=?'
+                        }
+                        alt=""
+                        loading="lazy"
                       />
                     </td>
                     <td>
-                      <div className="table-name">{p.name}</div>
-                      <div className="table-sub">/{p.slug}</div>
+                      <div className="table-name">{product.name}</div>
+                      <div className="table-sub">/{product.slug}</div>
                     </td>
-                    <td><span className="category-badge">{p.category}</span></td>
-                    <td style={{ color: 'rgba(240,237,232,0.5)', fontSize: '0.85rem' }}>{p.images?.length || 0} foto</td>
+                    <td>
+                      <span className="category-badge">
+                        {categoryNames[product.category_slug] || product.category || '—'}
+                      </span>
+                    </td>
+                    <td className="table-muted">{product.images?.length || 0} foto</td>
                     <td>
                       <div className="table-actions">
-                        <button className="icon-btn" onClick={() => setModal(p)} title="Edito">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
-                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        <button className="icon-btn" onClick={() => setModal(product)} title="Edito">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
                           </svg>
                         </button>
-                        <button className="icon-btn danger" onClick={() => handleDelete(p)} disabled={deleting === p.id} title="Fshi">
-                          {deleting === p.id ? <span className="spinner" style={{ width: 14, height: 14, borderWidth: 2 }} /> : (
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+                        <button
+                          className="icon-btn danger"
+                          onClick={() => handleDelete(product)}
+                          disabled={deleting === product.id}
+                          title="Fshi"
+                        >
+                          {deleting === product.id ? (
+                            <Spinner size={14} />
+                          ) : (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2" />
                             </svg>
                           )}
                         </button>
@@ -347,17 +548,40 @@ const AdminProducts = () => {
             </table>
           </div>
         )}
+
+        {totalPages > 1 && (
+          <div className="admin-pagination">
+            <button
+              className="admin-btn secondary"
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page === 0}
+            >
+              ← Para
+            </button>
+            <span>Faqja {page + 1} nga {totalPages}</span>
+            <button
+              className="admin-btn secondary"
+              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+              disabled={page >= totalPages - 1}
+            >
+              Pas →
+            </button>
+          </div>
+        )}
       </div>
 
       {modal && (
         <ProductModal
           product={modal === 'new' ? null : modal}
+          categories={categories}
           onClose={() => setModal(null)}
           onSaved={handleSaved}
         />
       )}
 
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      {toast && (
+        <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
+      )}
     </div>
   );
 };

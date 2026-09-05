@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# The admin panel has no reason to be indexed. This is a courtesy to crawlers,
+# not a security measure — access is controlled by Supabase Auth and the Row
+# Level Security policies in supabase/migrations/.
+Disallow: /admin
+
+Sitemap: https://www.galanteriagroup.com/sitemap.xml

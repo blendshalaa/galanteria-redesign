@@ -2,11 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/images/LOGO_G.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Galanteria Group - Premium office and home furniture. Discover our high-quality collections of office chairs, workstations, cabinets, and more designed for modern spaces." />
-    <meta name="keywords" content="furniture, office furniture, home furniture, Galanteria, office chairs, workstations, cabinets, modern furniture" />
-    <title>Galanteria Group - Premium Furniture</title>
+
+    <!--
+      The favicon previously pointed at ./src/assets/images/LOGO_G.png and
+      declared type="image/svg+xml" on a PNG. The src/ path does not exist in a
+      production build, and the mismatched MIME type made browsers reject it.
+      The file lives in public/ now, correctly typed.
+    -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <meta name="theme-color" content="#0E0D0B" />
+
+    <title>Galanteria Group — Premium Office &amp; Home Furniture</title>
+    <meta
+      name="description"
+      content="Galanteria Group designs and manufactures premium office and home furniture — office chairs, workstations, meeting tables and cabinets — for modern spaces across Kosovo and Europe."
+    />
+
+    <!--
+      The `lang` attribute above and these tags are the defaults. The app sets
+      the document language from the visitor's choice, and useSEO rewrites the
+      title, description, canonical and social tags per route — none of which
+      existed before, so every product and category page inherited whatever the
+      previously-viewed page happened to leave behind.
+
+      `<meta name="keywords">` used to be here; search engines have ignored it
+      since around 2009, so it has been dropped.
+    -->
+    <link rel="canonical" href="https://www.galanteriagroup.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Galanteria Group" />
+    <meta property="og:title" content="Galanteria Group — Premium Office &amp; Home Furniture" />
+    <meta
+      property="og:description"
+      content="Premium office and home furniture for modern spaces. Making furniture since 1987."
+    />
+    <meta property="og:url" content="https://www.galanteriagroup.com/" />
+    <meta property="og:image" content="https://www.galanteriagroup.com/og-image.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Galanteria Group — Premium Office &amp; Home Furniture" />
+    <meta
+      name="twitter:description"
+      content="Premium office and home furniture for modern spaces. Making furniture since 1987."
+    />
+    <meta name="twitter:image" content="https://www.galanteriagroup.com/og-image.jpg" />
+
+    <!-- Warm up the font connection before the CSS that requests it parses. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <div id="root"></div>

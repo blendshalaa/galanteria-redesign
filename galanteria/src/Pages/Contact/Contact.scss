@@ -1,173 +1,194 @@
-/* ============================================
-   CONTACT PAGE — v6 Editorial Typography
-   ============================================ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* =============================================================================
+   CONTACT
+   =============================================================================
+   Another route stylesheet that opened with a global `*, *::before, *::after`
+   reset. Removed.
+
+   The information cards were also working against themselves: the address and
+   phone numbers were set in italic, right-aligned, against a right-hand rule,
+   at 0.9rem in a colour 4.0:1 against the card — the three details a visitor
+   comes to this page for were the hardest text on the site to read. They are
+   left-aligned, upright, and at full contrast now.
+   ========================================================================== */
+
+@use '../../styles/tokens' as *;
 
 .contact-page-bento {
-  background: #0E0D0B;
-  color: #F0EDE8;
   min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-  padding: 140px 64px 100px;
+  padding: calc(#{$nav-height} + clamp(2.5rem, 6vw, 4.5rem)) var(--gutter) var(--section-y);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
 
-  @media (max-width: 768px) {
-    padding: 100px 24px 80px;
+  @include below($bp-lg) {
+    padding-top: calc(#{$nav-height-mobile} + 2.5rem);
   }
 }
 
 .bento-container {
-  max-width: 1400px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: clamp(2.5rem, 5vw, 3.75rem);
+  max-width: $container-max;
+  margin: 0 auto;
 }
 
-/* ===== Creative Header Typography ===== */
+/* --- Header --------------------------------------------------------------- */
+
 .bento-header {
-  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--space-lg);
+  max-width: 1000px;
 
   .header-top {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--space-md);
   }
 
   .bento-eyebrow {
-    font-size: 0.68rem;
+    font-size: var(--text-xs);
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
-    color: #C8722A;
+    color: var(--color-accent);
+    white-space: nowrap;
   }
 
   .header-line {
     flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, rgba(200, 114, 42, 0.4), transparent);
     max-width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-accent-glow), transparent);
   }
 
   h1 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    color: #F0EDE8;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 300;
+    line-height: 1.06;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    text-wrap: balance;
   }
 
   .editorial-intro {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.4rem, 2vw, 1.8rem);
-    line-height: 1.6;
-    color: rgba(240, 237, 232, 0.7);
+    max-width: 60ch;
+    margin-top: var(--space-xs);
+    padding-left: var(--space-lg);
+    border-left: 2px solid var(--color-accent);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
     font-weight: 300;
     font-style: italic;
-    max-width: 700px;
-    margin-top: 12px;
-    border-left: 2px solid #C8722A;
-    padding-left: 24px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
   }
 }
 
-/* ===== The Bento Grid ===== */
+/* --- Bento grid ----------------------------------------------------------- */
+
+/* Three columns, and the map is a full-width banner above the three info cards.
+
+   It used to be `grid-column: span 2; grid-row: span 2` inside the same three
+   column grid. That consumed four of the six cells in the first two rows,
+   leaving room for only two of the three info cards — so the email card was
+   pushed onto a third row on its own, with two empty cells beside it. */
 .bento-grid-contact {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 280px;
-  gap: 16px;
+  grid-auto-rows: 240px;
+  gap: var(--space-md);
 
-  @media (max-width: 1024px) {
+  @include below($bp-lg) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 600px) {
+  @include below($bp-sm) {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
 }
 
-/* Base Bento Box */
 .bento-box {
-  background: #151412;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  padding: var(--space-xl);
+  overflow: hidden;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base);
 
   &:hover {
-    border-color: rgba(200, 114, 42, 0.2);
     transform: translateY(-2px);
+    border-color: var(--color-border-hover);
   }
 
-  @media (max-width: 600px) {
-    padding: 32px;
+  @include below($bp-sm) {
     min-height: 200px;
   }
 }
 
-/* ===== Specific Blocks ===== */
 .bento-map {
-  grid-column: span 2;
+  grid-column: 1 / -1;
+  /* Two rows rather than an explicit `height`. A height taller than
+     `grid-auto-rows` does not stretch the row — the item simply overflows it,
+     and the info cards below were drawn on top of the map. */
   grid-row: span 2;
   padding: 0;
   border: none;
   background: transparent;
 
+  &:hover { transform: none; }
+
   .map-iframe {
     width: 100%;
     height: 100%;
     border: none;
+    border-radius: var(--radius-lg);
+    /* Google's embed is a light-mode map dropped into a dark page. The invert
+       + hue-rotate pair is what makes it sit in the palette rather than glow
+       white in the middle of the layout. */
     filter: grayscale(80%) invert(92%) contrast(1.1) hue-rotate(180deg);
-    transition: filter 0.5s ease;
+    transition: filter var(--transition-slow);
 
     &:hover {
       filter: grayscale(40%) invert(92%) contrast(1.05) hue-rotate(180deg);
     }
   }
 
-  @media (max-width: 1024px) {
-    grid-column: span 2;
-  }
-
-  @media (max-width: 600px) {
-    grid-column: span 1;
-    min-height: 400px;
+  /* Once the grid is a single column, `grid-auto-rows` is `auto` and the map
+     would collapse to nothing without an explicit height. */
+  @include below($bp-sm) {
+    grid-row: auto;
+    height: 320px;
   }
 }
 
-/* Creative Typography Blocks (Info) */
+/* --- Information cards ---------------------------------------------------- */
+
 .bento-info {
   position: relative;
-  padding: 40px;
-  background: #11100D;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
-  /* Massive background symbol */
   .info-watermark {
     position: absolute;
-    top: -20px;
-    right: -10px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16rem;
-    font-weight: 700;
-    font-style: italic;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.02);
+    top: -0.15em;
+    right: -0.05em;
     z-index: 0;
+    font-family: var(--font-display);
+    font-size: 13rem;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(240, 237, 232, 0.025);
     pointer-events: none;
     user-select: none;
+
+    @include below($bp-sm) { font-size: 9rem; }
   }
 
   .info-inner {
@@ -175,110 +196,111 @@
     z-index: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: space-between;
+    gap: var(--space-lg);
+    height: 100%;
   }
 
-  /* Top Label */
   .info-top {
     display: flex;
     justify-content: flex-start;
-
-    .info-label {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(240, 237, 232, 0.5);
-      border: 1px solid rgba(240, 237, 232, 0.15);
-      padding: 6px 14px;
-      border-radius: 20px;
-    }
   }
 
-  /* Massive Offset Title */
-  .info-mid {
-    margin: auto 0;
-    
-    h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      font-weight: 300;
-      color: #F0EDE8;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      max-width: 80%;
-    }
+  .info-label {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
   }
 
-  /* Shifted Paragraph / Links */
+  .info-mid h3 {
+    max-width: 90%;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    /* Was 0.95 — descenders in "Podujevë" collided with the line below. */
+    line-height: 1.15;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+  }
+
+  /* Was `align-self: flex-end; text-align: right; border-right; italic`. The
+     phone numbers and address are the payload of this page; they now read like
+     it. */
   .info-bottom {
-    align-self: flex-end;
-    text-align: right;
-    max-width: 85%;
-    border-right: 2px solid rgba(255, 255, 255, 0.1);
-    padding-right: 16px;
-    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 
-    p, a {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: rgba(240, 237, 232, 0.6);
-      font-style: italic;
-      text-decoration: none;
+    p,
+    a {
       display: block;
-      transition: color 0.2s ease;
+      width: fit-content;
+      font-size: var(--text-base);
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
     }
 
-    a:hover { color: #C8722A; }
-  }
-
-  @media (max-width: 1024px) { grid-column: span 1; }
-  @media (max-width: 600px) {
-    grid-column: span 1;
-    
-    .info-watermark { font-size: 10rem; }
-    .info-bottom { 
-      max-width: 100%; 
-      border-right: none; 
-      padding-right: 0; 
-      text-align: left; 
-      border-left: 2px solid rgba(255, 255, 255, 0.1); 
-      padding-left: 16px; 
+    a {
+      color: var(--color-text-primary);
+      &:hover { color: var(--color-accent-light); }
+      @include focus-ring;
     }
   }
 }
 
-/* Copper Accent Version (Phone Block) */
+/* The one copper card in the layout. */
 .bento-info-accent {
-  background: #C8722A;
-  border-color: #C8722A;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+
+  &:hover { border-color: var(--color-accent-light); }
 
   .info-watermark {
-    color: rgba(255, 255, 255, 0.15); /* More visible on copper */
-    font-family: 'Inter', sans-serif; /* For the '+' sign */
+    color: rgba(255, 255, 255, 0.16);
+    font-family: var(--font-sans);
     font-weight: 300;
-    font-style: normal;
   }
 
   .info-label {
-    color: #F0EDE8;
-    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.45);
   }
 
-  h3 { color: #F0EDE8; font-weight: 500; }
+  .info-mid h3 { color: #fff; }
 
   .info-bottom {
-    border-right-color: rgba(255, 255, 255, 0.3);
-    
-    p, a { 
-      color: rgba(255, 255, 255, 0.95); 
-      font-weight: 500; 
+    p,
+    a {
+      color: #fff;
+      font-weight: 500;
     }
 
-    a:hover { color: rgba(240, 237, 232, 0.6); }
-  }
+    /* Was rgba(240, 237, 232, 0.6) on copper — 1.9:1, effectively invisible.
+       Hovering a phone number made it harder to read, not easier. */
+    a:hover { color: #241205; }
 
-  &:hover { border-color: #C8722A; }
+    a:focus-visible {
+      outline-color: #fff;
+    }
+  }
+}
+
+/* --- Enquiry form --------------------------------------------------------- */
+
+.contact-form-section {
+  max-width: 760px;
+  width: 100%;
+  margin: clamp(1rem, 3vw, 2rem) auto 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
 }

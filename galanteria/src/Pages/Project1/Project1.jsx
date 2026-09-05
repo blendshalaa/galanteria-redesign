@@ -1,92 +1,119 @@
-import React, { useContext, useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Project1.scss';
-import NavBar from '../../Components/NavBar/NavBar';
-import Footer from '../Footer/Footer';
-import language from '../../lang';
-import { Context } from '../../Components/Context/Products';
-import { useNavigate } from 'react-router-dom';
+import useLang from '../../Hooks/useLang';
+import useSEO from '../../Hooks/useSEO';
+import Lightbox from '../../Components/Lightbox/Lightbox';
 
+/**
+ * Project detail view.
+ *
+ * Three real bugs fixed here:
+ *
+ * 1. IT CRASHED. The gallery rendered `data.name2[index]` as a caption, but
+ *    `name2` was never part of what Project1Page passed in — so any project
+ *    with at least one photo threw a TypeError and blanked the page.
+ *
+ * 2. It rendered its own `<NavBar/>` and `<Footer/>` while already inside
+ *    `<Layout/>`, giving this page two stacked fixed navbars and two footers,
+ *    the same defect the category pages had.
+ *
+ * 3. `handleBackClick` read a `scrollPosition` key out of sessionStorage that
+ *    nothing in the codebase has ever written, then scrolled to it.
+ *
+ * The description was also fetched and never displayed, exactly as on the
+ * product page.
+ */
 const Project1 = ({ data = {} }) => {
-  useEffect(() => {
-    // Scroll to the top of the page with smooth behavior when the component mounts
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }, []);
-
-  const [{ lang }] = useContext(Context);
-  const [expandedImage, setExpandedImage] = useState(null);
-
+  const { t } = useLang();
   const navigate = useNavigate();
-
-  const handleImageClick = (photo) => {
-    setExpandedImage(photo);
-  };
-
-  const handleCloseExpandedImage = () => {
-    setExpandedImage(null);
-  };
-
-  const handleBackClick = () => {
-    const scrollPosition = sessionStorage.getItem('scrollPosition');
-    if (scrollPosition) {
-      navigate(-1);
-      window.scrollTo({
-        top: parseInt(scrollPosition, 10),
-        left: 0,
-        behavior: 'smooth'
-      });
-    } else {
-      navigate(-1);
-    }
-  };
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const photos = data.photos || [];
-  const codes = data.codep || [];
+  const thumbs = data.thumbnails?.length ? data.thumbnails : photos;
+
+  useSEO({
+    title: `${data.name} | Galanteria Group`,
+    description:
+      data.description?.slice(0, 300) ||
+      `${data.name} — a completed project by Galanteria Group.`,
+    image: photos[0],
+    type: 'article',
+  });
 
   return (
-    <div className='project1-wrapper'>
-      <NavBar />
+    <div className="project1-wrapper">
+      <div className="product-topbar">
+        <button type="button" className="back-btn" onClick={() => navigate(-1)}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          {t('back')}
+        </button>
+
+        <nav className="product-breadcrumb" aria-label="Breadcrumb">
+          <Link to="/">{t('home')}</Link>
+          <span aria-hidden="true">/</span>
+          <Link to="/Projects">{t('projects')}</Link>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{data.name}</span>
+        </nav>
+      </div>
+
       <div className="project">
-        <svg onClick={handleBackClick} fill="#A7541E" height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 300.003 300.003" >
-          <g>
-            <g>
-              <path d="M150,0C67.159,0,0.001,67.159,0.001,150c0,82.838,67.157,150.003,149.997,150.003S300.002,232.838,300.002,150
-			C300.002,67.159,232.839,0,150,0z M189.226,218.202c-2.736,2.734-6.321,4.101-9.902,4.101c-3.582,0-7.169-1.367-9.902-4.103
-			l-56.295-56.292c-0.838-0.537-1.639-1.154-2.368-1.886c-2.796-2.799-4.145-6.479-4.077-10.144
-			c-0.065-3.667,1.281-7.35,4.077-10.146c0.734-0.731,1.53-1.349,2.368-1.886l56.043-56.043c5.47-5.465,14.34-5.467,19.808,0.003
-			c5.47,5.467,5.47,14.335,0,19.808l-48.265,48.265l48.514,48.516C194.695,203.864,194.695,212.732,189.226,218.202z"/>
-            </g>
-          </g>
-        </svg>
         <div className="project-image">
-          {expandedImage && (
-            <div className="expanded-image-overlay" onClick={handleCloseExpandedImage}>
-              <img src={expandedImage} alt="Expanded" />
-            </div>
+          {data.firstphoto && (
+            <button
+              type="button"
+              className="project-main-photo"
+              onClick={() => setLightboxIndex(0)}
+              aria-label={`${data.name} — ${t('gallery')}`}
+            >
+              <img src={data.firstphoto} alt={data.name} decoding="async" />
+            </button>
           )}
-          <img src={data.firstphoto} alt="" onClick={() => handleImageClick(data.firstphoto)} />
         </div>
-        <div className='project-text'>
-          <h4>{data.category}</h4>
+
+        <div className="project-text">
+          {(data.location || data.year) && (
+            <h4>{[data.location, data.year].filter(Boolean).join(' · ')}</h4>
+          )}
           <h5>{data.name}</h5>
+          {data.description && <p className="project-description">{data.description}</p>}
         </div>
       </div>
-      <div className='project-images'>
-        {photos.map((photo, index) => (
-          <div key={index} className="project-image-container">
-            <img src={photo} alt="" onClick={() => handleImageClick(photo)} />
-            <p className="image-caption">{data.name2[index]}</p>
-          </div>
-        ))}
-      </div>
-      <hr />
-      <Footer />
+
+      {photos.length > 0 && (
+        <div className="project-images">
+          {photos.map((photo, index) => (
+            <button
+              type="button"
+              key={photo}
+              className="project-image-container"
+              onClick={() => setLightboxIndex(index)}
+              aria-label={`${data.name} ${index + 1}`}
+            >
+              <img
+                src={thumbs[index] || photo}
+                alt={`${data.name} ${index + 1}`}
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={photos}
+          startIndex={lightboxIndex}
+          alt={data.name}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default Project1;

@@ -1,0 +1,80 @@
+// =============================================================================
+// Shared SCSS tokens
+// =============================================================================
+//
+// Colours, spacing and typography live as CSS custom properties in index.css,
+// because they need to be readable at runtime. This file holds the things SCSS
+// needs at *compile* time — breakpoints and the mixins that use them.
+//
+// It replaces styles/variables.scss, which was never imported by anything and
+// described an obsolete light theme (including `$secondary-black: #0000`, a
+// four-digit hex that is fully transparent, not black).
+//
+// WHY BREAKPOINTS NEEDED CONSOLIDATING
+// ------------------------------------
+// The stylesheets used 600px, 768px, 900px, 1000px and 1024px interchangeably,
+// with no shared definition. The visible consequence was the navbar: its
+// padding switched at 768px but its hamburger appeared at 1000px, so between
+// 769px and 1000px the layout was in a state neither rule was written for.
+// =============================================================================
+
+$bp-xs: 480px;   // small phones
+$bp-sm: 640px;   // phones
+$bp-md: 768px;   // large phones / small tablets
+$bp-lg: 1024px;  // tablets — the navbar collapses here
+$bp-xl: 1280px;  // laptops
+
+// The fixed navbar's height, in one place. Pages that need to clear it
+// (category, contact, product) previously each guessed their own padding.
+$nav-height: 68px;
+$nav-height-mobile: 60px;
+
+$container-max: 1400px;
+
+@mixin below($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin above($breakpoint) {
+  @media (min-width: $breakpoint + 1px) {
+    @content;
+  }
+}
+
+@mixin between($min, $max) {
+  @media (min-width: $min + 1px) and (max-width: $max) {
+    @content;
+  }
+}
+
+// Respect the OS-level "reduce motion" setting. Nothing in the codebase did,
+// despite autoplaying carousels, smooth scrolling and entrance animations on
+// every route.
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// A consistent, visible keyboard focus ring. There were no :focus-visible
+// styles anywhere — only :hover — so a keyboard user could not see where they
+// were on the page.
+@mixin focus-ring($offset: 3px) {
+  &:focus-visible {
+    outline: 2px solid var(--color-accent, #c8722a);
+    outline-offset: $offset;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 5%;
+
+  @include below($bp-md) {
+    padding: 0 20px;
+  }
+}

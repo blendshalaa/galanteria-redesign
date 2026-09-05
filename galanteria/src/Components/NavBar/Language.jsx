@@ -1,54 +1,39 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Context } from '../Context/Products';
+import useLang from '../../Hooks/useLang';
+import { SUPPORTED_LANGS } from '../../i18n/ui';
 import LangFlag from './LangFlag';
-import './NavBar.scss';
 
+/**
+ * Language switcher.
+ *
+ * Previously three `<a className="lang" onClick={...}>` elements with no href,
+ * which means they were not focusable, were not announced as controls, and
+ * could not be activated from a keyboard. There was also no indication of
+ * which language was currently active, and the component ran a mount effect
+ * that re-dispatched the stored language on every render pass — while being
+ * mounted twice (once for desktop, once for mobile), so it fired twice.
+ *
+ * The initial language is read once in Components/Context/Products.jsx, which
+ * is where it belongs.
+ */
 const Language = () => {
-    const [{ lang }, dispatch] = useContext(Context);
-    const [activeItem, setActiveItem] = useState('');
+  const { lang, setLang } = useLang();
 
-    useEffect(() => {
-        const { pathname } = location;
-        setActiveItem(pathname);
-
-        // Check for language preference in local storage
-        const storedLang = localStorage.getItem("lang");
-        if (storedLang) {
-            dispatch({
-                type: "LANG",
-                payland: { lang: storedLang }
-            });
-        } else {
-            // If no language is set in local storage, default to English
-            dispatch({
-                type: "LANG",
-                payland: { lang: "en" }
-            });
-        }
-    }, [location, dispatch]);
-
-    const changeLang = (newLang) => {
-        dispatch({
-            type: "LANG",
-            payland: { lang: newLang }
-        });
-        localStorage.setItem("lang", newLang);
-    };
-
-    return (
-        <div className="language">
-              <a className="lang" onClick={() => changeLang("sq")}>
-                <LangFlag lang="sq" />
-            </a>
-            <a className="lang" onClick={() => changeLang("en")}>
-                <LangFlag lang="en" />
-            </a> 
-         
-            <a className="lang" onClick={() => changeLang("de")}>
-                <LangFlag lang="de" />
-            </a>
-        </div>
-    );
+  return (
+    <div className="language" role="group" aria-label="Language">
+      {SUPPORTED_LANGS.map((code) => (
+        <button
+          key={code}
+          type="button"
+          className={`lang ${lang === code ? 'lang--active' : ''}`}
+          onClick={() => setLang(code)}
+          aria-pressed={lang === code}
+          lang={code}
+        >
+          <LangFlag lang={code} />
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default Language;

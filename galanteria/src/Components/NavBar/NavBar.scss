@@ -1,7 +1,16 @@
+@use '../../styles/tokens' as *;
+
 /* ============================================
-   NAVBAR - Premium v2
-   ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+   NAVBAR
+   ============================================
+   The Google Fonts @import that used to sit at the top of this file has been
+   removed — index.css already loads the same two families, so every page was
+   making two render-blocking font requests for one set of fonts.
+
+   The breakpoints here now come from styles/_tokens.scss. Previously the
+   padding switched at 768px while the hamburger appeared at 1000px, leaving
+   the 769-1000px range in a state neither rule was written for. Everything
+   collapses together at $bp-lg (1024px). */
 
 .navbar-wrapper {
   position: fixed;
@@ -12,461 +21,352 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  gap: 16px;
+  height: $nav-height;
   padding: 0 48px;
-  background: rgba(10, 9, 8, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  /* Transparent at the top of the page so the hero photograph runs full-bleed
+     behind it, opaque once you start scrolling. Previously it was translucent
+     at every scroll position, which put a permanent grey band across the top of
+     the hero image. */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition-slow), border-color var(--transition-slow),
+              box-shadow var(--transition-slow);
 
   &.scrolled {
-    background: rgba(10, 9, 8, 0.97);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 32px rgba(0, 0, 0, 0.5);
+    background: rgba(10, 9, 8, 0.92);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom-color: var(--color-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
   }
 
-  @media (max-width: 768px) {
-    position: fixed;
+  /* The drawer covers the viewport, so the bar above it must be solid whatever
+     the scroll position — otherwise the hero image shows through the header
+     while the menu is open. */
+  &:has(.links.header-menu) {
+    background: rgba(10, 9, 8, 0.99);
+    border-bottom-color: var(--color-border);
+  }
+
+  @include below($bp-lg) {
+    height: $nav-height-mobile;
     padding: 0 20px;
   }
 
-  /* ---- Logo ---- */
   .left {
     display: flex;
     align-items: center;
+    gap: 28px;
+    min-width: 0;
   }
 
   .logo {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     transition: opacity 0.2s ease;
 
-    &:hover {
-      opacity: 0.8;
-    }
+    &:hover { opacity: 0.8; }
+
+    a { display: flex; }
+    @include focus-ring;
 
     img {
-      width: 44px;
-      height: 33px;
+      /* 52×38 keeps the file's real 1.37 aspect ratio. */
+      width: 52px;
+      height: 38px;
       object-fit: contain;
-      filter: brightness(1.05);
-    }
-  }
 
-  /* ---- Nav Links ---- */
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    padding: 0;
-    margin: 0;
-
-    a {
-      text-decoration: none;
-      color: rgba(240, 237, 232, 0.6);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      height: 36px;
-      padding: 0 14px;
-      border-radius: 4px;
-      transition: color 0.2s ease, background 0.2s ease;
-
-      &:hover {
-        color: #F0EDE8;
-        background: rgba(255, 255, 255, 0.05);
-      }
-    }
-
-    li {
-      list-style: none;
-      color: rgba(240, 237, 232, 0.6);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      height: 36px;
-      padding: 0 14px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: color 0.2s ease, background 0.2s ease;
-
-      &:hover, &.active-link {
-        color: #C8722A;
-        background: rgba(200, 114, 42, 0.08);
-      }
-
-      &.link {
-        color: rgba(240, 237, 232, 0.6);
-        font-weight: 500;
-        height: 36px;
-        padding: 0 14px;
-
-        &:hover {
-          color: #C8722A;
-          background: rgba(200, 114, 42, 0.08);
-        }
-      }
-    }
-  }
-
-  /* ---- Dropdown ---- */
-  .categories {
-    position: relative;
-
-    .c {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      .s {
-        transition: transform 0.2s ease;
-        opacity: 0.5;
-      }
-    }
-  }
-
-  .ecatalog {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    .c {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      .s {
-        transition: transform 0.2s ease;
-        opacity: 0.5;
-      }
-    }
-  }
-
-  .dropdown,
-  .dropdown2 {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2000;
-    background: rgba(10, 9, 8, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 8px;
-    min-width: 220px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(200, 114, 42, 0.12);
-    animation: fadeDown 0.15s ease both;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    li, a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      height: auto;
-      padding: 9px 14px;
-      border-radius: 5px;
-      color: rgba(240, 237, 232, 0.75) !important;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease;
-      list-style: none;
-      text-decoration: none;
-      text-transform: none;
-
-      &:hover {
-        background: rgba(200, 114, 42, 0.12);
-        color: #C8722A !important;
-      }
-    }
-
-    .nes {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
-      height: auto;
-
-      & > a, & > .link {
-        background: none;
-      }
-    }
-  }
-
-  .nested-list {
-    padding-left: 14px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    width: 100%;
-
-    .nes {
-      display: flex;
-      width: 100%;
-      height: auto;
-
-      a {
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 4px;
-        color: rgba(240, 237, 232, 0.6) !important;
-        width: 100%;
-        height: auto;
-        padding: 7px 12px;
-        font-size: 0.77rem;
-        letter-spacing: 0.02em;
-        transition: background 0.15s ease, color 0.15s ease;
-        text-transform: none;
-
-        &:hover {
-          background: rgba(200, 114, 42, 0.12);
-          color: #C8722A !important;
-        }
-      }
-    }
-  }
-
-  /* ---- Language switcher ---- */
-  .navlang {
-    display: flex;
-    align-items: center;
-
-    &.desktop-only {
-      @media (max-width: 1000px) {
-        display: none !important;
-      }
-    }
-
-    &.mobile-only {
-      display: none !important;
-      @media (max-width: 1000px) {
-        display: flex !important;
-      }
-    }
-  }
-
-  .language {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-left: 16px;
-    border-left: 1px solid rgba(255, 255, 255, 0.07);
-    margin-left: 8px;
-
-    .lang {
-      cursor: pointer;
-      color: rgba(240, 237, 232, 0.4);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: #C8722A;
-      }
-
-      .l {
-        margin: 0;
-        font-size: inherit;
-        font-weight: inherit;
-      }
-    }
-  }
-
-  /* ---- Mobile toggle ---- */
-  .right {
-    display: none;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    color: rgba(240, 237, 232, 0.7);
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    @media (max-width: 1000px) {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  /* ---- Mobile menu ---- */
-  @media (max-width: 1000px) {
-    height: 60px;
-    padding: 0 20px;
-
-    .links {
-      position: fixed;
-      top: 0;
-      left: -100vw;
-      width: 100vw;
-      height: 100vh;
-      background: #0E0D0B;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 100px 32px 60px;
-      gap: 12px;
-      opacity: 0;
-      transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-      z-index: 999;
-      overflow-y: auto;
-
-      /* Decorative Watermark */
-      &::before {
-        content: 'GALANTERIA';
-        position: absolute;
-        bottom: 20px;
-        right: -20px;
-        font-family: 'Inter', sans-serif;
-        font-weight: 800;
-        font-size: 5rem;
-        color: rgba(255, 255, 255, 0.02);
-        transform: rotate(-90deg);
-        transform-origin: bottom right;
-        pointer-events: none;
-      }
-
-      &.header-menu {
-        left: 0;
-        opacity: 1;
-      }
-
-      /* Main Links */
-      & > a, & > div {
-        width: 100%;
-      }
-
-      /* Fix the dropdown trigger row */
-      .c {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        cursor: pointer;
-
-        li {
-          border-bottom: none; /* Removed so it doesn't double-border */
-          width: auto;
-          flex: 1;
-        }
-
-        .s {
-          margin-right: 16px;
-          opacity: 0.8;
-          transform: scale(1.4);
-        }
-      }
-
-      li, a {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.4rem !important;
-        font-weight: 600 !important;
-        color: #F0EDE8;
-        border: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 16px 0;
-        width: 100%;
-        text-align: left;
-        border-radius: 0;
-        letter-spacing: -0.01em;
-        text-transform: uppercase;
-        background: transparent !important;
-        
-        &:hover, &.active-link {
-          color: #C8722A !important;
-          background: transparent !important;
-        }
-      }
-
-      /* Clean up nested links */
-      .navlang {
-        margin-top: 32px;
-        border-bottom: none;
-
-        .language {
-          padding-left: 0;
-          border-left: none;
-          margin-left: 0;
-        }
-      }
-    }
-
-    .dropdown, .dropdown2 {
-      position: static;
-      transform: none;
-      box-shadow: none;
-      background: transparent;
-      border: none;
-      border-left: 2px solid rgba(200, 114, 42, 0.3);
-      width: 100%;
-      margin-top: 8px;
-      margin-bottom: 16px;
-      padding-left: 16px;
-      padding-right: 0;
-
-      li, a {
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        color: rgba(240, 237, 232, 0.6) !important;
-        border-bottom: none;
-        padding: 10px 0;
-        text-transform: none;
-
-        &:hover {
-          color: #C8722A !important;
-        }
-      }
-      
-      /* Inner nested lists */
-      .nested-list {
-        padding-left: 12px;
-        border-left: 1px solid rgba(255, 255, 255, 0.08);
-        margin-top: 8px;
-
-        a {
-          font-size: 0.9rem !important;
-          color: rgba(240, 237, 232, 0.5) !important;
-          padding: 8px 0;
-        }
-      }
-
-      @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-10px); }
-        to   { opacity: 1; transform: translateY(0); }
+      @include below($bp-lg) {
+        width: 44px;
+        height: 32px;
       }
     }
   }
 }
 
-/* Scroll-lock */
-body.scroll-y { overflow: hidden; }
+/* ---- Nav links ----------------------------------------------------------
+   Each item is now `li > a` or `li > button`. The `li` is a bare list item;
+   all the sizing lives on the interactive child, so it is the link itself
+   that is clickable and focusable, not the space around it. */
+.navbar-wrapper .links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    list-style: none;
+  }
+
+  .link,
+  .active-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 14px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color var(--transition-fast), background var(--transition-fast),
+                border-color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-text-primary);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    @include focus-ring(-2px);
+  }
+
+  .active-link {
+    color: var(--color-accent);
+    background: var(--color-accent-dim);
+  }
+
+  /* The contact link, promoted to the page's primary action. Kept as an
+     outline rather than a filled button so it reads as part of the navigation
+     and does not compete with the filled CTA in the hero directly below it. */
+  .nav-cta {
+    margin-left: var(--space-sm);
+    border-color: var(--color-border-hover);
+    color: var(--color-accent);
+
+    &:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #16120C;
+    }
+  }
+
+  .c { display: flex; align-items: center; }
+
+  .s {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+
+  [aria-expanded='true'] .s { transform: rotate(180deg); }
+}
+
+/* ---- Dropdown ---- */
+.navbar-wrapper .dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  min-width: 230px;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  background: var(--color-bg-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  animation: nav-fade-down 0.18s ease;
+
+  .nes { list-style: none; }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background var(--transition-fast);
+
+    &:hover {
+      color: var(--color-accent-light);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @include focus-ring(-2px);
+  }
+}
+
+/* Defined once. It used to be declared twice in this file, in the desktop
+   dropdown block and again in the mobile block. */
+@keyframes nav-fade-down {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Right-hand actions ---- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast);
+
+  &:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  @include focus-ring(-2px);
+}
+
+/* The hamburger only exists below the collapse breakpoint. */
+.menu-btn {
+  display: none;
+
+  @include below($bp-lg) { display: flex; }
+}
+
+/* ---- Language switcher ---- */
+.navbar-wrapper .language {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  .lang {
+    padding: 6px 9px;
+    font-family: inherit;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color var(--transition-fast), background var(--transition-fast);
+
+    &:hover { color: var(--color-text-primary); }
+
+    /* There was no active-language indicator at all before — you could not
+       tell which of AL / EN / DE you were looking at. */
+    &--active {
+      color: var(--color-accent);
+      background: var(--color-accent-dim);
+    }
+
+    @include focus-ring(-2px);
+
+    .l { display: block; }
+  }
+}
+
+.desktop-only { display: flex; }
+.mobile-only  { display: none; }
+
+/* ---- Mobile drawer ---- */
+@include below($bp-lg) {
+  .desktop-only { display: none; }
+  .mobile-only  { display: flex; }
+
+  .navbar-wrapper .links {
+    position: fixed;
+    top: $nav-height-mobile;
+    left: 0;
+    /* `left: -100vw` with `width: 100vw` was the previous approach, which on
+       iOS Safari causes horizontal scroll jank and depends on
+       `body { overflow-x: hidden }` to hide it. Translating out of view has
+       neither problem. */
+    width: 100%;
+    height: calc(100dvh - #{$nav-height-mobile});
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 24px 20px 60px;
+    overflow-y: auto;
+    background: rgba(10, 9, 8, 0.99);
+    backdrop-filter: blur(20px);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.32s;
+
+    &.header-menu {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .link,
+    .active-link {
+      justify-content: space-between;
+      width: 100%;
+      height: 52px;
+      padding: 0 4px;
+      font-size: 0.95rem;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
+    }
+
+    /* In the drawer every item is already a full-width row, so the outlined
+       CTA treatment would just draw a box around one of them. */
+    .nav-cta {
+      margin-left: 0;
+      color: var(--color-accent);
+    }
+
+    .dropdown {
+      position: static;
+      min-width: 0;
+      margin: 4px 0 12px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow: none;
+
+      a { padding: 12px 14px; font-size: 0.88rem; }
+    }
+
+    .navlang {
+      justify-content: center;
+      margin-top: 28px;
+
+      .lang { padding: 10px 16px; font-size: 0.82rem; }
+    }
+  }
+}
+
+/* Applied to <body> while the mobile drawer is open. It is now toggled only
+   by the drawer — it used to be toggled by clicking any desktop nav link. */
+.scroll-y {
+  overflow: hidden;
+}
+
+@include reduced-motion {
+  .navbar-wrapper,
+  .navbar-wrapper .links,
+  .navbar-wrapper .s,
+  .nav-icon-btn { transition: none; }
+
+  .navbar-wrapper .dropdown { animation: none; }
+}

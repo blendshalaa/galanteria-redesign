@@ -1,61 +1,51 @@
-/* ============================================
-   HOMEPAGE v3 — EDITORIAL STRUCTURAL REDESIGN
-   ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+/* =============================================================================
+   HOMEPAGE
+   =============================================================================
+   WHAT CHANGED AND WHY
+   --------------------
+   This file used to open with a second `@import url(…fonts.googleapis…)` — the
+   same two families index.css already requests — plus a global `*` reset and a
+   `body { background; color; font-family }` block. A route-level stylesheet was
+   therefore restyling the whole document, and because Vite concatenates it after
+   index.css it won whenever the homepage was in the bundle. Both are gone.
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+   Every colour was a hex literal (#0E0D0B, #C8722A, rgba(240,237,232,.4)…)
+   repeated dozens of times, so the palette in index.css was decorative. It now
+   reads from the tokens.
 
-body {
-  background: #0E0D0B;
-  color: #F0EDE8;
-  font-family: 'Inter', sans-serif;
-}
+   Headings forced `font-family: 'Inter'`, which is why Cormorant Garamond was
+   downloaded on every page load and never rendered. Section titles use the
+   shared `.section-title` class, which uses the display face.
+
+   Section padding was 100px / 72px / 120px / 80px chosen per-section; the page
+   had no consistent vertical beat. Sections now use `.section`.
+   ========================================================================== */
+
+@use '../../styles/tokens' as *;
 
 .home-wrapper {
   width: 100%;
   overflow-x: hidden;
-  background: #0E0D0B;
+  background: var(--color-bg);
 }
 
-/* Shared eyebrow label */
-.eyebrow-label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #C8722A;
-  margin-bottom: 20px;
-  white-space: nowrap;
+/* =============================================================================
+   HERO
+   ========================================================================== */
 
-  &::after {
-    content: '';
-    display: block;
-    width: 120px;
-    height: 1px;
-    background: linear-gradient(to right, rgba(200, 114, 42, 0.4), transparent);
-    
-    @media (max-width: 768px) {
-      width: 60px;
-    }
-  }
-}
-
-/* ============================================
-   SECTION 1 — FULL SCREEN HERO
-   ============================================ */
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  /* `100vh` on mobile is the viewport *including* the browser chrome that
+     retracts as you scroll, so the hero was taller than the screen and the
+     scroll hint sat under the address bar. `100svh` is the small viewport. */
+  height: 100svh;
   min-height: 580px;
   overflow: hidden;
 
-  @media (max-width: 768px) {
-    height: 60vh;
-    min-height: 420px;
+  @include below($bp-md) {
+    height: 82svh;
+    min-height: 460px;
   }
 }
 
@@ -70,10 +60,12 @@ body {
 .hero-slide {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
 
-  @media (max-width: 768px) { height: 60vh; }
+  @include below($bp-md) {
+    height: 82svh;
+  }
 
   img {
     width: 100%;
@@ -88,187 +80,153 @@ body {
   transform: scale(1);
 }
 
+@include reduced-motion {
+  .hero-slide img,
+  .swiper-slide-active .hero-slide img {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* The old gradient went fully opaque at the bottom (rgba(…, 1)), which cut a
+   hard horizontal band across the photo. It now lands just short of the page
+   background so the image dissolves into the section below it. */
 .hero-slide-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14, 13, 11, 0.15) 0%,
-    rgba(14, 13, 11, 0.05) 30%,
-    rgba(14, 13, 11, 0.6) 72%,
-    rgba(14, 13, 11, 1) 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(14, 13, 11, 0.25) 0%,
+      rgba(14, 13, 11, 0.1) 28%,
+      rgba(14, 13, 11, 0.72) 78%,
+      var(--color-bg) 100%
+    ),
+    /* A gentle left-hand wash so the headline keeps its contrast over a busy
+       photograph without darkening the whole frame. */
+    linear-gradient(
+      to right,
+      rgba(14, 13, 11, 0.6) 0%,
+      rgba(14, 13, 11, 0.15) 45%,
+      transparent 75%
+    );
 }
 
-/* Hero text — bottom-left aligned */
 .hero-text-block {
   position: absolute;
-  bottom: 100px;
-  left: 64px;
+  left: var(--gutter);
+  bottom: clamp(5rem, 12vh, 8rem);
   z-index: 2;
-
-  @media (max-width: 768px) {
-    left: 24px;
-    bottom: 72px;
-  }
+  max-width: min(680px, calc(100% - var(--gutter) * 2));
 }
 
 .hero-eyebrow {
   display: block;
-  font-size: 0.72rem;
+  margin-bottom: var(--space-md);
+  font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: rgba(200, 114, 42, 0.8);
-  margin-bottom: 12px;
+  color: var(--color-accent-light);
 }
 
+/* The headline copy in lang.js is a pull quote wrapped in typographic quotes,
+   which is why it was italicised. The display serif carries that intent far
+   better than italic Inter did, and at this size it is the single strongest
+   brand signal on the page. */
 .hero-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
   font-weight: 300;
   font-style: italic;
-  color: #F0EDE8;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  max-width: 600px;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Scroll hint line */
+/* The hero previously ended at the headline: a full-screen image with no
+   action of any kind. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
 .hero-scroll-hint {
   position: absolute;
-  bottom: 36px;
-  right: 64px;
+  right: var(--gutter);
+  bottom: var(--space-2xl);
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 12px;
-
-  @media (max-width: 768px) {
-    right: 24px;
-    bottom: 24px;
-  }
+  gap: var(--space-md);
 
   span {
     display: block;
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, rgba(200, 114, 42, 0.7), transparent);
-    animation: fadeInDown 2s ease-in-out infinite;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollHint 2s ease-in-out infinite;
+  }
+
+  /* On phones this sits directly on top of the hero buttons. */
+  @include below($bp-md) {
+    display: none;
   }
 }
 
-@keyframes fadeInDown {
+@keyframes scrollHint {
   0%, 100% { opacity: 0.3; transform: scaleY(0.7) translateY(-4px); }
-  50% { opacity: 1; transform: scaleY(1) translateY(0); }
+  50%      { opacity: 1;   transform: scaleY(1) translateY(0); }
 }
 
-/* Swiper overrides */
+/* --- Swiper overrides ----------------------------------------------------- */
+
 .hero-swiper .swiper-pagination {
-  bottom: 28px !important;
-  left: 64px !important;
+  bottom: var(--space-xl) !important;
+  left: var(--gutter) !important;
   right: auto !important;
   width: auto !important;
   display: flex;
   gap: 6px;
-
-  @media (max-width: 768px) { left: 24px !important; }
 }
 
 .swiper-pagination-bullet {
   background: rgba(240, 237, 232, 0.3) !important;
   width: 6px !important;
   height: 6px !important;
-  transition: all 0.3s ease !important;
   opacity: 1 !important;
+  transition: width var(--transition-base), background var(--transition-base) !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: #C8722A !important;
+  background: var(--color-accent) !important;
   width: 24px !important;
-  border-radius: 3px !important;
+  border-radius: var(--radius-full) !important;
 }
 
-/* ============================================
-   SECTION 2 — CATEGORIES EDITORIAL GRID
-   ============================================ */
-.categories-section {
-  padding: 100px 64px;
-  background: #0E0D0B;
+/* =============================================================================
+   CATEGORIES — hover-expand accordion
+   ========================================================================== */
 
-  @media (max-width: 768px) {
-    padding: 72px 20px;
-  }
-}
-
-.categories-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  gap: 20px;
-  flex-wrap: wrap;
-
-  .categories-header-left {
-    display: flex;
-    flex-direction: column;
-
-    h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 700;
-      color: #F0EDE8;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-  }
-}
-
-.see-all-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: 1px solid rgba(200, 114, 42, 0.3);
-  color: rgba(240, 237, 232, 0.6);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-
-  svg { transition: transform 0.25s ease; }
-
-  &:hover {
-    border-color: #C8722A;
-    color: #C8722A;
-    svg { transform: translateX(4px); }
-  }
-}
-
-/* The editorial grid - Replaced by Hover Expand Accordion */
 .creative-categories-layout {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Small gap between rows */
+  gap: var(--space-sm);
   width: 100%;
 }
 
 .accordion-row {
   display: flex;
   width: 100%;
-  height: 400px;
-  gap: 8px;
-  
-  @media (max-width: 900px) {
+  height: clamp(280px, 34vw, 420px);
+  gap: var(--space-sm);
+
+  @include below($bp-lg) {
     height: auto;
-    min-height: 300px;
     flex-wrap: wrap;
   }
 }
@@ -276,375 +234,347 @@ body {
 .accordion-item {
   position: relative;
   flex: 1;
-  border-radius: 4px;
+  min-width: 0;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  cursor: pointer;
+  background: var(--color-bg-card);
   transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  background: #111009;
-
-  /* Hover magic */
-  &:hover {
-    flex: 3;
-    
-    img {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
-    
-    .accordion-content {
-      opacity: 1;
-      transform: translateY(0);
-      background: linear-gradient(to top, rgba(14, 13, 11, 0.9), transparent);
-    }
-    
-    .view-btn {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .collapsed-label {
-      opacity: 0;
-    }
-  }
-
-  @media (max-width: 900px) {
-    flex: 1 1 calc(50% - 4px);
-    height: 200px;
-    &:hover { flex: 1 1 calc(50% - 4px); } /* Disable accordion on mobile */
-  }
+  @include focus-ring;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease, filter 0.5s ease;
-    filter: brightness(0.6);
+    transition: transform 0.8s ease, filter var(--transition-slow);
+    filter: brightness(0.82);
+  }
+
+  /* A permanent scrim under the collapsed label.
+     The catalogue photography is studio cut-outs on white, so a white vertical
+     label sat on a white background: "WORKING TABLES", "DRAWERS" and "OFFICE
+     CHAIRS" were all illegible on the live page. Dimming the whole image far
+     enough to fix that would have made the furniture muddy, so the darkening is
+     local to the strip the text occupies. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      rgba(14, 13, 11, 0.85) 0%,
+      rgba(14, 13, 11, 0.45) 32%,
+      transparent 62%
+    );
+    transition: opacity var(--transition-slow);
+  }
+
+  /* Gated on a real hover-capable pointer: a touch device emulates :hover on
+     tap and then keeps it stuck until you tap elsewhere. */
+  @media (hover: hover) and (min-width: #{$bp-lg + 1px}) {
+    &:hover,
+    &:focus-visible {
+      flex: 2.6;
+
+      img { transform: scale(1.04); filter: brightness(1); }
+      /* The expanded card draws its own, stronger scrim — without this the two
+         stack and the photograph goes black. */
+      &::after { opacity: 0; }
+      .accordion-content { opacity: 1; transform: translateY(0); }
+      .view-btn { opacity: 1; transform: translateX(0); }
+      .collapsed-label { opacity: 0; }
+    }
+  }
+
+  /* Below the accordion breakpoint every tile is a plain, always-legible card:
+     two per row on tablets, two on phones. */
+  @include below($bp-lg) {
+    flex: 1 1 calc(50% - var(--space-sm) / 2);
+    height: clamp(160px, 34vw, 240px);
+
+    /* Below this width `.accordion-content` is permanently visible and brings
+       its own scrim, so the collapsed-label one would double up. */
+    &::after { display: none; }
   }
 }
 
 .collapsed-label {
   position: absolute;
-  bottom: 40px;
+  bottom: var(--space-xl);
   left: 50%;
+  /* The scrim is an ::after, i.e. the last child, so it paints over anything
+     that does not lift itself out of the way. */
+  z-index: 1;
   transform: translateX(-50%);
-  transition: opacity 0.4s ease;
+  transition: opacity var(--transition-slow);
   white-space: nowrap;
-  
-  @media (max-width: 900px) {
-    display: none; /* Hide on mobile since cards are smaller and always show full label */
-  }
-  
+
+  @include below($bp-lg) { display: none; }
+
   span {
     display: block;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #F0EDE8;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    color: var(--color-text-primary);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
   }
 }
 
 .accordion-content {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 40px 32px;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.5s ease;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
   pointer-events: none;
+  background: linear-gradient(to top, rgba(14, 13, 11, 0.92) 0%, rgba(14, 13, 11, 0.35) 45%, transparent 75%);
 
-  @media (max-width: 900px) {
+  @include below($bp-lg) {
     opacity: 1;
-    transform: translateY(0);
-    background: linear-gradient(to top, rgba(14, 13, 11, 0.8), transparent);
-    padding: 24px 16px;
+    transform: none;
+    gap: 0;
+    padding: var(--space-lg) var(--space-md);
   }
 
   h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2vw, 2.5rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #F0EDE8;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
-    
-    @media (max-width: 900px) {
-      margin-bottom: 0;
-      font-size: 1rem;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--color-text-primary);
+
+    @include below($bp-lg) {
+      font-size: var(--text-md);
     }
   }
 }
 
 .view-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #C8722A;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: #16120C;
   opacity: 0;
-  transform: translateX(-20px);
-  transition: all 0.5s ease 0.1s; /* Delay slightly for cool effect */
-  
-  @media (max-width: 900px) {
-    display: none; /* Hide button on mobile */
-  }
+  transform: translateX(-16px);
+  transition: opacity var(--transition-slow) 0.1s, transform var(--transition-slow) 0.1s;
+
+  @include below($bp-lg) { display: none; }
 }
 
-/* ============================================
-   SECTION 3 — STATS STRIP
-   ============================================ */
+/* =============================================================================
+   STATS
+   ========================================================================== */
+
 .stats-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  padding: 72px 64px;
-  background: #0B0A08;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: var(--space-xl);
 
-  @media (max-width: 768px) {
+  @include below($bp-md) {
     flex-direction: column;
-    padding: 60px 24px;
-    gap: 32px;
+    gap: var(--space-xl);
   }
 }
 
 .stat-block {
   flex: 1;
   text-align: center;
-  padding: 0 40px;
-
-  @media (max-width: 768px) {
-    padding: 0;
-  }
 
   h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
     font-weight: 300;
-    color: #C8722A;
     line-height: 1;
-    letter-spacing: -0.03em;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-accent);
   }
 
   p {
-    margin-top: 10px;
-    font-size: 0.78rem;
+    margin-top: var(--space-sm);
+    font-size: var(--text-xs);
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(240, 237, 232, 0.4);
+    /* Was rgba(240,237,232,0.4) — 3.1:1 on this background, below the WCAG AA
+       floor for small text. The muted token is the accessible equivalent. */
+    color: var(--color-text-muted);
   }
 }
 
 .stat-divider {
-  width: 1px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.07);
   flex-shrink: 0;
+  width: 1px;
+  height: 72px;
+  background: var(--color-border);
 
-  @media (max-width: 768px) {
-    width: 40px;
+  @include below($bp-md) {
+    width: 48px;
     height: 1px;
   }
 }
 
-/* ============================================
-   SECTION 4 — TESTIMONIALS CAROUSEL
-   ============================================ */
-.testimonials-section {
-  padding: 120px 64px;
-  background: #0E0D0B;
-
-  @media (max-width: 768px) {
-    padding: 80px 20px;
-  }
-}
-
-.testimonials-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 56px;
-
-  h2 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    color: #F0EDE8;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    text-transform: uppercase;
-  }
-}
+/* =============================================================================
+   TESTIMONIALS
+   ========================================================================== */
 
 .testimonials-carousel {
   width: 100%;
-  
+
+  /* Swiper measures slide heights from the tallest; without this a short quote
+     leaves its card floating half-height next to a long one. */
+  .swiper-slide { height: auto; }
+
   .swiper-pagination {
     position: relative;
-    margin-top: 48px;
+    margin-top: var(--space-2xl);
   }
 }
 
 .testimonial-modern-card {
-  background: #11100D;
-  padding: 48px 40px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  gap: var(--space-xl);
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
+  padding: var(--space-2xl) var(--space-xl);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base);
 
   &:hover {
-    background: #15130F;
     transform: translateY(-4px);
+    border-color: var(--color-border-hover);
   }
 
   .testimonial-text {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
-    font-weight: 300;
-    color: rgba(240, 237, 232, 0.9);
-    line-height: 1.7;
-    letter-spacing: -0.01em;
     flex-grow: 1;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text-primary);
   }
 
   .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 16px;
-    
+    gap: var(--space-md);
+
     &::before {
       content: '';
       display: block;
       width: 24px;
       height: 1px;
-      background: #C8722A;
+      background: var(--color-accent);
+      flex-shrink: 0;
     }
   }
 
   .testimonial-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #C8722A;
+    color: var(--color-accent);
   }
 
   .testimonial-role {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: rgba(240, 237, 232, 0.4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
   }
 }
 
-/* ============================================
-   SECTION 5 — PARTNERS
-   ============================================ */
-.partners-section {
-  padding: 100px 64px;
-  background: #0B0A08;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-
-  @media (max-width: 768px) {
-    padding: 72px 20px;
-  }
-}
-
-.partners-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 56px;
-
-  h2 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    color: #F0EDE8;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    text-transform: uppercase;
-  }
-}
+/* =============================================================================
+   PARTNERS
+   ========================================================================== */
 
 .partners-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
 
-  @media (max-width: 900px) {
+  @include below($bp-lg) {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: var(--space-2xl);
   }
-}
-
-.partners-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
 }
 
 .partner-item {
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
 
-  &:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
+  &:first-child { border-top: 1px solid var(--color-border); }
 
   h4 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.4rem;
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
     font-weight: 400;
-    color: #C8722A;
-    margin-bottom: 8px;
+    color: var(--color-accent);
   }
 
   p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(240, 237, 232, 0.5);
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
   }
 }
 
+/* Both partner logos are near-white artwork on transparency (measured over the
+   opaque pixels only: rgb(250,250,250) and rgb(253,253,255)), covering 9% and
+   17% of their canvas. So they belong on a dark plate, not a light one — and
+   they need a defined box, because previously they were stretched to the full
+   grid column with `width: 100%` and floated in the section with nothing but a
+   hairline border to suggest where one logo ended and the next began. */
 .partners-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: var(--space-md);
 
-  img {
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
-    }
+  @include below($bp-xs) {
+    grid-template-columns: 1fr;
   }
 }
 
-hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin: 0;
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 128px;
+  padding: var(--space-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-slow), border-color var(--transition-slow),
+              box-shadow var(--transition-slow);
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 64px;
+    object-fit: contain;
+  }
 }

@@ -1,131 +1,152 @@
+/* =============================================================================
+   CATEGORY PAGE
+   =============================================================================
+   The breadcrumb, header, toolbar and grid each repeated the same three
+   declarations — `max-width: 1400px; margin: 0 auto; padding: 0 5%` — plus
+   their own `@include below($bp-md)` override of that padding. Four copies of
+   one container, which is why they drifted out of alignment at some widths.
+   They now share `.category-shell`, and the gutter is the site-wide token so
+   this page lines up with the homepage and the footer.
+   ========================================================================== */
+
+@use '../../styles/tokens' as *;
+
 .category-page-wrapper {
-  background-color: #000;
   min-height: 100vh;
-  padding-top: 120px;
-  padding-bottom: 80px;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  /* Clears the fixed navbar — 68px desktop / 60px mobile, defined once in
+     styles/_tokens.scss. */
+  padding: calc(#{$nav-height} + clamp(2rem, 5vw, 3.5rem)) 0 var(--section-y);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
 
-  .category-header {
-    text-align: center;
-    margin-bottom: 60px;
-    
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 200;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      
-      @media (max-width: 768px) {
-        font-size: 2.5rem;
-      }
-    }
+  @include below($bp-lg) {
+    padding-top: calc(#{$nav-height-mobile} + 2rem);
+  }
+}
+
+.category-shell {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.category-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover { color: var(--color-accent-light); }
+    @include focus-ring;
   }
 
-  .loading-state, .empty-state {
-    text-align: center;
-    padding: 100px 20px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+  [aria-current='page'] { color: var(--color-text-primary); }
+}
+
+.category-header {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    text-wrap: balance;
   }
 
-  .spinner {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+  .category-count {
+    margin-top: var(--space-sm);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+}
+
+.category-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+
+  label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
   }
 
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-    padding: 0 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-  }
-
-  .category-item {
+  select {
+    padding: 9px 14px;
+    font: inherit;
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    outline: none;
+    transition: border-color var(--transition-fast);
 
-    &:hover {
-      transform: translateY(-5px);
-      
-      .image-wrapper {
-        img { transform: scale(1.05); }
-        .overlay { opacity: 1; }
-      }
-      
-      h4 { color: #C8722A; }
+    &:hover { border-color: var(--color-border-hover); }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
     }
 
-    .image-wrapper {
-      position: relative;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #111;
-      margin-bottom: 16px;
+    option { background: var(--color-bg-card); }
+  }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
+  @include below($bp-md) {
+    justify-content: space-between;
+  }
+}
 
-      .overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        backdrop-filter: blur(2px);
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.25rem) clamp(1rem, 2vw, 1.875rem);
 
-        .view-btn {
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 30px;
-          color: #fff;
-          font-size: 0.9rem;
-          font-weight: 500;
-          letter-spacing: 0.05em;
-          backdrop-filter: blur(10px);
-        }
-      }
-    }
+  @include below($bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    h4 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      color: #F0EDE8;
-      transition: color 0.3s ease;
-      text-align: center;
-      margin: 0;
-    }
+  /* One column below 480px was leaving a single 440px-wide product photo per
+     screen; two narrow tiles show more of the catalogue and match how every
+     other shop on a phone behaves. */
+  @include below($bp-xs) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg) var(--space-sm);
+  }
+}
+
+.category-more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+
+  /* The button used to redeclare the whole button treatment — padding, weight,
+     tracking, uppercase, radius, hover, focus, disabled — inline. It is the
+     shared `.btn .btn-ghost` now; only the pill radius is local. */
+  .btn {
+    border-radius: var(--radius-full);
+
+    &:disabled { opacity: 0.6; cursor: progress; }
   }
 }

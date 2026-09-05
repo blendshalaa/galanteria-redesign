@@ -1,0 +1,89 @@
+// =============================================================================
+// Detail-page header — back button + breadcrumb
+// =============================================================================
+//
+// WHY THIS FILE EXISTS
+// --------------------
+// Project1.jsx renders `.product-topbar`, `.back-btn` and `.product-breadcrumb`
+// and Project1.scss carried a comment saying the topbar was "shared with the
+// product page; see Product1.scss".
+//
+// It was not shared. Every route in App.jsx is lazily imported, so each one is
+// its own chunk with its own stylesheet — Product1.scss is loaded only on
+// /product/:slug. On /project/:slug those three class names matched no rule at
+// all, so the back button was an unstyled inline button tucked under the fixed
+// navbar and the breadcrumb was flush against the left edge of the viewport
+// with no separators, no gutter and no letter-spacing.
+//
+// Both pages now `@use` this partial, so the header is genuinely shared and
+// changing it changes both.
+// =============================================================================
+
+@use 'tokens' as *;
+
+.product-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-lg);
+  padding: calc(#{$nav-height} + 24px) var(--gutter) 0;
+
+  @include below($bp-lg) {
+    padding: calc(#{$nav-height-mobile} + 20px) var(--gutter) 0;
+  }
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 0;
+  font: inherit;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+
+  svg { transition: transform var(--transition-fast); }
+
+  &:hover {
+    color: var(--color-accent);
+    svg { transform: translateX(-3px); }
+  }
+
+  @include focus-ring;
+}
+
+.product-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover { color: var(--color-accent-light); }
+    @include focus-ring(2px);
+  }
+
+  [aria-current='page'] {
+    color: var(--color-text-primary);
+    // Long project and product names should not push the breadcrumb off screen.
+    max-width: 32ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

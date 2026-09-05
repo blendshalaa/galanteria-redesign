@@ -1,0 +1,119 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 72px;
+  background: rgba(6, 5, 4, 0.94);
+  backdrop-filter: blur(8px);
+  animation: lightbox-in 0.2s ease;
+  cursor: zoom-out;
+
+  @media (max-width: 768px) {
+    padding: 56px 12px;
+  }
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+  max-height: 100%;
+  cursor: default;
+
+  img {
+    max-width: 100%;
+    max-height: calc(100vh - 160px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 3px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 232, 0.6);
+  }
+}
+
+.lightbox-caption { color: var(--color-accent, #c8722a); font-weight: 600; }
+.lightbox-counter { font-variant-numeric: tabular-nums; }
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 237, 232, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent, #c8722a);
+    outline-offset: 3px;
+  }
+}
+
+.lightbox-close {
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+}
+
+.lightbox-nav {
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translateY(-50%);
+
+  &:hover { transform: translateY(-50%) scale(1.06); }
+
+  &--prev { left: 16px; }
+  &--next { right: 16px; }
+
+  /* On a phone the arrows would sit on top of the photo; swipe covers it, and
+     the buttons move to the bottom so they remain reachable for anyone who
+     cannot swipe. */
+  @media (max-width: 768px) {
+    top: auto;
+    bottom: 16px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+
+    &:hover { transform: scale(1.06); }
+    &--prev { left: 24%; }
+    &--next { right: 24%; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox { animation: none; }
+  .lightbox-close,
+  .lightbox-nav { transition: none; }
+}

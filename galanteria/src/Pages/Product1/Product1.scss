@@ -1,54 +1,27 @@
+@use '../../styles/tokens' as *;
+/* The back button and breadcrumb used to be declared here and *only* here,
+   while Project1.jsx rendered the same three class names on a route that never
+   loads this file. See styles/_detail-header.scss. */
+@use '../../styles/detail-header';
+
 /* ============================================
-   PRODUCT DETAIL PAGE — v3
+   PRODUCT DETAIL PAGE
    ============================================ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 .product1-wrapper {
   min-height: 100vh;
-  background: #0E0D0B;
-  color: #F0EDE8;
-  font-family: 'Inter', sans-serif;
-}
-
-/* Back button */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  position: absolute;
-  top: 88px;
-  left: 48px;
-  background: transparent;
-  border: none;
-  color: rgba(240, 237, 232, 0.45);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 8px 0;
-  transition: color 0.2s ease;
-  z-index: 10;
-
-  &:hover {
-    color: #C8722A;
-  }
-
-  @media (max-width: 768px) {
-    left: 20px;
-    top: 76px;
-  }
+  background: var(--color-bg);
+  color: var(--color-text-primary);
 }
 
 /* ---- HERO SPLIT ---- */
 .product-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  padding-top: 68px; /* navbar height */
+  align-items: stretch;
+  margin-top: 28px;
 
-  @media (max-width: 900px) {
+  @include below($bp-lg) {
     grid-template-columns: 1fr;
     min-height: auto;
   }
@@ -56,23 +29,35 @@
 
 .product-hero-image {
   position: relative;
-  background: #111009;
+  min-height: 66vh;
   overflow: hidden;
-  min-height: 70vh;
+  background: var(--color-bg-card);
 
-  @media (max-width: 900px) {
-    min-height: 55vw;
-  }
+  @include below($bp-lg) { min-height: 62vw; }
+}
+
+.product-main-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: zoom-in;
 
   img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    cursor: zoom-in;
     transition: transform 0.6s ease;
+  }
 
-    &:hover { transform: scale(1.03); }
+  &:hover img { transform: scale(1.03); }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -4px;
   }
 }
 
@@ -80,12 +65,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 64px;
-  gap: 24px;
+  gap: 22px;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
 
-  @media (max-width: 900px) {
-    padding: 48px 24px 40px;
-  }
+  @include below($bp-lg) { padding: clamp(2rem, 6vw, 2.75rem) var(--gutter) 2.5rem; }
 }
 
 .product-eyebrow {
@@ -93,16 +76,28 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #C8722A;
+  color: var(--color-accent);
 }
 
 .product-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
   font-weight: 300;
-  color: #F0EDE8;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+/* The product description. This markup did not exist: the text was fetched
+   from Supabase and then never rendered, so the Albanian, English and German
+   descriptions the client writes in the admin panel were invisible on the
+   site. */
+.product-description {
+  max-width: 56ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  white-space: pre-line; /* honour paragraph breaks typed into the textarea */
 }
 
 /* Thumbnail strip */
@@ -110,140 +105,177 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
 }
 
 .thumb {
+  flex-shrink: 0;
   width: 72px;
   height: 72px;
-  border-radius: 4px;
+  padding: 0;
   overflow: hidden;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: border-color 0.2s ease;
-  flex-shrink: 0;
 
   img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.3s ease;
   }
 
   &:hover {
-    border-color: rgba(200, 114, 42, 0.4);
+    border-color: var(--color-border-hover);
     img { transform: scale(1.08); }
   }
 
-  &.thumb--active {
-    border-color: #C8722A;
-  }
+  &.thumb--active { border-color: var(--color-accent); }
+
+  @include focus-ring(2px);
 }
 
-/* Lightbox */
-.expanded-image-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(8, 7, 6, 0.95);
-  backdrop-filter: blur(16px);
+/* ---- QUOTE CTA ---- */
+.product-actions {
   display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.product-quote-btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  cursor: zoom-out;
-  animation: fadeInOverlay 0.2s ease;
+  gap: 9px;
+  padding: 14px 34px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0e0d0b;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 
-  @keyframes fadeInOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(200, 114, 42, 0.3);
   }
 
-  img {
-    max-width: 92vw;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 2px;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
-  }
+  @include focus-ring;
+}
+
+.product-quote {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px 8px;
 }
 
 /* ---- GALLERY GRID ---- */
-.product-gallery {
-  padding: 0 0 100px;
-}
+.product-gallery { padding: 0 0 var(--section-y); }
 
+/* The two section kickers on this page used a local `.eyebrow-label` rule that
+   restated the shared kicker treatment. They use the site-wide `.eyebrow` from
+   index.css now, so the gallery and related-products headings are typeset
+   identically to the ones on the homepage and the category pages. */
 .gallery-header {
-  padding: 64px 64px 32px;
-
-  .eyebrow-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #C8722A;
-  }
-
-  @media (max-width: 768px) {
-    padding: 48px 24px 24px;
-  }
+  padding: clamp(2.75rem, 6vw, 4rem) var(--gutter) var(--space-lg);
 }
 
+/* Was full-bleed with a 4px gap, sitting directly under a "Gallery" kicker that
+   respected the page gutter — so the heading and the thing it labelled started
+   at different left edges. */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-sm);
+  padding: 0 var(--gutter);
 
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  @include below($bp-sm) { grid-template-columns: repeat(2, 1fr); }
 }
 
 .gallery-item {
   position: relative;
   overflow: hidden;
-  cursor: zoom-in;
-  background: #111009;
+  padding: 0;
   aspect-ratio: 3 / 4;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: zoom-in;
 
   img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  &:hover img {
-    transform: scale(1.06);
-  }
+  &:hover img { transform: scale(1.06); }
 
-  &:hover .gallery-caption {
+  &:hover .gallery-caption,
+  &:focus-visible .gallery-caption {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -3px;
   }
 }
 
 .gallery-caption {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: auto 0 0 0;
   padding: 32px 16px 16px;
   background: linear-gradient(to top, rgba(14, 13, 11, 0.9), transparent);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(240, 237, 232, 0.8);
+  text-align: left;
+  color: rgba(240, 237, 232, 0.85);
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+/* ---- RELATED ---- */
+.product-related { padding-bottom: var(--section-y); }
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 1.875rem);
+  padding: 0 var(--gutter);
+
+  @include below($bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.product-page-state {
+  min-height: 70vh;
+  padding-top: $nav-height;
+}
+
+@include reduced-motion {
+  .product-main-photo img,
+  .thumb img,
+  .gallery-item img,
+  .gallery-caption { transition: none; }
+
+  .product-main-photo:hover img,
+  .gallery-item:hover img { transform: none; }
+
+  .product-quote-btn:hover { transform: none; }
 }

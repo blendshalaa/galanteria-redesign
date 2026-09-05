@@ -1,304 +1,274 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import './NavBar.scss';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/LOGO_G.png';
-import { Link, useLocation } from 'react-router-dom';
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
-import pdf from './Office Catalogue English - DONE.pdf';
-import pdf2 from './School Catalogue English - DONE.pdf'
-import pdf3 from './Kitchen Catalogue English - DONE.pdf'
 import language from '../../lang';
-import { Context } from '../Context/Products';
+import useLang from '../../Hooks/useLang';
+import useCategories from '../../Hooks/useCategories';
 import Language from './Language';
-import { NavLink } from 'react-router-dom';
+import SearchOverlay from '../Search/SearchOverlay';
+import { localized } from '../../i18n/ui';
+import './NavBar.scss';
 
+const DownChevron = () => (
+  <svg className="s" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
 
+const DownloadIcon = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+
+/**
+ * Site header.
+ *
+ * Bugs fixed here, all of them user-visible:
+ *
+ * 1. SCROLL LOCK LEAKED TO DESKTOP. `onClick={toggleMenu}` was attached to the
+ *    entire `<ul className="links">`, so clicking any *desktop* nav link
+ *    toggled `body { overflow: hidden }` and flipped the hamburger state. It
+ *    only appeared to work because two separate window click listeners raced
+ *    to remove the class again. The lock now belongs to the mobile drawer.
+ *
+ * 2. DROPDOWN TRIGGERS WERE `<Link>` WITH NO `to`. React Router renders those
+ *    as `<a>` whose href resolves to the current path, so Enter, middle-click
+ *    and Ctrl-click navigated the user in a circle. They are `<button>` now.
+ *
+ * 3. THE CATEGORY MENU WAS HARDCODED, three levels deep, and four taps from
+ *    the homepage to a category on a phone. It is now one flat list built from
+ *    the `categories` table, so adding a category in the admin panel adds it
+ *    to the menu.
+ *
+ * 4. THE `.scrolled` STYLE NEVER FIRED — the class was styled in NavBar.scss
+ *    but nothing ever added it.
+ *
+ * 5. NO KEYBOARD SUPPORT: no `aria-expanded`, no Escape, no focus return, and
+ *    an `aria-label="open drawer"` that said "open" even when it closed.
+ */
 const NavBar = () => {
+  const { lang, t } = useLang();
+  const location = useLocation();
+  const { categories } = useCategories();
 
-  const [{ lang }] = useContext(Context);
-
-
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showDropdown2, setShowDropdown2] = useState(false);
-
-  const [showHomeFurnitureList, setShowHomeFurnitureList] = useState(false);
-  const [ChairsList, setChairsList] = useState(false);
-  const [DesksList, setDesksList] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [catalogueOpen, setCatalogueOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const categoriesRef = useRef(null);
-  const ecatalogueRef = useRef(null);
-  const [toggleBtn, setToggleBtn] = useState(false);
+  const catalogueRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
-  const location = useLocation();
-  const [activeItem, setActiveItem] = useState('');
+  const closeAll = useCallback(() => {
+    setMenuOpen(false);
+    setCategoriesOpen(false);
+    setCatalogueOpen(false);
+  }, []);
+
+  // Close everything on navigation — previously the mobile drawer stayed open
+  // behind the new page.
+  useEffect(() => {
+    closeAll();
+  }, [location.pathname, closeAll]);
+
+  // Body scroll lock belongs to the mobile drawer only, and is cleaned up on
+  // unmount so it can never be left stuck on.
+  useEffect(() => {
+    document.body.classList.toggle('scroll-y', menuOpen);
+    return () => document.body.classList.remove('scroll-y');
+  }, [menuOpen]);
 
   useEffect(() => {
-    const { pathname } = location;
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    setActiveItem(pathname);
-  }, [location]);
-
-  const toggleMenu = () => {
-    setToggleBtn(!toggleBtn);
-    document.body.classList.toggle("scroll-y");
-  };
-
+  // One outside-click listener instead of two racing ones.
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        categoriesRef.current &&
-        !categoriesRef.current.contains(event.target) &&
-        ecatalogueRef.current &&
-        !ecatalogueRef.current.contains(event.target)
-      ) {
-        setShowDropdown(false);
-        setShowHomeFurnitureList(false);
-        document.body.classList.remove("scroll-y");
+    const onPointerDown = (event) => {
+      if (categoriesRef.current && !categoriesRef.current.contains(event.target)) {
+        setCategoriesOpen(false);
+      }
+      if (catalogueRef.current && !catalogueRef.current.contains(event.target)) {
+        setCatalogueOpen(false);
       }
     };
-
-    window.addEventListener('click', handleOutsideClick);
-
-    return () => {
-      window.removeEventListener('click', handleOutsideClick);
-    };
+    window.addEventListener('pointerdown', onPointerDown);
+    return () => window.removeEventListener('pointerdown', onPointerDown);
   }, []);
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        ecatalogueRef.current &&
-        !ecatalogueRef.current.contains(event.target)
-      ) {
-        setShowDropdown2(false);
-        document.body.classList.remove("scroll-y");
-      }
+    const onKeyDown = (event) => {
+      if (event.key !== 'Escape') return;
+      if (menuOpen) menuButtonRef.current?.focus();
+      closeAll();
     };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen, closeAll]);
 
-    window.addEventListener('click', handleOutsideClick);
-
-    return () => {
-      window.removeEventListener('click', handleOutsideClick);
-    };
-  }, []);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-    setShowHomeFurnitureList(false);
-  };
-
-
-  const toggleDropdown2 = () => {
-    setShowDropdown2(!showDropdown2);
-  };
-
-
-  const toggleHomeFurnitureList = () => {
-    setShowHomeFurnitureList(!showHomeFurnitureList);
-  };
-  const toggleChairsList = () => {
-    setChairsList(!ChairsList);
-  };
-
-  const toggleDesksList = () => {
-    setDesksList(!DesksList);
-  };
-
-  const stopPropagation = (event) => {
-    event.stopPropagation();
-  };
+  /* The three catalogue PDFs total ~64 MB. They used to be `import`ed from
+     src/, which pulled them through the bundler and hashed their filenames —
+     so the file a visitor actually downloaded was named
+     "Office Catalogue English - DONE-D2GWA9PT.pdf". They are static files in
+     public/ now: not rebuilt, not hashed, and downloaded under a sensible
+     name. */
+  const catalogues = [
+    { file: '/catalogues/galanteria-office-catalogue.pdf',  name: 'galanteria-office-catalogue.pdf',  label: language[lang]?.ecatalog?.[0]?.one },
+    { file: '/catalogues/galanteria-school-catalogue.pdf',  name: 'galanteria-school-catalogue.pdf',  label: language[lang]?.ecatalog?.[0]?.two },
+    { file: '/catalogues/galanteria-kitchen-catalogue.pdf', name: 'galanteria-kitchen-catalogue.pdf', label: language[lang]?.ecatalog?.[0]?.three },
+  ];
 
   return (
-    <div className='navbar-wrapper'>
-      <div className='left'>
-        <div className='logo'>
-          <Link to='/'>
-            <img src={logo} alt='' />
-          </Link>
-        </div>
-
-        <ul onClick={() => toggleMenu()} className={`${toggleBtn ? "header-menu" : ""} links`}><div>
-
-        </div>
-          <Link to="/"><li className={activeItem === '/' ? 'active-link' : 'link'}>
-            {language[lang]?.menuHeader[0].name}
-
-          </li></Link>
-
-          <div className="categories" ref={categoriesRef} onClick={stopPropagation}>
-            <div className='c'>
-              <li onClick={toggleDropdown} className={activeItem === '/categories' ? 'active-link' : 'link'}>
-                {language[lang]?.menuHeader[1].name}
-
-              </li>
-              <svg className='s' onClick={toggleDropdown} fill="#eee" width="15px" height="15px" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-menu-down-fill"><path d="M17 9V8H5V9H6V10H7V11H8V12H9V13H10V14H12V13H13V12H14V11H15V10H16V9" /></svg>
-            </div>
-
-            {showDropdown && (
-              <ul className='dropdown' onClick={stopPropagation}>
-                <li className='nes'>
-                  <Link onClick={toggleHomeFurnitureList}>{language[lang]?.menuHeader[2].name}</Link>
-                  {showHomeFurnitureList && (
-                    <ul className="nested-list">
-                    
-                     
-                      <li className='nes'>
-                        <Link onClick={toggleDesksList}>{language[lang]?.menuHeader[4].name}</Link>
-                        {DesksList && (
-                          <ul className="nested-list">
-                            <li className="nes">
-                              <Link to="/WorkingTable">{language[lang]?.menuHeader[5].name}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/Workstation">{language[lang]?.menuHeader[6].name}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/MeetingTable">{language[lang]?.menuHeader[7].name}</Link>
-                            </li>
-
-                          </ul>
-                        )}
-                      </li>
-                    
-                      <li className='nes'>
-                        <Link to="/Cabinets">{language[lang]?.menuHeader[8].name}</Link>
-                      </li>
-                      <li className='nes'>
-                        <Link to="/Drawers">{language[lang]?.menuHeader[9].name}</Link>
-                      </li>  <li className='nes'>
-                        <Link onClick={toggleChairsList} >{language[lang]?.menuHeader[3].name}</Link>
-                        {ChairsList && (
-                          <ul className="nested-list">
-                            <li className="nes">
-                              <Link to="/OfficeChairs">{language[lang]?.chairs[0].one}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/MeetingChairs">{language[lang]?.chairs[0].two}</Link>
-                            </li>
-                            <li className="nes">
-                              <Link to="/WaitingChairs">{language[lang]?.chairs[0].three}</Link>
-                            </li>
-
-                          </ul>
-                        )}
-                      </li>
-                      <li className='nes'>
-                        <Link to="/Others">{language[lang]?.menuHeader[10].name}</Link>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                {/* <li className='nes'>
-                  <Link to='/category2'>{language[lang]?.menuHeader[11].name}</Link>
-                </li> */}
-              </ul>
-            )}
+    <>
+      <nav className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`} aria-label="Main">
+        <div className="left">
+          <div className="logo">
+            <Link to="/" aria-label="Galanteria Group — home">
+              {/* The intrinsic size attributes said 150×34 (a 4.4 ratio) for a
+                  file that is actually 336×246 (1.37), so the browser reserved
+                  a box the wrong shape before the stylesheet loaded. */}
+              <img src={logo} alt="Galanteria Group" width="52" height="38" />
+            </Link>
           </div>
 
-          <Link to="/Projects">
-            <li className={activeItem === '/Projects' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[12].name}
-
+          <ul className={`${menuOpen ? 'header-menu' : ''} links`} id="primary-navigation">
+            <li>
+              <NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'link')} end>
+                {language[lang]?.menuHeader?.[0]?.name}
+              </NavLink>
             </li>
-          </Link>
 
+            <li className="categories" ref={categoriesRef}>
+              <div className="c">
+                <button
+                  type="button"
+                  className={location.pathname.startsWith('/category') ? 'active-link' : 'link'}
+                  onClick={() => setCategoriesOpen((open) => !open)}
+                  aria-expanded={categoriesOpen}
+                  aria-controls="categories-dropdown"
+                >
+                  {language[lang]?.menuHeader?.[1]?.name}
+                  <DownChevron />
+                </button>
+              </div>
 
-          <div className="ecatalog" ref={ecatalogueRef} onClick={stopPropagation}>
-            <div className='c'>
-              <li  onClick={toggleDropdown2} className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                {language[lang]?.menuHeader[13].name}
-
-              </li>
-              <svg className='s' onClick={toggleDropdown2} fill="#eee" width="15px" height="15px" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-menu-down-fill"><path d="M17 9V8H5V9H6V10H7V11H8V12H9V13H10V14H12V13H13V12H14V11H15V10H16V9" /></svg>
-            </div>
-
-            {showDropdown2 && (
-              <ul className='dropdown' onClick={stopPropagation}>
-
-                <a href={pdf} download={true}>
-                  <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.625 15C5.625 14.5858 5.28921 14.25 4.875 14.25C4.46079 14.25 4.125 14.5858 4.125 15H5.625ZM4.875 16H4.125H4.875ZM19.275 15C19.275 14.5858 18.9392 14.25 18.525 14.25C18.1108 14.25 17.775 14.5858 17.775 15H19.275ZM11.1086 15.5387C10.8539 15.8653 10.9121 16.3366 11.2387 16.5914C11.5653 16.8461 12.0366 16.7879 12.2914 16.4613L11.1086 15.5387ZM16.1914 11.4613C16.4461 11.1347 16.3879 10.6634 16.0613 10.4086C15.7347 10.1539 15.2634 10.2121 15.0086 10.5387L16.1914 11.4613ZM11.1086 16.4613C11.3634 16.7879 11.8347 16.8461 12.1613 16.5914C12.4879 16.3366 12.5461 15.8653 12.2914 15.5387L11.1086 16.4613ZM8.39138 10.5387C8.13662 10.2121 7.66533 10.1539 7.33873 10.4086C7.01212 10.6634 6.95387 11.1347 7.20862 11.4613L8.39138 10.5387ZM10.95 16C10.95 16.4142 11.2858 16.75 11.7 16.75C12.1142 16.75 12.45 16.4142 12.45 16H10.95ZM12.45 5C12.45 4.58579 12.1142 4.25 11.7 4.25C11.2858 4.25 10.95 4.58579 10.95 5H12.45ZM4.125 15V16H5.625V15H4.125ZM4.125 16C4.125 18.0531 5.75257 19.75 7.8 19.75V18.25C6.61657 18.25 5.625 17.2607 5.625 16H4.125ZM7.8 19.75H15.6V18.25H7.8V19.75ZM15.6 19.75C17.6474 19.75 19.275 18.0531 19.275 16H17.775C17.775 17.2607 16.7834 18.25 15.6 18.25V19.75ZM19.275 16V15H17.775V16H19.275ZM12.2914 16.4613L16.1914 11.4613L15.0086 10.5387L11.1086 15.5387L12.2914 16.4613ZM12.2914 15.5387L8.39138 10.5387L7.20862 11.4613L11.1086 16.4613L12.2914 15.5387ZM12.45 16V5H10.95V16H12.45Z" fill="white" />
-                  </svg>
-
-                  <li style={{ color: 'black' }} className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                    {language[lang]?.ecatalog[0].one}
-
-                  </li>
-                </a>
-
-                <li className='nes'>
-                  <a href={pdf2} download={true}>
-                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.625 15C5.625 14.5858 5.28921 14.25 4.875 14.25C4.46079 14.25 4.125 14.5858 4.125 15H5.625ZM4.875 16H4.125H4.875ZM19.275 15C19.275 14.5858 18.9392 14.25 18.525 14.25C18.1108 14.25 17.775 14.5858 17.775 15H19.275ZM11.1086 15.5387C10.8539 15.8653 10.9121 16.3366 11.2387 16.5914C11.5653 16.8461 12.0366 16.7879 12.2914 16.4613L11.1086 15.5387ZM16.1914 11.4613C16.4461 11.1347 16.3879 10.6634 16.0613 10.4086C15.7347 10.1539 15.2634 10.2121 15.0086 10.5387L16.1914 11.4613ZM11.1086 16.4613C11.3634 16.7879 11.8347 16.8461 12.1613 16.5914C12.4879 16.3366 12.5461 15.8653 12.2914 15.5387L11.1086 16.4613ZM8.39138 10.5387C8.13662 10.2121 7.66533 10.1539 7.33873 10.4086C7.01212 10.6634 6.95387 11.1347 7.20862 11.4613L8.39138 10.5387ZM10.95 16C10.95 16.4142 11.2858 16.75 11.7 16.75C12.1142 16.75 12.45 16.4142 12.45 16H10.95ZM12.45 5C12.45 4.58579 12.1142 4.25 11.7 4.25C11.2858 4.25 10.95 4.58579 10.95 5H12.45ZM4.125 15V16H5.625V15H4.125ZM4.125 16C4.125 18.0531 5.75257 19.75 7.8 19.75V18.25C6.61657 18.25 5.625 17.2607 5.625 16H4.125ZM7.8 19.75H15.6V18.25H7.8V19.75ZM15.6 19.75C17.6474 19.75 19.275 18.0531 19.275 16H17.775C17.775 17.2607 16.7834 18.25 15.6 18.25V19.75ZM19.275 16V15H17.775V16H19.275ZM12.2914 16.4613L16.1914 11.4613L15.0086 10.5387L11.1086 15.5387L12.2914 16.4613ZM12.2914 15.5387L8.39138 10.5387L7.20862 11.4613L11.1086 16.4613L12.2914 15.5387ZM12.45 16V5H10.95V16H12.45Z" fill="white" />
-                    </svg>
-
-                    <li style={{ color: 'black' }} className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                      {language[lang]?.ecatalog[0].two}
-
+              {categoriesOpen && (
+                <ul className="dropdown" id="categories-dropdown">
+                  {categories.map((category) => (
+                    <li className="nes" key={category.slug}>
+                      <Link to={`/category/${category.slug}`}>
+                        {localized(category, 'name', lang)}
+                      </Link>
                     </li>
-                  </a>
-                </li>
-                <li className='nes'>
-                  <a href={pdf3} download={true}>
-                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.625 15C5.625 14.5858 5.28921 14.25 4.875 14.25C4.46079 14.25 4.125 14.5858 4.125 15H5.625ZM4.875 16H4.125H4.875ZM19.275 15C19.275 14.5858 18.9392 14.25 18.525 14.25C18.1108 14.25 17.775 14.5858 17.775 15H19.275ZM11.1086 15.5387C10.8539 15.8653 10.9121 16.3366 11.2387 16.5914C11.5653 16.8461 12.0366 16.7879 12.2914 16.4613L11.1086 15.5387ZM16.1914 11.4613C16.4461 11.1347 16.3879 10.6634 16.0613 10.4086C15.7347 10.1539 15.2634 10.2121 15.0086 10.5387L16.1914 11.4613ZM11.1086 16.4613C11.3634 16.7879 11.8347 16.8461 12.1613 16.5914C12.4879 16.3366 12.5461 15.8653 12.2914 15.5387L11.1086 16.4613ZM8.39138 10.5387C8.13662 10.2121 7.66533 10.1539 7.33873 10.4086C7.01212 10.6634 6.95387 11.1347 7.20862 11.4613L8.39138 10.5387ZM10.95 16C10.95 16.4142 11.2858 16.75 11.7 16.75C12.1142 16.75 12.45 16.4142 12.45 16H10.95ZM12.45 5C12.45 4.58579 12.1142 4.25 11.7 4.25C11.2858 4.25 10.95 4.58579 10.95 5H12.45ZM4.125 15V16H5.625V15H4.125ZM4.125 16C4.125 18.0531 5.75257 19.75 7.8 19.75V18.25C6.61657 18.25 5.625 17.2607 5.625 16H4.125ZM7.8 19.75H15.6V18.25H7.8V19.75ZM15.6 19.75C17.6474 19.75 19.275 18.0531 19.275 16H17.775C17.775 17.2607 16.7834 18.25 15.6 18.25V19.75ZM19.275 16V15H17.775V16H19.275ZM12.2914 16.4613L16.1914 11.4613L15.0086 10.5387L11.1086 15.5387L12.2914 16.4613ZM12.2914 15.5387L8.39138 10.5387L7.20862 11.4613L11.1086 16.4613L12.2914 15.5387ZM12.45 16V5H10.95V16H12.45Z" fill="white" />
-                    </svg>
+                  ))}
+                </ul>
+              )}
+            </li>
 
-                    <li style={{ color: 'black' }} className={activeItem === '/ecatalog' ? 'active-link' : 'link'}>
-                      {language[lang]?.ecatalog[0].three}
+            <li>
+              <NavLink to="/Projects" className={({ isActive }) => (isActive ? 'active-link' : 'link')}>
+                {language[lang]?.menuHeader?.[12]?.name}
+              </NavLink>
+            </li>
 
+            <li className="ecatalog" ref={catalogueRef}>
+              <div className="c">
+                <button
+                  type="button"
+                  className="link"
+                  onClick={() => setCatalogueOpen((open) => !open)}
+                  aria-expanded={catalogueOpen}
+                  aria-controls="catalogue-dropdown"
+                >
+                  {language[lang]?.menuHeader?.[13]?.name}
+                  <DownChevron />
+                </button>
+              </div>
+
+              {catalogueOpen && (
+                <ul className="dropdown" id="catalogue-dropdown">
+                  {catalogues.map((item) => (
+                    <li className="nes" key={item.file}>
+                      <a href={item.file} download={item.name}>
+                        <DownloadIcon />
+                        {item.label}
+                      </a>
                     </li>
-                  </a>
-                </li>
-              </ul>
-            )}
-          </div>
+                  ))}
+                </ul>
+              )}
+            </li>
 
+            <li>
+              <NavLink to="/Aboutus" className={({ isActive }) => (isActive ? 'active-link' : 'link')}>
+                {language[lang]?.menuHeader?.[15]?.name}
+              </NavLink>
+            </li>
 
-          <Link to="/Aboutus">
-            <li className={activeItem === '/Aboutus' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[15].name}
+            {/* Contact is the one thing a visitor to a made-to-order furniture
+                site is being steered towards, and it was styled identically to
+                the five links beside it. */}
+            <li className="nav-cta-item">
+              <NavLink to="/Contact" className={({ isActive }) => (isActive ? 'active-link nav-cta' : 'link nav-cta')}>
+                {language[lang]?.menuHeader?.[14]?.name}
+              </NavLink>
+            </li>
 
-            </li></Link>
-
-          <Link to="/Contact">
-            <li className={activeItem === '/Contact' ? 'active-link' : 'link'}>
-              {language[lang]?.menuHeader[14].name}
-
-            </li></Link>
-
-
-
-
-          <div className="navlang mobile-only">
-            <div className="language">
-              <Language className="lang" />
-            </div>
-          </div>
-        </ul>
-      </div>
-
-      <div className="navlang desktop-only">
-        <div className="language">
-          <Language className="lang" />
+            <li className="navlang mobile-only">
+              <Language />
+            </li>
+          </ul>
         </div>
-      </div>
 
-      <div className='right'>
-        <IconButton
-          onClick={toggleMenu}
-          className="menu-btn"
-          color="inherit"
-          aria-label="open drawer"
-          edge="end"
-        >
-          {toggleBtn ? <CloseIcon /> : <MenuIcon />}
-        </IconButton>
-      </div>
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="nav-icon-btn"
+            onClick={() => setSearchOpen(true)}
+            aria-label={t('search')}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
 
-    </div>
+          <div className="navlang desktop-only">
+            <Language />
+          </div>
+
+          <button
+            type="button"
+            ref={menuButtonRef}
+            className="nav-icon-btn menu-btn"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? t('closeMenu') : t('openMenu')}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+          >
+            {menuOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
+    </>
   );
 };
 
