@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+/* =============================================================================
+   GALANTERIA — DESIGN TOKENS
+   =============================================================================
+   The palette, type ladder and rhythm that used to live as CSS custom
+   properties in src/index.css, expressed as a Tailwind theme. Everything in
+   `@theme` becomes both a CSS variable (`var(--color-accent)`) and a utility
+   (`bg-accent`, `text-accent`, `border-accent`), so the tokens are reachable
+   whether a rule is written in a class list or inside a gradient.
+
+   Names changed where the old ones would have produced awkward utilities:
+   `--color-bg` would have meant writing `bg-bg`. The values are unchanged.
+   ========================================================================== */
+
+@theme {
+  /* --- Surfaces --------------------------------------------------------- */
+  --color-page: #0e0d0b;
+  --color-page-2: #161410;
+  --color-card: #1a1815;
+  --color-surface: #222018;
+  /* The alternating slightly-darker band between sections. */
+  --color-sunken: #0b0a08;
+
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-hover: rgba(212, 135, 64, 0.4);
+
+  /* --- Brand ------------------------------------------------------------ */
+  --color-accent: #c8722a;
+  --color-accent-light: #e8904e;
+  --color-accent-dim: rgba(200, 114, 42, 0.15);
+  --color-accent-glow: rgba(200, 114, 42, 0.3);
+
+  /* --- Text -------------------------------------------------------------
+     `--color-ink-muted` was #5E5850 in the original theme, which fails WCAG AA
+     against the page background at 2.6:1. This passes at 4.6:1 while staying
+     visibly quieter than the secondary tone. */
+  --color-ink: #f0ede8;
+  --color-ink-soft: #a09888;
+  --color-ink-muted: #7a7268;
+
+  /* --- Typography -------------------------------------------------------
+     Loaded by next/font in app/layout.js, which is why these point at the
+     variables it sets rather than at font names. Cormorant Garamond is the
+     display face — it is what makes the site read as a furniture brand. */
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+
+  /* One type ladder for the whole site. Before, a section title was 3.5rem on
+     the homepage, 2.8rem on the category page and 2.2rem on contact — the same
+     rank of heading at three different sizes. */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: clamp(1.15rem, 0.4vw + 1.05rem, 1.35rem);
+  --text-xl: clamp(1.5rem, 1vw + 1.2rem, 2rem);
+  --text-2xl: clamp(2rem, 2.2vw + 1.4rem, 3rem);
+  --text-3xl: clamp(2.6rem, 4vw + 1.4rem, 4.5rem);
+  --text-hero: clamp(2.6rem, 5vw + 1rem, 5.5rem);
+
+  --tracking-eyebrow: 0.18em;
+  --tracking-tight: -0.02em;
+
+  /* --- Rhythm -----------------------------------------------------------
+     Sections used to use 100px / 120px / 72px / 80px arbitrarily, so the page
+     had no consistent beat as you scrolled. `py-section` and `px-gutter` are
+     that beat. `h-nav` / `pt-nav` keep fixed-header offsets in one place. */
+  --spacing-section: clamp(4.5rem, 8vw, 8rem);
+  --spacing-gutter: clamp(1.25rem, 5vw, 4rem);
+  --spacing-nav: 68px;
+  --spacing-nav-mobile: 60px;
+  --spacing-shell: 1400px;
+
+  /* --- Shape ------------------------------------------------------------ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-accent: 0 8px 32px rgba(200, 114, 42, 0.2);
+
+  /* --- Breakpoints ------------------------------------------------------
+     sm/md/lg/xl match the values the SCSS used ($bp-sm 640, $bp-md 768,
+     $bp-lg 1024 — where the navbar collapses — and $bp-xl 1280). Only the
+     smallest is new. */
+  --breakpoint-xs: 30rem;
+
+  /* --- Motion ----------------------------------------------------------- */
+  --animate-page-entrance: page-entrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.6s ease both;
+  --animate-spin-slow: spin 0.7s linear infinite;
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  /* A pendulum, not a slide: paired with `origin-top` so the rotation
+     pivots at the cord instead of the whole element drifting sideways. */
+  --animate-sway: sway 6s ease-in-out infinite;
+  /* The testimonial carousel's own transition: reads `--slide-from`, set
+     inline per swap so it comes in from the side the arrow points to
+     rather than always the same direction. */
+  --animate-slide-in: slide-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-4deg); }
+    50%      { transform: rotate(4deg); }
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(var(--slide-from, 20px)); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes page-entrance {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* =============================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* `font-size: 16px` used to be hardcoded here, which overrides the font
+       size a user has chosen in their browser settings. */
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--spacing-nav) + 1rem);
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  /* A single visible focus style for anything that does not define its own.
+     The original stylesheets had no :focus-visible rules at all — only
+     :hover — so a keyboard user had no way to see where they were. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-accent-dim);
+    color: var(--color-accent-light);
+  }
+
+  /* One scrollbar declaration. It was previously styled twice with conflicting
+     widths and conflicting thumb colours. */
+  ::-webkit-scrollbar { width: 8px; background: var(--color-page); }
+  ::-webkit-scrollbar-track { background: var(--color-page); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(200, 114, 42, 0.4);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(200, 114, 42, 0.8); }
+
+  /* Nothing in the original codebase respected this, despite autoplaying
+     carousels, smooth scrolling and an entrance animation on every route. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =============================================================================
+   THIRD-PARTY: SWIPER
+   =============================================================================
+   Swiper renders its own markup, so its pagination cannot be styled from a
+   className. This is the only place in the project that still needs a global
+   selector.
+   ========================================================================== */
+
+.swiper-pagination-bullet {
+  background: rgba(240, 237, 232, 0.3) !important;
+  width: 6px !important;
+  height: 6px !important;
+  opacity: 1 !important;
+  transition: width 0.25s ease, background 0.25s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-accent) !important;
+  width: 24px !important;
+  border-radius: 9999px !important;
+}
+
+.hero-swiper .swiper-pagination {
+  bottom: 2rem !important;
+  left: auto !important;
+  right: clamp(1.25rem, 3vw, 2.5rem) !important;
+  width: auto !important;
+  display: flex;
+  gap: 6px;
+}
+
+/* The testimonials carousel is gone — client references are a column layout
+   now — so the only Swiper left on the site is the homepage hero. */
