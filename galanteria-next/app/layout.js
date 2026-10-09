@@ -49,7 +49,13 @@ export const metadata = {
     'Galanteria Group designs and manufactures premium office and home furniture — office chairs, workstations, meeting tables and cabinets — for modern spaces across Kosovo and Europe.',
   applicationName: 'Galanteria Group',
   alternates: { canonical: '/' },
-  icons: { icon: '/favicon.png', apple: '/favicon.png' },
+  /* The favicon itself now comes from app/icon.png — Next's own file
+     convention generates its `<link rel="icon">` automatically, which used
+     to coexist with this `icon` entry and with app/favicon.ico (the
+     unreplaced default Next.js starter triangle, which browsers kept
+     showing in the tab over the real logo). Only the apple-touch-icon
+     still needs declaring by hand. */
+  icons: { apple: '/favicon.png' },
   openGraph: {
     type: 'website',
     siteName: 'Galanteria Group',

@@ -10,22 +10,22 @@ import { PlusIcon, TrashIcon } from '../icons';
 import { adminBtn, card, field, iconBtnDanger } from '../ui';
 
 /**
- * Site text and testimonials.
+ * Testimonials.
  *
- * Like the hero tab, this one used to be write-only: `about_text` was saved to
- * the `settings` table while the about page read lang.js, and testimonials were
- * saved to a table the homepage never looked at — it built its carousel from a
- * hardcoded local array. Both public pages read this data now.
+ * Used to also manage the About page's intro text (`about_text` in the
+ * `settings` table), alongside testimonials. That editor is gone — the
+ * client asked for page copy to no longer be admin-editable, testimonials
+ * only. The testimonials half used to be write-only itself: saved to a
+ * table the homepage never looked at, since it built its carousel from a
+ * hardcoded local array. The public page reads this data now.
  *
  * Also fixed: adding a testimonial returned silently when a field was empty, so
  * the button appeared to do nothing at all.
  */
 export default function AdminSettings() {
-  const [aboutText, setAboutText] = useState({ sq: '', en: '', de: '' });
   const [testimonials, setTestimonials] = useState([]);
   const [newTestimonial, setNewTestimonial] = useState({ name: '', company: '', text: '' });
   const [errors, setErrors] = useState({});
-  const [saving, setSaving] = useState(false);
   const [adding, setAdding] = useState(false);
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState(null);
@@ -33,40 +33,19 @@ export default function AdminSettings() {
   const showToast = (message, type = 'success') => setToast({ message, type });
 
   useEffect(() => {
-    const fetchSettings = async () => {
+    const fetchTestimonials = async () => {
       setLoading(true);
 
-      const [aboutRes, testimonialRes] = await Promise.all([
-        supabase.from('settings').select('value').eq('key', 'about_text').maybeSingle(),
-        supabase.from('testimonials').select('*').order('created_at'),
-      ]);
+      const { data, error } = await supabase.from('testimonials').select('*').order('created_at');
 
-      if (aboutRes.data?.value) setAboutText({ sq: '', en: '', de: '', ...aboutRes.data.value });
-
-      if (testimonialRes.error) showToast('Nuk u ngarkuan testimonialët.', 'error');
-      else setTestimonials(testimonialRes.data || []);
+      if (error) showToast('Nuk u ngarkuan testimonialët.', 'error');
+      else setTestimonials(data || []);
 
       setLoading(false);
     };
 
-    fetchSettings();
+    fetchTestimonials();
   }, []);
-
-  const saveAboutText = async () => {
-    setSaving(true);
-    const { error } = await supabase
-      .from('settings')
-      .upsert({ key: 'about_text', value: aboutText, updated_at: new Date().toISOString() }, { onConflict: 'key' });
-    setSaving(false);
-
-    if (error) {
-      showToast(`Gabim: ${error.message}`, 'error');
-      return;
-    }
-
-    await revalidateSite();
-    showToast('Tekstet u ruajtën!');
-  };
 
   const addTestimonial = async () => {
     const next = {};
@@ -125,57 +104,6 @@ export default function AdminSettings() {
 
   return (
     <div className="flex flex-col gap-6">
-      <section className={card}>
-        <header className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-6 py-5">
-          <div>
-            <h2 className="font-sans text-[1.02rem] font-semibold text-ink">Teksti i Faqes “Rreth Nesh”</h2>
-            <p className="mt-1 text-base text-ink-muted">Shfaqet si paragrafi hyrës në faqen Rreth Nesh.</p>
-          </div>
-          <button type="button" onClick={saveAboutText} disabled={saving} className={adminBtn('primary')}>
-            {saving ? <Spinner size={14} /> : null}
-            {saving ? 'Duke ruajtur...' : 'Ruaj'}
-          </button>
-        </header>
-
-        <div className="flex flex-col gap-5 px-6 py-6">
-          <Field label="Hyrja (Shqip)" htmlFor="about-sq">
-            <textarea
-              id="about-sq"
-              value={aboutText.sq}
-              onChange={(event) => setAboutText((current) => ({ ...current, sq: event.target.value }))}
-              rows={4}
-              placeholder="Teksti shqip..."
-              className={`${field.control} resize-y`}
-            />
-          </Field>
-
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Hyrja (English)" htmlFor="about-en">
-              <textarea
-                id="about-en"
-                value={aboutText.en}
-                onChange={(event) => setAboutText((current) => ({ ...current, en: event.target.value }))}
-                rows={4}
-                placeholder="English text..."
-                className={`${field.control} resize-y`}
-              />
-            </Field>
-            <Field label="Hyrja (Deutsch)" htmlFor="about-de">
-              <textarea
-                id="about-de"
-                value={aboutText.de}
-                onChange={(event) => setAboutText((current) => ({ ...current, de: event.target.value }))}
-                rows={4}
-                placeholder="Deutscher Text..."
-                className={`${field.control} resize-y`}
-              />
-            </Field>
-          </div>
-
-          <p className={field.hint}>Nëse një gjuhë lihet bosh, faqja përdor tekstin e paracaktuar.</p>
-        </div>
-      </section>
-
       <section className={card}>
         <header className="border-b border-line px-6 py-5">
           <h2 className="font-sans text-[1.02rem] font-semibold text-ink">Testimonialët</h2>
