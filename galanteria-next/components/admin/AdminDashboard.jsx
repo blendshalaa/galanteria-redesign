@@ -7,7 +7,6 @@ import AdminProducts from './tabs/AdminProducts';
 import AdminCategories from './tabs/AdminCategories';
 import AdminProjects from './tabs/AdminProjects';
 import AdminInbox from './tabs/AdminInbox';
-import AdminHero from './tabs/AdminHero';
 import AdminSettings from './tabs/AdminSettings';
 import { cn } from '@/lib/cn';
 
@@ -35,12 +34,6 @@ const icons = {
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
       <polyline points="22,6 12,13 2,6" />
-    </svg>
-  ),
-  hero: (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" />
-      <polyline points="21 15 16 10 5 21" />
     </svg>
   ),
   settings: (
@@ -96,19 +89,11 @@ const NAV = [
     hint: 'Çdo mesazh dhe kërkesë për ofertë që vjen nga faqja.',
   },
   {
-    id: 'hero',
-    // Was "Hero Slider" — two English technical words in an Albanian panel.
-    label: 'Fotot e ballinës',
-    icon: icons.hero,
-    group: 'Faqja',
-    hint: 'Fotot e mëdha që ndërrohen në krye të ballinës.',
-  },
-  {
     id: 'settings',
-    label: 'Tekstet e faqes',
+    label: 'Testimonialët',
     icon: icons.settings,
     group: 'Faqja',
-    hint: 'Teksti te “Rreth nesh” dhe vlerësimet e klientëve në ballinë.',
+    hint: 'Vlerësimet e klientëve që shfaqen në ballinë.',
   },
 ];
 
@@ -119,7 +104,6 @@ const TABS = {
   categories: AdminCategories,
   projects: AdminProjects,
   inbox: AdminInbox,
-  hero: AdminHero,
   settings: AdminSettings,
 };
 
